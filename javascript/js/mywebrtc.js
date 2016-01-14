@@ -15,6 +15,19 @@ var pc = new RTCPeerConnection(cfg)
 
 var channel = undefined
 
+function utf8_to_b64(str) {
+  return window.btoa(unescape(encodeURIComponent(str)))
+}
+
+var writeTo = function(field, json) {
+  var txt = JSON.stringify(json)
+  document.getElementById(field).value = txt
+}
+
+var readFrom = function(field) {
+  return JSON.parse(document.getElementById(field).value)
+}
+
 var create = function() {
   console.log('create')
 
@@ -22,7 +35,8 @@ var create = function() {
     //console.log('ICE candidate (pc)', e)
     if (e.candidate == null) {
       console.log('ICE candidate (pc) FOUND!', e)
-      document.getElementById('createText').value = JSON.stringify(pc.localDescription)
+      
+      writeTo('createText', pc.localDescription)
     }
   }
   
@@ -37,23 +51,26 @@ var create = function() {
 
   bindChannel()
 }
+window.create = create
 
 var doCreate = function() {
   console.log('create going on from here')
-  var answerDesc = new RTCSessionDescription(JSON.parse(document.getElementById('createAnswerText').value))
+  var answerDesc = new RTCSessionDescription(readFrom('createAnswerText'))
   pc.setRemoteDescription(answerDesc)
 }
+window.doCreate = doCreate
 
 var join = function() {
   console.log('join')
 
-  var offerDesc = new RTCSessionDescription(JSON.parse(document.getElementById('joinText').value))
+  var offerDesc = new RTCSessionDescription(readFrom('joinText'))
 
   pc.onicecandidate = function (e) {
     //console.log('ICE candidate answare (pc)', e)
     if (e.candidate == null) {
       console.log('ICE candidate answare (pc) FOUND', e)
-      document.getElementById('joinAnswerText').value = JSON.stringify(pc.localDescription)
+
+      writeTo('joinAnswerText', pc.localDescription)
     }
   }
 
@@ -72,6 +89,7 @@ var join = function() {
   function () { console.warn("Couldn't create offer") },
   channelOptions)
 }
+window.join = join
 
 var bindChannel = function() {
   channel.onopen = function (e) {
@@ -92,3 +110,4 @@ var bindChannel = function() {
 var ping = function() {
   channel.send("ping")
 }
+window.ping = ping
