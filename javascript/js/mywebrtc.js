@@ -35,19 +35,7 @@ var create = function() {
     function (err) { console.warn("Couldn't create offer "+err) },
     channelOptions)
 
-  channel.onopen = function (e) {
-    console.log('data channel connected!!!')
-
-    channel.send("We io ti ho creato!!!")
-  }
-
-  channel.onerror = function (err) {
-    console.error("Channel Error:", err)
-  }
-
-  channel.onmessage = function (e) {
-    console.log("Got message:", e.data)
-  }
+  bindChannel()
 }
 
 var doCreate = function() {
@@ -73,18 +61,7 @@ var join = function() {
     console.log("on data channel!!!")
     channel = e.channel
 
-    channel.onopen = function (e) {
-      console.log('data channel connected!!!')
-    }
-
-    channel.onerror = function (err) {
-      console.error("Channel Error:", err)
-    }
-
-    channel.onmessage = function (e) {
-      console.log("Got message:", e.data)
-      channel.send("E allora ti rispondo!")
-    }
+    bindChannel()
   }
 
   pc.setRemoteDescription(offerDesc)
@@ -94,4 +71,24 @@ var join = function() {
   },
   function () { console.warn("Couldn't create offer") },
   channelOptions)
+}
+
+var bindChannel = function() {
+  channel.onopen = function (e) {
+    console.log('Channel connected!!!')
+  }
+
+  channel.onerror = function (err) {
+    console.error("Channel Error:", err)
+  }
+
+  channel.onmessage = function (e) {
+    console.log("Got message:", e.data)
+    if (e.data == "ping")
+      channel.send("pong")
+  }
+}
+
+var ping = function() {
+  channel.send("ping")
 }
