@@ -15,10 +15,6 @@ var pc = new RTCPeerConnection(cfg)
 
 var channel = undefined
 
-function utf8_to_b64(str) {
-  return window.btoa(unescape(encodeURIComponent(str)))
-}
-
 var writeTo = function(field, json) {
   var txt = JSON.stringify(json)
   document.getElementById(field).value = txt
