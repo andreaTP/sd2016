@@ -11,42 +11,31 @@ import akka.actor._
 @JSExport("Main")
 object Main extends js.JSApp {
 
-  //devo creare un attore che gestisca sta roba...
-
   val system = ActorSystem("akkajs")
 
   val act =
-    system.actorOf(Props(new WebRTCActor()), "one")
+    system.actorOf(Props(new WebRTCActor(null)), "one")
 
   val act2 =
-    system.actorOf(Props(new WebRTCActor()), "two")
+    system.actorOf(Props(new WebRTCActor(null)), "two")
 
   def main() = {
     println("starting!")
 
-  }
+    VueActor.setSystem(system)
 
-  case class WebRTCActor() extends Actor {
+    system.scheduler.scheduleOnce(0 millis)(
+      VueActor.insert(() => new Page(), "page"))
 
-    val conn = 
-      context.actorOf(Props(new WebRTCConnection()))
+/*
+    case class Page() extends VueScalaTagsActor {
+      import scalatags.Text.all._
 
-    def receive = {
-      case WebRTCMsgs.Connected => println("GREAT!!!")
-      case WebRTCMsgs.Disconnected => println("disconnected")
-      case WebRTCMsgs.JoinAnsware(token) => println(s"${self.path} joined token is \n$token")
-      case WebRTCMsgs.CreateAnsware(token) => println(s"${self.path} create token is \n$token")
-      case WebRTCMsgs.Create =>
-        conn ! WebRTCMsgs.Create
-      case j: WebRTCMsgs.Join =>
-        conn ! j
-      case m: WebRTCMsgs.MessageToBus =>
-        conn ! m
-      case WebRTCMsgs.MessageFromBus(txt) =>
-        println(self.path+" RECEIVED "+txt)
-      case any => 
-        println(s"unmanaged $any")
+      def stTemplate = h1("Ciao")
+
+      def operational = vueBehaviour
     }
+*/
   }
 
   @JSExport

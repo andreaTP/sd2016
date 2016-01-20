@@ -3,8 +3,11 @@
 <head>
   <title>Akka.js Demo</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <script type="text/javascript" src="./target/scala-2.11/sd2016-jsdeps.js"></script>
 </head>
 <body>
+  <!--
   <hr>
   <button onClick="Main().create()">CREATE!</button>
   <input id="attachStr" type="text" value="" autocomplete="off">
@@ -19,9 +22,11 @@
   <hr>
   <button onClick="Main().ping()">PING!</button>
   <button onClick="Main().ping2()">PING2!</button>
+  <hr>-->
 
+  <div id="root"></div>
 
-  <script type="text/javascript" src="./target/scala-2.11/sd2016-jsdeps.js"></script>
+  <script type="text/javascript" src="./vue.js"></script>
   <script type="text/javascript" src="./target/scala-2.11/sd2016-fastopt.js"></script>
   <script type="text/javascript" src="./target/scala-2.11/sd2016-launcher.js"></script>
 </body>
