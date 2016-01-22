@@ -5,6 +5,8 @@ organization := "eu.unicredit"
 
 scalaVersion := "2.11.7"
 
+scalacOptions := Seq("-feature", "-language:_")
+
 enablePlugins(ScalaJSPlugin)
 
 version := "0.1-SNAPSHOT"

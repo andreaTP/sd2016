@@ -13,12 +13,6 @@ object Main extends js.JSApp {
 
   val system = ActorSystem("akkajs")
 
-  val act =
-    system.actorOf(Props(new WebRTCActor(null)), "one")
-
-  val act2 =
-    system.actorOf(Props(new WebRTCActor(null)), "two")
-
   def main() = {
     println("starting!")
 
@@ -36,41 +30,6 @@ object Main extends js.JSApp {
       def operational = vueBehaviour
     }
 */
-  }
-
-  @JSExport
-  def create() = {
-    act ! WebRTCMsgs.Create
-  }
-
-  @JSExport
-  def create2() = {
-    act2 ! WebRTCMsgs.Create
-  }
-
-  @JSExport
-  def attach(txt: String) = {
-    act ! WebRTCMsgs.Join(txt)
-  }
-
-  @JSExport
-  def attach2(txt: String) = {
-    act2 ! WebRTCMsgs.Join(txt)
-  }
-
-  @JSExport
-  def join(txt: String) = {
-    act ! WebRTCMsgs.Join(txt)
-  }
-
-  @JSExport
-  def ping() = {
-    act ! WebRTCMsgs.MessageToBus("ping")
-  }
-
-  @JSExport
-  def ping2() = {
-    act2 ! WebRTCMsgs.MessageToBus("ping2")
   }
 
 }

@@ -14,10 +14,13 @@ object PageMsgs {
 
   case object NewChannel
   case class JoinChannel(token: String)
+  case class AttachChannel(token: String)
 
   case class ChannelToken(token: String)
 
   case object ChannelClosed
+
+  case object AddChannel
 
 }
 
@@ -27,18 +30,39 @@ case class Page() extends VueScalaTagsActor {
     h1("This is an Akka.js + WebRTC Demo")
   )
 
-  def operational = {
-    val connection1 = context.actorOf(Props(ChannelHandler()))
 
-    vueBehaviour
+
+  def operational = {
+    //val connection1 = context.actorOf(Props(ChannelHandler()))
+
+    val adder = context.actorOf(Props(NewChannelButton()))
+
+    vueBehaviour orElse {
+      case PageMsgs.AddChannel =>
+        context.actorOf(Props(ChannelHandler()))
+    }
   }
+
+  case class NewChannelButton() extends VueScalaTagsActor() {
+    def stTemplate = div(
+      button(on := {() => {
+        context.parent ! PageMsgs.AddChannel
+      }})("Add Channel")
+    )
+
+    def operational = vueBehaviour
+  }
+
 
 }
 
 case class ChannelHandler() extends VueScalaTagsActor {
 
+  val connection = context.actorOf(Props(new ConnManager()))
+
   def stTemplate = div(
-    h4("This is a channel handler")
+    hr(),
+    p("channel handler")
   )
 
   def operational = {
@@ -49,11 +73,38 @@ case class ChannelHandler() extends VueScalaTagsActor {
       case PageMsgs.NewChannel =>
         createButton ! PoisonPill
         joinButton ! PoisonPill
-        context.become(waitingStun)
+        connection ! ConnMsgs.Open
+        context.become(waitingStunOpen)
       case PageMsgs.JoinChannel(token) =>
         createButton ! PoisonPill
         joinButton ! PoisonPill
+        connection ! ConnMsgs.Attach(token)
         context.become(waitingStun)
+    }
+  }
+
+  def waitingStunOpen(): Receive = {
+    val waiting = context.actorOf(Props(WaitingToken()))
+
+    vueBehaviour orElse {
+      case ConnMsgs.Token(t) =>
+        self ! PageMsgs.ChannelToken(t)
+      case PageMsgs.ChannelToken(token) =>
+        waiting ! PoisonPill
+        context.become(attachClient(token))
+    }
+  }
+
+  def attachClient(token: String): Receive = {
+    val tokenHandler = context.actorOf(Props(TokenText(token)))
+    val attach = context.actorOf(Props(AttachButton()))
+
+    vueBehaviour orElse {
+      case PageMsgs.AttachChannel(token) =>
+        tokenHandler ! PoisonPill
+        attach ! PoisonPill
+        connection ! ConnMsgs.Attach(token)
+        context.become(waitingConnection(token))
     }
   }
 
@@ -61,26 +112,49 @@ case class ChannelHandler() extends VueScalaTagsActor {
     val waiting = context.actorOf(Props(WaitingToken()))
 
     vueBehaviour orElse {
+      case ConnMsgs.Token(t) =>
+        self ! PageMsgs.ChannelToken(t)
       case PageMsgs.ChannelToken(token) =>
         waiting ! PoisonPill
-        context.become(connectionDone(token))
+        context.become(waitingConnection(token))
     }
   }
 
-  def connectionDone(token: String): Receive = {
+  def waitingConnection(token: String): Receive = {
     val tokenHandler = context.actorOf(Props(TokenText(token)))
 
     vueBehaviour orElse {
+      case ConnMsgs.Connected =>
+        tokenHandler ! PoisonPill
+        context.become(connectionDone)
       case PageMsgs.ChannelClosed =>
         tokenHandler ! PoisonPill
         context.become(connectionClosed)
     }
   }
 
+  def connectionDone: Receive = {
+    val done = context.actorOf(Props(ConnectedText()))
+
+    vueBehaviour orElse {
+      case PageMsgs.ChannelClosed =>
+        done ! PoisonPill
+        context.become(connectionClosed)
+    } 
+  }
+
   def connectionClosed: Receive = {
     val closedText = context.actorOf(Props(ClosedText()))
 
     vueBehaviour
+  }
+
+  case class ConnectedText() extends VueScalaTagsActor() {
+    def stTemplate = div(
+      p("channel connected!!!!")
+    )
+
+    def operational = vueBehaviour
   }
 
   case class ClosedText() extends VueScalaTagsActor() {
@@ -124,7 +198,18 @@ case class ChannelHandler() extends VueScalaTagsActor {
       button(on := {() => {
         context.parent ! PageMsgs.JoinChannel(vue.$get("token").toString)
       }})("JOIN"),
-      input("{{ token }}")
+      input("v-model".attr := "token")("")
+    )
+
+    def operational = vueBehaviour
+  }
+
+  case class AttachButton() extends VueScalaTagsActor() {
+    def stTemplate = div(
+      button(on := {() => {
+        context.parent ! PageMsgs.AttachChannel(vue.$get("token").toString)
+      }})("ATTACH"),
+      input("v-model".attr := "token")("")
     )
 
     def operational = vueBehaviour

@@ -95,7 +95,6 @@ class WebRTCConnection extends Actor with StunServers {
 
   def connected(channel: js.Dynamic): Receive = {
     context.parent ! Connected
-    //println("connected!!!")
 
     ;{
       case MessageToBus(str) =>
@@ -106,7 +105,7 @@ class WebRTCConnection extends Actor with StunServers {
   }
 
   def bindChannel(channel: js.Dynamic) = {
-    channel.onopen = (e: js.Dynamic) => ()//println("Channel connected")
+    channel.onopen = (e: js.Dynamic) => ()//println("Channel connected"))
 
     channel.onerror = (e: js.Dynamic) => {
       context.parent ! Disconnected
