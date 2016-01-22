@@ -17,7 +17,13 @@ object ConnMsgs {
     }
   }
 
+
+non funziona più un cazzo forse conviene ricominciare
+ho fottuto la gerarchia dando cose per scontate...
+
   case object Open
+  case class ConnHandler(ref: ActorRef)
+  case class AttachAnsware(token: String)
   case class Attach(token: String)
 
   case class Token(token: String)
@@ -42,28 +48,21 @@ class ConnManager() extends Actor {
 
   val id = java.util.UUID.randomUUID.toString
 
-  def receive = init
+  def receive = operative(None, Seq(), literal(root = id))
 
-  def init: Receive = {
+  def operative(
+      parent: Option[Node],
+      sons: Seq[Node],
+      status: js.Dynamic): Receive = {
     case Open =>
       val originalSender = sender
       val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
       conn ! WebRTCMsgs.Create
-      context.become(operative(conn, None, Seq(), literal(root = id)))
-    case Attach(token) =>
-      val originalSender = sender
-      val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
-      conn ! WebRTCMsgs.Join(token)
-      context.become(operative(conn, None, Seq(), literal(root = id)))
-  }
-
-  def operative(
-      conn: ActorRef,
-      parent: Option[Node],
-      sons: Seq[Node],
-      status: js.Dynamic): Receive = {
+      originalSender ! ConnHandler(conn)
     case Attach(token) =>
       println("attaching")
+      val originalSender = sender
+      val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
       conn ! WebRTCMsgs.Join(token)
     case AddParent(ref) =>
       println("add parent")
@@ -71,34 +70,34 @@ class ConnManager() extends Actor {
       //devo serializzare e deserializzare gli update che vanno sul channel
 
       ref.channel ! UpdateRootAdd(id, JSON.stringify(status))
-      context.become(operative(conn, Some(ref), sons, status))
+      context.become(operative(Some(ref), sons, status))
     case AddChild(ref) =>
       println("add child")
-      context.become(operative(conn, parent, sons :+ ref, status))
+      context.become(operative(parent, sons :+ ref, status))
     case Remove(ref) =>
       (parent) match {
         case Some(p) if (p == ref) =>
           println("TBD -> have to cut this tree")
           val newStatus = status
           sons.foreach(s => s.channel ! UpdateStatus(newStatus))
-          context.become(operative(conn, None, sons, newStatus))
+          context.become(operative(None, sons, newStatus))
         case _ =>
           val newSons = sons.filterNot(_ == ref)
           parent match {
             case Some(p) => 
               p.channel ! UpdateRootRemove(ref.id)
-              context.become(operative(conn, parent, newSons, status))
+              context.become(operative(parent, newSons, status))
             case _ => //I'm root
               println("TBD -> have to remove "+ref.id+" from tree")
               val newStatus = status 
               sons.foreach(s => s.channel ! UpdateStatus(newStatus))
-              context.become(operative(conn, parent, newSons, newStatus))
+              context.become(operative(parent, newSons, newStatus))
           }
       }
     case msg @ UpdateStatus(json) =>
       println(id + " NEW STATUS IS --> "+ json)
       sons.foreach(s => s.channel ! msg)
-      context.become(operative(conn, parent, sons, json))
+      context.become(operative(parent, sons, json))
     case msg @ UpdateRootAdd(sid, json) =>
       println("ok have to merge this json")
       parent match {

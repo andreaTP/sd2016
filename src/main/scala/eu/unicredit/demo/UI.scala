@@ -37,9 +37,11 @@ case class Page() extends VueScalaTagsActor {
 
     val adder = context.actorOf(Props(NewChannelButton()))
 
+    val connection = context.actorOf(Props(new ConnManager()))
+
     vueBehaviour orElse {
       case PageMsgs.AddChannel =>
-        context.actorOf(Props(ChannelHandler()))
+        context.actorOf(Props(ChannelHandler(connection)))
     }
   }
 
@@ -56,9 +58,7 @@ case class Page() extends VueScalaTagsActor {
 
 }
 
-case class ChannelHandler() extends VueScalaTagsActor {
-
-  val connection = context.actorOf(Props(new ConnManager()))
+case class ChannelHandler(connection: ActorRef) extends VueScalaTagsActor {
 
   def stTemplate = div(
     hr(),
@@ -92,18 +92,21 @@ case class ChannelHandler() extends VueScalaTagsActor {
       case PageMsgs.ChannelToken(token) =>
         waiting ! PoisonPill
         context.become(attachClient(token))
-    }
+      }
   }
 
-  def attachClient(token: String): Receive = {
+  def attachClient(token: String, conn: Option[ActorRef] = None): Receive = {
     val tokenHandler = context.actorOf(Props(TokenText(token)))
     val attach = context.actorOf(Props(AttachButton()))
 
     vueBehaviour orElse {
+      case ConnMsgs.ConnHandler(conn) =>
+        println("ok da qui...")
+        context.become(attachClient(token, Some(conn))) 
       case PageMsgs.AttachChannel(token) =>
         tokenHandler ! PoisonPill
         attach ! PoisonPill
-        connection ! ConnMsgs.Attach(token)
+        conn.map(_ ! WebRTCMsgs.Join(token))
         context.become(waitingConnection(token))
     }
   }
