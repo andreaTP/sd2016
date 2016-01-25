@@ -30,8 +30,6 @@ case class Page() extends VueScalaTagsActor {
     h1("This is an Akka.js + WebRTC Demo")
   )
 
-
-
   def operational = {
     //val connection1 = context.actorOf(Props(ChannelHandler()))
 
