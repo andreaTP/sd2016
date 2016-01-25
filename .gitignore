@@ -1,6 +1,8 @@
 *.class
 *.log
 
+treeview/.*
+
 # sbt specific
 .cache
 .history
