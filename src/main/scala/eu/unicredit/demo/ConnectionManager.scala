@@ -45,6 +45,8 @@ class ConnManager() extends Actor {
 
   val id = java.util.UUID.randomUUID.toString
 
+  println("I am "+id)
+
   def receive = operative(None, Seq(), literal(root = id))
 
   val conn = context.actorOf(Props(WebRTCActor(id, context.parent)))
@@ -63,7 +65,7 @@ class ConnManager() extends Actor {
 
       //devo serializzare e deserializzare gli update che vanno sul channel
 
-      ref.channel ! UpdateRootAdd(id, JSON.stringify(status))
+      ref.channel ! UpdateRootAdd(ref.id, JSON.stringify(status))
       context.become(operative(Some(ref), sons, status))
     case AddChild(ref) =>
       println("add child")
@@ -97,8 +99,12 @@ class ConnManager() extends Actor {
       parent match {
         case Some(p) => p.channel ! msg
         case _ =>
-          val newStatus = status
-          sons.foreach(s => s.channel ! status)
+
+          println("OK SONO LA ROOT E DEVO FARE UPDATE "+sid+" -> "+json)
+
+
+          val newStatus = literal(pippo = "YEA")//status
+          sons.foreach(s => s.channel ! UpdateStatus(newStatus))
       }
     case msg @ UpdateRootRemove(sid) =>
       println("ok have to remove this id")
@@ -150,33 +156,48 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
 
   def exchangeUUID(msg: (String) => TreeMsg): Receive = {
 
-    import context._
-    import scala.concurrent.duration._
-    context.system.scheduler.scheduleOnce(200 millis){
-      println("sending!!")
-      conn ! new WebRTCMsgs.MessageToBus(JSON.stringify(literal(id = parentId)))
+    def sendHandShake() = {
+      import context._
+      import scala.concurrent.duration._
+      context.system.scheduler.scheduleOnce(200 millis){
+        println("sending!!")
+        conn ! new WebRTCMsgs.MessageToBus(JSON.stringify(literal(id = parentId)))
+      }
     }
+    sendHandShake()
     ;{
       case fb: WebRTCMsgs.MessageFromBus =>
         val json = fb.txt
-        println("YEAAAAAA"+json)
-        val id = JSON.parse(json).id.toString
-        context.parent ! msg(id)
-        context.become(standard(id))
+        
+        if (js.isUndefined(JSON.parse(json).id)) {
+          self ! fb
+        } else {
+          println("YEAAAAAA"+json)
+          val id = JSON.parse(json).id.toString
+          context.become(standard(id, msg))
+        }
       case any =>
         println("unmanaged "+any)
     }
   }  
 
-  def standard(id: String): Receive = {
+  def standard(id: String, msg: (String) => TreeMsg): Receive = {
     tbn ! ConnMsgs.Connected
+    context.parent ! msg(id)
     ;{
     case m: WebRTCMsgs.MessageToBus =>
+      println("sending messge to bus")
       conn ! m
     case m: WebRTCMsgs.MessageFromBus =>
-      println("go on from here deserializing!!!")
+      println("go on from here deserializing!!! "+ m.txt)
+      val dyn = JSON.parse(m.txt)
 
-      context.parent ! m
+      if (!js.isUndefined(dyn.updateRootAdd)) {
+        println("parsing add")
+        context.parent ! UpdateRootAdd(dyn.updateRootAdd.toString, JSON.stringify(dyn.content.toString))
+      }
+
+      //context.parent ! m
     case WebRTCMsgs.Disconnected =>
       context.parent ! Remove(Node(id, self))
     }
