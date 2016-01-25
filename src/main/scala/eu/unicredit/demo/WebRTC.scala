@@ -27,8 +27,9 @@ object WebRTCMsgs {
   case class ICECandidate(connStr: String)
 
   class ChannelMessage
-  case class MessageFromBus(txt: String) extends ChannelMessage
-  case class MessageToBus(txt: String) extends ChannelMessage
+  class MessageFromBus(val txt: String) extends ChannelMessage
+  class MessageToBus(val txt: String) extends ChannelMessage
+
 }
 
 class WebRTCConnection extends Actor with StunServers {
@@ -97,8 +98,8 @@ class WebRTCConnection extends Actor with StunServers {
     context.parent ! Connected
 
     ;{
-      case MessageToBus(str) =>
-        channel.send(str)
+      case msg: MessageToBus =>
+        channel.send(msg.txt)
       case msg: MessageFromBus =>
         context.parent ! msg
     }
@@ -114,7 +115,7 @@ class WebRTCConnection extends Actor with StunServers {
 
     channel.onmessage = (e: js.Dynamic) => {
       //println("Message from bus")
-      self ! MessageFromBus(e.data.toString)
+      self ! new MessageFromBus(e.data.toString)
     }
   }
 

@@ -17,13 +17,7 @@ object ConnMsgs {
     }
   }
 
-
-non funziona più un cazzo forse conviene ricominciare
-ho fottuto la gerarchia dando cose per scontate...
-
   case object Open
-  case class ConnHandler(ref: ActorRef)
-  case class AttachAnsware(token: String)
   case class Attach(token: String)
 
   case class Token(token: String)
@@ -37,10 +31,13 @@ ho fottuto la gerarchia dando cose per scontate...
 
 
   class Status
-  case class UpdateRootAdd(id: String, json: String)
-  case class UpdateRootRemove(id: String)
+  case class UpdateRootAdd(id: String, json: String) extends 
+    WebRTCMsgs.MessageToBus(JSON.stringify(literal(updateRootAdd = id, content = json)))
+  case class UpdateRootRemove(id: String) extends
+    WebRTCMsgs.MessageToBus(JSON.stringify(literal(updateRootRemove = id)))
 
-  case class UpdateStatus(json: js.Dynamic)
+  case class UpdateStatus(json: js.Dynamic) extends
+    WebRTCMsgs.MessageToBus(JSON.stringify(literal(updateStatus = JSON.stringify(json))))
 }
 
 class ConnManager() extends Actor {
@@ -50,19 +47,16 @@ class ConnManager() extends Actor {
 
   def receive = operative(None, Seq(), literal(root = id))
 
+  val conn = context.actorOf(Props(WebRTCActor(id, context.parent)))
+
   def operative(
       parent: Option[Node],
       sons: Seq[Node],
       status: js.Dynamic): Receive = {
     case Open =>
-      val originalSender = sender
-      val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
       conn ! WebRTCMsgs.Create
-      originalSender ! ConnHandler(conn)
     case Attach(token) =>
       println("attaching")
-      val originalSender = sender
-      val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
       conn ! WebRTCMsgs.Join(token)
     case AddParent(ref) =>
       println("add parent")
@@ -160,10 +154,11 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
     import scala.concurrent.duration._
     context.system.scheduler.scheduleOnce(200 millis){
       println("sending!!")
-      conn ! WebRTCMsgs.MessageToBus(JSON.stringify(literal(id = parentId)))
+      conn ! new WebRTCMsgs.MessageToBus(JSON.stringify(literal(id = parentId)))
     }
     ;{
-      case WebRTCMsgs.MessageFromBus(json) =>
+      case fb: WebRTCMsgs.MessageFromBus =>
+        val json = fb.txt
         println("YEAAAAAA"+json)
         val id = JSON.parse(json).id.toString
         context.parent ! msg(id)
@@ -179,32 +174,12 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
     case m: WebRTCMsgs.MessageToBus =>
       conn ! m
     case m: WebRTCMsgs.MessageFromBus =>
+      println("go on from here deserializing!!!")
+
       context.parent ! m
     case WebRTCMsgs.Disconnected =>
       context.parent ! Remove(Node(id, self))
     }
   }
 
-/*
-  def receive = {
-    case WebRTCMsgs.Connected =>
-      context.parent ! ConnMsgs.Add(self)
-    case WebRTCMsgs.Disconnected =>
-      context.parent ! ConnMsgs.Remove(self)
-    case WebRTCMsgs.JoinAnsware(token) =>
-      tbn ! ConnMsgs.Token(token)
-    case WebRTCMsgs.CreateAnsware(token) =>
-      tbn ! ConnMsgs.Token(token)
-    case WebRTCMsgs.Create =>
-      conn ! WebRTCMsgs.Create
-    case j: WebRTCMsgs.Join =>
-      conn ! j
-    case m: WebRTCMsgs.MessageToBus =>
-      conn ! m
-    case WebRTCMsgs.MessageFromBus(txt) =>
-      println(self.path+" RECEIVED "+txt)
-    case any => 
-      println(s"unmanaged $any")
-  }
-*/
 }
