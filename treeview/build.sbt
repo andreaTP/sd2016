@@ -15,7 +15,7 @@ enablePlugins(ScalaJSPlugin)
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.8.1",
-  "eu.unicredit" %%% "paths-scala-js" % "0.3.5"
+  "eu.unicredit" %%% "paths-scala-js" % "0.4.2"
 )
 
 jsDependencies ++= Seq()
