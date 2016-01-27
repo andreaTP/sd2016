@@ -45,8 +45,6 @@ class ConnManager(statusView: ActorRef) extends Actor with JsonTreeHelpers {
 
   val id = java.util.UUID.randomUUID.toString
 
-  println("I am "+id)
-
   def receive = {
     val status = emptyRoot(id)
     statusView ! PageMsgs.NewStatus(status)
@@ -63,14 +61,26 @@ class ConnManager(statusView: ActorRef) extends Actor with JsonTreeHelpers {
       val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
       conn ! WebRTCMsgs.Create
     case Attach(token) =>
-      val originalSender = sender
-      val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
-      conn ! WebRTCMsgs.Join(token)
+      if (parent.isEmpty) {
+        val originalSender = sender
+        val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
+        conn ! WebRTCMsgs.Join(token)
+      }
     case AddParent(ref) =>
-      ref.channel ! UpdateRootAdd(ref.id, JSON.stringify(status))
-      context.become(operative(Some(ref), sons, status))
+      if (js.isUndefined(status.selectDynamic(ref.id))) {
+        ref.channel ! UpdateRootAdd(ref.id, JSON.stringify(status))
+        context.become(operative(Some(ref), sons, status))
+      } else {
+        println("parent was in the status "+status)
+        ref.channel ! PoisonPill
+      }
     case AddChild(ref) =>
-      context.become(operative(parent, sons :+ ref, status))
+      if (js.isUndefined(status.selectDynamic(ref.id))) {
+        context.become(operative(parent, sons :+ ref, status))
+      } else {
+        println("child was in the status "+status)
+        ref.channel ! PoisonPill
+      }
     case Remove(ref) =>
       (parent) match {
         case Some(p) if (p.id != ref.id) =>
@@ -81,10 +91,10 @@ class ConnManager(statusView: ActorRef) extends Actor with JsonTreeHelpers {
     case msg @ UpdateStatus(json) =>
       statusView ! PageMsgs.NewStatus(json)
       sons.foreach(s => s.channel ! msg)
-      context.become(operative(parent, sons, json))
     case msg @ UpdateRootAdd(fatherId, json) =>
       parent match {
-        case Some(p) => p.channel ! msg
+        case Some(p) => 
+          p.channel ! msg
         case _ =>
 
           merge(fatherId)(status, JSON.parse(json))
@@ -106,7 +116,7 @@ class ConnManager(statusView: ActorRef) extends Actor with JsonTreeHelpers {
             p.channel ! msg
           }
         case _ =>
-          val newSons = sons.filterNot(_ == sid)
+          val newSons = sons.filterNot(_.id == sid)
 
           remove(sid)(status)
 
@@ -160,7 +170,6 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
       import context._
       import scala.concurrent.duration._
       context.system.scheduler.scheduleOnce(200 millis){
-        println("sending!!")
         conn ! new WebRTCMsgs.MessageToBus(JSON.stringify(literal(id = parentId)))
       }
     }

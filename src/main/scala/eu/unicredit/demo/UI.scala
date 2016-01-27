@@ -50,7 +50,7 @@ case class Page() extends VueScalaTagsActor {
     def stTemplate = div(
       button(on := {() => {
         context.parent ! PageMsgs.AddChannel
-      }})("Add Channel")
+      }})("Add Connection")
     )
 
     def operational = vueBehaviour
@@ -63,7 +63,7 @@ case class ChannelHandler(statusView: ActorRef, connection: ActorRef) extends Vu
 
   def stTemplate = div(
     hr(),
-    p("channel handler")
+    button(on := {() => self ! PoisonPill})("close box")
   )
 
   def operational = {
@@ -235,21 +235,24 @@ class StatusView extends VueScalaTagsActor {
 
   def operational = vueBehaviour orElse {
     case PageMsgs.NewStatus(tree) =>
-      context.become(treeview(fromJsonToNode(tree, tree.root.toString)))
+      val root = tree.root.toString
+      context.become(
+        treeview(root, fromJsonToNode(tree, root)))
   }
 
-  def treeview(node: Node): Receive = vueBehaviour orElse {
-    val tvactor = context.actorOf(Props(new TreeView(node)))
+  def treeview(name: String, node: Node): Receive = vueBehaviour orElse {
+    val tvactor = context.actorOf(Props(new TreeView(name, node)))
 
     vueBehaviour orElse {
       case PageMsgs.NewStatus(tree) =>
         tvactor ! PoisonPill
-        context.become(treeview(fromJsonToNode(tree, tree.root.toString)))
+        context.become(
+          treeview(name, fromJsonToNode(tree, tree.root.toString)))
     }
   }
 }
 
-class TreeView(treeNodes: Node) extends VueScalaTagsActor {
+class TreeView(name: String, treeNodes: Node) extends VueScalaTagsActor {
   import scalatags.Text._
   import svgTags._
   import svgAttrs._
@@ -283,17 +286,14 @@ class TreeView(treeNodes: Node) extends VueScalaTagsActor {
     )
   }
 
-  def stTemplate = {
-    println("calculating new template! "+(branches ++ nodes))
-
-    div(
+  def stTemplate = div(
+    p("I'm "+name),
     svg(width := 460, height := 400)(
       g(transform := "translate(80,50)")(
         (branches ++ nodes) : _*
       )
     )
   )
-  }
 
   def operational = vueBehaviour
 }

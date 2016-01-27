@@ -114,6 +114,7 @@ trait JsonTreeHelpers {
     }
   }
 
+/*
   def toUI(tree: js.Dynamic, id: Option[String] = None): js.Dynamic = {
 
     val rootId = id.getOrElse(tree.root.toString)
@@ -124,5 +125,5 @@ trait JsonTreeHelpers {
 
     root
   }
-
+*/
 }
