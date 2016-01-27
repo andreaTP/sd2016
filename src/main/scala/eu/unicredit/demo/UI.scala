@@ -16,28 +16,33 @@ object PageMsgs {
   case class JoinChannel(token: String)
   case class AttachChannel(token: String)
 
-  case class ChannelToken(token: String)
+  case class ChannelToken(token: String, ref: ActorRef)
 
   case object ChannelClosed
 
   case object AddChannel
 
+  case class NewStatus(tree: js.Dynamic)
 }
 
 case class Page() extends VueScalaTagsActor {
   
   def stTemplate = div(
-    h1("This is an Akka.js + WebRTC Demo")
+    p("This is an Akka.js + WebRTC Demo")
   )
 
   def operational = {
     //val connection1 = context.actorOf(Props(ChannelHandler()))
 
+    val statusView = context.actorOf(Props(new StatusView()))
+
+    val connection = context.actorOf(Props(new ConnManager(statusView)))    
+
     val adder = context.actorOf(Props(NewChannelButton()))
 
     vueBehaviour orElse {
       case PageMsgs.AddChannel =>
-        context.actorOf(Props(ChannelHandler(/*connection*/)))
+        context.actorOf(Props(ChannelHandler(statusView, connection)))
     }
   }
 
@@ -54,9 +59,7 @@ case class Page() extends VueScalaTagsActor {
 
 }
 
-case class ChannelHandler(/*connection: ActorRef*/) extends VueScalaTagsActor {
-
-  val connection = context.actorOf(Props(new ConnManager()))
+case class ChannelHandler(statusView: ActorRef, connection: ActorRef) extends VueScalaTagsActor {
 
   def stTemplate = div(
     hr(),
@@ -85,15 +88,17 @@ case class ChannelHandler(/*connection: ActorRef*/) extends VueScalaTagsActor {
     val waiting = context.actorOf(Props(WaitingToken()))
 
     vueBehaviour orElse {
+
       case ConnMsgs.Token(t) =>
-        self ! PageMsgs.ChannelToken(t)
-      case PageMsgs.ChannelToken(token) =>
+        val originalSender = sender
+        self ! PageMsgs.ChannelToken(t, originalSender)
+      case PageMsgs.ChannelToken(token, ref) =>
         waiting ! PoisonPill
-        context.become(attachClient(token))
+        context.become(attachClient(token, ref))
       }
   }
 
-  def attachClient(token: String/*, conn: Option[ActorRef] = None*/): Receive = {
+  def attachClient(token: String, conn: ActorRef): Receive = {
     val tokenHandler = context.actorOf(Props(TokenText(token)))
     val attach = context.actorOf(Props(AttachButton()))
 
@@ -101,7 +106,8 @@ case class ChannelHandler(/*connection: ActorRef*/) extends VueScalaTagsActor {
       case PageMsgs.AttachChannel(token) =>
         tokenHandler ! PoisonPill
         attach ! PoisonPill
-        connection ! ConnMsgs.Attach(token)
+        conn ! WebRTCMsgs.Join(token)
+        //connection ! ConnMsgs.Attach(token)
         context.become(waitingConnection(token))
     }
   }
@@ -111,8 +117,9 @@ case class ChannelHandler(/*connection: ActorRef*/) extends VueScalaTagsActor {
 
     vueBehaviour orElse {
       case ConnMsgs.Token(t) =>
-        self ! PageMsgs.ChannelToken(t)
-      case PageMsgs.ChannelToken(token) =>
+        val originalSender = sender
+        self ! PageMsgs.ChannelToken(t, originalSender)
+      case PageMsgs.ChannelToken(token, _) =>
         waiting ! PoisonPill
         context.become(waitingConnection(token))
     }
@@ -212,4 +219,81 @@ case class ChannelHandler(/*connection: ActorRef*/) extends VueScalaTagsActor {
 
     def operational = vueBehaviour
   }
+}
+
+case class Node(name: String, descendants: List[Node] = List())
+
+class StatusView extends VueScalaTagsActor {
+  
+  def stTemplate = div()
+
+  def fromJsonToNode(tree: js.Dynamic, id: String): Node = {
+    Node(id, tree.selectDynamic(id).sons.asInstanceOf[js.Array[String]].map(sid =>
+      fromJsonToNode(tree, sid.toString)
+    ).toList)
+  }  
+
+  def operational = vueBehaviour orElse {
+    case PageMsgs.NewStatus(tree) =>
+      context.become(treeview(fromJsonToNode(tree, tree.root.toString)))
+  }
+
+  def treeview(node: Node): Receive = vueBehaviour orElse {
+    val tvactor = context.actorOf(Props(new TreeView(node)))
+
+    vueBehaviour orElse {
+      case PageMsgs.NewStatus(tree) =>
+        tvactor ! PoisonPill
+        context.become(treeview(fromJsonToNode(tree, tree.root.toString)))
+    }
+  }
+}
+
+class TreeView(treeNodes: Node) extends VueScalaTagsActor {
+  import scalatags.Text._
+  import svgTags._
+  import svgAttrs._
+  import paths.high.Tree
+
+  val tree = Tree[Node](
+    data = treeNodes,
+    children = _.descendants,
+    width = 300,
+    height = 300
+  )
+
+  private def move(p: js.Array[Double]) = s"translate(${ p(0) },${ p(1) })"
+  private def isLeaf(node: Node) = node.descendants.length == 0  
+
+  val branches = tree.curves map { curve =>
+    path(d := curve.connector.path.print,
+      stroke := "grey", 
+      fill := "none"
+    )
+  }
+
+  val nodes = tree.nodes map { node =>
+    g(transform := move(node.point),
+      circle(r := 5, cx := 0, cy := 0),
+      text(
+        transform := (if (isLeaf(node.item)) "translate(10,0)" else "translate(-10,0)"),
+        textAnchor := (if (isLeaf(node.item)) "start" else "end"),
+        node.item.name
+      )
+    )
+  }
+
+  def stTemplate = {
+    println("calculating new template! "+(branches ++ nodes))
+
+    div(
+    svg(width := 460, height := 400)(
+      g(transform := "translate(80,50)")(
+        (branches ++ nodes) : _*
+      )
+    )
+  )
+  }
+
+  def operational = vueBehaviour
 }

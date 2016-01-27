@@ -37,82 +37,82 @@ object ConnMsgs {
     WebRTCMsgs.MessageToBus(JSON.stringify(literal(updateRootRemove = id)))
 
   case class UpdateStatus(json: js.Dynamic) extends
-    WebRTCMsgs.MessageToBus(JSON.stringify(literal(updateStatus = JSON.stringify(json))))
+    WebRTCMsgs.MessageToBus(JSON.stringify(literal(updateStatus = json)))
 }
 
-class ConnManager() extends Actor {
+class ConnManager(statusView: ActorRef) extends Actor with JsonTreeHelpers {
   import ConnMsgs._
 
   val id = java.util.UUID.randomUUID.toString
 
   println("I am "+id)
 
-  def receive = operative(None, Seq(), literal(root = id))
+  def receive = {
+    val status = emptyRoot(id)
+    statusView ! PageMsgs.NewStatus(status)
 
-  val conn = context.actorOf(Props(WebRTCActor(id, context.parent)))
+    operative(None, Seq(), status)
+  }
 
   def operative(
       parent: Option[Node],
       sons: Seq[Node],
       status: js.Dynamic): Receive = {
     case Open =>
+      val originalSender = sender
+      val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
       conn ! WebRTCMsgs.Create
     case Attach(token) =>
-      println("attaching")
+      val originalSender = sender
+      val conn = context.actorOf(Props(WebRTCActor(id, originalSender)))
       conn ! WebRTCMsgs.Join(token)
     case AddParent(ref) =>
-      println("add parent")
-
-      //devo serializzare e deserializzare gli update che vanno sul channel
-
       ref.channel ! UpdateRootAdd(ref.id, JSON.stringify(status))
       context.become(operative(Some(ref), sons, status))
     case AddChild(ref) =>
-      println("add child")
       context.become(operative(parent, sons :+ ref, status))
     case Remove(ref) =>
       (parent) match {
-        case Some(p) if (p == ref) =>
-          println("TBD -> have to cut this tree")
-          val newStatus = status
-          sons.foreach(s => s.channel ! UpdateStatus(newStatus))
-          context.become(operative(None, sons, newStatus))
+        case Some(p) if (p.id != ref.id) =>
+          p.channel ! UpdateRootRemove(ref.id)
         case _ =>
-          val newSons = sons.filterNot(_ == ref)
-          parent match {
-            case Some(p) => 
-              p.channel ! UpdateRootRemove(ref.id)
-              context.become(operative(parent, newSons, status))
-            case _ => //I'm root
-              println("TBD -> have to remove "+ref.id+" from tree")
-              val newStatus = status 
-              sons.foreach(s => s.channel ! UpdateStatus(newStatus))
-              context.become(operative(parent, newSons, newStatus))
-          }
+          self ! UpdateRootRemove(ref.id)
       }
     case msg @ UpdateStatus(json) =>
-      println(id + " NEW STATUS IS --> "+ json)
+      statusView ! PageMsgs.NewStatus(json)
       sons.foreach(s => s.channel ! msg)
       context.become(operative(parent, sons, json))
-    case msg @ UpdateRootAdd(sid, json) =>
-      println("ok have to merge this json")
+    case msg @ UpdateRootAdd(fatherId, json) =>
       parent match {
         case Some(p) => p.channel ! msg
         case _ =>
 
-          println("OK SONO LA ROOT E DEVO FARE UPDATE "+sid+" -> "+json)
+          merge(fatherId)(status, JSON.parse(json))
 
-
-          val newStatus = literal(pippo = "YEA")//status
-          sons.foreach(s => s.channel ! UpdateStatus(newStatus))
+          statusView ! PageMsgs.NewStatus(status)
+          sons.foreach(s => s.channel ! UpdateStatus(status))
       }
     case msg @ UpdateRootRemove(sid) =>
-      println("ok have to remove this id")
       parent match {
-        case Some(p) => p.channel ! msg
+        case Some(p) =>
+          if (p.id == sid) {
+
+            keep(id)(status)
+
+            statusView ! PageMsgs.NewStatus(status)
+            sons.foreach(s => s.channel ! UpdateStatus(status))
+            context.become(operative(None, sons, status))
+          } else {
+            p.channel ! msg
+          }
         case _ =>
-          val newStatus = status
-          sons.foreach(s => s.channel ! status)
+          val newSons = sons.filterNot(_ == sid)
+
+          remove(sid)(status)
+
+          statusView ! PageMsgs.NewStatus(status)
+          newSons.foreach(s => s.channel ! UpdateStatus(status))
+          context.become(operative(parent, newSons, status))
       }
     case _ =>
   }
@@ -172,7 +172,6 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
         if (js.isUndefined(JSON.parse(json).id)) {
           self ! fb
         } else {
-          println("YEAAAAAA"+json)
           val id = JSON.parse(json).id.toString
           context.become(standard(id, msg))
         }
@@ -186,15 +185,18 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
     context.parent ! msg(id)
     ;{
     case m: WebRTCMsgs.MessageToBus =>
-      println("sending messge to bus")
       conn ! m
     case m: WebRTCMsgs.MessageFromBus =>
-      println("go on from here deserializing!!! "+ m.txt)
       val dyn = JSON.parse(m.txt)
 
       if (!js.isUndefined(dyn.updateRootAdd)) {
-        println("parsing add")
-        context.parent ! UpdateRootAdd(dyn.updateRootAdd.toString, JSON.stringify(dyn.content.toString))
+        context.parent ! UpdateRootAdd(dyn.updateRootAdd.toString, dyn.content.toString)
+      } else if (!js.isUndefined(dyn.updateStatus)) {
+        context.parent ! UpdateStatus(dyn.updateStatus)
+      } else if (!js.isUndefined(dyn.updateRootRemove)) {
+        context.parent ! UpdateRootRemove(dyn.updateRootRemove.toString)
+      } else {
+        println("ERROR cannot deserialize")
       }
 
       //context.parent ! m

@@ -69,7 +69,7 @@ trait VueActor extends Actor {
   def vueBehaviour: Receive = {
     case AddVueChild(v) =>
 
-      val sonName = sender.path.name.replace("$","")
+      val sonName = "actor"+sender.path.name.replace("$","")
 
       val child = dom.document.createElement(sonName)
 
@@ -82,7 +82,7 @@ trait VueActor extends Actor {
       sender ! VueChildAdded
   }
 
-  lazy val vueName = self.path.name.replace("$","")
+  lazy val vueName = "actor"+self.path.name.replace("$","")
 
   var vue: Vue = null
 

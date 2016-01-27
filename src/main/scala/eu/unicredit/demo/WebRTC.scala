@@ -108,6 +108,11 @@ class WebRTCConnection extends Actor with StunServers {
   def bindChannel(channel: js.Dynamic) = {
     channel.onopen = (e: js.Dynamic) => ()//println("Channel connected"))
 
+    channel.onclose = (e: js.Dynamic) => {
+      context.parent ! Disconnected
+      self ! PoisonPill
+    }
+
     channel.onerror = (e: js.Dynamic) => {
       context.parent ! Disconnected
       self ! PoisonPill
@@ -154,7 +159,15 @@ class WebRTCConnection extends Actor with StunServers {
 
 trait StunServers {
 
-  val stuns = js.Array(
+  val stuns = 
+  //debug mode
+  js.Array(
+    "localhost"
+    )
+
+  //real world
+  /*
+  js.Array(
     "stun.l.google.com:19302",
     "stun1.l.google.com:19302",
     "stun2.l.google.com:19302",
@@ -175,5 +188,5 @@ trait StunServers {
     "stun.voxgratia.org",
     "stun.xten.com"
     )
-
+  */
 }

@@ -16,7 +16,8 @@ enablePlugins(ScalaJSPlugin)
 libraryDependencies ++= Seq(
   "akka.js" %%% "akkaactor" % "0.1.0-SNAPSHOT",
   "org.scala-js" %%% "scalajs-dom" % "0.8.1",
-  "com.lihaoyi" %%% "scalatags" % "0.5.3"
+  "com.lihaoyi" %%% "scalatags" % "0.5.3",
+  "eu.unicredit" %%% "paths-scala-js" % "0.4.2"
 )
 
 jsDependencies ++= Seq(

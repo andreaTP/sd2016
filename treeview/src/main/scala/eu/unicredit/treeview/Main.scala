@@ -8,6 +8,7 @@ import js.JSON
 object Main extends js.JSApp {
 
   def main() = {
+/*
     val root = emptyRoot("pippo")
 
     val rootString = JSON.stringify(root)
@@ -39,11 +40,30 @@ object Main extends js.JSApp {
     merge("pippo")(root, emptyRoot("paperino"))
     merge("paperino")(root, emptyRoot("paperina"))
 
+    val root2 = emptyRoot("qui")
+
+    merge("qui")(root2, emptyRoot("quo"))
+    merge("quo")(root2, emptyRoot("qua"))
+
+    merge("paperina")(root, root2)
+
     println("--> "+JSON.stringify(root))
 
     keep("paperino")(root)
 
     println("keep --> "+JSON.stringify(root))
+
+    val toui = toUI(root)
+
+    println("ui --> "+JSON.stringify(toui))
+*/
+
+    val root = emptyRoot("8b3eafda-a57b-487e-bd2a-5e8c76c48e65")
+    val root2 = emptyRoot("b81f0e75-ddbe-49c1-a12a-52443913d885")
+
+    merge("8b3eafda-a57b-487e-bd2a-5e8c76c48e65")(root, root2)
+
+    println(" --> "+JSON.stringify(root))
   }
 
   def emptyRoot(id: String) = {
@@ -152,6 +172,17 @@ object Main extends js.JSApp {
     } catch {
       case _ : Throwable => false
     }
+  }
+
+  def toUI(tree: js.Dynamic, id: Option[String] = None): js.Dynamic = {
+
+    val rootId = id.getOrElse(tree.root.toString)
+
+    val root = literal(name = rootId,
+      children = tree.selectDynamic(rootId).sons.asInstanceOf[js.Array[String]].map(x => toUI(tree, Some(x.toString)))
+    )
+
+    root
   }
 
 }
