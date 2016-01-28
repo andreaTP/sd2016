@@ -23,6 +23,8 @@ object PageMsgs {
   case object AddChannel
 
   case class NewStatus(tree: js.Dynamic)
+
+  case class ChatMsg(sender: String, text: String)
 }
 
 case class Page() extends VueScalaTagsActor {
@@ -31,18 +33,26 @@ case class Page() extends VueScalaTagsActor {
     p("This is an Akka.js + WebRTC Demo")
   )
 
+  val id = java.util.UUID.randomUUID.toString
+
   def operational = {
     //val connection1 = context.actorOf(Props(ChannelHandler()))
 
-    val statusView = context.actorOf(Props(new StatusView()))
+    val statusView = context.actorOf(Props(new StatusView(id)))
 
-    val connection = context.actorOf(Props(new ConnManager(statusView)))    
+    val connection = context.actorOf(Props(new ConnManager(id, statusView)))
+
+    val setname = context.actorOf(Props(SetName(connection)))
+
+    val chat = context.actorOf(Props(new ChatView(id, connection)))
 
     val adder = context.actorOf(Props(NewChannelButton()))
 
     vueBehaviour orElse {
       case PageMsgs.AddChannel =>
         context.actorOf(Props(ChannelHandler(statusView, connection)))
+      case m: PageMsgs.ChatMsg =>
+        chat ! m
     }
   }
 
@@ -55,8 +65,49 @@ case class Page() extends VueScalaTagsActor {
 
     def operational = vueBehaviour
   }
+}
 
+case class SetName(connection: ActorRef) extends VueScalaTagsActor {
 
+  def stTemplate = div(
+    label("Set your name before joining a tree"),
+    input("v-model".attr := "name")(""),
+    button(on := {() => {
+      val name = vue.$get("name").toString.trim
+      connection ! ConnMsgs.SetName(name)
+      self ! PoisonPill
+    }})("set")
+  )
+
+  def operational = vueBehaviour
+}
+
+case class ChatView(id: String, connection: ActorRef) extends VueScalaTagsActor {
+
+  def stTemplate = div(
+    label("receiver"),
+    input("v-model".attr := "receiver")(""),
+    label("message"),
+    input("v-model".attr := "message")(""),
+    button(on := {() => {
+      val receiver = vue.$get("receiver").toString.trim
+      val message = vue.$get("message").toString
+      connection ! ConnMsgs.Chat(receiver,id,message)
+    }})("send"),
+    textarea("v-model".attr := "inbox",
+      style := "width: 400px;")("")
+  )
+
+    def operational = vueBehaviour orElse {
+      case PageMsgs.ChatMsg(sender, msg) =>
+        val txt = "sender: "+sender+" message: "+msg
+        val newText =
+          if (!js.isUndefined(vue.$get("inbox")))
+            vue.$get("inbox").toString + "\n" + txt
+          else txt
+
+        vue.$set("inbox", newText)
+    }
 }
 
 case class ChannelHandler(statusView: ActorRef, connection: ActorRef) extends VueScalaTagsActor {
@@ -223,21 +274,29 @@ case class ChannelHandler(statusView: ActorRef, connection: ActorRef) extends Vu
 
 case class Node(name: String, descendants: List[Node] = List())
 
-class StatusView extends VueScalaTagsActor {
+class StatusView(myid: String) extends VueScalaTagsActor {
   
   def stTemplate = div()
 
   def fromJsonToNode(tree: js.Dynamic, id: String): Node = {
-    Node(id, tree.selectDynamic(id).sons.asInstanceOf[js.Array[String]].map(sid =>
+    val name = tree.selectDynamic(id).name
+    val symName = 
+      if (js.isUndefined(name))
+        id
+      else if (myid == id)
+        "ME: "+name.toString        
+      else
+        name.toString
+
+    Node(symName, tree.selectDynamic(id).sons.asInstanceOf[js.Array[String]].map(sid =>
       fromJsonToNode(tree, sid.toString)
     ).toList)
   }  
 
   def operational = vueBehaviour orElse {
     case PageMsgs.NewStatus(tree) =>
-      val root = tree.root.toString
       context.become(
-        treeview(root, fromJsonToNode(tree, root)))
+        treeview(myid, fromJsonToNode(tree, tree.root.toString)))
   }
 
   def treeview(name: String, node: Node): Receive = vueBehaviour orElse {

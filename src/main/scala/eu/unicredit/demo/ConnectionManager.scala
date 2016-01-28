@@ -30,7 +30,6 @@ object ConnMsgs {
   case class Remove(node: Node) extends TreeMsg
 
 
-  class Status
   case class UpdateRootAdd(id: String, json: String) extends 
     WebRTCMsgs.MessageToBus(JSON.stringify(literal(updateRootAdd = id, content = json)))
   case class UpdateRootRemove(id: String) extends
@@ -38,12 +37,15 @@ object ConnMsgs {
 
   case class UpdateStatus(json: js.Dynamic) extends
     WebRTCMsgs.MessageToBus(JSON.stringify(literal(updateStatus = json)))
+
+  case class Chat(target: String, sender: String, content: String) extends
+    WebRTCMsgs.MessageToBus(JSON.stringify(literal(chat = target, sender = sender, text = content)))
+
+  case class SetName(name: String)
 }
 
-class ConnManager(statusView: ActorRef) extends Actor with JsonTreeHelpers {
+class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeHelpers {
   import ConnMsgs._
-
-  val id = java.util.UUID.randomUUID.toString
 
   def receive = {
     val status = emptyRoot(id)
@@ -89,6 +91,8 @@ class ConnManager(statusView: ActorRef) extends Actor with JsonTreeHelpers {
           self ! UpdateRootRemove(ref.id)
       }
     case msg @ UpdateStatus(json) =>
+      println("new status\n"+JSON.stringify(json))
+
       statusView ! PageMsgs.NewStatus(json)
       sons.foreach(s => s.channel ! msg)
     case msg @ UpdateRootAdd(fatherId, json) =>
@@ -124,7 +128,24 @@ class ConnManager(statusView: ActorRef) extends Actor with JsonTreeHelpers {
           newSons.foreach(s => s.channel ! UpdateStatus(status))
           context.become(operative(parent, newSons, status))
       }
-    case _ =>
+
+    case msg @ Chat(target, sender, content) =>
+      if (target == id) {
+        context.parent ! PageMsgs.ChatMsg(sender, content)
+      } else if (isSonOf(target, id)(status)) {
+        sons.foreach(s =>
+          if (target == s.id || isSonOf(target,s.id)(status)) {
+            s.channel ! msg
+        })
+      } else {
+        parent.map(_.channel ! msg)
+      }
+    case SetName(name) =>
+      val me = status.selectDynamic(id)
+      me.updateDynamic("name")(name)
+      status.updateDynamic(id)(me)
+      statusView ! PageMsgs.NewStatus(status)
+     case _ =>
   }
 
 }
@@ -204,6 +225,8 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
         context.parent ! UpdateStatus(dyn.updateStatus)
       } else if (!js.isUndefined(dyn.updateRootRemove)) {
         context.parent ! UpdateRootRemove(dyn.updateRootRemove.toString)
+      } else if (!js.isUndefined(dyn.chat)) {
+        context.parent ! Chat(dyn.chat.toString, dyn.sender.toString, dyn.text.toString)
       } else {
         println("ERROR cannot deserialize")
       }
