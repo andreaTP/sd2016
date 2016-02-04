@@ -1,5 +1,6 @@
 package eu.unicredit.demo
 
+import scala.util.Try
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -25,6 +26,8 @@ object PageMsgs {
   case class NewStatus(tree: js.Dynamic)
 
   case class ChatMsg(sender: String, text: String)
+
+  case object Closed
 }
 
 case class Page() extends VueScalaTagsActor {
@@ -299,16 +302,23 @@ class StatusView(myid: String) extends VueScalaTagsActor {
         treeview(myid, fromJsonToNode(tree, tree.root.toString)))
   }
 
-  def treeview(name: String, node: Node): Receive = vueBehaviour orElse {
+  def treeview(name: String, node: Node): Receive = {
     val tvactor = context.actorOf(Props(new TreeView(name, node)))
 
     vueBehaviour orElse {
       case PageMsgs.NewStatus(tree) =>
         tvactor ! PoisonPill
         context.become(
-          treeview(name, fromJsonToNode(tree, tree.root.toString)))
+          waitingClose(name, fromJsonToNode(tree, tree.root.toString)))
     }
   }
+
+  def waitingClose(name: String, node: Node): Receive =
+    vueBehaviour orElse {
+      case PageMsgs.Closed =>
+        context.become(
+          treeview(name, node))
+    }
 }
 
 class TreeView(name: String, treeNodes: Node) extends VueScalaTagsActor {
@@ -355,4 +365,9 @@ class TreeView(name: String, treeNodes: Node) extends VueScalaTagsActor {
   )
 
   def operational = vueBehaviour
+
+  override def postStop() = {
+    Try{ super.postStop() }
+    context.parent ! PageMsgs.Closed
+  }
 }

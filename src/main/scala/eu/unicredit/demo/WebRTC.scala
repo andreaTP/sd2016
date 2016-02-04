@@ -159,14 +159,13 @@ class WebRTCConnection extends Actor with StunServers {
 
 trait StunServers {
 
-  val stuns = 
+  val stuns: js.Array[String] =
   //debug mode
   js.Array(
     "localhost"
     )
-
-  //real world
   /*
+  //real world
   js.Array(
     "stun.l.google.com:19302",
     "stun1.l.google.com:19302",

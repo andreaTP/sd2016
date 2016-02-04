@@ -44,6 +44,82 @@ object ConnMsgs {
   case class SetName(name: String)
 }
 
+object ParachuteMsgs {
+
+  case class AskForParachute(myId: String, targetId: String) extends
+    WebRTCMsgs.MessageToBus(
+      JSON.stringify(literal(
+        parachuteAsk = myId,
+        target = targetId
+        ))
+    )
+  case class Parachute(myId: String, targetId: String, token: String) extends
+    WebRTCMsgs.MessageToBus(
+      JSON.stringify(literal(
+        parachute = myId,
+        target = targetId,
+        token = token
+        ))
+    )
+  case class Roger(myId: String, targetId: String, token: String) extends
+    WebRTCMsgs.MessageToBus(
+      JSON.stringify(literal(
+        roger = myId,
+        target = targetId,
+        token = token
+        ))
+    )
+
+  case class AddParachuteHandler(id: String, ref: ActorRef)
+
+  case class Fire(id: String)
+}
+
+case class ParachuteBox() extends Actor {
+  import ParachuteMsgs._
+
+  def receive = operative(Map())
+
+  def operative(parachutes: Map[String, ActorRef]): Receive = {
+    case AddParachuteHandler(id, ref) =>
+      context.become(operative(parachutes + (id -> ref)))
+    case roger @ Roger(id, _, _) =>
+      parachutes.get(id).map(_ ! roger)
+    case fire @ Fire(id) =>
+      parachutes.get(id).map(_ ! fire)
+  }
+}
+
+case class ParachuteHandler(id: String, sonId: String, sonChannel: ActorRef) extends Actor {
+  import ParachuteMsgs._
+
+  def receive = {
+    case ConnMsgs.Token(token) =>
+      val originalSender = sender
+      sonChannel ! Parachute(id, sonId, token)
+      context.become(waitingAnswer(originalSender))
+  }
+
+  def waitingAnswer(connection: ActorRef): Receive = {
+    case Roger(_, _, answerToken) =>
+      context.become(waitingToOpenIt(connection, answerToken)) 
+  }
+
+  def waitingToOpenIt(connection: ActorRef, token: String): Receive = {
+    case Fire(_) =>
+      connection ! WebRTCMsgs.Join(token)
+  }
+}
+
+case class Parachuter(id: String, granpaId: String, fatherChannel: ActorRef) extends Actor {
+  import ParachuteMsgs._
+
+  def receive = {
+    case ConnMsgs.Token(token) =>
+      fatherChannel ! Roger(id, granpaId, token)
+  }
+}
+
 class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeHelpers {
   import ConnMsgs._
 
@@ -53,6 +129,8 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
 
     operative(None, Seq(), status)
   }
+
+  val pbox = context.actorOf(Props(ParachuteBox()))
 
   def operative(
       parent: Option[Node],
@@ -78,6 +156,12 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
       }
     case AddChild(ref) =>
       if (js.isUndefined(status.selectDynamic(ref.id))) {
+
+        //parachute
+        parent.map(p =>
+          p.channel ! ParachuteMsgs.AskForParachute(ref.id, p.id)
+        )
+
         context.become(operative(parent, sons :+ ref, status))
       } else {
         println("child was in the status "+status)
@@ -107,6 +191,21 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
           sons.foreach(s => s.channel ! UpdateStatus(status))
       }
     case msg @ UpdateRootRemove(sid) =>
+      //Open the parachute if needed
+      //get the nephew
+      val nephews = {
+        try {
+          val n = status.selectDynamic(sid).sons
+          n.asInstanceOf[js.Array[String]]
+        } catch {
+          case _ : Throwable =>
+            js.Array[String]()
+        }
+      }
+      nephews.foreach(n => {
+        pbox ! ParachuteMsgs.Fire(n)
+      })
+
       parent match {
         case Some(p) =>
           if (p.id == sid) {
@@ -129,6 +228,7 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
           context.become(operative(parent, newSons, status))
       }
 
+    //chat ui related
     case msg @ Chat(target, sender, content) =>
       if (target == id) {
         context.parent ! PageMsgs.ChatMsg(sender, content)
@@ -145,7 +245,39 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
       me.updateDynamic("name")(name)
       status.updateDynamic(id)(me)
       statusView ! PageMsgs.NewStatus(status)
-     case _ =>
+
+    //parchute related
+    case msg @ ParachuteMsgs.AskForParachute(sonId, targetId) =>
+      if (id != targetId)
+        parent.map(_.channel ! msg)
+      else {
+        val originalSender = sender
+        val parachuteHandler =
+          context.actorOf(Props(ParachuteHandler(id, sonId, originalSender)))
+        val conn =
+          context.actorOf(Props(WebRTCActor(id, parachuteHandler)))
+
+        pbox ! ParachuteMsgs.AddParachuteHandler(sonId, parachuteHandler)
+
+        conn ! WebRTCMsgs.Create
+      }
+    case msg @ ParachuteMsgs.Parachute(granpaId, targetId, token) =>
+      if (id != targetId)
+        sons.foreach(s => if (s.id == targetId) s.channel ! msg)
+      else {
+        val originalSender = sender
+        val parachuter =
+          context.actorOf(Props(Parachuter(id, granpaId, originalSender)))
+        val conn =
+          context.actorOf(Props(WebRTCActor(id, parachuter)))
+        conn ! WebRTCMsgs.Join(token)
+      }
+    case msg @ ParachuteMsgs.Roger(sonId, targetId, token) =>
+      if (id != targetId)
+        parent.map(_.channel ! msg)
+      else
+        pbox ! msg
+    case _ =>
   }
 
 }
@@ -217,6 +349,7 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
     case m: WebRTCMsgs.MessageToBus =>
       conn ! m
     case m: WebRTCMsgs.MessageFromBus =>
+      println("receiving "+m.txt)
       val dyn = JSON.parse(m.txt)
 
       if (!js.isUndefined(dyn.updateRootAdd)) {
@@ -227,10 +360,19 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
         context.parent ! UpdateRootRemove(dyn.updateRootRemove.toString)
       } else if (!js.isUndefined(dyn.chat)) {
         context.parent ! Chat(dyn.chat.toString, dyn.sender.toString, dyn.text.toString)
-      } else {
-        println("ERROR cannot deserialize")
+      } 
+      // parachute messages
+      else if (!js.isUndefined(dyn.parachuteAsk)) {
+        context.parent ! ParachuteMsgs.AskForParachute(dyn.parachuteAsk.toString, dyn.target.toString)
+      } else if (!js.isUndefined(dyn.parachute)) {
+        context.parent ! ParachuteMsgs.Parachute(dyn.parachute.toString, dyn.target.toString, dyn.token.toString)
+      } else if (!js.isUndefined(dyn.roger)) {
+        context.parent ! ParachuteMsgs.Roger(dyn.roger.toString, dyn.target.toString, dyn.token.toString)
       }
 
+      else {
+        println("ERROR cannot deserialize")
+      }
       //context.parent ! m
     case WebRTCMsgs.Disconnected =>
       context.parent ! Remove(Node(id, self))
