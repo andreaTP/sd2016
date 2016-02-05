@@ -85,12 +85,15 @@ trait VueActor extends Actor {
   lazy val vueName = "actor"+self.path.name.replace("$","")
 
   var vue: Vue = null
+  var destroyed: Boolean = false
 
   lazy val vueProto: () => Vue = () =>
     Vue.component(vueName, Vue.extend(
     literal(
       ready= (((thisVue: Vue) => {
           me.vue = thisVue
+          if (destroyed)
+            thisVue.$destroy(true)
         }): js.ThisFunction),
         template=me.vueTemplate,
         methods=me.vueMethods
@@ -101,7 +104,10 @@ trait VueActor extends Actor {
   }
 
   override def postStop() = {
-    vue.$destroy(true)
+    if (vue != null) {
+      destroyed = true
+      vue.$destroy(true)
+    }
   }
 
   def receive = {

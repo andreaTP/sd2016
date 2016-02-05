@@ -20,16 +20,6 @@ object Main extends js.JSApp {
 
     system.scheduler.scheduleOnce(0 millis)(
       VueActor.insert(() => new Page(), "page"))
-
-/*
-    case class Page() extends VueScalaTagsActor {
-      import scalatags.Text.all._
-
-      def stTemplate = h1("Ciao")
-
-      def operational = vueBehaviour
-    }
-*/
   }
 
 }

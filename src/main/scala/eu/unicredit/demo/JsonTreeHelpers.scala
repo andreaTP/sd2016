@@ -114,16 +114,4 @@ trait JsonTreeHelpers {
     }
   }
 
-/*
-  def toUI(tree: js.Dynamic, id: Option[String] = None): js.Dynamic = {
-
-    val rootId = id.getOrElse(tree.root.toString)
-
-    val root = literal(name = rootId,
-      children = tree.selectDynamic(rootId).sons.asInstanceOf[js.Array[String]].map(x => toUI(tree, Some(x.toString)))
-    )
-
-    root
-  }
-*/
 }

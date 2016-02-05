@@ -303,7 +303,8 @@ class StatusView(myid: String) extends VueScalaTagsActor {
   }
 
   def treeview(name: String, node: Node): Receive = {
-    val tvactor = context.actorOf(Props(new TreeView(name, node)))
+    val tvactor =
+        context.actorOf(Props(new TreeView(name, node)), "treeview")
 
     vueBehaviour orElse {
       case PageMsgs.NewStatus(tree) =>
@@ -313,12 +314,41 @@ class StatusView(myid: String) extends VueScalaTagsActor {
     }
   }
 
+  case object Timeout
   def waitingClose(name: String, node: Node): Receive =
     vueBehaviour orElse {
-      case PageMsgs.Closed =>
+      case Timeout =>
         context.become(
-          treeview(name, node))
+            treeview(name, node))
+      case PageMsgs.Closed =>
+        context.system.scheduler.scheduleOnce(500 millis)(
+          self ! Timeout
+        )
+      case PageMsgs.NewStatus(tree) =>
+        context.become(
+          waitingClose(name, fromJsonToNode(tree, tree.root.toString)))
     }
+
+  /* this is a really dirty workaround to a ui problem that in the future must be fixed */
+  import VueActor._
+  import org.scalajs.dom
+  override def vueBehaviour: Receive = {
+    case AddVueChild(v) =>
+
+      val sonName = "actor"+sender.path.name.replace("$","")
+
+      val child = dom.document.createElement(sonName)
+
+      vue.$el.innerHTML = ""
+
+      vue.$el.appendChild(child)
+
+      vue.$addChild(v)
+
+      vue.$compile(vue.$el)
+
+      sender ! VueChildAdded
+  }
 }
 
 class TreeView(name: String, treeNodes: Node) extends VueScalaTagsActor {
@@ -327,7 +357,7 @@ class TreeView(name: String, treeNodes: Node) extends VueScalaTagsActor {
   import svgAttrs._
   import paths.high.Tree
 
-  val tree = Tree[Node](
+  lazy val tree = Tree[Node](
     data = treeNodes,
     children = _.descendants,
     width = 300,
@@ -337,14 +367,14 @@ class TreeView(name: String, treeNodes: Node) extends VueScalaTagsActor {
   private def move(p: js.Array[Double]) = s"translate(${ p(0) },${ p(1) })"
   private def isLeaf(node: Node) = node.descendants.length == 0  
 
-  val branches = tree.curves map { curve =>
+  lazy val branches = tree.curves map { curve =>
     path(d := curve.connector.path.print,
       stroke := "grey", 
       fill := "none"
     )
   }
 
-  val nodes = tree.nodes map { node =>
+  lazy val nodes = tree.nodes map { node =>
     g(transform := move(node.point),
       circle(r := 5, cx := 0, cy := 0),
       text(
@@ -364,10 +394,14 @@ class TreeView(name: String, treeNodes: Node) extends VueScalaTagsActor {
     )
   )
 
-  def operational = vueBehaviour
+  def operational = 
+    vueBehaviour
 
   override def postStop() = {
-    Try{ super.postStop() }
-    context.parent ! PageMsgs.Closed
+    super.postStop()
+    val parent = context.parent
+    context.system.scheduler.scheduleOnce(250 millis)(
+      parent ! PageMsgs.Closed
+    )
   }
 }
