@@ -106,8 +106,12 @@ case class ParachuteHandler(id: String, sonId: String, sonChannel: ActorRef) ext
   }
 
   def waitingToOpenIt(connection: ActorRef, token: String): Receive = {
+    println("waiting to open for "+sonId)
+
+  ;{
     case Fire(_) =>
       connection ! WebRTCMsgs.Join(token)
+    }
   }
 }
 
@@ -168,6 +172,8 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
         ref.channel ! PoisonPill
       }
     case Remove(ref) =>
+      checkAndFire(status, ref.id)
+
       (parent) match {
         case Some(p) if (p.id != ref.id) =>
           p.channel ! UpdateRootRemove(ref.id)
@@ -179,6 +185,7 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
 
       statusView ! PageMsgs.NewStatus(json)
       sons.foreach(s => s.channel ! msg)
+      context.become(operative(parent, sons, json))
     case msg @ UpdateRootAdd(fatherId, json) =>
       parent match {
         case Some(p) => 
@@ -191,20 +198,6 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
           sons.foreach(s => s.channel ! UpdateStatus(status))
       }
     case msg @ UpdateRootRemove(sid) =>
-      //Open the parachute if needed
-      //get the nephew
-      val nephews = {
-        try {
-          val n = status.selectDynamic(sid).sons
-          n.asInstanceOf[js.Array[String]]
-        } catch {
-          case _ : Throwable =>
-            js.Array[String]()
-        }
-      }
-      nephews.foreach(n => {
-        pbox ! ParachuteMsgs.Fire(n)
-      })
 
       parent match {
         case Some(p) =>
@@ -278,6 +271,28 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
       else
         pbox ! msg
     case _ =>
+  }
+
+  def checkAndFire(status: js.Dynamic, sid: String) = {
+      //Open the parachute if needed
+      //get the nephew
+      val nephews = {
+        try {
+          val n = status.selectDynamic(sid).sons
+          n.asInstanceOf[js.Array[String]]
+        } catch {
+          case _ : Throwable =>
+            js.Array[String]()
+        }
+      }
+
+      //println("status is "+JSON.stringify(status))
+      println("remove nephews for id "+sid+" are "+nephews)
+
+      nephews.foreach(n => {
+        println("have to fire "+n)
+        pbox ! ParachuteMsgs.Fire(n)
+      })
   }
 
 }
