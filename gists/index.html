@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gists Handshake</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <script type="text/javascript" src="./target/scala-2.11/gists-jsdeps.js"></script>
+</head>
+<body>
+  
+  <label>Github Login</label>
+  <br>
+  <label>Username</label>
+  <input type="text" id="username" value="">
+  <label>Password</label>
+  <input type="password" id="password" value="">
+  <hr>
+  <button onClick="Main().username = document.getElementById('username').value;Main().password = document.getElementById('password').value;Main().publish()">PUBLISH</button>
+  <button onClick="Main().username = document.getElementById('username').value;Main().password = document.getElementById('password').value;Main().listen()">LISTEN</button>
+
+  <script type="text/javascript" src="./target/scala-2.11/gists-fastopt.js"></script>
+  <script type="text/javascript" src="./target/scala-2.11/gists-launcher.js"></script>
+</body>
+</html>

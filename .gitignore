@@ -1,7 +1,7 @@
 *.class
 *.log
 
-treeview/.*
+gists/.*
 
 # sbt specific
 .cache
