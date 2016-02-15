@@ -2,7 +2,7 @@ package eu.unicredit.backbone
 
 import akka.actor.Actor
 
-  import org.scalajs.dom.raw.{Node, Element}
+import org.scalajs.dom.raw.{Node, Element}
 
 object DomMsgs {
   case object NodeAsk
