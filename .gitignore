@@ -2,6 +2,7 @@
 *.log
 
 gists/.*
+backbone/.*
 
 # sbt specific
 .cache
