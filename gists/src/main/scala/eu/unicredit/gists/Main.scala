@@ -31,12 +31,8 @@ object Main extends js.JSApp {
   var password = ""
 
   @JSExport
-  def publish() = {
-    println("username -> "+username)
-    println("password -> "+password)
-
+  def publish() =
     manager ! Publish("")
-  }
 
   @JSExport
   def listen() =
