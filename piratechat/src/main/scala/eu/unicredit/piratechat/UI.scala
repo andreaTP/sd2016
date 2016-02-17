@@ -26,6 +26,10 @@ object PageMsgs {
   case class ChatMsg(sender: String, text: String)
 
   case object Closed
+
+  case class GitLogin(txt: String)
+
+  case object GistChannel
 }
 
 case class PageActor() extends DomActor {
@@ -39,12 +43,16 @@ case class PageActor() extends DomActor {
       h1("Piratechat is borning!")
     )
 
+  var gitLogin = ""
+
   override def operative = {
     val statusView = context.actorOf(Props(new StatusView(id)), "statusview")
 
     val connection = context.actorOf(Props(new ConnManager(id, statusView)))
 
     val setname = context.actorOf(Props(SetName(connection)))
+
+    val gitlogin = context.actorOf(Props(GitUsernameAndPassword()))
 
     val chat = context.actorOf(Props(new ChatView(id, connection)))
 
@@ -53,18 +61,97 @@ case class PageActor() extends DomActor {
     domManagement orElse {
       case PageMsgs.AddChannel =>
         context.actorOf(Props(ChannelHandler(statusView, connection)))
+      case PageMsgs.GistChannel =>
+        context.actorOf(Props(GistChannelHandler(gitLogin, connection)))        
       case m: PageMsgs.ChatMsg =>
         chat ! m
+      case gl: PageMsgs.GitLogin =>
+        gitLogin = gl.txt
     }
   }
 
   case class NewChannelButton() extends DomActor {
     def template = div(
-      button(onclick := {() => {
-        context.parent ! PageMsgs.AddChannel
-      }})("Add Connection")
+      button(onclick := {() => context.parent ! PageMsgs.AddChannel})(
+        "Add Manual Connection"),
+      button(onclick := {() => context.parent ! PageMsgs.GistChannel})(
+        "Add Gist Connection")
     )
   }
+}
+
+case class GistChannelHandler(gitLogin: String, connection: ActorRef) extends DomActor {
+
+  val gistActor =
+    context.actorOf(Props(GistActor(gitLogin)))
+
+  def template = div(
+    button(onclick := {() => self ! ConnMsgs.Open})("CREATE"),
+    button(onclick := {() => self ! GistMsgs.Listen})("JOIN")
+  )
+
+  override def operative = domManagement orElse {
+    case ConnMsgs.Open =>
+      connection ! ConnMsgs.Open
+      context.become(open)
+    case GistMsgs.Listen =>
+      gistActor ! GistMsgs.Listen
+      context.become(join)
+  }
+
+  def join: Receive = domManagement orElse {
+    case GistMsgs.AvailableOffer(id, token) =>
+      connection ! ConnMsgs.Attach(token)
+      context.become(joinOffer(id))
+  }
+
+  def joinOffer(id: String): Receive = domManagement orElse {
+    case GistMsgs.AvailableAnswer(_, token) =>
+      gistActor ! GistMsgs.AnswerForOffer(id, token)
+      context.become(waitClose)
+  }
+
+  def waitClose: Receive = domManagement orElse {
+    case ConnMsgs.Connected =>
+      self ! PoisonPill
+    case PageMsgs.ChannelClosed =>
+      self ! PoisonPill
+  }
+
+  def open: Receive = {
+    case p: GistMsgs.Publish =>
+      val originalSender = sender
+      gistActor ! p
+      context.become(waitAnswer(originalSender))
+  }
+
+  def waitAnswer(ref: ActorRef): Receive = {
+    case GistMsgs.AvailableAnswer(id, token) =>
+      ref ! WebRTCMsgs.Join(token)
+      context.become(waitClose)
+  }
+}
+
+case class GitUsernameAndPassword() extends DomActor {
+
+  val username = input("").render
+  val password = input(tpe := "password")("").render
+
+  def template =
+      div(
+        label("Git login ->"),
+        label("Username"),
+        username,
+        label("Password"),
+        password,
+        button(onclick := {() => {
+          val gitLogin = username.value.toString + ":" + password.value.toString
+          val gitLoginEncoded = js.Dynamic.global.btoa(gitLogin).toString
+          context.parent ! PageMsgs.GitLogin(gitLoginEncoded)
+          self ! PoisonPill
+        }})("SET")
+      )
+
 }
 
 case class SetName(connection: ActorRef) extends DomActor {
@@ -125,7 +212,6 @@ class StatusView(myid: String) extends DomActorWithParams[Node] {
   val initValue = Node("-", List())
 
   def template(n: Node) = {
-    println("TEMPLATE CALL")
     try {
     val tree = getTree(n)
     div(
@@ -192,9 +278,7 @@ class StatusView(myid: String) extends DomActorWithParams[Node] {
 
   override def operative = domManagement orElse {
     case PageMsgs.NewStatus(tree) =>
-      println("da qui -------------> "+js.JSON.stringify(tree))
       self ! UpdateValue(fromJsonToNode(tree, tree.root.toString))
-    case any => println("errore....")
   }
 
 }

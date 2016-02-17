@@ -88,6 +88,8 @@ case class WebRTCActor(parentId: String, tbn: ActorRef) extends Actor {
         decode[ParachuteMsgs.AskForParachute](m.txt).getOrElse(
         null))))))
 
+      //println("ok now message to connection manager is "+msg)
+
       context.parent ! msg
     case WebRTCMsgs.Disconnected =>
       context.parent ! Remove(Node(id, self))

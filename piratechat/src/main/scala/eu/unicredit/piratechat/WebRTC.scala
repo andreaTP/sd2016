@@ -98,10 +98,8 @@ class WebRTCConnection extends Actor with StunServers {
 
     ;{
       case msg: MessageToBus =>
-        println("sending on bus "+msg.txt)
         channel.send(msg.txt)
       case msg: MessageFromBus =>
-        println("receiving from bus "+msg.txt)
         context.parent ! msg
     }
   }

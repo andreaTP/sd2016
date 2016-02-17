@@ -157,11 +157,12 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
           self ! UpdateRootRemove(ref.id)
       }
     case msg @ UpdateStatus(json) =>
-      //println("new status\n"+json)
+      //println("new status -> \n"+json)
 
-      statusView ! PageMsgs.NewStatus(JSON.parse(json))
+      val jsonParsed = JSON.parse(json)
+      statusView ! PageMsgs.NewStatus(jsonParsed)
       sons.foreach(s => s.channel ! msg)
-      context.become(operative(parent, sons, JSON.parse(json)))
+      context.become(operative(parent, sons, jsonParsed))
     case msg @ UpdateRootAdd(fatherId, json) =>
       parent match {
         case Some(p) => 
@@ -170,9 +171,9 @@ class ConnManager(id: String, statusView: ActorRef) extends Actor with JsonTreeH
 
           merge(fatherId)(status, JSON.parse(json))
 
-          println("STATUS UPDATE")
+          //println("STATUS UPDATE")
           statusView ! PageMsgs.NewStatus(status)
-          sons.foreach(s => s.channel ! UpdateStatus(json))
+          sons.foreach(s => s.channel ! UpdateStatus(JSON.stringify(status)))
       }
     case msg @ UpdateRootRemove(sid) =>
 

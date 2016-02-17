@@ -256,7 +256,7 @@ case class GistActor(user: String) extends Actor {
       offerToken: String,
       timeout: Cancellable = waitOfferTimeout()): Receive = {
 
-    println("offer Token is "+offerToken)
+    //println("offer Token is "+offerToken)
 
     context.parent ! AvailableOffer(id, offerToken)
 
