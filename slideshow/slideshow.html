@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Akka Talk</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(/css/YanoneKaffeesatz.css);
+      @import url(/css/DroidSerif.css);
+      @import url(/css/UbuntuMono.css);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #a7f6d9; /*#bababa;*/
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1 {
+        color: #eedc33;
+        line-height: 0.8em;
+      }
+      .inverse h2 {
+        color: #a4cf29;
+        line-height: 0.8em;
+      }
+      
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        float: left;
+        padding-left: 15%;
+      }
+      .left-column h2 {
+        position: relative;
+        top: 10%;
+      }
+      .right-column {
+        float: right;
+        padding-right: 15%;
+      }
+      .redit {
+        color: #f9265d;
+      }
+      .greenit {
+        color: #a4cf29;
+      }
+      .yellowit {
+        color: #eedc33;
+      }
+      .backblue {
+        background-color: #8fadde;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+<img style="max-height : 100px;" src="./images/akkajs-grey.png">
+#Drop Your Actors Outside the JVM Boundaries
+
+---
+
+#Thanks
+<br>
+<img style="max-height : 100px;" src="./images/unilogo-white.png">
+<br><br><br>
+Andrea Peruffo
+<br>
+Gianluca Stivan
+
+---
+
+#Why
+<br><br>
+- Code reuse<br><br>
+
+---
+
+#Why
+<br><br>
+- Code reuse<br><br>
+- Code portability<br><br>
+
+---
+
+#Why
+<br><br>
+- Code reuse<br><br>
+- Code portability<br><br>
+- High modularization<br><br>
+
+---
+
+#Why
+<br><br>
+- Code reuse<br><br>
+- Code portability<br><br>
+- High modularization<br><br>
+- Transparent communication<br><br>
+
+---
+
+#Why
+<br><br>
+- Code reuse<br><br>
+- Code portability<br><br>
+- High modularization<br><br>
+- Transparent communication<br><br>
+- Concurrency management<br><br>
+
+---
+
+#Why
+<br><br>
+- Code reuse<br><br>
+- Code portability<br><br>
+- High modularization<br><br>
+- Transparent communication<br><br>
+- Concurrency management<br><br>
+- Parallelism management<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM<br><br>
+- JVM<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM<br><br>
+- JVM<br><br>
+- JVM<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies <br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies -> .greenit[Java stdlib ported to Scala.js]<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies -> .greenit[Java stdlib ported to Scala.js]<br><br>
+- JVM reflection <br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies -> .greenit[Java stdlib ported to Scala.js]<br><br>
+- JVM reflection -> .greenit[Compiler plugins and IR patching]<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies -> .greenit[Java stdlib ported to Scala.js]<br><br>
+- JVM reflection -> .greenit[Compiler plugins and IR patching]<br><br>
+- Serialization<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies -> .greenit[Java stdlib ported to Scala.js]<br><br>
+- JVM reflection -> .greenit[Compiler plugins and IR patching]<br><br>
+- Serialization -> .greenit[Scala-pickling IR patching as well]<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies -> .greenit[Java stdlib ported to Scala.js]<br><br>
+- JVM reflection -> .greenit[Compiler plugins and IR patching]<br><br>
+- Serialization -> .greenit[Scala-pickling IR patching as well]<br><br>
+- Blocking API<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies -> .greenit[Java stdlib ported to Scala.js]<br><br>
+- JVM reflection -> .greenit[Compiler plugins and IR patching]<br><br>
+- Serialization -> .greenit[Scala-pickling IR patching as well]<br><br>
+- Blocking API -> .greenit[Dropped, custom event loop]<br><br>
+
+---
+
+#Challenges
+<br><br>
+- JVM dependencies -> .greenit[Java stdlib ported to Scala.js] -> .redit[Done]<br><br>
+- JVM reflection -> .greenit[Compiler plugins and IR patching] -> .redit[Partially Done]<br><br>
+- Serialization -> .greenit[Scala-pickling IR patching as well] - .redit[WIP]<br><br>
+- Blocking API -> .greenit[Dropped, custom event loop] -> .redit[Done]<br><br>
+
+---
+
+#Goal
+<br><br>
+##Cross-compile
+
+---
+
+#Goal
+<br><br>
+##Cross-compile
+<br><br>
+obviously not possible
+
+---
+
+#Goal
+<br><br>
+##Cross-compile
+<br><br>
+obviously not possible
+<br><br>
+so
+
+---
+
+#Goal
+<br><br>
+##Cross-compile
+<br><br>
+obviously not possible
+<br><br>
+so
+<br><br>
+##as much as possible!
+
+---
+
+#Current status
+<br><br>
+##It works!
+
+---
+
+#Current status
+<br><br>
+##It works!
+<br><br>
+honestly...
+
+---
+
+#Current status
+<br><br>
+##It works!
+<br>
+honestly...
+<br>
+##WIP
+<br>
+working POC of almost everything is challenging, still a lot of engineering works to do
+<br><br>
+but rememeber: it still works just now ;-)
+
+---
+
+#How does this look like?
+
+---
+
+#How does this look like?
+<br><br>
+I gently say
+<br><br>
+##Show me this working code!
+<br><br>
+if any...
+
+---
+
+requestAnimationFrame di js
+
+Request animation frame
+
+---
+
+#Thanks and Q&A
+    </textarea>
+    <script src="/script/remark-latest.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

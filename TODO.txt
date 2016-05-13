@@ -1,0 +1,21 @@
+
+Presentazione effettiva
+
+-> aggiungere differenza tra Akka.js e altri progetti come jsactors e Akka.net :-P
+
+-> DEMO TODO da fare live
+
+-> DEMO ALGO su differenti piattaforme
+
+-> DEMO CHAT con codice shared node play
+
+-> DEMO CHAT on WebRTC (BASE!)
+
+
+Tecnica
+
+-> verificare stato scala-pickling
+
+-> preparare pagine che girino alla fiddle nel browser
+
+-> andare avanti e statistiche sulla code base (codice portato)
