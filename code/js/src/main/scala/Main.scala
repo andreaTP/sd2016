@@ -9,7 +9,8 @@ object Main extends js.JSApp {
 
     //
     //Run.run
-    Visualization.run
+    //Visualization.run
+    ChatServerNode.run
   }
 
 }

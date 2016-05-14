@@ -14,11 +14,12 @@ object ToDo {
 
   def start =
     system.actorOf(Props(ToDoList()), "page")
+    //system.actorOf(Props(ToDoList2()), "page")
 
   case class ToDoList() extends DomActor {
     override val domElement = Some(getElem("root"))
 
-    val inputBox = input(value := "what to do?").render
+    val inputBox = input("placeholder".attr := "what to do?").render
 
     def template() = ul(
         h1("ToDo Demo!"),
@@ -41,4 +42,34 @@ object ToDo {
       )
     )
   }
+/*
+  case class ToDoList2() extends DomActorWithParams[List[String]] {
+    override val domElement = Some(getElem("root"))
+
+    val inputBox = input("placeholder".attr := "what to do?").render
+
+    val initValue = List()
+
+    def template(list: List[String]) =
+      ul(
+        h1("ToDo Demo!"),
+        div(
+          inputBox,
+          button(onclick := {
+            () => self ! UpdateValue(list :+ inputBox.value)})(
+            "Add"
+          ),
+          for (item <- list) yield {
+            div(
+              li(item),
+              button(onclick := {
+                () => self ! UpdateValue(list.filterNot(_ == item))})(
+                "Remove"
+              )
+            )
+          }
+        )
+      )
+  }
+*/
 }

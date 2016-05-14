@@ -32,7 +32,7 @@ object PingPong {
     ))
 
     import system._
-    system.scheduler.scheduleOnce(0 millis)(
+    system.scheduler.scheduleOnce(500 millis)(
       pinger ! "pong"
     )
   }

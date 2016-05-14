@@ -4,8 +4,8 @@ object Visualization {
 
   def run =
     //First
-    ToDo.start
+    //ToDo.start
     //Second
-    //Chat.start
+    ChatUI.start
 
 }

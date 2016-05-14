@@ -55,13 +55,13 @@ object ChatServerAkkaHttp {
       Flow.fromSinkAndSource(actorSink, actorSource)
      
     val route =
-      path("chat") {
+      path("") {
         get {
             handleWebSocketMessages(msgFlow)
         }
       }
    
-    val bindingFuture = Http().bindAndHandle(route, "localhost", 8088)
+    val bindingFuture = Http().bindAndHandle(route, "localhost", 8098)
    
   }
 }

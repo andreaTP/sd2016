@@ -6,7 +6,7 @@ object Run {
     //First
     //PingPong.start
     //Second
-    //Algo.start
+    Algo.start
     //Data Visualization
 
   }
