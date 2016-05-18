@@ -3,18 +3,17 @@ Presentazione effettiva
 
 -> aggiungere differenza tra Akka.js e altri progetti come jsactors e Akka.net :-P
 
--> DEMO TODO da fare live
+-> slide e presentazione -> mettere la parte di demo all'inizio e fare un ultimo 15 minuti di tecnica su come è possibile cross compilare problemi and Co.
 
--> DEMO ALGO su differenti piattaforme
-
--> DEMO CHAT con codice shared node play
+-> Sistemare i CSS (da adesso)
 
 -> DEMO CHAT on WebRTC (BASE!)
 
+-> fare un path verso un caso d'uso reale?
 
 Tecnica
 
--> verificare stato scala-pickling
+-> verificare stato scala-pickling (WIP)
 
 -> preparare pagine che girino alla fiddle nel browser
 

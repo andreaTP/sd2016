@@ -1,0 +1,27 @@
+[0m[[0minfo[0m] [0mRunning eu.unicredit.Main[0m
+[0m[[0mdebug[0m] [0mwith JSEnv ExternalJSEnv for Node.js[0m
+[0m[[0mdebug[0m] [0mStarting process: node[0m
+org.scalajs.jsenv.ExternalJSEnv$NonZeroExitException: Node.js exited with code 130
+	at org.scalajs.jsenv.ExternalJSEnv$AbstractExtRunner.waitForVM(ExternalJSEnv.scala:107)
+	at org.scalajs.jsenv.ExternalJSEnv$ExtRunner.run(ExternalJSEnv.scala:156)
+	at org.scalajs.sbtplugin.ScalaJSPluginInternal$.org$scalajs$sbtplugin$ScalaJSPluginInternal$$jsRun(ScalaJSPluginInternal.scala:640)
+	at org.scalajs.sbtplugin.ScalaJSPluginInternal$$anonfun$57$$anonfun$apply$40$$anonfun$apply$41.apply(ScalaJSPluginInternal.scala:700)
+	at org.scalajs.sbtplugin.ScalaJSPluginInternal$$anonfun$57$$anonfun$apply$40$$anonfun$apply$41.apply(ScalaJSPluginInternal.scala:694)
+	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+	at sbt.std.Transform$$anon$4.work(System.scala:63)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+	at sbt.Execute.work(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[0m[[31merror[0m] [0m(demoJS/compile:[31mrun[0m) org.scalajs.jsenv.ExternalJSEnv$NonZeroExitException: Node.js exited with code 130[0m

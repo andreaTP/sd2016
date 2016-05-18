@@ -1,0 +1,16 @@
+[0m[[0minfo[0m] [0mFast optimizing /home/andrea/workspace/akka.js_talk/code2/js/target/scala-2.11/demo-fastopt.js[0m
+[0m[[0mdebug[0m] [0mLinker: Compute reachability: 282752 us[0m
+[0m[[0mdebug[0m] [0mLinker: Assemble LinkedClasses: 477173 us[0m
+[0m[[0mdebug[0m] [0mBasic Linking: 764519 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Batch mode: true[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Incremental part: 194351 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Optimizing 11577 methods.[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Optimizer part: 895692 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: 1104882 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Compute reachability: 94544 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Assemble LinkedClasses: 15506 us[0m
+[0m[[0mdebug[0m] [0mRefiner: 111360 us[0m
+[0m[[0mdebug[0m] [0mEmitter: Class tree cache stats: reused: 0 -- invalidated: 1214[0m
+[0m[[0mdebug[0m] [0mEmitter: Method tree cache stats: resued: 0 -- invalidated: 7046[0m
+[0m[[0mdebug[0m] [0mEmitter (write output): 901259 us[0m
+[0m[[0mdebug[0m] [0mGlobal IR cache stats: reused: 0 -- invalidated: 96 -- trees read: 1404[0m

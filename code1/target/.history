@@ -1,0 +1,14 @@
+compile
+demoJVM/run
+demoJS/run
+demoJVM/run
+demoJS/run
+run
+demoJS/run
+demoJVM/run
+demoJS/run
+demoJVM/run
+demoJS/run
+clean
+demoJS/run
+demoJVM/run

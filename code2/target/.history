@@ -1,0 +1,8 @@
+compile
+demoJVM/compile
+demoJVM/run
+reload
+compile
+demoJVM/run
+demoJS/run
+demoJVM/run

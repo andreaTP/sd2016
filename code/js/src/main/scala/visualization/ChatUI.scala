@@ -46,6 +46,7 @@ object ChatUI {
 
     def template(txt: List[String]) = div(
       p(s"url -> $wsUrl"),
+      button(onclick := {() => self ! PoisonPill})("Close"),
       msgBox,
       button(onclick := {() => ws.send(msgBox.value)})("Send"),
       ul(for (t <- txt) yield li(t))
