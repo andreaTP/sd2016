@@ -18,4 +18,9 @@ sbt "demoJVM/run"&
 sbt "demoJS/run"&
 cd ..
 
+cd ..
+cd stunserver
+./stunserver --mode basic --primaryinterface lo&
+cd ../akka.js_talk
+
 browser-sync start --config bs-config.js

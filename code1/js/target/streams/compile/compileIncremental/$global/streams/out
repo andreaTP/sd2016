@@ -2,22 +2,21 @@
 [0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
 [0m[[0mdebug[0m] [0m[naha] 	removed:Set()[0m
 [0m[[0mdebug[0m] [0m[naha] 	added: Set()[0m
-[0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated products: Set(/home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$$anonfun$2.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/Main$.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/AkkaConfig.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$$anonfun$start$2.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/Run.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/Main.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$$anonfun$start$1.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/Run$.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$$anonfun$1$$anon$1.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$$anonfun$2$$anon$2.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/AkkaConfig$.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$$anonfun$1.class, /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes/eu/unicredit/PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.class)[0m
+[0m[[0mdebug[0m] [0m[naha] 	modified: Set(/home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] [0m
 [0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
-[0m[[0mdebug[0m] [0m[naha] 	product: Set(/home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/PingPong.scala, /home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/Main.scala, /home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala, /home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/Run.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
-[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/PingPong.scala, /home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/Main.scala, /home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala, /home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/Run.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Recompiling all 4 sources: invalidated sources (4) exceeded 50.0% of all sources[0m
-[0m[[0minfo[0m] [0mCompiling 4 Scala sources to /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes...[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala)[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes...[0m
 [0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.11.8[0m
 [0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.11.8[0m
-[0m[[0mdebug[0m] [0mRunning cached compiler 6d8f17a0, interfacing (CompilerInterface) with Scala compiler version 2.11.8[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 1ed2111b, interfacing (CompilerInterface) with Scala compiler version 2.11.8[0m
 [0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
 [0m[[0mdebug[0m] [0m	-feature[0m
 [0m[[0mdebug[0m] [0m	-language:_[0m
@@ -27,7 +26,37 @@
 [0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes:/home/andrea/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.8.jar[0m
 [0m[[0mdebug[0m] [0m	-classpath[0m
 [0m[[0mdebug[0m] [0m	/home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes:/home/andrea/.ivy2/local/org.scala-js/scalajs-library_2.11/0.6.10-SNAPSHOT/jars/scalajs-library_2.11.jar:/home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/jars/akkaactor_sjs0.6_2.11.jar:/home/andrea/.ivy2/local/eu.unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/jars/shocon_sjs0.6_2.11.jar:/home/andrea/.ivy2/cache/com.lihaoyi/fastparse_sjs0.6_2.11/jars/fastparse_sjs0.6_2.11-0.3.1.jar:/home/andrea/.ivy2/cache/com.lihaoyi/fastparse-utils_sjs0.6_2.11/jars/fastparse-utils_sjs0.6_2.11-0.3.1.jar:/home/andrea/.ivy2/cache/org.scala-js/scalajs-java-time_sjs0.6_2.11/jars/scalajs-java-time_sjs0.6_2.11-0.1.0.jar[0m
-[0m[[0mdebug[0m] [0mScala compilation took 2.689499398 s[0m
+[0m[[0mdebug[0m] [0mScala compilation took 0.294332042 s[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating /home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from /home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(/home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The /home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/AkkaConfig.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	config.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of /home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/PingPong.scala: Set(config)[0m
+[0m[[0mdebug[0m] [0m[naha] New invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set(/home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/PingPong.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/PingPong.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including /home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/Run.scala by /home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/PingPong.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including /home/andrea/workspace/akka.js_talk/code1/js/src/main/scala/Main.scala by /home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/Run.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Previously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] All newly invalidated sources after taking into account (previously) recompiled sources:Set(/home/andrea/workspace/akka.js_talk/code1/shared/src/main/scala/PingPong.scala)[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes...[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.11.8[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.11.8[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 3a02ca65, interfacing (CompilerInterface) with Scala compiler version 2.11.8[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-feature[0m
+[0m[[0mdebug[0m] [0m	-language:_[0m
+[0m[[0mdebug[0m] [0m	-deprecation[0m
+[0m[[0mdebug[0m] [0m	-Xplugin:/home/andrea/.ivy2/local/org.scala-js/scalajs-compiler_2.11.8/0.6.10-SNAPSHOT/jars/scalajs-compiler_2.11.8.jar[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes:/home/andrea/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.8.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/andrea/workspace/akka.js_talk/code1/js/target/scala-2.11/classes:/home/andrea/.ivy2/local/org.scala-js/scalajs-library_2.11/0.6.10-SNAPSHOT/jars/scalajs-library_2.11.jar:/home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/jars/akkaactor_sjs0.6_2.11.jar:/home/andrea/.ivy2/local/eu.unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/jars/shocon_sjs0.6_2.11.jar:/home/andrea/.ivy2/cache/com.lihaoyi/fastparse_sjs0.6_2.11/jars/fastparse_sjs0.6_2.11-0.3.1.jar:/home/andrea/.ivy2/cache/com.lihaoyi/fastparse-utils_sjs0.6_2.11/jars/fastparse-utils_sjs0.6_2.11-0.3.1.jar:/home/andrea/.ivy2/cache/org.scala-js/scalajs-java-time_sjs0.6_2.11/jars/scalajs-java-time_sjs0.6_2.11-0.1.0.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 0.552409869 s[0m
 [0m[[0mdebug[0m] [0m[naha] New invalidations:[0m
 [0m[[0mdebug[0m] [0m[naha] 	Set()[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set()[0m

@@ -8424,8 +8424,7 @@ function $m_Lcom_typesafe_config_ConfigFactory$() {
 /** @constructor */
 function $c_Leu_unicredit_AkkaConfig$() {
   $c_O.call(this);
-  this.default$1 = null;
-  this.config$1 = null
+  this.default$1 = null
 }
 $c_Leu_unicredit_AkkaConfig$.prototype = new $h_O();
 $c_Leu_unicredit_AkkaConfig$.prototype.constructor = $c_Leu_unicredit_AkkaConfig$;
@@ -8435,9 +8434,7 @@ function $h_Leu_unicredit_AkkaConfig$() {
 }
 $h_Leu_unicredit_AkkaConfig$.prototype = $c_Leu_unicredit_AkkaConfig$.prototype;
 $c_Leu_unicredit_AkkaConfig$.prototype.init___ = (function() {
-  $n_Leu_unicredit_AkkaConfig$ = this;
   this.default$1 = "\nakka {\n  home = \"\"\n  version = \"2.4-SNAPSHOT\"\n  #loggers = [\"akka.event.Logging$DefaultLogger\"]\n  loggers = [\"akka.event.DefaultLogger\"]\n  #loggers = [\"akka.event.LoggingBusActor\"]\n  logging-filter = \"akka.event.DefaultLoggingFilter\"\n  loggers-dispatcher = \"akka.actor.default-dispatcher\"\n  logger-startup-timeout = 5s\n  loglevel = \"INFO\"\n  stdout-loglevel = \"WARNING\"\n  log-config-on-start = off\n  log-dead-letters = 0\n  log-dead-letters-during-shutdown = off\n  library-extensions = []\n  extensions = []\n  daemonic = off\n  jvm-exit-on-fatal-error = on\n\n  actor {\n    provider = \"akka.actor.LocalActorRefProvider\"\n    guardian-supervisor-strategy = \"akka.actor.DefaultSupervisorStrategy\"\n    creation-timeout = 20s\n    serialize-messages = off\n    serialize-creators = off\n    unstarted-push-timeout = 10s\n    typed {\n      # Default timeout for typed actor methods with non-void return type\n      timeout = 5s\n    }\n    router.type-mapping {\n      from-code = \"akka.routing.NoRouter\"\n      round-robin-pool = \"akka.routing.RoundRobinPool\"\n      round-robin-group = \"akka.routing.RoundRobinGroup\"\n      random-pool = \"akka.routing.RandomPool\"\n      random-group = \"akka.routing.RandomGroup\"\n      balancing-pool = \"akka.routing.BalancingPool\"\n      smallest-mailbox-pool = \"akka.routing.SmallestMailboxPool\"\n      broadcast-pool = \"akka.routing.BroadcastPool\"\n      broadcast-group = \"akka.routing.BroadcastGroup\"\n      scatter-gather-pool = \"akka.routing.ScatterGatherFirstCompletedPool\"\n      scatter-gather-group = \"akka.routing.ScatterGatherFirstCompletedGroup\"\n      tail-chopping-pool = \"akka.routing.TailChoppingPool\"\n      tail-chopping-group = \"akka.routing.TailChoppingGroup\"\n      consistent-hashing-pool = \"akka.routing.ConsistentHashingPool\"\n      consistent-hashing-group = \"akka.routing.ConsistentHashingGroup\"\n    }\n    deployment {\n      default {\n        dispatcher = \"\"\n        mailbox = \"\"\n        router = \"from-code\"\n        nr-of-instances = 1\n        within = 5 seconds\n        virtual-nodes-factor = 10\n        tail-chopping-router {\n          interval = 10 milliseconds\n        }\n        routees {\n          paths = []\n        }\n        resizer {\n          enabled = off\n          lower-bound = 1\n          upper-bound = 10\n          pressure-threshold = 1\n          rampup-rate = 0.2\n          backoff-threshold = 0.3\n          backoff-rate = 0.1\n          messages-per-resize = 10\n        }\n        optimal-size-exploring-resizer {\n          enabled = off\n          lower-bound = 1\n          chance-of-ramping-down-when-full = 0.2\n          action-interval = 5s\n          downsize-after-underutilized-for = 72h\n          explore-step-size = 0.1\n          chance-of-exploration = 0.4\n          downsize-ratio = 0.8\n          optimization-range = 16\n          weight-of-latest-metric = 0.5\n        }\n      }\n    }\n\n    default-dispatcher {\n      type = \"Dispatcher\"\n      executor = \"default-executor\"\n      default-executor {\n        fallback = \"fork-join-executor\"\n      }\n      fork-join-executor {\n        parallelism-min = 8\n        parallelism-factor = 3.0\n        parallelism-max = 64\n        task-peeking-mode = \"FIFO\"\n      }\n      thread-pool-executor {\n        keep-alive-time = 60s\n        fixed-pool-size = off\n        core-pool-size-min = 8\n        core-pool-size-factor = 3.0\n        core-pool-size-max = 64\n        max-pool-size-min = 8\n        max-pool-size-factor  = 3.0\n        max-pool-size-max = 64\n        task-queue-size = -1\n        task-queue-type = \"linked\"\n        allow-core-timeout = on\n      }\n      shutdown-timeout = 1s\n      throughput = 5\n      throughput-deadline-time = 0ms\n      attempt-teamwork = on\n      mailbox-requirement = \"\"\n    }\n\n    default-mailbox {\n      mailbox-type = \"akka.dispatch.UnboundedMailbox\"\n      mailbox-capacity = 1000\n      mailbox-push-timeout-time = 10s\n      stash-capacity = -1\n    }\n    mailbox {\n      requirements {\n        \"akka.dispatch.UnboundedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-queue-based\n        \"akka.dispatch.BoundedMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-queue-based\n        \"akka.dispatch.DequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-deque-based\n        \"akka.dispatch.UnboundedDequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-deque-based\n        \"akka.dispatch.BoundedDequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-deque-based\n        \"akka.dispatch.MultipleConsumerSemantics\" =\n          akka.actor.mailbox.unbounded-queue-based\n        \"akka.dispatch.ControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-control-aware-queue-based\n        \"akka.dispatch.UnboundedControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-control-aware-queue-based\n        \"akka.dispatch.BoundedControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-control-aware-queue-based\n        \"akka.event.LoggerMessageQueueSemantics\" =\n          akka.actor.mailbox.logger-queue\n      }\n      unbounded-queue-based {\n        mailbox-type = \"akka.dispatch.UnboundedMailbox\"\n      }\n      bounded-queue-based {\n        mailbox-type = \"akka.dispatch.BoundedMailbox\"\n      }\n      unbounded-deque-based {\n        mailbox-type = \"akka.dispatch.UnboundedDequeBasedMailbox\"\n      }\n      bounded-deque-based {\n        mailbox-type = \"akka.dispatch.BoundedDequeBasedMailbox\"\n      }\n      unbounded-control-aware-queue-based {\n        mailbox-type = \"akka.dispatch.UnboundedControlAwareMailbox\"\n      }\n      bounded-control-aware-queue-based {\n        mailbox-type = \"akka.dispatch.BoundedControlAwareMailbox\"\n      }\n      logger-queue {\n        mailbox-type = \"akka.event.LoggerMailboxType\"\n      }\n    }\n    debug {\n      receive = off\n      autoreceive = off\n      lifecycle = off\n      fsm = off\n      event-stream = off\n      unhandled = off\n      router-misconfiguration = off\n    }\n    serializers {\n      java = \"akka.serialization.JavaSerializer\"\n      bytes = \"akka.serialization.ByteArraySerializer\"\n    }\n    serialization-bindings {\n      \"[B\" = bytes\n      \"java.io.Serializable\" = java\n    }\n    warn-about-java-serializer-usage = on\n    serialization-identifiers {\n      \"akka.serialization.JavaSerializer\" = 1\n      \"akka.serialization.ByteArraySerializer\" = 4  \n    }\n    dsl {\n      inbox-size = 1000\n      default-timeout = 5s\n    }\n  }\n  scheduler {\n    tick-duration = 10ms\n    ticks-per-wheel = 512\n    #implementation = akka.actor.LightArrayRevolverScheduler\n    implementation = akka.actor.EventLoopScheduler\n    shutdown-timeout = 5s\n  }\n}\n";
-  this.config$1 = $m_Lcom_typesafe_config_ConfigFactory$().parseString__T__Lcom_typesafe_config_Config(this.default$1);
   return this
 });
 var $d_Leu_unicredit_AkkaConfig$ = new $TypeData().initClass({
@@ -8458,7 +8455,8 @@ function $m_Leu_unicredit_AkkaConfig$() {
 function $c_Leu_unicredit_PingPong$() {
   $c_O.call(this);
   this.system$1 = null;
-  this.bitmap$0$1 = false
+  this.system2$1 = null;
+  this.bitmap$0$1 = 0
 }
 $c_Leu_unicredit_PingPong$.prototype = new $h_O();
 $c_Leu_unicredit_PingPong$.prototype.constructor = $c_Leu_unicredit_PingPong$;
@@ -8470,25 +8468,30 @@ $h_Leu_unicredit_PingPong$.prototype = $c_Leu_unicredit_PingPong$.prototype;
 $c_Leu_unicredit_PingPong$.prototype.init___ = (function() {
   return this
 });
+$c_Leu_unicredit_PingPong$.prototype.system2__Lakka_actor_ActorSystem = (function() {
+  return (((2 & this.bitmap$0$1) === 0) ? this.system2$lzycompute__p1__Lakka_actor_ActorSystem() : this.system2$1)
+});
+$c_Leu_unicredit_PingPong$.prototype.pingerActor$1__p1__Lakka_actor_ActorRef__Lakka_actor_Props = (function(ponger) {
+  var this$2 = $m_Lakka_actor_Props$();
+  var creator = new $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1().init___Lakka_actor_ActorRef(ponger);
+  return this$2.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator)
+});
 $c_Leu_unicredit_PingPong$.prototype.system__Lakka_actor_ActorSystem = (function() {
-  return ((!this.bitmap$0$1) ? this.system$lzycompute__p1__Lakka_actor_ActorSystem() : this.system$1)
+  return (((1 & this.bitmap$0$1) === 0) ? this.system$lzycompute__p1__Lakka_actor_ActorSystem() : this.system$1)
 });
 $c_Leu_unicredit_PingPong$.prototype.start__Lakka_actor_Cancellable = (function() {
   var this$2 = $m_s_Console$();
   var this$3 = $as_Ljava_io_PrintStream(this$2.outVar$2.v$1);
   this$3.java$lang$JSConsoleBasedPrintStream$$printString__T__V("Starting ping pong!\n");
-  var jsx$1 = this.system__Lakka_actor_ActorSystem();
   var this$5 = $m_Lakka_actor_Props$();
   var creator = new $c_Leu_unicredit_PingPong$$anonfun$1().init___();
-  var ponger = jsx$1.actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(this$5.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator));
-  var jsx$2 = this.system__Lakka_actor_ActorSystem();
-  var this$8 = $m_Lakka_actor_Props$();
-  var creator$1 = new $c_Leu_unicredit_PingPong$$anonfun$2().init___Lakka_actor_ActorRef(ponger);
-  var pinger = jsx$2.actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(this$8.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator$1));
-  var this$13 = this.system__Lakka_actor_ActorSystem().scheduler$3;
-  var this$11 = new $c_s_concurrent_duration_package$DurationInt().init___I(1);
+  var pongerActor = this$5.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator);
+  var ponger = this.system__Lakka_actor_ActorSystem().actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(pongerActor);
+  var pinger = this.system__Lakka_actor_ActorSystem().actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(this.pingerActor$1__p1__Lakka_actor_ActorRef__Lakka_actor_Props(ponger));
+  var this$10 = this.system__Lakka_actor_ActorSystem().scheduler$3;
+  var this$8 = new $c_s_concurrent_duration_package$DurationInt().init___I(1);
   var unit = $m_ju_concurrent_TimeUnit$().SECONDS$1;
-  var delay = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$11.scala$concurrent$duration$DurationInt$$n$1, unit);
+  var delay = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$8.scala$concurrent$duration$DurationInt$$n$1, unit);
   var f = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(pinger$1) {
     return (function() {
       var qual$1 = $as_Lakka_actor_ScalaActorRef(pinger$1);
@@ -8497,26 +8500,40 @@ $c_Leu_unicredit_PingPong$.prototype.start__Lakka_actor_Cancellable = (function(
     })
   })(pinger));
   var executor = this.system__Lakka_actor_ActorSystem().dispatcher$3;
-  $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$13, delay, f, executor);
-  var this$19 = this.system__Lakka_actor_ActorSystem().scheduler$3;
-  var this$15 = new $c_s_concurrent_duration_package$DurationInt().init___I(2);
+  $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$10, delay, f, executor);
+  var ponger2 = this.system__Lakka_actor_ActorSystem().actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(pongerActor);
+  this.system__Lakka_actor_ActorSystem().actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(this.pingerActor$1__p1__Lakka_actor_ActorRef__Lakka_actor_Props(ponger2));
+  var this$14 = this.system2__Lakka_actor_ActorSystem().scheduler$3;
+  var this$12 = new $c_s_concurrent_duration_package$DurationInt().init___I(1);
   var unit$1 = $m_ju_concurrent_TimeUnit$().SECONDS$1;
-  var delay$1 = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$15.scala$concurrent$duration$DurationInt$$n$1, unit$1);
-  var f$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function() {
-    $m_jl_System$();
-    var this$17 = $m_jl_Runtime$();
-    var this$18 = this$17.currentRuntime$1;
-    this$18.halt__I__V(0)
-  }));
+  var delay$1 = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$12.scala$concurrent$duration$DurationInt$$n$1, unit$1);
+  var f$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(pinger$1$1) {
+    return (function() {
+      var qual$2 = $as_Lakka_actor_ScalaActorRef(pinger$1$1);
+      var x$4 = qual$2.$$bang$default$2__O__Lakka_actor_ActorRef("pong");
+      qual$2.$$bang__O__Lakka_actor_ActorRef__V("pong", x$4)
+    })
+  })(pinger));
   var executor$1 = this.system__Lakka_actor_ActorSystem().dispatcher$3;
-  return $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$19, delay$1, f$1, executor$1)
+  return $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$14, delay$1, f$1, executor$1)
 });
 $c_Leu_unicredit_PingPong$.prototype.system$lzycompute__p1__Lakka_actor_ActorSystem = (function() {
-  if ((!this.bitmap$0$1)) {
-    this.system$1 = $m_Lakka_actor_ActorSystem$().apply__T__Lcom_typesafe_config_Config__Lakka_actor_ActorSystem("pingpong", $m_Leu_unicredit_AkkaConfig$().config$1);
-    this.bitmap$0$1 = true
+  if (((1 & this.bitmap$0$1) === 0)) {
+    var jsx$1 = $m_Lakka_actor_ActorSystem$();
+    var this$1 = $m_Leu_unicredit_AkkaConfig$();
+    this.system$1 = jsx$1.apply__T__Lcom_typesafe_config_Config__Lakka_actor_ActorSystem("pingpong", $m_Lcom_typesafe_config_ConfigFactory$().parseString__T__Lcom_typesafe_config_Config(this$1.default$1));
+    this.bitmap$0$1 = (1 | this.bitmap$0$1)
   };
   return this.system$1
+});
+$c_Leu_unicredit_PingPong$.prototype.system2$lzycompute__p1__Lakka_actor_ActorSystem = (function() {
+  if (((2 & this.bitmap$0$1) === 0)) {
+    var jsx$1 = $m_Lakka_actor_ActorSystem$();
+    var this$1 = $m_Leu_unicredit_AkkaConfig$();
+    this.system2$1 = jsx$1.apply__T__Lcom_typesafe_config_Config__Lakka_actor_ActorSystem("pingpong2", $m_Lcom_typesafe_config_ConfigFactory$().parseString__T__Lcom_typesafe_config_Config(this$1.default$1));
+    this.bitmap$0$1 = (2 | this.bitmap$0$1)
+  };
+  return this.system2$1
 });
 var $d_Leu_unicredit_PingPong$ = new $TypeData().initClass({
   Leu_unicredit_PingPong$: 0
@@ -9853,68 +9870,6 @@ var $d_jl_Long$StringRadixInfo = new $TypeData().initClass({
   O: 1
 });
 $c_jl_Long$StringRadixInfo.prototype.$classData = $d_jl_Long$StringRadixInfo;
-/** @constructor */
-function $c_jl_Runtime() {
-  $c_O.call(this)
-}
-$c_jl_Runtime.prototype = new $h_O();
-$c_jl_Runtime.prototype.constructor = $c_jl_Runtime;
-/** @constructor */
-function $h_jl_Runtime() {
-  /*<skip>*/
-}
-$h_jl_Runtime.prototype = $c_jl_Runtime.prototype;
-$c_jl_Runtime.prototype.init___ = (function() {
-  return this
-});
-$c_jl_Runtime.prototype.halt__I__V = (function(status) {
-  var envInfo = $env;
-  var $$this = envInfo.exitFunction;
-  if (($$this === (void 0))) {
-    throw new $c_jl_SecurityException().init___T("Cannot terminate a JavaScript program. Define a JavaScript function `__ScalaJSEnv.exitFunction` to be called on exit.")
-  } else {
-    $$this(status);
-    throw new $c_jl_IllegalStateException().init___T("__ScalaJSEnv.exitFunction returned")
-  }
-});
-var $d_jl_Runtime = new $TypeData().initClass({
-  jl_Runtime: 0
-}, false, "java.lang.Runtime", {
-  jl_Runtime: 1,
-  O: 1
-});
-$c_jl_Runtime.prototype.$classData = $d_jl_Runtime;
-/** @constructor */
-function $c_jl_Runtime$() {
-  $c_O.call(this);
-  this.currentRuntime$1 = null
-}
-$c_jl_Runtime$.prototype = new $h_O();
-$c_jl_Runtime$.prototype.constructor = $c_jl_Runtime$;
-/** @constructor */
-function $h_jl_Runtime$() {
-  /*<skip>*/
-}
-$h_jl_Runtime$.prototype = $c_jl_Runtime$.prototype;
-$c_jl_Runtime$.prototype.init___ = (function() {
-  $n_jl_Runtime$ = this;
-  this.currentRuntime$1 = new $c_jl_Runtime().init___();
-  return this
-});
-var $d_jl_Runtime$ = new $TypeData().initClass({
-  jl_Runtime$: 0
-}, false, "java.lang.Runtime$", {
-  jl_Runtime$: 1,
-  O: 1
-});
-$c_jl_Runtime$.prototype.$classData = $d_jl_Runtime$;
-var $n_jl_Runtime$ = (void 0);
-function $m_jl_Runtime$() {
-  if ((!$n_jl_Runtime$)) {
-    $n_jl_Runtime$ = new $c_jl_Runtime$().init___()
-  };
-  return $n_jl_Runtime$
-}
 /** @constructor */
 function $c_jl_System$() {
   $c_O.call(this);
@@ -17579,23 +17534,23 @@ var $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1 = new $TypeData().initClass({
 });
 $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1;
 /** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2() {
+function $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2() {
   $c_O.call(this);
   this.$$outer$1 = null;
   this.context$1 = null;
   this.self$1 = null
 }
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype = new $h_O();
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype = new $h_O();
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2;
 /** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$2$$anon$2() {
+function $h_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2() {
   /*<skip>*/
 }
-$h_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype = $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.preStart__V = (function() {
+$h_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype = $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.preStart__V = (function() {
   /*<skip>*/
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.init___Leu_unicredit_PingPong$$anonfun$2 = (function($$outer) {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.init___Leu_unicredit_PingPong$$anonfun$pingerActor$1$1 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -17604,59 +17559,59 @@ $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.init___Leu_unicredit_Ping
   $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
   return this
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.postStop__V = (function() {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.postStop__V = (function() {
   /*<skip>*/
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
   return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.receive__s_PartialFunction = (function() {
-  return new $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2().init___Leu_unicredit_PingPong$$anonfun$2$$anon$2(this)
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.receive__s_PartialFunction = (function() {
+  return new $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2().init___Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2(this)
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.context__Lakka_actor_ActorContext = (function() {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.context__Lakka_actor_ActorContext = (function() {
   return this.context$1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
   this.context$1 = x$1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.$$js$exported$prop$self__O = (function() {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.$$js$exported$prop$self__O = (function() {
   return this.self$1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
   $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.postRestart__jl_Throwable__V = (function(reason) {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.postRestart__jl_Throwable__V = (function(reason) {
   /*<skip>*/
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
   this.self$1 = x$1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.$$js$exported$prop$context__O = (function() {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.$$js$exported$prop$context__O = (function() {
   return this.context$1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.self__Lakka_actor_ActorRef = (function() {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.self__Lakka_actor_ActorRef = (function() {
   return this.self$1
 });
-Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype, "context", {
+Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype, "context", {
   "get": (function() {
     return this.$$js$exported$prop$context__O()
   }),
   "enumerable": true
 });
-Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype, "self", {
+Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype, "self", {
   "get": (function() {
     return this.$$js$exported$prop$self__O()
   }),
   "enumerable": true
 });
-var $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$2$$anon$2: 0
-}, false, "eu.unicredit.PingPong$$anonfun$2$$anon$2", {
-  Leu_unicredit_PingPong$$anonfun$2$$anon$2: 1,
+var $d_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2 = new $TypeData().initClass({
+  Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2: 0
+}, false, "eu.unicredit.PingPong$$anonfun$pingerActor$1$1$$anon$2", {
+  Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2: 1,
   O: 1,
   Lakka_actor_Actor: 1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2;
 /** @constructor */
 function $c_Leu_unicredit_shocon_Extractors$() {
   $c_O.call(this);
@@ -33129,35 +33084,35 @@ var $d_Leu_unicredit_PingPong$$anonfun$1 = new $TypeData().initClass({
 });
 $c_Leu_unicredit_PingPong$$anonfun$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$1;
 /** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$2() {
+function $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1() {
   $c_sr_AbstractFunction0.call(this);
   this.ponger$1$f = null
 }
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype = new $h_sr_AbstractFunction0();
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$2;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1.prototype = new $h_sr_AbstractFunction0();
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1;
 /** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$2() {
+function $h_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1() {
   /*<skip>*/
 }
-$h_Leu_unicredit_PingPong$$anonfun$2.prototype = $c_Leu_unicredit_PingPong$$anonfun$2.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype.init___Lakka_actor_ActorRef = (function(ponger$1) {
+$h_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1.prototype = $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1.prototype;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1.prototype.init___Lakka_actor_ActorRef = (function(ponger$1) {
   this.ponger$1$f = ponger$1;
   return this
 });
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype.apply__O = (function() {
-  return new $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2().init___Leu_unicredit_PingPong$$anonfun$2(this)
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1.prototype.apply__O = (function() {
+  return new $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2().init___Leu_unicredit_PingPong$$anonfun$pingerActor$1$1(this)
 });
-var $d_Leu_unicredit_PingPong$$anonfun$2 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$2: 0
-}, false, "eu.unicredit.PingPong$$anonfun$2", {
-  Leu_unicredit_PingPong$$anonfun$2: 1,
+var $d_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1 = new $TypeData().initClass({
+  Leu_unicredit_PingPong$$anonfun$pingerActor$1$1: 0
+}, false, "eu.unicredit.PingPong$$anonfun$pingerActor$1$1", {
+  Leu_unicredit_PingPong$$anonfun$pingerActor$1$1: 1,
   sr_AbstractFunction0: 1,
   O: 1,
   F0: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$2;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1;
 /** @constructor */
 function $c_Leu_unicredit_shocon_ConfigParser$$anonfun$11() {
   $c_sr_AbstractFunction0.call(this)
@@ -34620,32 +34575,6 @@ var $d_jl_NullPointerException = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_jl_NullPointerException.prototype.$classData = $d_jl_NullPointerException;
-/** @constructor */
-function $c_jl_SecurityException() {
-  $c_jl_RuntimeException.call(this)
-}
-$c_jl_SecurityException.prototype = new $h_jl_RuntimeException();
-$c_jl_SecurityException.prototype.constructor = $c_jl_SecurityException;
-/** @constructor */
-function $h_jl_SecurityException() {
-  /*<skip>*/
-}
-$h_jl_SecurityException.prototype = $c_jl_SecurityException.prototype;
-$c_jl_SecurityException.prototype.init___T = (function(s) {
-  $c_jl_Throwable.prototype.init___T__jl_Throwable.call(this, s, null);
-  return this
-});
-var $d_jl_SecurityException = new $TypeData().initClass({
-  jl_SecurityException: 0
-}, false, "java.lang.SecurityException", {
-  jl_SecurityException: 1,
-  jl_RuntimeException: 1,
-  jl_Exception: 1,
-  jl_Throwable: 1,
-  O: 1,
-  Ljava_io_Serializable: 1
-});
-$c_jl_SecurityException.prototype.$classData = $d_jl_SecurityException;
 /** @constructor */
 function $c_jl_UnsupportedOperationException() {
   $c_jl_RuntimeException.call(this)
@@ -40570,18 +40499,18 @@ var $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1 = new $TypeD
 });
 $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1;
 /** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2() {
+function $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2() {
   $c_sr_AbstractPartialFunction.call(this);
   this.$$outer$2 = null
 }
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype = new $h_sr_AbstractPartialFunction();
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2.prototype = new $h_sr_AbstractPartialFunction();
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2;
 /** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2() {
+function $h_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2() {
   /*<skip>*/
 }
-$h_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype = $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.init___Leu_unicredit_PingPong$$anonfun$2$$anon$2 = (function($$outer) {
+$h_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2.prototype = $c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2.prototype;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2.prototype.init___Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -40589,10 +40518,10 @@ $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.init__
   };
   return this
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.isDefinedAt__O__Z = (function(x2) {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2.prototype.isDefinedAt__O__Z = (function(x2) {
   return (x2 === "pong")
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.applyOrElse__O__F1__O = (function(x2, $default) {
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2.prototype.applyOrElse__O__F1__O = (function(x2, $default) {
   if ((x2 === "pong")) {
     var this$2 = $m_s_Console$();
     var this$3 = $as_Ljava_io_PrintStream(this$2.outVar$2.v$1);
@@ -40604,10 +40533,10 @@ $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.applyO
     return $default.apply__O__O(x2)
   }
 });
-var $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2: 0
-}, false, "eu.unicredit.PingPong$$anonfun$2$$anon$2$$anonfun$receive$2", {
-  Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2: 1,
+var $d_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2 = new $TypeData().initClass({
+  Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2: 0
+}, false, "eu.unicredit.PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2", {
+  Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2: 1,
   sr_AbstractPartialFunction: 1,
   O: 1,
   F1: 1,
@@ -40615,7 +40544,7 @@ var $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2 = new $TypeD
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2;
+$c_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$pingerActor$1$1$$anon$2$$anonfun$receive$2;
 /** @constructor */
 function $c_Leu_unicredit_shocon_ConfigParser$NamedFunction() {
   $c_O.call(this);

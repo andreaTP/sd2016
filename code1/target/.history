@@ -12,3 +12,9 @@ demoJS/run
 clean
 demoJS/run
 demoJVM/run
+compile
+run
+demoJS/run
+last demoJS/compile:run
+demoJS/run
+exit
