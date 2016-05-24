@@ -7,14 +7,14 @@
 		revision="0.1-SNAPSHOT"
 		conf="runtime"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool, phantom-js-jetty"
-		date="20160518151831"/>
+		date="20160524112938"/>
 	<dependencies>
 		<module organisation="akka.js" name="akkaactor_sjs0.6_2.11">
-			<revision name="0.1.1-SNAPSHOT" status="integration" pubdate="20160504134158" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="compile, default(compile)" position="2">
+			<revision name="0.1.1-SNAPSHOT" status="integration" pubdate="20160524111048" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="compile, default(compile)" position="2">
 				<metadata-artifact status="no" details="" size="1764" time="0" location="/home/andrea/.ivy2/cache/akka.js/akkaactor_sjs0.6_2.11/ivy-0.1.1-SNAPSHOT.xml" searched="true" origin-is-local="true" origin-location="/home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/ivys/ivy.xml"/>
 				<caller organisation="demo" name="demo_sjs0.6_2.11" conf="compile, runtime" rev="0.1.1-SNAPSHOT" rev-constraint-default="0.1.1-SNAPSHOT" rev-constraint-dynamic="0.1.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="akkaactor_sjs0.6_2.11" type="jar" ext="jar" status="no" details="" size="2967914" time="0" location="/home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/jars/akkaactor_sjs0.6_2.11.jar">
+					<artifact name="akkaactor_sjs0.6_2.11" type="jar" ext="jar" status="no" details="" size="3148234" time="0" location="/home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/jars/akkaactor_sjs0.6_2.11.jar">
 						<origin-location is-local="true" location="/home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/jars/akkaactor_sjs0.6_2.11.jar"/>
 					</artifact>
 				</artifacts>
@@ -22,11 +22,11 @@
 		</module>
 		<module organisation="eu.unicredit" name="shocon_sjs0.6_2.11">
 			<revision name="0.0.2-SNAPSHOT" status="integration" pubdate="20160503184033" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="compile, default(compile)" position="3">
-				<metadata-artifact status="no" details="" size="1856" time="0" location="/home/andrea/.ivy2/cache/eu.unicredit/shocon_sjs0.6_2.11/ivy-0.0.2-SNAPSHOT.xml" searched="true" origin-is-local="true" origin-location="/home/andrea/.ivy2/local/eu.unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/ivys/ivy.xml"/>
+				<metadata-artifact status="no" details="" size="3153" time="0" location="/home/andrea/.ivy2/cache/eu.unicredit/shocon_sjs0.6_2.11/ivy-0.0.2-SNAPSHOT.xml" searched="true" origin-is-local="false" origin-location="https://oss.sonatype.org/content/repositories/snapshots/eu/unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/shocon_sjs0.6_2.11-0.0.2-SNAPSHOT.pom"/>
 				<caller organisation="akka.js" name="akkaactor_sjs0.6_2.11" conf="compile" rev="0.0.2-SNAPSHOT" rev-constraint-default="0.0.2-SNAPSHOT" rev-constraint-dynamic="0.0.2-SNAPSHOT" callerrev="0.1.1-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="shocon_sjs0.6_2.11" type="jar" ext="jar" status="no" details="" size="222148" time="0" location="/home/andrea/.ivy2/local/eu.unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/jars/shocon_sjs0.6_2.11.jar">
-						<origin-location is-local="true" location="/home/andrea/.ivy2/local/eu.unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/jars/shocon_sjs0.6_2.11.jar"/>
+					<artifact name="shocon_sjs0.6_2.11" type="jar" ext="jar" status="no" details="" size="221943" time="0" location="/home/andrea/.ivy2/cache/eu.unicredit/shocon_sjs0.6_2.11/jars/shocon_sjs0.6_2.11-0.0.2-SNAPSHOT.jar">
+						<origin-location is-local="false" location="https://oss.sonatype.org/content/repositories/snapshots/eu/unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/shocon_sjs0.6_2.11-0.0.2-SNAPSHOT.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>

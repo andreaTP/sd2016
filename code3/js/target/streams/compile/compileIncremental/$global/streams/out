@@ -1,15 +1,38 @@
+[0m[[0mdebug[0m] [0m[naha] Invalidating /home/andrea/.ivy2/local/eu.unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/jars/shocon_sjs0.6_2.11.jar: class com.typesafe.config.Config now provided by /home/andrea/.ivy2/cache/eu.unicredit/shocon_sjs0.6_2.11/jars/shocon_sjs0.6_2.11-0.0.2-SNAPSHOT.jar[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating /home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/jars/akkaactor_sjs0.6_2.11.jar: stamp changed from lastModified(1462362119000) to lastModified(1464081064000)[0m
 [0m[[0mdebug[0m] [0m[naha] [0m
 [0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
 [0m[[0mdebug[0m] [0m[naha] 	removed:Set()[0m
 [0m[[0mdebug[0m] [0m[naha] 	added: Set()[0m
-[0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	modified: Set(/home/andrea/workspace/akka.js_talk/code3/js/src/main/scala/AkkaConfig.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
-[0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set(/home/andrea/.ivy2/local/eu.unicredit/shocon_sjs0.6_2.11/0.0.2-SNAPSHOT/jars/shocon_sjs0.6_2.11.jar, /home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/jars/akkaactor_sjs0.6_2.11.jar)[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/home/andrea/workspace/akka.js_talk/code3/js/src/main/scala/AkkaConfig.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] [0m
 [0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
 [0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
-[0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	binary dep: Set(/home/andrea/workspace/akka.js_talk/code3/js/src/main/scala/AkkaConfig.scala, /home/andrea/workspace/akka.js_talk/code3/js/src/main/scala/visualization/ToDo.scala, /home/andrea/workspace/akka.js_talk/code3/js/src/main/scala/visualization/DomActor.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
-[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/andrea/workspace/akka.js_talk/code3/js/src/main/scala/AkkaConfig.scala, /home/andrea/workspace/akka.js_talk/code3/js/src/main/scala/visualization/ToDo.scala, /home/andrea/workspace/akka.js_talk/code3/js/src/main/scala/visualization/DomActor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Recompiling all 4 sources: invalidated sources (3) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 4 Scala sources to /home/andrea/workspace/akka.js_talk/code3/js/target/scala-2.11/classes...[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.11.8[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.11:component from component compiler for Scala 2.11.8[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 637520fd, interfacing (CompilerInterface) with Scala compiler version 2.11.8[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-feature[0m
+[0m[[0mdebug[0m] [0m	-language:_[0m
+[0m[[0mdebug[0m] [0m	-deprecation[0m
+[0m[[0mdebug[0m] [0m	-Xplugin:/home/andrea/.ivy2/local/org.scala-js/scalajs-compiler_2.11.8/0.6.10-SNAPSHOT/jars/scalajs-compiler_2.11.8.jar[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes:/home/andrea/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.8.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/andrea/workspace/akka.js_talk/code3/js/target/scala-2.11/classes:/home/andrea/.ivy2/local/org.scala-js/scalajs-library_2.11/0.6.10-SNAPSHOT/jars/scalajs-library_2.11.jar:/home/andrea/.ivy2/local/akka.js/akkaactor_sjs0.6_2.11/0.1.1-SNAPSHOT/jars/akkaactor_sjs0.6_2.11.jar:/home/andrea/.ivy2/cache/eu.unicredit/shocon_sjs0.6_2.11/jars/shocon_sjs0.6_2.11-0.0.2-SNAPSHOT.jar:/home/andrea/.ivy2/cache/com.lihaoyi/fastparse_sjs0.6_2.11/jars/fastparse_sjs0.6_2.11-0.3.1.jar:/home/andrea/.ivy2/cache/com.lihaoyi/fastparse-utils_sjs0.6_2.11/jars/fastparse-utils_sjs0.6_2.11-0.3.1.jar:/home/andrea/.ivy2/cache/org.scala-js/scalajs-java-time_sjs0.6_2.11/jars/scalajs-java-time_sjs0.6_2.11-0.1.0.jar:/home/andrea/.ivy2/cache/org.scala-js/scalajs-dom_sjs0.6_2.11/jars/scalajs-dom_sjs0.6_2.11-0.9.0.jar:/home/andrea/.ivy2/cache/com.lihaoyi/scalatags_sjs0.6_2.11/jars/scalatags_sjs0.6_2.11-0.5.4.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 9.403164184 s[0m
+[0m[[0mdebug[0m] [0m[naha] New invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Previously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] All newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m

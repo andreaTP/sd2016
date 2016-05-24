@@ -4,7 +4,7 @@
 		module="code5-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20160518140240"
+		publication="20160524112650"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

@@ -7,7 +7,7 @@
 		revision="0.1-SNAPSHOT"
 		conf="phantom-js-jetty"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool, phantom-js-jetty"
-		date="20160516164954"/>
+		date="20160524112656"/>
 	<dependencies>
 		<module organisation="org.eclipse.jetty" name="jetty-websocket">
 			<revision name="8.1.16.v20140903" status="release" pubdate="20140903200000" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="0">

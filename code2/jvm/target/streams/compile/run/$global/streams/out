@@ -8,21 +8,17 @@
 [0m[[0minfo[0m] [0m[0m
 [0m[[0minfo[0m] [0mNEW STATE follower$ -> 0[0m
 [0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mNEW STATE candidate$ -> 0[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mNEW LEADER -> 0[0m
+[0m[[0minfo[0m] [0m<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 SEQUENCE -> 1[0m
+[0m[[0minfo[0m] [0m<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 SEQUENCE -> 2[0m
+[0m[[0minfo[0m] [0m<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 SEQUENCE -> 3[0m
+[0m[[0minfo[0m] [0m<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 [0m
 [0m[[0minfo[0m] [0mNEW STATE candidate$ -> 2[0m
 [0m[[0minfo[0m] [0m[0m
-[0m[[0minfo[0m] [0mNEW STATE candidate$ -> 0[0m
-[0m[[0minfo[0m] [0m[0m
-[0m[[0minfo[0m] [0mNEW LEADER -> 0[0m
-[0m[[0minfo[0m] [0m[0m
-[0m[[0minfo[0m] [0mNEW STATE follower$ -> 2[0m
-[0m[[0minfo[0m] [0m<3 <3 <3 <3 <3 <3 <3 <3 <3 [0m
-[0m[[0minfo[0m] [0mNEW STATE candidate$ -> 1[0m
-[0m[[0minfo[0m] [0m[0m
-[0m[[0minfo[0m] [0mNEW STATE follower$ -> 1[0m
-[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mNEW LEADER -> 2[0m
+[0m[[0minfo[0m] [0m<3 [0m
 [0m[[0minfo[0m] [0mNEW STATE follower$ -> 0[0m
-[0m[[0minfo[0m] [0m[0m
-[0m[[0minfo[0m] [0mNEW STATE candidate$ -> 0[0m
-[0m[[0minfo[0m] [0m[0m
-[0m[[0minfo[0m] [0mNEW LEADER -> 0[0m
-[0m[[0minfo[0m] [0m<3 <3 <3 [0m
+[0m[[0minfo[0m] [0m<3 <3 <3 <3 <3 <3 <3 SEQUENCE -> 4[0m
+[0m[[0minfo[0m] [0m<3 <3 <3 <3 <3 <3 <3 <3 [0m

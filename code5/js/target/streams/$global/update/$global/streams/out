@@ -7,7 +7,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for demo#demo_sjs0.6_2.11;0.1-SNAPSHOT [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies demo#demo_sjs0.6_2.11;0.1-SNAPSHOT->org.scala-lang#scala-library;2.11.8 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.11.8 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@647b83ae[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@6f1f3019[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.8[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.11.8 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m	[2.11.8] org.scala-lang#scala-library;2.11.8[0m
@@ -863,7 +863,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty#jetty-http;8.1.16.v20140903!jetty-http.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty.orbit#javax.servlet;3.0.0.v201112011016!javax.servlet.jar(orbit)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty#jetty-continuation;8.1.16.v20140903!jetty-continuation.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 494ms :: artifacts dl 5ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 275ms :: artifacts dl 6ms[0m
 [0m[[0mdebug[0m] [0m	report for demo#demo_sjs0.6_2.11;0.1-SNAPSHOT compile produced in /home/andrea/workspace/akka.js_talk/code5/js/target/resolution-cache/reports/demo-demo_sjs0.6_2.11-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for demo#demo_sjs0.6_2.11;0.1-SNAPSHOT runtime produced in /home/andrea/workspace/akka.js_talk/code5/js/target/resolution-cache/reports/demo-demo_sjs0.6_2.11-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for demo#demo_sjs0.6_2.11;0.1-SNAPSHOT test produced in /home/andrea/workspace/akka.js_talk/code5/js/target/resolution-cache/reports/demo-demo_sjs0.6_2.11-test.xml[0m
@@ -878,5 +878,5 @@
 [0m[[0mdebug[0m] [0m	report for demo#demo_sjs0.6_2.11;0.1-SNAPSHOT pom produced in /home/andrea/workspace/akka.js_talk/code5/js/target/resolution-cache/reports/demo-demo_sjs0.6_2.11-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for demo#demo_sjs0.6_2.11;0.1-SNAPSHOT scala-tool produced in /home/andrea/workspace/akka.js_talk/code5/js/target/resolution-cache/reports/demo-demo_sjs0.6_2.11-scala-tool.xml[0m
 [0m[[0mdebug[0m] [0m	report for demo#demo_sjs0.6_2.11;0.1-SNAPSHOT phantom-js-jetty produced in /home/andrea/workspace/akka.js_talk/code5/js/target/resolution-cache/reports/demo-demo_sjs0.6_2.11-phantom-js-jetty.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (494ms resolve - 5ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (275ms resolve - 6ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m

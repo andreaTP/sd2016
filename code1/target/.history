@@ -18,3 +18,5 @@ demoJS/run
 last demoJS/compile:run
 demoJS/run
 exit
+demoJVM/run
+demoJS/run

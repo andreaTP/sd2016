@@ -1079,7 +1079,7 @@ function $s_Lakka_actor_Actor$class__aroundReceive__Lakka_actor_Actor__s_Partial
 }
 function $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V($$this, reason, message) {
   var this$1 = $$this.context__Lakka_actor_ActorContext();
-  this$1.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
+  $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer(this$1).children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
     return (function(child$2) {
       var child = $as_Lakka_actor_ActorRef(child$2);
       var this$2 = arg$outer.context__Lakka_actor_ActorContext();
@@ -1399,12 +1399,16 @@ function $isArrayOf_Lakka_actor_SupervisorStrategy$Directive(obj, depth) {
 function $asArrayOf_Lakka_actor_SupervisorStrategy$Directive(obj, depth) {
   return (($isArrayOf_Lakka_actor_SupervisorStrategy$Directive(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lakka.actor.SupervisorStrategy$Directive;", depth))
 }
+function $s_Lakka_actor_dungeon_Children$class__functionRefs__p0__Lakka_actor_ActorCell__sci_Map($$this) {
+  var x = $m_Lakka_util_Unsafe$().instance$1;
+  return $as_sci_Map(x.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().functionRefsOffset$1)))
+}
 function $s_Lakka_actor_dungeon_Children$class__removeChild$1__p0__Lakka_actor_ActorCell__Lakka_actor_ActorRef__Lakka_actor_dungeon_ChildrenContainer($$this, ref) {
   _removeChild: while (true) {
-    var c = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1;
+    var c = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this);
     var n = c.remove__Lakka_actor_ActorRef__Lakka_actor_dungeon_ChildrenContainer(ref);
-    $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1 = n;
-    if (true) {
+    var x = $m_Lakka_util_Unsafe$().instance$1;
+    if ($uZ(x.compareAndSwapObject__O__J__O__O__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1), c, n))) {
       return n
     } else {
       continue _removeChild
@@ -1412,7 +1416,7 @@ function $s_Lakka_actor_dungeon_Children$class__removeChild$1__p0__Lakka_actor_A
   }
 }
 function $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V($$this, actor) {
-  if ($$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.getByRef__Lakka_actor_ActorRef__s_Option(actor).isDefined__Z()) {
+  if ($s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).getByRef__Lakka_actor_ActorRef__s_Option(actor).isDefined__Z()) {
     if (((!$is_Lakka_actor_RepointableRef(actor)) || $as_Lakka_actor_RepointableRef(actor).isStarted__Z())) {
       $s_Lakka_actor_dungeon_Children$class__shallDie$1__p0__Lakka_actor_ActorCell__Lakka_actor_ActorRef__Z($$this, actor)
     }
@@ -1420,7 +1424,7 @@ function $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lak
   $as_Lakka_actor_InternalActorRef(actor).stop__V()
 }
 function $s_Lakka_actor_dungeon_Children$class__suspendChildren__Lakka_actor_ActorCell__sci_Set__V($$this, exceptFor) {
-  $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.stats__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(exceptFor$1) {
+  $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).stats__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(exceptFor$1) {
     return (function(x0$1$2) {
       var x0$1 = $as_Lakka_actor_ChildRestartStats(x0$1$2);
       matchEnd5: {
@@ -1438,7 +1442,7 @@ function $s_Lakka_actor_dungeon_Children$class__suspendChildren__Lakka_actor_Act
 }
 function $s_Lakka_actor_dungeon_Children$class__initChild__Lakka_actor_ActorCell__Lakka_actor_ActorRef__s_Option($$this, ref) {
   _initChild: while (true) {
-    var cc = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1;
+    var cc = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this);
     var rc10 = false;
     var x2 = null;
     var x1 = cc.getByName__T__s_Option(ref.path__Lakka_actor_ActorPath().name__T());
@@ -1456,8 +1460,8 @@ function $s_Lakka_actor_dungeon_Children$class__initChild__Lakka_actor_ActorCell
         var crs = new $c_Lakka_actor_ChildRestartStats().init___Lakka_actor_ActorRef__I__J(ref, 0, $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong());
         var name = ref.path__Lakka_actor_ActorPath().name__T();
         var newChildren = cc.add__T__Lakka_actor_ChildRestartStats__Lakka_actor_dungeon_ChildrenContainer(name, crs);
-        $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1 = newChildren;
-        if (true) {
+        var x = $m_Lakka_util_Unsafe$().instance$1;
+        if ($uZ(x.compareAndSwapObject__O__J__O__O__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1), cc, newChildren))) {
           return new $c_s_Some().init___O(crs)
         } else {
           continue _initChild
@@ -1473,24 +1477,14 @@ function $s_Lakka_actor_dungeon_Children$class__initChild__Lakka_actor_ActorCell
 }
 function $s_Lakka_actor_dungeon_Children$class__reserveChild__Lakka_actor_ActorCell__T__Z($$this, name) {
   _reserveChild: while (true) {
-    var c = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1;
+    var c = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this);
     var newChildren = c.reserve__T__Lakka_actor_dungeon_ChildrenContainer(name);
-    $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1 = newChildren;
-    if (true) {
+    var x = $m_Lakka_util_Unsafe$().instance$1;
+    if ($uZ(x.compareAndSwapObject__O__J__O__O__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1), c, newChildren))) {
       return true
     } else {
       continue _reserveChild
     }
-  }
-}
-function $s_Lakka_actor_dungeon_Children$class__stopFunctionRefs__Lakka_actor_ActorCell__V($$this) {
-  var x = $m_Lakka_util_Unsafe$().instance$1;
-  var refs = $as_sci_Map(x.getAndSetObject__O__J__O__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().functionRefsOffset$1, $m_sci_Map$EmptyMap$()));
-  var this$2 = refs.valuesIterator__sc_Iterator();
-  while (this$2.hasNext__Z()) {
-    var arg1 = this$2.next__O();
-    var x$1 = $as_Lakka_actor_FunctionRef(arg1);
-    x$1.stop__V()
   }
 }
 function $s_Lakka_actor_dungeon_Children$class__checkName__p0__Lakka_actor_ActorCell__T__T($$this, name) {
@@ -1504,8 +1498,18 @@ function $s_Lakka_actor_dungeon_Children$class__checkName__p0__Lakka_actor_Actor
     return name
   }
 }
+function $s_Lakka_actor_dungeon_Children$class__stopFunctionRefs__Lakka_actor_ActorCell__V($$this) {
+  var x = $m_Lakka_util_Unsafe$().instance$1;
+  var refs = $as_sci_Map(x.getAndSetObject__O__J__O__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().functionRefsOffset$1), $m_sci_Map$EmptyMap$()));
+  var this$2 = refs.valuesIterator__sc_Iterator();
+  while (this$2.hasNext__Z()) {
+    var arg1 = this$2.next__O();
+    var x$1 = $as_Lakka_actor_FunctionRef(arg1);
+    x$1.stop__V()
+  }
+}
 function $s_Lakka_actor_dungeon_Children$class__waitingForChildrenOrNull__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer$SuspendReason($$this) {
-  var x1 = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1;
+  var x1 = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this);
   if ($is_Lakka_actor_dungeon_ChildrenContainer$TerminatingChildrenContainer(x1)) {
     var x2 = $as_Lakka_actor_dungeon_ChildrenContainer$TerminatingChildrenContainer(x1);
     var w = x2.reason$1;
@@ -1517,7 +1521,7 @@ function $s_Lakka_actor_dungeon_Children$class__waitingForChildrenOrNull__Lakka_
 }
 function $s_Lakka_actor_dungeon_Children$class__getSingleChild__Lakka_actor_ActorCell__T__Lakka_actor_InternalActorRef($$this, name) {
   if (($m_sjsr_RuntimeString$().indexOf__T__I__I(name, 35) === (-1))) {
-    var x1 = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.getByName__T__s_Option(name);
+    var x1 = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).getByName__T__s_Option(name);
     if ($is_s_Some(x1)) {
       var x2 = $as_s_Some(x1);
       var crs = $as_Lakka_actor_ChildStats(x2.x$2);
@@ -1526,7 +1530,7 @@ function $s_Lakka_actor_dungeon_Children$class__getSingleChild__Lakka_actor_Acto
         return $as_Lakka_actor_InternalActorRef(x3.child$1)
       }
     };
-    return $m_Lakka_actor_Nobody$()
+    return $s_Lakka_actor_dungeon_Children$class__getFunctionRefOrNobody__Lakka_actor_ActorCell__T__I__Lakka_actor_InternalActorRef($$this, name, 0)
   } else {
     var x1$2 = $m_Lakka_actor_ActorCell$().splitNameAndUid__T__T2(name);
     if ((x1$2 !== null)) {
@@ -1541,7 +1545,7 @@ function $s_Lakka_actor_dungeon_Children$class__getSingleChild__Lakka_actor_Acto
     };
     var childName$2 = $as_T(x$2_$_$$und1$f);
     var uid$2 = $uI(x$2_$_$$und2$f);
-    var x1$3 = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.getByName__T__s_Option(childName$2);
+    var x1$3 = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).getByName__T__s_Option(childName$2);
     if ($is_s_Some(x1$3)) {
       var x2$2 = $as_s_Some(x1$3);
       var crs$2 = $as_Lakka_actor_ChildStats(x2$2.x$2);
@@ -1552,11 +1556,15 @@ function $s_Lakka_actor_dungeon_Children$class__getSingleChild__Lakka_actor_Acto
         }
       }
     };
-    return $m_Lakka_actor_Nobody$()
+    return $s_Lakka_actor_dungeon_Children$class__getFunctionRefOrNobody__Lakka_actor_ActorCell__T__I__Lakka_actor_InternalActorRef($$this, childName$2, uid$2)
   }
 }
+function $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this) {
+  var x = $m_Lakka_util_Unsafe$().instance$1;
+  return $as_Lakka_actor_dungeon_ChildrenContainer(x.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1)))
+}
 function $s_Lakka_actor_dungeon_Children$class__resumeChildren__Lakka_actor_ActorCell__jl_Throwable__Lakka_actor_ActorRef__V($$this, causedByFailure, perp) {
-  $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.stats__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(causedByFailure$1, perp$1) {
+  $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).stats__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(causedByFailure$1, perp$1) {
     return (function(x0$2$2) {
       var x0$2 = $as_Lakka_actor_ChildRestartStats(x0$2$2);
       matchEnd6: {
@@ -1576,16 +1584,14 @@ function $s_Lakka_actor_dungeon_Children$class__resumeChildren__Lakka_actor_Acto
 function $s_Lakka_actor_dungeon_Children$class__$$init$__Lakka_actor_ActorCell__V($$this) {
   $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1 = $m_Lakka_actor_dungeon_ChildrenContainer$EmptyChildrenContainer$();
   $$this.akka$actor$dungeon$Children$$$undfunctionRefsDoNotCallMeDirectly$1 = $m_sci_Map$EmptyMap$();
-  var x = $m_Lakka_util_Unsafe$().instance$1;
-  x.compareAndSwapObject__O__J__O__O__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().functionRefsOffset$1, null, $m_sci_Map$EmptyMap$());
   $$this.akka$actor$dungeon$Children$$$undnextNameDoNotCallMeDirectly$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong()
 }
 function $s_Lakka_actor_dungeon_Children$class__shallDie$1__p0__Lakka_actor_ActorCell__Lakka_actor_ActorRef__Z($$this, ref) {
   _shallDie: while (true) {
-    var c = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1;
+    var c = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this);
     var newChildren = c.shallDie__Lakka_actor_ActorRef__Lakka_actor_dungeon_ChildrenContainer(ref);
-    $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1 = newChildren;
-    if (true) {
+    var x = $m_Lakka_util_Unsafe$().instance$1;
+    if ($uZ(x.compareAndSwapObject__O__J__O__O__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1), c, newChildren))) {
       return true
     } else {
       continue _shallDie
@@ -1593,7 +1599,7 @@ function $s_Lakka_actor_dungeon_Children$class__shallDie$1__p0__Lakka_actor_Acto
   }
 }
 function $s_Lakka_actor_dungeon_Children$class__removeChildAndGetStateChange__Lakka_actor_ActorCell__Lakka_actor_ActorRef__s_Option($$this, child) {
-  var x1 = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1;
+  var x1 = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this);
   if ($is_Lakka_actor_dungeon_ChildrenContainer$TerminatingChildrenContainer(x1)) {
     var x2 = $as_Lakka_actor_dungeon_ChildrenContainer$TerminatingChildrenContainer(x1);
     var reason = x2.reason$1;
@@ -1606,10 +1612,10 @@ function $s_Lakka_actor_dungeon_Children$class__removeChildAndGetStateChange__La
 }
 function $s_Lakka_actor_dungeon_Children$class__unreserveChild__Lakka_actor_ActorCell__T__Z($$this, name) {
   _unreserveChild: while (true) {
-    var c = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1;
+    var c = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this);
     var newChildren = c.unreserve__T__Lakka_actor_dungeon_ChildrenContainer(name);
-    $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1 = newChildren;
-    if (true) {
+    var x = $m_Lakka_util_Unsafe$().instance$1;
+    if ($uZ(x.compareAndSwapObject__O__J__O__O__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1), c, newChildren))) {
       return true
     } else {
       continue _unreserveChild
@@ -1619,19 +1625,34 @@ function $s_Lakka_actor_dungeon_Children$class__unreserveChild__Lakka_actor_Acto
 function $s_Lakka_actor_dungeon_Children$class__child__Lakka_actor_ActorCell__T__s_Option($$this, name) {
   return $m_s_Option$().apply__O__s_Option($s_Lakka_actor_dungeon_Children$class__getChild__Lakka_actor_ActorCell__T__Lakka_actor_ActorRef($$this, name))
 }
+function $s_Lakka_actor_dungeon_Children$class__getFunctionRefOrNobody__Lakka_actor_ActorCell__T__I__Lakka_actor_InternalActorRef($$this, name, uid) {
+  var this$1 = $s_Lakka_actor_dungeon_Children$class__functionRefs__p0__Lakka_actor_ActorCell__sci_Map($$this);
+  var $default = $m_Lakka_actor_dungeon_Children$().GetNobody$1;
+  var x1 = $as_Lakka_actor_MinimalActorRef($s_sc_MapLike$class__getOrElse__sc_MapLike__O__F0__O(this$1, name, $default));
+  if ($is_Lakka_actor_FunctionRef(x1)) {
+    var x2 = $as_Lakka_actor_FunctionRef(x1);
+    return (((uid === 0) || (x2.path__Lakka_actor_ActorPath().uid__I() === uid)) ? x2 : $m_Lakka_actor_Nobody$())
+  } else {
+    return $as_Lakka_actor_InternalActorRef(x1)
+  }
+}
 function $s_Lakka_actor_dungeon_Children$class__attachChild__Lakka_actor_ActorCell__Lakka_actor_Props__T__Z__Lakka_actor_ActorRef($$this, props, name, systemService) {
   return $s_Lakka_actor_dungeon_Children$class__makeChild__p0__Lakka_actor_ActorCell__Lakka_actor_ActorCell__Lakka_actor_Props__T__Z__Z__Lakka_actor_ActorRef($$this, $$this, props, $s_Lakka_actor_dungeon_Children$class__checkName__p0__Lakka_actor_ActorCell__T__T($$this, name), true, systemService)
 }
+function $s_Lakka_actor_dungeon_Children$class__setTerminated__Lakka_actor_ActorCell__V($$this) {
+  var x = $m_Lakka_util_Unsafe$().instance$1;
+  x.putObjectVolatile__O__I__O__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1, $m_Lakka_actor_dungeon_ChildrenContainer$TerminatedChildrenContainer$())
+}
 function $s_Lakka_actor_dungeon_Children$class__setChildrenTerminationReason__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer$SuspendReason__Z($$this, reason) {
   _setChildrenTerminationReason: while (true) {
-    var x1 = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1;
+    var x1 = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this);
     if ($is_Lakka_actor_dungeon_ChildrenContainer$TerminatingChildrenContainer(x1)) {
       var x2 = $as_Lakka_actor_dungeon_ChildrenContainer$TerminatingChildrenContainer(x1);
       var x$4 = x2.c$1;
       var x$5 = x2.toDie$1;
       var newChildren = new $c_Lakka_actor_dungeon_ChildrenContainer$TerminatingChildrenContainer().init___sci_TreeMap__sci_Set__Lakka_actor_dungeon_ChildrenContainer$SuspendReason(x$4, x$5, reason);
-      $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1 = newChildren;
-      if (true) {
+      var x = $m_Lakka_util_Unsafe$().instance$1;
+      if ($uZ(x.compareAndSwapObject__O__J__O__O__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1), x2, newChildren))) {
         return true
       } else {
         continue _setChildrenTerminationReason
@@ -1642,40 +1663,86 @@ function $s_Lakka_actor_dungeon_Children$class__setChildrenTerminationReason__La
   }
 }
 function $s_Lakka_actor_dungeon_Children$class__makeChild__p0__Lakka_actor_ActorCell__Lakka_actor_ActorCell__Lakka_actor_Props__T__Z__Z__Lakka_actor_ActorRef($$this, cell, props, name, async, systemService) {
-  if (cell.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.isTerminating__Z()) {
-    throw new $c_jl_IllegalStateException().init___T("cannot create children while terminating or terminated")
+  if ((cell.system$1.settings$3.SerializeAllCreators$1 && (!systemService))) {
+    var x = props.deploy$1.scope$1;
+    var x$2 = $m_Lakka_actor_LocalScope$();
+    var jsx$1 = (!((x !== null) && (x === x$2)))
   } else {
-    $s_Lakka_actor_dungeon_Children$class__reserveChild__Lakka_actor_ActorCell__T__Z($$this, name);
+    var jsx$1 = false
+  };
+  if (jsx$1) {
     try {
-      var childPath = new $c_Lakka_actor_ChildActorPath().init___Lakka_actor_ActorPath__T__I(cell.self$1.path__Lakka_actor_ActorPath(), name, $m_Lakka_actor_ActorCell$().newUid__I());
-      var actor = cell.system$1.provider$3.actorOf__Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath__Z__s_Option__Z__Z__Lakka_actor_InternalActorRef(cell.system$1, props, cell.self$1, childPath, systemService, $m_s_None$(), true, async)
+      var this$1 = $m_Lakka_serialization_SerializationExtension$();
+      var system = cell.system$1;
+      var ser = $as_Lakka_serialization_Serialization(system.registerExtension__Lakka_actor_ExtensionId__Lakka_actor_Extension(this$1));
+      props.args$1.forall__F1__Z(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ser$1) {
+        return (function(arg$2) {
+          if (((arg$2 === null) || $is_Lakka_actor_NoSerializationVerificationNeeded(arg$2))) {
+            return true
+          } else {
+            var serializer = ser$1.findSerializerFor__O__Lakka_serialization_Serializer(arg$2);
+            var bytes = serializer.nullAsBytes$1;
+            if ($is_Lakka_serialization_SerializerWithStringManifest(serializer)) {
+              var x2 = $as_Lakka_serialization_SerializerWithStringManifest(serializer);
+              var manifest = x2.manifest__O__T(arg$2);
+              return (ser$1.deserialize__AB__I__T__s_util_Try(bytes, 0, manifest).get__O() !== null)
+            } else {
+              return (ser$1.deserialize__AB__jl_Class__s_util_Try(bytes, $objectGetClass(arg$2)).get__O() !== null)
+            }
+          }
+        })
+      })(ser)))
     } catch (e) {
-      var actor;
       var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
       if ((e$2 !== null)) {
-        matchEnd11: {
-          if ($is_jl_InterruptedException(e$2)) {
-            var x7 = $as_jl_InterruptedException(e$2);
-            $s_Lakka_actor_dungeon_Children$class__unreserveChild__Lakka_actor_ActorCell__T__Z($$this, name);
-            throw x7
-          };
-          var o15 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
-          if ((!o15.isEmpty__Z())) {
-            var e$3 = $as_jl_Throwable(o15.get__O());
-            $s_Lakka_actor_dungeon_Children$class__unreserveChild__Lakka_actor_ActorCell__T__Z($$this, name);
-            throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$3)
+        matchEnd8: {
+          var o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
+          if ((!o11.isEmpty__Z())) {
+            var e$3 = $as_jl_Throwable(o11.get__O());
+            throw new $c_jl_IllegalArgumentException().init___T__jl_Throwable(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["pre-creation serialization check failed at [", "/", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([cell.self$1.path__Lakka_actor_ActorPath(), name])), e$3)
           };
           throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
         }
       } else {
         throw e
       }
+    }
+  };
+  if ($s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer(cell).isTerminating__Z()) {
+    throw new $c_jl_IllegalStateException().init___T("cannot create children while terminating or terminated")
+  } else {
+    $s_Lakka_actor_dungeon_Children$class__reserveChild__Lakka_actor_ActorCell__T__Z($$this, name);
+    try {
+      var childPath = new $c_Lakka_actor_ChildActorPath().init___Lakka_actor_ActorPath__T__I(cell.self$1.path__Lakka_actor_ActorPath(), name, $m_Lakka_actor_ActorCell$().newUid__I());
+      var actor = cell.system$1.provider$3.actorOf__Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath__Z__s_Option__Z__Z__Lakka_actor_InternalActorRef(cell.system$1, props, cell.self$1, childPath, systemService, $m_s_None$(), true, async)
+    } catch (e$4) {
+      var actor;
+      var e$5 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e$4);
+      if ((e$5 !== null)) {
+        matchEnd11: {
+          if ($is_jl_InterruptedException(e$5)) {
+            var x7 = $as_jl_InterruptedException(e$5);
+            $s_Lakka_actor_dungeon_Children$class__unreserveChild__Lakka_actor_ActorCell__T__Z($$this, name);
+            $m_jl_Thread$().interrupted__Z();
+            throw x7
+          };
+          var o15 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$5);
+          if ((!o15.isEmpty__Z())) {
+            var e$6 = $as_jl_Throwable(o15.get__O());
+            $s_Lakka_actor_dungeon_Children$class__unreserveChild__Lakka_actor_ActorCell__T__Z($$this, name);
+            throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$6)
+          };
+          throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$5)
+        }
+      } else {
+        throw e$4
+      }
     };
-    var x = $m_Lakka_util_Unsafe$().instance$1;
-    if (($as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)) !== null)) {
-      var x$1 = $m_Lakka_util_Unsafe$().instance$1;
-      var this$2 = $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
-      var end = ((this$2.$$undstatusDoNotCallMeDirectly$1 / 4) | 0);
+    var x$1 = $m_Lakka_util_Unsafe$().instance$1;
+    if (($as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1))) !== null)) {
+      var x$3 = $m_Lakka_util_Unsafe$().instance$1;
+      var this$3 = $as_Lakka_dispatch_Mailbox(x$3.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
+      var end = ((this$3.$$undstatusDoNotCallMeDirectly$1 / 4) | 0);
       var isEmpty$4 = (end < 1);
       var numRangeElements$4 = (isEmpty$4 ? 0 : end);
       var lastElement$4 = (isEmpty$4 ? 0 : end);
@@ -1698,7 +1765,7 @@ function $s_Lakka_actor_dungeon_Children$class__makeChild__p0__Lakka_actor_Actor
   }
 }
 function $s_Lakka_actor_dungeon_Children$class__getChild__Lakka_actor_ActorCell__T__Lakka_actor_ActorRef($$this, name) {
-  var x1 = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.getByName__T__s_Option(name);
+  var x1 = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).getByName__T__s_Option(name);
   if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
     var s = $as_Lakka_actor_ChildStats(x2.x$2);
@@ -1708,6 +1775,18 @@ function $s_Lakka_actor_dungeon_Children$class__getChild__Lakka_actor_ActorCell_
     }
   };
   return null
+}
+function $is_Lakka_actor_dungeon_ChildrenContainer(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_actor_dungeon_ChildrenContainer)))
+}
+function $as_Lakka_actor_dungeon_ChildrenContainer(obj) {
+  return (($is_Lakka_actor_dungeon_ChildrenContainer(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "akka.actor.dungeon.ChildrenContainer"))
+}
+function $isArrayOf_Lakka_actor_dungeon_ChildrenContainer(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lakka_actor_dungeon_ChildrenContainer)))
+}
+function $asArrayOf_Lakka_actor_dungeon_ChildrenContainer(obj, depth) {
+  return (($isArrayOf_Lakka_actor_dungeon_ChildrenContainer(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lakka.actor.dungeon.ChildrenContainer;", depth))
 }
 function $s_Lakka_actor_dungeon_ChildrenContainer$EmptyChildrenContainer$class__reserve__Lakka_actor_dungeon_ChildrenContainer$EmptyChildrenContainer__T__Lakka_actor_dungeon_ChildrenContainer($$this, name) {
   return new $c_Lakka_actor_dungeon_ChildrenContainer$NormalChildrenContainer().init___sci_TreeMap($$this.emptyStats__sci_TreeMap().updated__O__O__sci_TreeMap(name, $m_Lakka_actor_ChildNameReserved$()))
@@ -1889,7 +1968,7 @@ function $s_Lakka_actor_dungeon_DeathWatch$class__addressTerminated__Lakka_actor
   new $c_sc_TraversableLike$WithFilter().init___sc_TraversableLike__F1(this$1, p).foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
     return (function(a$2$1) {
       var a$1 = $as_Lakka_actor_ActorRef(a$2$1);
-      arg$outer.self$1.sendSystemMessage__Lakka_dispatch_sysmsg_SystemMessage__V(new $c_Lakka_dispatch_sysmsg_DeathWatchNotification().init___Lakka_actor_ActorRef__Z__Z(a$1, arg$outer.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.getByRef__Lakka_actor_ActorRef__s_Option(a$1).isDefined__Z(), true))
+      arg$outer.self$1.sendSystemMessage__Lakka_dispatch_sysmsg_SystemMessage__V(new $c_Lakka_dispatch_sysmsg_DeathWatchNotification().init___Lakka_actor_ActorRef__Z__Z(a$1, $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer(arg$outer).getByRef__Lakka_actor_ActorRef__s_Option(a$1).isDefined__Z(), true))
     })
   })($$this)))
 }
@@ -2047,14 +2126,14 @@ function $s_Lakka_actor_dungeon_DeathWatch$class__watchedActorTerminated__Lakka_
     } else {
       f()
     };
-    if ((!$$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.isTerminating__Z())) {
+    if ((!$s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).isTerminating__Z())) {
       var this$2 = $$this.self$1;
       var msg = new $c_Lakka_actor_Terminated().init___Lakka_actor_ActorRef__Z__Z(actor, existenceConfirmed, addressTerminated);
       this$2.$$bang__O__Lakka_actor_ActorRef__V(msg, actor);
       $s_Lakka_actor_dungeon_DeathWatch$class__terminatedQueuedFor__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V($$this, actor)
     }
   };
-  if ($$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.getByRef__Lakka_actor_ActorRef__s_Option(actor).isDefined__Z()) {
+  if ($s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).getByRef__Lakka_actor_ActorRef__s_Option(actor).isDefined__Z()) {
     $s_Lakka_actor_dungeon_FaultHandling$class__handleChildTerminated__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V($$this, actor)
   }
 }
@@ -2207,12 +2286,12 @@ function $s_Lakka_actor_dungeon_Dispatch$class__initWithFailure__Lakka_actor_Act
   var mbox = new $c_Lakka_dispatch_Dispatcher$$anon$1().init___Lakka_dispatch_Dispatcher__Lakka_actor_Cell__Lakka_dispatch_MailboxType(this$1, $$this, mailboxType);
   $s_Lakka_actor_dungeon_Dispatch$class__swapMailbox__Lakka_actor_ActorCell__Lakka_dispatch_Mailbox__Lakka_dispatch_Mailbox($$this, mbox);
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var this$2 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var this$2 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   this$2.actor$1 = $$this;
   var actor = $$this.self$1;
   var createMessage = new $c_Lakka_dispatch_sysmsg_Create().init___s_Option(new $c_s_Some().init___O(new $c_Lakka_actor_ActorInitializationException().init___Lakka_actor_ActorRef__T__jl_Throwable(actor, "failure while creating ActorCell", failure)));
   var x$1 = $m_Lakka_util_Unsafe$().instance$1;
-  $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)).systemEnqueue__Lakka_actor_ActorRef__Lakka_dispatch_sysmsg_SystemMessage__V($$this.self$1, createMessage);
+  $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1))).systemEnqueue__Lakka_actor_ActorRef__Lakka_dispatch_sysmsg_SystemMessage__V($$this.self$1, createMessage);
   return $$this
 }
 function $s_Lakka_actor_dungeon_Dispatch$class__sendSystemMessage__Lakka_actor_ActorCell__Lakka_dispatch_sysmsg_SystemMessage__V($$this, message) {
@@ -2236,9 +2315,9 @@ function $s_Lakka_actor_dungeon_Dispatch$class__sendSystemMessage__Lakka_actor_A
 function $s_Lakka_actor_dungeon_Dispatch$class__swapMailbox__Lakka_actor_ActorCell__Lakka_dispatch_Mailbox__Lakka_dispatch_Mailbox($$this, newMailbox) {
   _swapMailbox: while (true) {
     var x = $m_Lakka_util_Unsafe$().instance$1;
-    var oldMailbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+    var oldMailbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
     var x$2 = $m_Lakka_util_Unsafe$().instance$1;
-    if ((!$uZ(x$2.compareAndSwapObject__O__J__O__O__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1, oldMailbox, newMailbox)))) {
+    if ((!$uZ(x$2.compareAndSwapObject__O__J__O__O__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1), oldMailbox, newMailbox)))) {
       continue _swapMailbox
     } else {
       return oldMailbox
@@ -2253,10 +2332,10 @@ function $s_Lakka_actor_dungeon_Dispatch$class__init__Lakka_actor_ActorCell__Z__
   var createMessage = new $c_Lakka_dispatch_sysmsg_Create().init___s_Option($m_s_None$());
   $s_Lakka_actor_dungeon_Dispatch$class__swapMailbox__Lakka_actor_ActorCell__Lakka_dispatch_Mailbox__Lakka_dispatch_Mailbox($$this, mbox);
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var this$3 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var this$3 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   this$3.actor$1 = $$this;
   var x$1 = $m_Lakka_util_Unsafe$().instance$1;
-  $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)).systemEnqueue__Lakka_actor_ActorRef__Lakka_dispatch_sysmsg_SystemMessage__V($$this.self$1, createMessage);
+  $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1))).systemEnqueue__Lakka_actor_ActorRef__Lakka_dispatch_sysmsg_SystemMessage__V($$this.self$1, createMessage);
   if (sendSupervise) {
     $$this.parent$1.sendSystemMessage__Lakka_dispatch_sysmsg_SystemMessage__V(new $c_Lakka_dispatch_sysmsg_Supervise().init___Lakka_actor_ActorRef__Z($$this.self$1, false))
   };
@@ -2304,14 +2383,14 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__terminate__Lakka_actor_Acto
   $s_Lakka_actor_dungeon_ReceiveTimeout$class__cancelReceiveTimeout__Lakka_actor_ActorCell__V($$this);
   var actor = $$this.$$undactor$1;
   $s_Lakka_actor_dungeon_DeathWatch$class__unwatchWatchedActors__Lakka_actor_ActorCell__Lakka_actor_Actor__V($$this, actor);
-  $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
+  $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
     return (function(actor$2) {
       var actor$1 = $as_Lakka_actor_ActorRef(actor$2);
       $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(arg$outer, actor$1)
     })
   })($$this)));
   if ($$this.system$1.aborting$3) {
-    $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer$1) {
+    $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer$1) {
       return (function(x0$1$2) {
         var x0$1 = $as_Lakka_actor_ActorRef(x0$1$2);
         matchEnd4: {
@@ -2326,7 +2405,7 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__terminate__Lakka_actor_Acto
       })
     })($$this)))
   };
-  var wasTerminating = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.isTerminating__Z();
+  var wasTerminating = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).isTerminating__Z();
   var reason = $m_Lakka_actor_dungeon_ChildrenContainer$Termination$();
   if ($s_Lakka_actor_dungeon_Children$class__setChildrenTerminationReason__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer$SuspendReason__Z($$this, reason)) {
     if ((!wasTerminating)) {
@@ -2338,7 +2417,7 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__terminate__Lakka_actor_Acto
       }
     }
   } else {
-    $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1 = $m_Lakka_actor_dungeon_ChildrenContainer$TerminatedChildrenContainer$();
+    $s_Lakka_actor_dungeon_Children$class__setTerminated__Lakka_actor_ActorCell__V($$this);
     $s_Lakka_actor_dungeon_FaultHandling$class__akka$actor$dungeon$FaultHandling$$finishTerminate__Lakka_actor_ActorCell__V($$this)
   }
 }
@@ -2418,7 +2497,7 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__faultRecreate__Lakka_actor_
     var event = new $c_Lakka_event_Logging$Error().init___jl_Throwable__T__jl_Class__O($m_Lakka_event_Logging$Error$NoCause$(), logSource, logClass, message);
     $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$2, event);
     $s_Lakka_actor_dungeon_FaultHandling$class__faultCreate__Lakka_actor_ActorCell__V($$this)
-  } else if ($$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.isNormal__Z()) {
+  } else if ($s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).isNormal__Z()) {
     var failedActor = $$this.$$undactor$1;
     if ($$this.system$1.settings$3.DebugLifecycle$1) {
       $$this.publish__Lakka_event_Logging$LogEvent__V(new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O($$this.self$1.path__Lakka_actor_ActorPath().toString__T(), $$this.clazz__O__jl_Class(failedActor), "restarting"))
@@ -2456,11 +2535,11 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__faultRecreate__Lakka_actor_
       }
     };
     var x = $m_Lakka_util_Unsafe$().instance$1;
-    var this$3 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+    var this$3 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
     var assertion = ((this$3.$$undstatusDoNotCallMeDirectly$1 & $m_Lakka_dispatch_Mailbox$().suspendMask$1) !== 0);
     if ((!assertion)) {
       var x$1 = $m_Lakka_util_Unsafe$().instance$1;
-      var this$5 = $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+      var this$5 = $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
       throw new $c_jl_AssertionError().init___O((("assertion failed: " + "mailbox must be suspended during restart, status=") + this$5.$$undstatusDoNotCallMeDirectly$1))
     };
     var reason = new $c_Lakka_actor_dungeon_ChildrenContainer$Recreation().init___jl_Throwable(cause);
@@ -2476,7 +2555,7 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__handleChildTerminated__Lakk
   if (($$this.$$undactor$1 !== null)) {
     try {
       $$this.$$undactor$1.supervisorStrategy__Lakka_actor_SupervisorStrategy();
-      $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.children__sci_Iterable()
+      $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).children__sci_Iterable()
     } catch (e) {
       var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
       if ((e$2 !== null)) {
@@ -2597,14 +2676,14 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__handleFailure__Lakka_actor_
   var rc6 = false;
   var x2 = null;
   var ref = f.child$1;
-  var x1 = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.getByRef__Lakka_actor_ActorRef__s_Option(ref);
+  var x1 = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).getByRef__Lakka_actor_ActorRef__s_Option(ref);
   matchEnd7: {
     if ($is_s_Some(x1)) {
       rc6 = true;
       x2 = $as_s_Some(x1);
       var stats = $as_Lakka_actor_ChildRestartStats(x2.x$2);
       if ((stats.uid__I() === f.uid$1)) {
-        if ((!$$this.$$undactor$1.supervisorStrategy__Lakka_actor_SupervisorStrategy().handleFailure__Lakka_actor_ActorContext__Lakka_actor_ActorRef__jl_Throwable__Lakka_actor_ChildRestartStats__sc_Iterable__Z($$this, f.child$1, f.cause$1, stats, $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.stats__sci_Iterable()))) {
+        if ((!$$this.$$undactor$1.supervisorStrategy__Lakka_actor_SupervisorStrategy().handleFailure__Lakka_actor_ActorContext__Lakka_actor_ActorRef__jl_Throwable__Lakka_actor_ChildRestartStats__sc_Iterable__Z($$this, f.child$1, f.cause$1, stats, $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).stats__sci_Iterable()))) {
           throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(f.cause$1)
         } else {
           break matchEnd7
@@ -2682,11 +2761,11 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__akka$actor$dungeon$FaultHan
 }
 function $s_Lakka_actor_dungeon_FaultHandling$class__faultCreate__Lakka_actor_ActorCell__V($$this) {
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var this$1 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var this$1 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   var assertion = ((this$1.$$undstatusDoNotCallMeDirectly$1 & $m_Lakka_dispatch_Mailbox$().suspendMask$1) !== 0);
   if ((!assertion)) {
     var x$1 = $m_Lakka_util_Unsafe$().instance$1;
-    var this$3 = $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+    var this$3 = $as_Lakka_dispatch_Mailbox(x$1.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
     throw new $c_jl_AssertionError().init___O((("assertion failed: " + "mailbox must be suspended during failed creation, status=") + this$3.$$undstatusDoNotCallMeDirectly$1))
   };
   var jsx$1 = $m_s_Predef$();
@@ -2696,7 +2775,7 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__faultCreate__Lakka_actor_Ac
   var timeout = $m_s_concurrent_duration_Duration$().Undefined$1;
   $s_Lakka_actor_dungeon_ReceiveTimeout$class__setReceiveTimeout__Lakka_actor_ActorCell__s_concurrent_duration_Duration__V($$this, timeout);
   $s_Lakka_actor_dungeon_ReceiveTimeout$class__cancelReceiveTimeout__Lakka_actor_ActorCell__V($$this);
-  $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
+  $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
     return (function(actor$2) {
       var actor = $as_Lakka_actor_ActorRef(actor$2);
       $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(arg$outer, actor)
@@ -2708,7 +2787,7 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__faultCreate__Lakka_actor_Ac
   }
 }
 function $s_Lakka_actor_dungeon_FaultHandling$class__finishRecreate__p0__Lakka_actor_ActorCell__jl_Throwable__Lakka_actor_Actor__V($$this, cause, failedActor) {
-  var survivors = $$this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.children__sci_Iterable();
+  var survivors = $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer($$this).children__sci_Iterable();
   try {
     try {
       $$this.dispatcher$1.resume__Lakka_actor_ActorCell__V($$this)
@@ -2751,7 +2830,7 @@ function $s_Lakka_actor_dungeon_FaultHandling$class__finishRecreate__p0__Lakka_a
 function $s_Lakka_actor_dungeon_ReceiveTimeout$class__checkReceiveTimeout__Lakka_actor_ActorCell__V($$this) {
   var recvtimeout = $$this.akka$actor$dungeon$ReceiveTimeout$$receiveTimeoutData$1;
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var this$1 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var this$1 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__($$this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   if ((!this$1.messageQueue$1.hasMessages__Z())) {
     var x1 = $as_s_concurrent_duration_Duration(recvtimeout.$$und1__O());
     if ($is_s_concurrent_duration_FiniteDuration(x1)) {
@@ -2906,6 +2985,7 @@ function $s_Lakka_event_Logging$LogEvent$class__$$init$__Lakka_event_Logging$Log
 }
 function $s_Lakka_event_Logging$StdOutLogger$class__$$init$__Lakka_event_Logging$StdOutLogger__V($$this) {
   $$this.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$date$und$eq__ju_Date__V(new $c_ju_Date().init___());
+  $$this.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$dateFormat$und$eq__Ljava_text_SimpleDateFormat__V(new $c_Ljava_text_SimpleDateFormat().init___T("MM/dd/yyyy HH:mm:ss.SSS"));
   $$this.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$errorFormat$und$eq__T__V("[ERROR] [%s] [%s] [%s] %s%s");
   $$this.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$und$eq__T__V("[ERROR] [%s] [%s] [%s] %s");
   $$this.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$warningFormat$und$eq__T__V("[WARN] [%s] [%s] [%s] %s");
@@ -2964,7 +3044,9 @@ function $s_Lakka_event_Logging$StdOutLogger$class__timestamp__Lakka_event_Loggi
     throw new $c_jl_NullPointerException().init___()
   };
   $$this.akka$event$Logging$StdOutLogger$$date__ju_Date().setTime__J__V(event.timestamp__J());
-  return ""
+  $$this.akka$event$Logging$StdOutLogger$$dateFormat__Ljava_text_SimpleDateFormat();
+  var date = $$this.akka$event$Logging$StdOutLogger$$date__ju_Date();
+  return date.toString__T()
 }
 function $s_Lakka_event_Logging$StdOutLogger$class__info__Lakka_event_Logging$StdOutLogger__Lakka_event_Logging$Info__V($$this, event) {
   var this$2 = new $c_sci_StringOps().init___T($$this.akka$event$Logging$StdOutLogger$$infoFormat__T());
@@ -3135,56 +3217,60 @@ function $s_Lakka_event_LoggingAdapter$class__warning__Lakka_event_LoggingAdapte
 function $s_Lakka_event_LoggingAdapter$class__format__Lakka_event_LoggingAdapter__T__sc_Seq__T($$this, t, arg) {
   var sb = new $c_jl_StringBuilder().init___I(64);
   var p = 0;
-  var rest = t;
+  var startIndex = 0;
   while ((p < arg.length__I())) {
-    var thiz = rest;
-    var index = $uI(thiz.indexOf("{}"));
+    var fromIndex = startIndex;
+    var index = $uI(t.indexOf("{}", fromIndex));
     if ((index === (-1))) {
-      var this$3 = sb.append__T__jl_StringBuilder(rest).append__T__jl_StringBuilder(" WARNING arguments left: ");
+      var beginIndex = startIndex;
+      var endIndex = $uI(t.length);
+      var this$6 = sb.append__T__jl_StringBuilder($as_T(t.substring(beginIndex, endIndex))).append__T__jl_StringBuilder(" WARNING arguments left: ");
       var i = ((arg.length__I() - p) | 0);
-      this$3.append__T__jl_StringBuilder(("" + i));
-      rest = "";
-      p = arg.length__I()
+      this$6.append__T__jl_StringBuilder(("" + i));
+      p = arg.length__I();
+      startIndex = $uI(t.length)
     } else {
-      var thiz$1 = rest;
-      sb.append__T__jl_StringBuilder($as_T(thiz$1.substring(0, index))).append__O__jl_StringBuilder(arg.apply__I__O(p));
-      var thiz$2 = rest;
-      var beginIndex = ((2 + index) | 0);
-      rest = $as_T(thiz$2.substring(beginIndex));
+      var beginIndex$1 = startIndex;
+      sb.append__T__jl_StringBuilder($as_T(t.substring(beginIndex$1, index))).append__O__jl_StringBuilder(arg.apply__I__O(p));
+      startIndex = ((2 + index) | 0);
       p = ((1 + p) | 0)
     }
   };
-  var this$9 = sb.append__T__jl_StringBuilder(rest);
-  return this$9.content$1
+  var beginIndex$2 = startIndex;
+  var endIndex$1 = $uI(t.length);
+  var this$14 = sb.append__T__jl_StringBuilder($as_T(t.substring(beginIndex$2, endIndex$1)));
+  return this$14.content$1
 }
 function $s_Lakka_event_LoggingAdapter$class__debug__Lakka_event_LoggingAdapter__T__O__O__V($$this, template, arg1, arg2) {
   if ($$this.isDebugEnabled__Z()) {
     var array = [arg1, arg2];
     var sb = new $c_jl_StringBuilder().init___I(64);
     var p = 0;
-    var rest = template;
+    var startIndex = 0;
     while ((p < $uI(array.length))) {
-      var thiz = rest;
-      var index = $uI(thiz.indexOf("{}"));
+      var fromIndex = startIndex;
+      var index = $uI(template.indexOf("{}", fromIndex));
       if ((index === (-1))) {
-        var this$3 = sb.append__T__jl_StringBuilder(rest).append__T__jl_StringBuilder(" WARNING arguments left: ");
+        var beginIndex = startIndex;
+        var endIndex = $uI(template.length);
+        var this$6 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex, endIndex))).append__T__jl_StringBuilder(" WARNING arguments left: ");
         var i = (($uI(array.length) - p) | 0);
-        this$3.append__T__jl_StringBuilder(("" + i));
-        rest = "";
-        p = $uI(array.length)
+        this$6.append__T__jl_StringBuilder(("" + i));
+        p = $uI(array.length);
+        startIndex = $uI(template.length)
       } else {
-        var thiz$1 = rest;
-        var jsx$1 = sb.append__T__jl_StringBuilder($as_T(thiz$1.substring(0, index)));
+        var beginIndex$1 = startIndex;
+        var jsx$1 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex$1, index)));
         var index$1 = p;
         jsx$1.append__O__jl_StringBuilder(array[index$1]);
-        var thiz$2 = rest;
-        var beginIndex = ((2 + index) | 0);
-        rest = $as_T(thiz$2.substring(beginIndex));
+        startIndex = ((2 + index) | 0);
         p = ((1 + p) | 0)
       }
     };
-    var this$9 = sb.append__T__jl_StringBuilder(rest);
-    $$this.notifyDebug__T__V(this$9.content$1)
+    var beginIndex$2 = startIndex;
+    var endIndex$1 = $uI(template.length);
+    var this$14 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex$2, endIndex$1)));
+    $$this.notifyDebug__T__V(this$14.content$1)
   }
 }
 function $s_Lakka_event_LoggingAdapter$class__warning__Lakka_event_LoggingAdapter__T__O__V($$this, template, arg1) {
@@ -3207,29 +3293,31 @@ function $s_Lakka_event_LoggingAdapter$class__debug__Lakka_event_LoggingAdapter_
     var array = [arg1, arg2, arg3, arg4];
     var sb = new $c_jl_StringBuilder().init___I(64);
     var p = 0;
-    var rest = template;
+    var startIndex = 0;
     while ((p < $uI(array.length))) {
-      var thiz = rest;
-      var index = $uI(thiz.indexOf("{}"));
+      var fromIndex = startIndex;
+      var index = $uI(template.indexOf("{}", fromIndex));
       if ((index === (-1))) {
-        var this$3 = sb.append__T__jl_StringBuilder(rest).append__T__jl_StringBuilder(" WARNING arguments left: ");
+        var beginIndex = startIndex;
+        var endIndex = $uI(template.length);
+        var this$6 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex, endIndex))).append__T__jl_StringBuilder(" WARNING arguments left: ");
         var i = (($uI(array.length) - p) | 0);
-        this$3.append__T__jl_StringBuilder(("" + i));
-        rest = "";
-        p = $uI(array.length)
+        this$6.append__T__jl_StringBuilder(("" + i));
+        p = $uI(array.length);
+        startIndex = $uI(template.length)
       } else {
-        var thiz$1 = rest;
-        var jsx$1 = sb.append__T__jl_StringBuilder($as_T(thiz$1.substring(0, index)));
+        var beginIndex$1 = startIndex;
+        var jsx$1 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex$1, index)));
         var index$1 = p;
         jsx$1.append__O__jl_StringBuilder(array[index$1]);
-        var thiz$2 = rest;
-        var beginIndex = ((2 + index) | 0);
-        rest = $as_T(thiz$2.substring(beginIndex));
+        startIndex = ((2 + index) | 0);
         p = ((1 + p) | 0)
       }
     };
-    var this$9 = sb.append__T__jl_StringBuilder(rest);
-    $$this.notifyDebug__T__V(this$9.content$1)
+    var beginIndex$2 = startIndex;
+    var endIndex$1 = $uI(template.length);
+    var this$14 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex$2, endIndex$1)));
+    $$this.notifyDebug__T__V(this$14.content$1)
   }
 }
 function $s_Lakka_event_LoggingAdapter$class__error__Lakka_event_LoggingAdapter__jl_Throwable__T__O__V($$this, cause, template, arg1) {
@@ -3272,106 +3360,156 @@ function $s_Lakka_event_LoggingAdapter$class__format1__p0__Lakka_event_LoggingAd
   var array = [arg];
   var sb = new $c_jl_StringBuilder().init___I(64);
   var p = 0;
-  var rest = t;
+  var startIndex = 0;
   while ((p < $uI(array.length))) {
-    var thiz = rest;
-    var index = $uI(thiz.indexOf("{}"));
+    var fromIndex = startIndex;
+    var index = $uI(t.indexOf("{}", fromIndex));
     if ((index === (-1))) {
-      var this$9 = sb.append__T__jl_StringBuilder(rest).append__T__jl_StringBuilder(" WARNING arguments left: ");
+      var beginIndex = startIndex;
+      var endIndex = $uI(t.length);
+      var this$12 = sb.append__T__jl_StringBuilder($as_T(t.substring(beginIndex, endIndex))).append__T__jl_StringBuilder(" WARNING arguments left: ");
       var i$1 = (($uI(array.length) - p) | 0);
-      this$9.append__T__jl_StringBuilder(("" + i$1));
-      rest = "";
-      p = $uI(array.length)
+      this$12.append__T__jl_StringBuilder(("" + i$1));
+      p = $uI(array.length);
+      startIndex = $uI(t.length)
     } else {
-      var thiz$1 = rest;
-      var jsx$2 = sb.append__T__jl_StringBuilder($as_T(thiz$1.substring(0, index)));
+      var beginIndex$1 = startIndex;
+      var jsx$2 = sb.append__T__jl_StringBuilder($as_T(t.substring(beginIndex$1, index)));
       var index$1 = p;
       jsx$2.append__O__jl_StringBuilder(array[index$1]);
-      var thiz$2 = rest;
-      var beginIndex = ((2 + index) | 0);
-      rest = $as_T(thiz$2.substring(beginIndex));
+      startIndex = ((2 + index) | 0);
       p = ((1 + p) | 0)
     }
   };
-  var this$15 = sb.append__T__jl_StringBuilder(rest);
-  return this$15.content$1
+  var beginIndex$2 = startIndex;
+  var endIndex$1 = $uI(t.length);
+  var this$20 = sb.append__T__jl_StringBuilder($as_T(t.substring(beginIndex$2, endIndex$1)));
+  return this$20.content$1
 }
 function $s_Lakka_event_LoggingAdapter$class__warning__Lakka_event_LoggingAdapter__T__O__O__V($$this, template, arg1, arg2) {
   if ($$this.isWarningEnabled__Z()) {
     var array = [arg1, arg2];
     var sb = new $c_jl_StringBuilder().init___I(64);
     var p = 0;
-    var rest = template;
+    var startIndex = 0;
     while ((p < $uI(array.length))) {
-      var thiz = rest;
-      var index = $uI(thiz.indexOf("{}"));
+      var fromIndex = startIndex;
+      var index = $uI(template.indexOf("{}", fromIndex));
       if ((index === (-1))) {
-        var this$3 = sb.append__T__jl_StringBuilder(rest).append__T__jl_StringBuilder(" WARNING arguments left: ");
+        var beginIndex = startIndex;
+        var endIndex = $uI(template.length);
+        var this$6 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex, endIndex))).append__T__jl_StringBuilder(" WARNING arguments left: ");
         var i = (($uI(array.length) - p) | 0);
-        this$3.append__T__jl_StringBuilder(("" + i));
-        rest = "";
-        p = $uI(array.length)
+        this$6.append__T__jl_StringBuilder(("" + i));
+        p = $uI(array.length);
+        startIndex = $uI(template.length)
       } else {
-        var thiz$1 = rest;
-        var jsx$1 = sb.append__T__jl_StringBuilder($as_T(thiz$1.substring(0, index)));
+        var beginIndex$1 = startIndex;
+        var jsx$1 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex$1, index)));
         var index$1 = p;
         jsx$1.append__O__jl_StringBuilder(array[index$1]);
-        var thiz$2 = rest;
-        var beginIndex = ((2 + index) | 0);
-        rest = $as_T(thiz$2.substring(beginIndex));
+        startIndex = ((2 + index) | 0);
         p = ((1 + p) | 0)
       }
     };
-    var this$9 = sb.append__T__jl_StringBuilder(rest);
-    $$this.notifyWarning__T__V(this$9.content$1)
+    var beginIndex$2 = startIndex;
+    var endIndex$1 = $uI(template.length);
+    var this$14 = sb.append__T__jl_StringBuilder($as_T(template.substring(beginIndex$2, endIndex$1)));
+    $$this.notifyWarning__T__V(this$14.content$1)
   }
 }
 function $s_Lakka_event_LoggingBus$class__akka$event$LoggingBus$$addLogger__Lakka_event_LoggingBus__Lakka_actor_ActorSystemImpl__jl_Class__I__T__Lakka_actor_ActorRef($$this, system, clazz, level, logName) {
-  var name = ("log-" + $m_Lakka_event_Logging$().simpleName__jl_Class__T(clazz));
-  var this$1 = $m_Lakka_actor_Props$();
+  var this$1 = $m_Lakka_event_Logging$Extension$();
+  var name = ((("log" + new $c_Lakka_event_ExtensionKey$$anon$1().init___Lakka_event_ExtensionKey__Lakka_actor_ActorSystem(this$1, system).id__I()) + "-") + $m_Lakka_event_Logging$().simpleName__jl_Class__T(clazz));
+  var this$2 = $m_Lakka_actor_Props$();
   var args = new $c_sjs_js_WrappedArray().init___sjs_js_Array([]);
-  var jsx$1 = this$1.defaultDeploy$1;
-  var this$2 = $m_sci_List$();
-  var cbf = this$2.ReusableCBFInstance$2;
-  var actor = system.systemActorOf__Lakka_actor_Props__T__Lakka_actor_ActorRef(new $c_Lakka_actor_Props().init___Lakka_actor_Deploy__jl_Class__sci_Seq(jsx$1, clazz, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(args, cbf))), name);
-  var this$4 = $m_Lakka_actor_Props$();
-  var creator = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer, level$3, logName$2, name$1, actor$1) {
-    return (function() {
-      return new $c_Lakka_event_LoggingBusActor().init___T__T__Lakka_event_LoggingBus__Lakka_actor_ActorRef__I(name$1, logName$2, arg$outer, actor$1, level$3)
+  var jsx$1 = this$2.defaultDeploy$1;
+  var this$3 = $m_sci_List$();
+  var cbf = this$3.ReusableCBFInstance$2;
+  var actor = system.systemActorOf__Lakka_actor_Props__T__Lakka_actor_ActorRef(new $c_Lakka_actor_Props().init___Lakka_actor_Deploy__jl_Class__sci_Seq(jsx$1, clazz, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(args, cbf))).withDispatcher__T__Lakka_actor_Props(system.settings$3.LoggersDispatcher$1), name);
+  try {
+    var response = $m_Lakka_event_Logging$LoggerInitialized$()
+  } catch (e) {
+    if ($is_ju_concurrent_TimeoutException(e)) {
+      var event = new $c_Lakka_event_Logging$Warning().init___T__jl_Class__O(logName, $objectGetClass($$this), (((("Logger " + name) + " did not respond within ") + system.settings$3.LoggerStartTimeout$1) + " to InitializeLogger(bus)"));
+      $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V($$this, event);
+      var response = "[TIMEOUT]"
+    } else {
+      var response;
+      throw e
+    }
+  };
+  var x$2 = $m_Lakka_event_Logging$LoggerInitialized$();
+  if ((!((response !== null) && $objectEquals(response, x$2)))) {
+    throw new $c_Lakka_event_Logging$LoggerInitializationException().init___T(((("Logger " + name) + " did not respond with LoggerInitialized, sent instead ") + response))
+  };
+  $as_sc_IterableLike($m_Lakka_event_Logging$().AllLogLevels$1.filter__F1__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(level$3) {
+    return (function(x$3$2) {
+      var x$3 = $as_Lakka_event_Logging$LogLevel(x$3$2).asInt$1;
+      return (level$3 >= x$3)
     })
-  })($$this, level, logName, name, actor));
-  system.systemActorOf__Lakka_actor_Props__T__Lakka_actor_ActorRef(this$4.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_event_LoggingBusActor.getClassOf(), creator), "loggerChecker");
+  })(level)))).foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, actor$1) {
+    return (function(l$2) {
+      var l = $as_Lakka_event_Logging$LogLevel(l$2).asInt$1;
+      var to = $m_Lakka_event_Logging$().classFor__I__jl_Class(l);
+      return arg$outer.subscribe__Lakka_actor_ActorRef__jl_Class__Z(actor$1, to)
+    })
+  })($$this, actor)));
+  var event$1 = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(logName, $objectGetClass($$this), (("logger " + name) + " started"));
+  $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V($$this, event$1);
   return actor
+}
+function $s_Lakka_event_LoggingBus$class__$$init$__Lakka_event_LoggingBus__V($$this) {
+  $$this.akka$event$LoggingBus$$guard$1 = new $c_Lakka_util_ReentrantGuard().init___();
+  $m_sc_Seq$();
+  $m_sci_Seq$();
+  var this$3 = new $c_scm_ListBuffer().init___();
+  $$this.akka$event$LoggingBus$$loggers$1 = this$3.toList__sci_List()
 }
 function $s_Lakka_event_LoggingBus$class__startDefaultLoggers__Lakka_event_LoggingBus__Lakka_actor_ActorSystemImpl__V($$this, system) {
   var this$1 = $m_Lakka_event_Logging$();
   var logName = (((this$1.simpleName__jl_Class__T($objectGetClass($$this)) + "(") + system) + ")");
-  var level = $m_Lakka_event_Logging$().DebugLevel$1;
+  var this$2 = $m_Lakka_event_Logging$().levelFor__T__s_Option(system.settings$3.LogLevel$1);
+  if (this$2.isEmpty__Z()) {
+    var this$3 = $m_Lakka_event_Logging$().StandardOutLogger$1;
+    var event = new $c_Lakka_event_Logging$Error().init___jl_Throwable__T__jl_Class__O(new $c_Lakka_event_Logging$LoggerException().init___(), logName, $objectGetClass($$this), ("unknown akka.loglevel " + system.settings$3.LogLevel$1));
+    $s_Lakka_event_Logging$StdOutLogger$class__print__Lakka_event_Logging$StdOutLogger__O__V(this$3, event);
+    var jsx$1 = new $c_Lakka_event_Logging$LogLevel().init___I($m_Lakka_event_Logging$().ErrorLevel$1)
+  } else {
+    var jsx$1 = this$2.get__O()
+  };
+  var level = $as_Lakka_event_Logging$LogLevel(jsx$1).asInt$1;
   try {
     var x1 = system.settings$3.Loggers$1;
     var x = $m_sci_Nil$();
     if (x.equals__O__Z(x1)) {
-      var x$3 = $d_Lakka_event_DefaultLogger.getClassOf().getName__T();
-      var this$2 = $m_sci_Nil$();
-      var defaultLoggers = new $c_sci_$colon$colon().init___O__sci_List(x$3, this$2)
+      var x$2$2 = $d_Lakka_event_Logging$DefaultLogger.getClassOf().getName__T();
+      var this$4 = $m_sci_Nil$();
+      var defaultLoggers = new $c_sci_$colon$colon().init___O__sci_List(x$2$2, this$4)
     } else {
       var defaultLoggers = x1
     };
-    var jsx$2 = defaultLoggers.withFilter__F1__scg_FilterMonadic(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(loggerName$2) {
+    var jsx$3 = defaultLoggers.withFilter__F1__scg_FilterMonadic(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(loggerName$2) {
       var loggerName = $as_T(loggerName$2);
-      var this$3 = $m_Lakka_event_Logging$().StandardOutLogger$1;
-      return (loggerName !== $objectGetClass(this$3).getName__T())
+      var this$5 = $m_Lakka_event_Logging$().StandardOutLogger$1;
+      return (loggerName !== $objectGetClass(this$5).getName__T())
     })));
-    var jsx$1 = new $c_Lakka_event_LoggingBus$$anonfun$2().init___Lakka_event_LoggingBus__T__I__Lakka_actor_ActorSystemImpl($$this, logName, level, system);
-    var this$4 = $m_sci_Seq$();
-    var myloggers = $as_sci_Seq(jsx$2.map__F1__scg_CanBuildFrom__O(jsx$1, this$4.ReusableCBFInstance$2));
-    $$this.akka$event$LoggingBus$$loggers$1 = myloggers;
-    $$this.akka$event$LoggingBus$$$undlogLevel$1 = level;
+    var jsx$2 = new $c_Lakka_event_LoggingBus$$anonfun$4().init___Lakka_event_LoggingBus__T__I__Lakka_actor_ActorSystemImpl($$this, logName, level, system);
+    var this$6 = $m_sci_Seq$();
+    var myloggers = $as_sci_Seq(jsx$3.map__F1__scg_CanBuildFrom__O(jsx$2, this$6.ReusableCBFInstance$2));
+    var this$7 = $$this.akka$event$LoggingBus$$guard$1;
+    this$7.lock__V();
+    try {
+      $$this.akka$event$LoggingBus$$loggers$1 = myloggers;
+      $$this.akka$event$LoggingBus$$$undlogLevel$1 = level
+    } finally {
+      this$7.unlock__V()
+    };
     try {
       if (system.settings$3.DebugUnhandledMessage$1) {
-        var this$6 = $m_Lakka_actor_Props$();
-        var creator = new $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1().init___Lakka_event_LoggingBus($$this);
-        var subscriber = system.systemActorOf__Lakka_actor_Props__T__Lakka_actor_ActorRef(this$6.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator), "UnhandledMessageForwarder");
+        var this$9 = $m_Lakka_actor_Props$();
+        var creator = new $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2().init___Lakka_event_LoggingBus($$this);
+        var subscriber = system.systemActorOf__Lakka_actor_Props__T__Lakka_actor_ActorRef(this$9.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator), "UnhandledMessageForwarder");
         $$this.subscribe__Lakka_actor_ActorRef__jl_Class__Z(subscriber, $d_Lakka_actor_UnhandledMessage.getClassOf())
       }
     } catch (e) {
@@ -3379,10 +3517,10 @@ function $s_Lakka_event_LoggingBus$class__startDefaultLoggers__Lakka_event_Loggi
         throw e
       }
     };
-    var event = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(logName, $objectGetClass($$this), "Default Loggers started");
-    $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V($$this, event);
-    var this$8 = $m_Lakka_event_Logging$().StandardOutLogger$1;
-    if ((!defaultLoggers.contains__O__Z($objectGetClass(this$8).getName__T()))) {
+    var event$1 = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(logName, $objectGetClass($$this), "Default Loggers started");
+    $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V($$this, event$1);
+    var this$11 = $m_Lakka_event_Logging$().StandardOutLogger$1;
+    if ((!defaultLoggers.contains__O__Z($objectGetClass(this$11).getName__T()))) {
       var subscriber$1 = $m_Lakka_event_Logging$().StandardOutLogger$1;
       $$this.unsubscribe__Lakka_actor_ActorRef__V(subscriber$1)
     }
@@ -3430,13 +3568,22 @@ function $s_Lakka_event_LoggingBus$class__startStdoutLogger__Lakka_event_Logging
   $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V($$this, event)
 }
 function $s_Lakka_event_LoggingBus$class__setUpStdoutLogger__p0__Lakka_event_LoggingBus__Lakka_actor_ActorSystem$Settings__V($$this, config) {
-  var elem = $m_Lakka_event_Logging$().DebugLevel$1;
-  var level = new $c_sr_IntRef().init___I(elem);
+  var this$1 = $m_Lakka_event_Logging$().levelFor__T__s_Option(config.StdoutLogLevel$1);
+  if (this$1.isEmpty__Z()) {
+    var this$3 = $m_Lakka_event_Logging$().StandardOutLogger$1;
+    var jsx$2 = new $c_Lakka_event_Logging$LoggerException().init___();
+    var this$2 = $m_Lakka_event_Logging$();
+    var event = new $c_Lakka_event_Logging$Error().init___jl_Throwable__T__jl_Class__O(jsx$2, this$2.simpleName__jl_Class__T($objectGetClass($$this)), $objectGetClass($$this), ("unknown akka.stdout-loglevel " + config.StdoutLogLevel$1));
+    $s_Lakka_event_Logging$StdOutLogger$class__print__Lakka_event_Logging$StdOutLogger__O__V(this$3, event);
+    var jsx$1 = new $c_Lakka_event_Logging$LogLevel().init___I($m_Lakka_event_Logging$().ErrorLevel$1)
+  } else {
+    var jsx$1 = this$1.get__O()
+  };
+  var level = $as_Lakka_event_Logging$LogLevel(jsx$1).asInt$1;
   $as_sc_IterableLike($m_Lakka_event_Logging$().AllLogLevels$1.filter__F1__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(level$1) {
-    return (function(x$2$2) {
-      var x$2 = $as_Lakka_event_Logging$LogLevel(x$2$2).asInt$1;
-      var $$this$1 = level$1.elem$1;
-      return ($$this$1 >= x$2)
+    return (function(x$1$2) {
+      var x$1 = $as_Lakka_event_Logging$LogLevel(x$1$2).asInt$1;
+      return (level$1 >= x$1)
     })
   })(level)))).foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
     return (function(l$2) {
@@ -3446,11 +3593,17 @@ function $s_Lakka_event_LoggingBus$class__setUpStdoutLogger__p0__Lakka_event_Log
       return arg$outer.subscribe__Lakka_actor_ActorRef__jl_Class__Z(subscriber, to)
     })
   })($$this)));
-  var jsx$2 = $$this.akka$event$LoggingBus$$loggers$1;
-  var jsx$1 = $m_Lakka_event_Logging$().StandardOutLogger$1;
-  var this$3 = $m_sc_Seq$();
-  $$this.akka$event$LoggingBus$$loggers$1 = $as_sc_Seq(jsx$2.$$colon$plus__O__scg_CanBuildFrom__O(jsx$1, this$3.ReusableCBFInstance$2));
-  $$this.akka$event$LoggingBus$$$undlogLevel$1 = level.elem$1
+  var this$5 = $$this.akka$event$LoggingBus$$guard$1;
+  this$5.lock__V();
+  try {
+    var jsx$4 = $$this.akka$event$LoggingBus$$loggers$1;
+    var jsx$3 = $m_Lakka_event_Logging$().StandardOutLogger$1;
+    var this$6 = $m_sc_Seq$();
+    $$this.akka$event$LoggingBus$$loggers$1 = $as_sc_Seq(jsx$4.$$colon$plus__O__scg_CanBuildFrom__O(jsx$3, this$6.ReusableCBFInstance$2));
+    $$this.akka$event$LoggingBus$$$undlogLevel$1 = level
+  } finally {
+    this$5.unlock__V()
+  }
 }
 function $is_Lakka_event_LoggingFilter(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_event_LoggingFilter)))
@@ -3469,18 +3622,30 @@ var $d_Lakka_event_LoggingFilter = new $TypeData().initClass({
 }, true, "akka.event.LoggingFilter", {
   Lakka_event_LoggingFilter: 1
 });
+function $s_Lakka_event_SubchannelClassification$class__hasSubscriptions__Lakka_event_SubchannelClassification__O__Z($$this, subscriber) {
+  var this$1 = $$this.akka$event$SubchannelClassification$$cache$1;
+  var this$2 = new $c_sc_MapLike$DefaultValuesIterable().init___sc_MapLike(this$1);
+  var this$3 = this$2.$$outer$f.valuesIterator__sc_Iterator();
+  var res = false;
+  while (((!res) && this$3.hasNext__Z())) {
+    var arg1 = this$3.next__O();
+    var x$2 = $as_sci_Set(arg1);
+    res = x$2.contains__O__Z(subscriber)
+  };
+  return res
+}
 function $s_Lakka_event_SubchannelClassification$class__$$init$__Lakka_event_SubchannelClassification__V($$this) {
   $$this.akka$event$SubchannelClassification$$cache$1 = $m_sci_Map$EmptyMap$()
 }
 function $s_Lakka_event_SubchannelClassification$class__addToCache__p0__Lakka_event_SubchannelClassification__sci_Seq__V($$this, changes) {
-  var x$6 = $$this.akka$event$SubchannelClassification$$cache$1;
+  var x$4 = $$this.akka$event$SubchannelClassification$$cache$1;
   var op = new $c_Lakka_event_SubchannelClassification$$anonfun$addToCache$1().init___Lakka_event_SubchannelClassification($$this);
-  $$this.akka$event$SubchannelClassification$$cache$1 = $as_sci_Map(changes.foldLeft__O__F2__O(x$6, op))
+  $$this.akka$event$SubchannelClassification$$cache$1 = $as_sci_Map(changes.foldLeft__O__F2__O(x$4, op))
 }
 function $s_Lakka_event_SubchannelClassification$class__removeFromCache__p0__Lakka_event_SubchannelClassification__sci_Seq__V($$this, changes) {
-  var x$5 = $$this.akka$event$SubchannelClassification$$cache$1;
+  var x$3 = $$this.akka$event$SubchannelClassification$$cache$1;
   var op = new $c_Lakka_event_SubchannelClassification$$anonfun$removeFromCache$1().init___Lakka_event_SubchannelClassification($$this);
-  $$this.akka$event$SubchannelClassification$$cache$1 = $as_sci_Map(changes.foldLeft__O__F2__O(x$5, op))
+  $$this.akka$event$SubchannelClassification$$cache$1 = $as_sci_Map(changes.foldLeft__O__F2__O(x$3, op))
 }
 function $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V($$this, event) {
   var c = $objectGetClass(event);
@@ -3492,9 +3657,9 @@ function $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_Sub
     };
     var recv = $as_sci_Set(($$this.akka$event$SubchannelClassification$$cache$1.contains__O__Z(c) ? $$this.akka$event$SubchannelClassification$$cache$1.apply__O__O(c) : ($s_Lakka_event_SubchannelClassification$class__addToCache__p0__Lakka_event_SubchannelClassification__sci_Seq__V($$this, $$this.akka$event$SubchannelClassification$$subscriptions__Lakka_util_SubclassifiedIndex().addKey__O__sci_Seq(c)), $$this.akka$event$SubchannelClassification$$cache$1.apply__O__O(c))))
   };
-  recv.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, event$2) {
-    return (function(x$3$2) {
-      arg$outer.publish__O__Lakka_actor_ActorRef__V(event$2, $as_Lakka_actor_ActorRef(x$3$2))
+  recv.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, event$1) {
+    return (function(x$1$2) {
+      arg$outer.publish__O__Lakka_actor_ActorRef__V(event$1, $as_Lakka_actor_ActorRef(x$1$2))
     })
   })($$this, event)))
 }
@@ -4794,17 +4959,32 @@ function $s_sc_MapLike$class__apply__sc_MapLike__O__O($$this, key) {
     throw new $c_s_MatchError().init___O(x1)
   }
 }
+function $s_sc_MapLike$class__getOrElse__sc_MapLike__O__F0__O($$this, key, $default) {
+  var x1 = $$this.get__O__s_Option(key);
+  if ($is_s_Some(x1)) {
+    var x2 = $as_s_Some(x1);
+    var v = x2.x$2;
+    return v
+  } else {
+    var x = $m_s_None$();
+    if ((x === x1)) {
+      return $default.apply__O()
+    } else {
+      throw new $c_s_MatchError().init___O(x1)
+    }
+  }
+}
 function $s_sc_MapLike$class__isEmpty__sc_MapLike__Z($$this) {
   return ($$this.size__I() === 0)
-}
-function $s_sc_MapLike$class__contains__sc_MapLike__O__Z($$this, key) {
-  return $$this.get__O__s_Option(key).isDefined__Z()
 }
 function $s_sc_MapLike$class__toBuffer__sc_MapLike__scm_Buffer($$this) {
   var result = new $c_scm_ArrayBuffer().init___I($$this.size__I());
   var xs = $$this.seq__sc_TraversableOnce();
   result.$$plus$plus$eq__sc_TraversableOnce__scm_ArrayBuffer(xs);
   return result
+}
+function $s_sc_MapLike$class__contains__sc_MapLike__O__Z($$this, key) {
+  return $$this.get__O__s_Option(key).isDefined__Z()
 }
 function $s_sc_MapLike$class__$default__sc_MapLike__O__O($$this, key) {
   throw new $c_ju_NoSuchElementException().init___T(("key not found: " + key))
@@ -7278,10 +7458,10 @@ $c_Lakka_actor_SupervisorStrategy.prototype.restartChild__Lakka_actor_ActorRef__
 /** @constructor */
 function $c_Lakka_actor_dungeon_AbstractActorCell$() {
   $c_O.call(this);
-  this.mailboxOffset$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong();
-  this.childrenOffset$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong();
-  this.nextNameOffset$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong();
-  this.functionRefsOffset$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong()
+  this.mailboxOffset$1 = 0;
+  this.childrenOffset$1 = 0;
+  this.nextNameOffset$1 = 0;
+  this.functionRefsOffset$1 = 0
 }
 $c_Lakka_actor_dungeon_AbstractActorCell$.prototype = new $h_O();
 $c_Lakka_actor_dungeon_AbstractActorCell$.prototype.constructor = $c_Lakka_actor_dungeon_AbstractActorCell$;
@@ -7291,10 +7471,10 @@ function $h_Lakka_actor_dungeon_AbstractActorCell$() {
 }
 $h_Lakka_actor_dungeon_AbstractActorCell$.prototype = $c_Lakka_actor_dungeon_AbstractActorCell$.prototype;
 $c_Lakka_actor_dungeon_AbstractActorCell$.prototype.init___ = (function() {
-  this.mailboxOffset$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong();
-  this.childrenOffset$1 = new $c_sjsr_RuntimeLong().init___I__I(1, 0);
-  this.nextNameOffset$1 = new $c_sjsr_RuntimeLong().init___I__I(2, 0);
-  this.functionRefsOffset$1 = new $c_sjsr_RuntimeLong().init___I__I(3, 0);
+  this.mailboxOffset$1 = 10;
+  this.childrenOffset$1 = 11;
+  this.nextNameOffset$1 = 12;
+  this.functionRefsOffset$1 = 13;
   return this
 });
 var $d_Lakka_actor_dungeon_AbstractActorCell$ = new $TypeData().initClass({
@@ -7310,6 +7490,39 @@ function $m_Lakka_actor_dungeon_AbstractActorCell$() {
     $n_Lakka_actor_dungeon_AbstractActorCell$ = new $c_Lakka_actor_dungeon_AbstractActorCell$().init___()
   };
   return $n_Lakka_actor_dungeon_AbstractActorCell$
+}
+/** @constructor */
+function $c_Lakka_actor_dungeon_Children$() {
+  $c_O.call(this);
+  this.GetNobody$1 = null
+}
+$c_Lakka_actor_dungeon_Children$.prototype = new $h_O();
+$c_Lakka_actor_dungeon_Children$.prototype.constructor = $c_Lakka_actor_dungeon_Children$;
+/** @constructor */
+function $h_Lakka_actor_dungeon_Children$() {
+  /*<skip>*/
+}
+$h_Lakka_actor_dungeon_Children$.prototype = $c_Lakka_actor_dungeon_Children$.prototype;
+$c_Lakka_actor_dungeon_Children$.prototype.init___ = (function() {
+  $n_Lakka_actor_dungeon_Children$ = this;
+  this.GetNobody$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function() {
+    return $m_Lakka_actor_Nobody$()
+  }));
+  return this
+});
+var $d_Lakka_actor_dungeon_Children$ = new $TypeData().initClass({
+  Lakka_actor_dungeon_Children$: 0
+}, false, "akka.actor.dungeon.Children$", {
+  Lakka_actor_dungeon_Children$: 1,
+  O: 1
+});
+$c_Lakka_actor_dungeon_Children$.prototype.$classData = $d_Lakka_actor_dungeon_Children$;
+var $n_Lakka_actor_dungeon_Children$ = (void 0);
+function $m_Lakka_actor_dungeon_Children$() {
+  if ((!$n_Lakka_actor_dungeon_Children$)) {
+    $n_Lakka_actor_dungeon_Children$ = new $c_Lakka_actor_dungeon_Children$().init___()
+  };
+  return $n_Lakka_actor_dungeon_Children$
 }
 /** @constructor */
 function $c_Lakka_actor_dungeon_ChildrenContainer$NormalChildrenContainer$() {
@@ -7700,6 +7913,9 @@ $c_Lakka_event_EventStreamUnsubscriber$.prototype.init___ = (function() {
   this.unsubscribersCount$1 = new $c_ju_concurrent_atomic_AtomicInteger().init___I(0);
   return this
 });
+$c_Lakka_event_EventStreamUnsubscriber$.prototype.$$lessinit$greater$default$2__Z = (function() {
+  return false
+});
 $c_Lakka_event_EventStreamUnsubscriber$.prototype.props__p1__Lakka_event_EventStream__Z__Lakka_actor_Props = (function(eventStream, debug) {
   var this$1 = $m_Lakka_actor_Props$();
   var args = new $c_sjs_js_WrappedArray().init___sjs_js_Array([eventStream, debug]);
@@ -7749,10 +7965,10 @@ function $h_Lakka_event_LogSource$() {
 $h_Lakka_event_LogSource$.prototype = $c_Lakka_event_LogSource$.prototype;
 $c_Lakka_event_LogSource$.prototype.init___ = (function() {
   $n_Lakka_event_LogSource$ = this;
-  this.fromString$1 = new $c_Lakka_event_LogSource$$anon$3().init___();
-  this.fromActor$1 = new $c_Lakka_event_LogSource$$anon$4().init___();
-  this.fromActorRef$1 = new $c_Lakka_event_LogSource$$anon$5().init___();
-  this.fromClass$1 = new $c_Lakka_event_LogSource$$anon$6().init___();
+  this.fromString$1 = new $c_Lakka_event_LogSource$$anon$4().init___();
+  this.fromActor$1 = new $c_Lakka_event_LogSource$$anon$5().init___();
+  this.fromActorRef$1 = new $c_Lakka_event_LogSource$$anon$6().init___();
+  this.fromClass$1 = new $c_Lakka_event_LogSource$$anon$7().init___();
   return this
 });
 $c_Lakka_event_LogSource$.prototype.apply__O__Lakka_actor_ActorSystem__Lakka_event_LogSource__T2 = (function(o, system, evidence$2) {
@@ -7784,6 +8000,7 @@ function $c_Lakka_event_Logging$() {
   this.DebugLevel$1 = 0;
   this.OffLevel$1 = 0;
   this.AllLogLevels$1 = null;
+  this.akka$event$Logging$$serializedStandardOutLogger$1 = null;
   this.StandardOutLogger$1 = null;
   this.emptyMDC$1 = null
 }
@@ -7818,6 +8035,7 @@ $c_Lakka_event_Logging$.prototype.init___ = (function() {
     var jsx$1 = b.result__sci_Vector()
   };
   this.AllLogLevels$1 = jsx$1;
+  this.akka$event$Logging$$serializedStandardOutLogger$1 = new $c_Lakka_event_Logging$SerializedStandardOutLogger().init___();
   this.StandardOutLogger$1 = new $c_Lakka_event_Logging$StandardOutLogger().init___();
   this.emptyMDC$1 = $as_sci_Map($m_s_Predef$().Map$2.apply__sc_Seq__sc_GenMap($m_sci_Nil$()));
   return this
@@ -7836,7 +8054,7 @@ $c_Lakka_event_Logging$.prototype.apply__Lakka_actor_ActorSystem__O__Lakka_event
   };
   var str$2 = $as_T(x$4_$_$$und1$f);
   var clazz$2 = $as_jl_Class(x$4_$_$$und2$f);
-  return new $c_Lakka_event_BusLogging().init___Lakka_event_LoggingBus__T__jl_Class(system.eventStream$3, str$2, clazz$2)
+  return new $c_Lakka_event_BusLogging().init___Lakka_event_LoggingBus__T__jl_Class__Lakka_event_LoggingFilter(system.eventStream$3, str$2, clazz$2, $as_Lakka_actor_ExtendedActorSystem(system).logFilter$3)
 });
 $c_Lakka_event_Logging$.prototype.classFor__I__jl_Class = (function(level) {
   if ((this.ErrorLevel$1 === level)) {
@@ -7872,6 +8090,10 @@ $c_Lakka_event_Logging$.prototype.apply__Lakka_event_LoggingBus__O__Lakka_event_
   var str$2 = $as_T(x$5_$_$$und1$f);
   var clazz$2 = $as_jl_Class(x$5_$_$$und2$f);
   return new $c_Lakka_event_BusLogging().init___Lakka_event_LoggingBus__T__jl_Class(bus, str$2, clazz$2)
+});
+$c_Lakka_event_Logging$.prototype.levelFor__T__s_Option = (function(s) {
+  var x1 = $as_T(s.toLowerCase());
+  return ((x1 === "off") ? new $c_s_Some().init___O(new $c_Lakka_event_Logging$LogLevel().init___I(this.OffLevel$1)) : ((x1 === "error") ? new $c_s_Some().init___O(new $c_Lakka_event_Logging$LogLevel().init___I(this.ErrorLevel$1)) : ((x1 === "warning") ? new $c_s_Some().init___O(new $c_Lakka_event_Logging$LogLevel().init___I(this.WarningLevel$1)) : ((x1 === "info") ? new $c_s_Some().init___O(new $c_Lakka_event_Logging$LogLevel().init___I(this.InfoLevel$1)) : ((x1 === "debug") ? new $c_s_Some().init___O(new $c_Lakka_event_Logging$LogLevel().init___I(this.DebugLevel$1)) : $m_s_None$())))))
 });
 $c_Lakka_event_Logging$.prototype.stackTraceFor__jl_Throwable__T = (function(e) {
   if ((e === null)) {
@@ -7987,20 +8209,30 @@ $h_Lakka_pattern_AskableActorRef$.prototype = $c_Lakka_pattern_AskableActorRef$.
 $c_Lakka_pattern_AskableActorRef$.prototype.init___ = (function() {
   return this
 });
-$c_Lakka_pattern_AskableActorRef$.prototype.ask$extension__Lakka_actor_ActorRef__O__Lakka_util_Timeout__s_concurrent_Future = (function($$this, message, timeout) {
+$c_Lakka_pattern_AskableActorRef$.prototype.internalAsk$extension__Lakka_actor_ActorRef__O__Lakka_util_Timeout__Lakka_actor_ActorRef__s_concurrent_Future = (function($$this, message, timeout, sender) {
+  var rc5 = false;
+  var x2 = null;
   if ($is_Lakka_actor_InternalActorRef($$this)) {
-    var x2 = $as_Lakka_actor_InternalActorRef($$this);
-    if (timeout.duration$1.length$2.$$less$eq__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
-      return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Timeout length must not be negative, question not sent to [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this]))))
-    } else {
-      var a = $m_Lakka_pattern_PromiseActorRef$().apply__Lakka_actor_ActorRefProvider__Lakka_util_Timeout__T__Lakka_pattern_PromiseActorRef(x2.provider__Lakka_actor_ActorRefProvider(), timeout, $$this.toString__T());
-      $as_Lakka_actor_ScalaActorRef($$this).$$bang__O__Lakka_actor_ActorRef__V(message, a);
-      var this$1 = a.result$3;
-      return this$1
+    rc5 = true;
+    x2 = $as_Lakka_actor_InternalActorRef($$this);
+    if (x2.isTerminated__Z()) {
+      var qual$1 = $as_Lakka_actor_ScalaActorRef($$this);
+      var x$3 = qual$1.$$bang$default$2__O__Lakka_actor_ActorRef(message);
+      qual$1.$$bang__O__Lakka_actor_ActorRef__V(message, x$3);
+      return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_Lakka_pattern_AskTimeoutException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Recipient[", "] had already been terminated. Sender[", "] sent the message of type \"", "\"."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this, sender, $objectGetClass(message).getName__T()]))))
     }
-  } else {
-    return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Unsupported recipient ActorRef type, question not sent to [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this]))))
-  }
+  };
+  if (rc5) {
+    if (timeout.duration$1.length$2.$$less$eq__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
+      return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Timeout length must be positive, question not sent to [", "]. Sender[", "] sent the message of type \"", "\"."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this, sender, $objectGetClass(message).getName__T()]))))
+    } else {
+      var a = $m_Lakka_pattern_PromiseActorRef$().apply__Lakka_actor_ActorRefProvider__Lakka_util_Timeout__O__T__Lakka_actor_ActorRef__Lakka_pattern_PromiseActorRef(x2.provider__Lakka_actor_ActorRefProvider(), timeout, $$this, $objectGetClass(message).getName__T(), sender);
+      $as_Lakka_actor_ScalaActorRef($$this).$$bang__O__Lakka_actor_ActorRef__V(message, a);
+      var this$2 = a.result$3;
+      return this$2
+    }
+  };
+  return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Unsupported recipient ActorRef type, question not sent to [", "]. Sender[", "] sent the message of type \"", "\"."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this, sender, $objectGetClass(message).getName__T()]))))
 });
 var $d_Lakka_pattern_AskableActorRef$ = new $TypeData().initClass({
   Lakka_pattern_AskableActorRef$: 0
@@ -8030,20 +8262,20 @@ $h_Lakka_pattern_AskableActorSelection$.prototype = $c_Lakka_pattern_AskableActo
 $c_Lakka_pattern_AskableActorSelection$.prototype.init___ = (function() {
   return this
 });
-$c_Lakka_pattern_AskableActorSelection$.prototype.ask$extension__Lakka_actor_ActorSelection__O__Lakka_util_Timeout__s_concurrent_Future = (function($$this, message, timeout) {
+$c_Lakka_pattern_AskableActorSelection$.prototype.internalAsk$extension__Lakka_actor_ActorSelection__O__Lakka_util_Timeout__Lakka_actor_ActorRef__s_concurrent_Future = (function($$this, message, timeout, sender) {
   var x1 = $$this.anchor$2;
   if ($is_Lakka_actor_InternalActorRef(x1)) {
     var x2 = $as_Lakka_actor_InternalActorRef(x1);
     if (timeout.duration$1.length$2.$$less$eq__sjsr_RuntimeLong__Z($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong())) {
-      return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Timeout length must not be negative, question not sent to [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this]))))
+      return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Timeout length must be positive, question not sent to [", "]. Sender[", "] sent the message of type \"", "\"."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this, sender, $objectGetClass(message).getName__T()]))))
     } else {
-      var a = $m_Lakka_pattern_PromiseActorRef$().apply__Lakka_actor_ActorRefProvider__Lakka_util_Timeout__T__Lakka_pattern_PromiseActorRef(x2.provider__Lakka_actor_ActorRefProvider(), timeout, $$this.toString__T());
+      var a = $m_Lakka_pattern_PromiseActorRef$().apply__Lakka_actor_ActorRefProvider__Lakka_util_Timeout__O__T__Lakka_actor_ActorRef__Lakka_pattern_PromiseActorRef(x2.provider__Lakka_actor_ActorRefProvider(), timeout, $$this, $objectGetClass(message).getName__T(), sender);
       $$this.tell__O__Lakka_actor_ActorRef__V(message, a);
       var this$1 = a.result$3;
       return this$1
     }
   } else {
-    return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Unsupported recipient ActorRef type, question not sent to [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this]))))
+    return $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Unsupported recipient ActorRef type, question not sent to [", "]. Sender[", "] sent the message of type \"", "\"."])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$$this, sender, $objectGetClass(message).getName__T()]))))
   }
 });
 var $d_Lakka_pattern_AskableActorSelection$ = new $TypeData().initClass({
@@ -8724,6 +8956,9 @@ $c_Lakka_util_Unsafe$.prototype.init___ = (function() {
   this.instance$1 = new $c_Lakka_util_Unsafe$$anon$1().init___();
   return this
 });
+$c_Lakka_util_Unsafe$.prototype.fallback__J__O = (function(offset) {
+  return (offset.equals__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().childrenOffset$1)) ? $m_Lakka_actor_dungeon_ChildrenContainer$EmptyChildrenContainer$() : (offset.equals__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().nextNameOffset$1)) ? $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong() : (offset.equals__sjsr_RuntimeLong__Z(new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().functionRefsOffset$1)) ? $m_sci_Map$EmptyMap$() : null)))
+});
 var $d_Lakka_util_Unsafe$ = new $TypeData().initClass({
   Lakka_util_Unsafe$: 0
 }, false, "akka.util.Unsafe$", {
@@ -8755,17 +8990,25 @@ $c_Lakka_util_Unsafe$$anon$1.prototype.init___ = (function() {
 $c_Lakka_util_Unsafe$$anon$1.prototype.getObjectVolatile__O__J__ = (function(o, offset) {
   return this.getObjectVolatile__O__J__O(o, offset)
 });
+$c_Lakka_util_Unsafe$$anon$1.prototype.putObjectVolatile__O__I__O__V = (function(o, offset, next) {
+  var this$1 = $m_Lakka_util_Unsafe$().unsafeVars$1;
+  var key = new $c_s_Tuple2$mcII$sp().init___I__I($objectHashCode(o), offset);
+  this$1.put__O__O__s_Option(key, next)
+});
+$c_Lakka_util_Unsafe$$anon$1.prototype.putObjectVolatile__O__I__O__ = (function(o, offset, next) {
+  this.putObjectVolatile__O__I__O__V(o, offset, next)
+});
 $c_Lakka_util_Unsafe$$anon$1.prototype.getAndSetObject__O__J__O__O = (function(o, offset, next) {
-  var this$1 = $m_Lakka_util_Unsafe$().unsafeVars$1.get__O__s_Option(new $c_s_Tuple2$mcJJ$sp().init___J__J(new $c_sjsr_RuntimeLong().init___I($objectHashCode(o)), offset));
-  var ret = (this$1.isEmpty__Z() ? null : this$1.get__O());
+  var this$1 = $m_Lakka_util_Unsafe$().unsafeVars$1.get__O__s_Option(new $c_s_Tuple2$mcII$sp().init___I__I($objectHashCode(o), offset.lo$2));
+  var ret = (this$1.isEmpty__Z() ? $m_Lakka_util_Unsafe$().fallback__J__O(offset) : this$1.get__O());
   var this$2 = $m_Lakka_util_Unsafe$().unsafeVars$1;
-  var key = new $c_s_Tuple2$mcJJ$sp().init___J__J(new $c_sjsr_RuntimeLong().init___I($objectHashCode(o)), offset);
+  var key = new $c_s_Tuple2$mcII$sp().init___I__I($objectHashCode(o), offset.lo$2);
   this$2.put__O__O__s_Option(key, next);
   return ret
 });
 $c_Lakka_util_Unsafe$$anon$1.prototype.compareAndSwapObject__O__J__O__O__Z = (function(o, offset, old, next) {
   var this$1 = $m_Lakka_util_Unsafe$().unsafeVars$1;
-  var key = new $c_s_Tuple2$mcJJ$sp().init___J__J(new $c_sjsr_RuntimeLong().init___I($objectHashCode(o)), offset);
+  var key = new $c_s_Tuple2$mcII$sp().init___I__I($objectHashCode(o), offset.lo$2);
   this$1.put__O__O__s_Option(key, next);
   return true
 });
@@ -8773,8 +9016,8 @@ $c_Lakka_util_Unsafe$$anon$1.prototype.compareAndSwapObject__O__J__O__O__ = (fun
   return this.compareAndSwapObject__O__J__O__O__Z(o, offset, old, next)
 });
 $c_Lakka_util_Unsafe$$anon$1.prototype.getObjectVolatile__O__J__O = (function(o, offset) {
-  var this$1 = $m_Lakka_util_Unsafe$().unsafeVars$1.get__O__s_Option(new $c_s_Tuple2$mcJJ$sp().init___J__J(new $c_sjsr_RuntimeLong().init___I($objectHashCode(o)), offset));
-  return (this$1.isEmpty__Z() ? null : this$1.get__O())
+  var this$1 = $m_Lakka_util_Unsafe$().unsafeVars$1.get__O__s_Option(new $c_s_Tuple2$mcII$sp().init___I__I($objectHashCode(o), offset.lo$2));
+  return (this$1.isEmpty__Z() ? $m_Lakka_util_Unsafe$().fallback__J__O(offset) : this$1.get__O())
 });
 $c_Lakka_util_Unsafe$$anon$1.prototype.getAndSetObject__O__J__O__ = (function(o, offset, next) {
   return this.getAndSetObject__O__J__O__O(o, offset, next)
@@ -8835,7 +9078,7 @@ function $h_Leu_unicredit_AkkaConfig$() {
 $h_Leu_unicredit_AkkaConfig$.prototype = $c_Leu_unicredit_AkkaConfig$.prototype;
 $c_Leu_unicredit_AkkaConfig$.prototype.init___ = (function() {
   $n_Leu_unicredit_AkkaConfig$ = this;
-  this.default$1 = "\nakka {\n  home = \"\"\n  version = \"2.4-SNAPSHOT\"\n  #loggers = [\"akka.event.Logging$DefaultLogger\"]\n  loggers = [\"akka.event.DefaultLogger\"]\n  #loggers = [\"akka.event.LoggingBusActor\"]\n  logging-filter = \"akka.event.DefaultLoggingFilter\"\n  loggers-dispatcher = \"akka.actor.default-dispatcher\"\n  logger-startup-timeout = 5s\n  loglevel = \"INFO\"\n  stdout-loglevel = \"WARNING\"\n  log-config-on-start = off\n  log-dead-letters = 0\n  log-dead-letters-during-shutdown = off\n  library-extensions = []\n  extensions = []\n  daemonic = off\n  jvm-exit-on-fatal-error = on\n\n  actor {\n    provider = \"akka.actor.LocalActorRefProvider\"\n    guardian-supervisor-strategy = \"akka.actor.DefaultSupervisorStrategy\"\n    creation-timeout = 20s\n    serialize-messages = off\n    serialize-creators = off\n    unstarted-push-timeout = 10s\n    typed {\n      # Default timeout for typed actor methods with non-void return type\n      timeout = 5s\n    }\n    router.type-mapping {\n      from-code = \"akka.routing.NoRouter\"\n      round-robin-pool = \"akka.routing.RoundRobinPool\"\n      round-robin-group = \"akka.routing.RoundRobinGroup\"\n      random-pool = \"akka.routing.RandomPool\"\n      random-group = \"akka.routing.RandomGroup\"\n      balancing-pool = \"akka.routing.BalancingPool\"\n      smallest-mailbox-pool = \"akka.routing.SmallestMailboxPool\"\n      broadcast-pool = \"akka.routing.BroadcastPool\"\n      broadcast-group = \"akka.routing.BroadcastGroup\"\n      scatter-gather-pool = \"akka.routing.ScatterGatherFirstCompletedPool\"\n      scatter-gather-group = \"akka.routing.ScatterGatherFirstCompletedGroup\"\n      tail-chopping-pool = \"akka.routing.TailChoppingPool\"\n      tail-chopping-group = \"akka.routing.TailChoppingGroup\"\n      consistent-hashing-pool = \"akka.routing.ConsistentHashingPool\"\n      consistent-hashing-group = \"akka.routing.ConsistentHashingGroup\"\n    }\n    deployment {\n      default {\n        dispatcher = \"\"\n        mailbox = \"\"\n        router = \"from-code\"\n        nr-of-instances = 1\n        within = 5 seconds\n        virtual-nodes-factor = 10\n        tail-chopping-router {\n          interval = 10 milliseconds\n        }\n        routees {\n          paths = []\n        }\n        resizer {\n          enabled = off\n          lower-bound = 1\n          upper-bound = 10\n          pressure-threshold = 1\n          rampup-rate = 0.2\n          backoff-threshold = 0.3\n          backoff-rate = 0.1\n          messages-per-resize = 10\n        }\n        optimal-size-exploring-resizer {\n          enabled = off\n          lower-bound = 1\n          chance-of-ramping-down-when-full = 0.2\n          action-interval = 5s\n          downsize-after-underutilized-for = 72h\n          explore-step-size = 0.1\n          chance-of-exploration = 0.4\n          downsize-ratio = 0.8\n          optimization-range = 16\n          weight-of-latest-metric = 0.5\n        }\n      }\n    }\n\n    default-dispatcher {\n      type = \"Dispatcher\"\n      executor = \"default-executor\"\n      default-executor {\n        fallback = \"fork-join-executor\"\n      }\n      fork-join-executor {\n        parallelism-min = 8\n        parallelism-factor = 3.0\n        parallelism-max = 64\n        task-peeking-mode = \"FIFO\"\n      }\n      thread-pool-executor {\n        keep-alive-time = 60s\n        fixed-pool-size = off\n        core-pool-size-min = 8\n        core-pool-size-factor = 3.0\n        core-pool-size-max = 64\n        max-pool-size-min = 8\n        max-pool-size-factor  = 3.0\n        max-pool-size-max = 64\n        task-queue-size = -1\n        task-queue-type = \"linked\"\n        allow-core-timeout = on\n      }\n      shutdown-timeout = 1s\n      throughput = 5\n      throughput-deadline-time = 0ms\n      attempt-teamwork = on\n      mailbox-requirement = \"\"\n    }\n\n    default-mailbox {\n      mailbox-type = \"akka.dispatch.UnboundedMailbox\"\n      mailbox-capacity = 1000\n      mailbox-push-timeout-time = 10s\n      stash-capacity = -1\n    }\n    mailbox {\n      requirements {\n        \"akka.dispatch.UnboundedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-queue-based\n        \"akka.dispatch.BoundedMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-queue-based\n        \"akka.dispatch.DequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-deque-based\n        \"akka.dispatch.UnboundedDequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-deque-based\n        \"akka.dispatch.BoundedDequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-deque-based\n        \"akka.dispatch.MultipleConsumerSemantics\" =\n          akka.actor.mailbox.unbounded-queue-based\n        \"akka.dispatch.ControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-control-aware-queue-based\n        \"akka.dispatch.UnboundedControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-control-aware-queue-based\n        \"akka.dispatch.BoundedControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-control-aware-queue-based\n        \"akka.event.LoggerMessageQueueSemantics\" =\n          akka.actor.mailbox.logger-queue\n      }\n      unbounded-queue-based {\n        mailbox-type = \"akka.dispatch.UnboundedMailbox\"\n      }\n      bounded-queue-based {\n        mailbox-type = \"akka.dispatch.BoundedMailbox\"\n      }\n      unbounded-deque-based {\n        mailbox-type = \"akka.dispatch.UnboundedDequeBasedMailbox\"\n      }\n      bounded-deque-based {\n        mailbox-type = \"akka.dispatch.BoundedDequeBasedMailbox\"\n      }\n      unbounded-control-aware-queue-based {\n        mailbox-type = \"akka.dispatch.UnboundedControlAwareMailbox\"\n      }\n      bounded-control-aware-queue-based {\n        mailbox-type = \"akka.dispatch.BoundedControlAwareMailbox\"\n      }\n      logger-queue {\n        mailbox-type = \"akka.event.LoggerMailboxType\"\n      }\n    }\n    debug {\n      receive = off\n      autoreceive = off\n      lifecycle = off\n      fsm = off\n      event-stream = off\n      unhandled = off\n      router-misconfiguration = off\n    }\n    serializers {\n      java = \"akka.serialization.JavaSerializer\"\n      bytes = \"akka.serialization.ByteArraySerializer\"\n    }\n    serialization-bindings {\n      \"[B\" = bytes\n      \"java.io.Serializable\" = java\n    }\n    warn-about-java-serializer-usage = on\n    serialization-identifiers {\n      \"akka.serialization.JavaSerializer\" = 1\n      \"akka.serialization.ByteArraySerializer\" = 4  \n    }\n    dsl {\n      inbox-size = 1000\n      default-timeout = 5s\n    }\n  }\n  scheduler {\n    tick-duration = 10ms\n    ticks-per-wheel = 512\n    #implementation = akka.actor.LightArrayRevolverScheduler\n    implementation = akka.actor.EventLoopScheduler\n    shutdown-timeout = 5s\n  }\n}\n";
+  this.default$1 = "\nakka {\n  home = \"\"\n  version = \"2.4-SNAPSHOT\"\n  #loggers = [\"akka.event.Logging$DefaultLogger\"]\n  loggers = [\"akka.event.JSDefaultLogger\"]\n  #loggers = [\"akka.event.DefaultLogger\"]\n  #loggers = [\"akka.event.LoggingBusActor\"]\n  logging-filter = \"akka.event.JSDefaultLoggingFilter\"\n  #logging-filter = \"akka.event.DefaultLoggingFilter\"\n  loggers-dispatcher = \"akka.actor.default-dispatcher\"\n  logger-startup-timeout = 5s\n  loglevel = \"INFO\"\n  stdout-loglevel = \"DEBUG\"\n  log-config-on-start = off\n  log-dead-letters = 0\n  log-dead-letters-during-shutdown = off\n  library-extensions = []\n  extensions = []\n  daemonic = off\n  jvm-exit-on-fatal-error = on\n\n  actor {\n    #provider = \"akka.actor.LocalActorRefProvider\"\n    provider = \"akka.actor.JSLocalActorRefProvider\"\n    guardian-supervisor-strategy = \"akka.actor.DefaultSupervisorStrategy\"\n    creation-timeout = 20s\n    serialize-messages = off\n    serialize-creators = off\n    unstarted-push-timeout = 10s\n    typed {\n      # Default timeout for typed actor methods with non-void return type\n      timeout = 5s\n    }\n    router.type-mapping {\n      from-code = \"akka.routing.NoRouter\"\n      round-robin-pool = \"akka.routing.RoundRobinPool\"\n      round-robin-group = \"akka.routing.RoundRobinGroup\"\n      random-pool = \"akka.routing.RandomPool\"\n      random-group = \"akka.routing.RandomGroup\"\n      balancing-pool = \"akka.routing.BalancingPool\"\n      smallest-mailbox-pool = \"akka.routing.SmallestMailboxPool\"\n      broadcast-pool = \"akka.routing.BroadcastPool\"\n      broadcast-group = \"akka.routing.BroadcastGroup\"\n      scatter-gather-pool = \"akka.routing.ScatterGatherFirstCompletedPool\"\n      scatter-gather-group = \"akka.routing.ScatterGatherFirstCompletedGroup\"\n      tail-chopping-pool = \"akka.routing.TailChoppingPool\"\n      tail-chopping-group = \"akka.routing.TailChoppingGroup\"\n      consistent-hashing-pool = \"akka.routing.ConsistentHashingPool\"\n      consistent-hashing-group = \"akka.routing.ConsistentHashingGroup\"\n    }\n    deployment {\n      default {\n        dispatcher = \"\"\n        mailbox = \"\"\n        router = \"from-code\"\n        nr-of-instances = 1\n        within = 5 seconds\n        virtual-nodes-factor = 10\n        tail-chopping-router {\n          interval = 10 milliseconds\n        }\n        routees {\n          paths = []\n        }\n        resizer {\n          enabled = off\n          lower-bound = 1\n          upper-bound = 10\n          pressure-threshold = 1\n          rampup-rate = 0.2\n          backoff-threshold = 0.3\n          backoff-rate = 0.1\n          messages-per-resize = 10\n        }\n        optimal-size-exploring-resizer {\n          enabled = off\n          lower-bound = 1\n          chance-of-ramping-down-when-full = 0.2\n          action-interval = 5s\n          downsize-after-underutilized-for = 72h\n          explore-step-size = 0.1\n          chance-of-exploration = 0.4\n          downsize-ratio = 0.8\n          optimization-range = 16\n          weight-of-latest-metric = 0.5\n        }\n      }\n    }\n\n    default-dispatcher {\n      type = \"Dispatcher\"\n      executor = \"default-executor\"\n      default-executor {\n        fallback = \"fork-join-executor\"\n      }\n      fork-join-executor {\n        parallelism-min = 8\n        parallelism-factor = 3.0\n        parallelism-max = 64\n        task-peeking-mode = \"FIFO\"\n      }\n      thread-pool-executor {\n        keep-alive-time = 60s\n        fixed-pool-size = off\n        core-pool-size-min = 8\n        core-pool-size-factor = 3.0\n        core-pool-size-max = 64\n        max-pool-size-min = 8\n        max-pool-size-factor  = 3.0\n        max-pool-size-max = 64\n        task-queue-size = -1\n        task-queue-type = \"linked\"\n        allow-core-timeout = on\n      }\n      shutdown-timeout = 1s\n      throughput = 5\n      throughput-deadline-time = 0ms\n      attempt-teamwork = on\n      mailbox-requirement = \"\"\n    }\n\n    default-mailbox {\n      mailbox-type = \"akka.dispatch.UnboundedMailbox\"\n      mailbox-capacity = 1000\n      mailbox-push-timeout-time = 10s\n      stash-capacity = -1\n    }\n    mailbox {\n      requirements {\n        \"akka.dispatch.UnboundedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-queue-based\n        \"akka.dispatch.BoundedMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-queue-based\n        \"akka.dispatch.DequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-deque-based\n        \"akka.dispatch.UnboundedDequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-deque-based\n        \"akka.dispatch.BoundedDequeBasedMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-deque-based\n        \"akka.dispatch.MultipleConsumerSemantics\" =\n          akka.actor.mailbox.unbounded-queue-based\n        \"akka.dispatch.ControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-control-aware-queue-based\n        \"akka.dispatch.UnboundedControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.unbounded-control-aware-queue-based\n        \"akka.dispatch.BoundedControlAwareMessageQueueSemantics\" =\n          akka.actor.mailbox.bounded-control-aware-queue-based\n        \"akka.event.LoggerMessageQueueSemantics\" =\n          akka.actor.mailbox.logger-queue\n      }\n      unbounded-queue-based {\n        mailbox-type = \"akka.dispatch.UnboundedMailbox\"\n      }\n      bounded-queue-based {\n        mailbox-type = \"akka.dispatch.BoundedMailbox\"\n      }\n      unbounded-deque-based {\n        mailbox-type = \"akka.dispatch.UnboundedDequeBasedMailbox\"\n      }\n      bounded-deque-based {\n        mailbox-type = \"akka.dispatch.BoundedDequeBasedMailbox\"\n      }\n      unbounded-control-aware-queue-based {\n        mailbox-type = \"akka.dispatch.UnboundedControlAwareMailbox\"\n      }\n      bounded-control-aware-queue-based {\n        mailbox-type = \"akka.dispatch.BoundedControlAwareMailbox\"\n      }\n      logger-queue {\n        mailbox-type = \"akka.event.LoggerMailboxType\"\n      }\n    }\n    debug {\n      receive = off\n      autoreceive = off\n      lifecycle = off\n      fsm = off\n      event-stream = off\n      unhandled = off\n      router-misconfiguration = off\n    }\n    serializers {\n      java = \"akka.serialization.JavaSerializer\"\n      bytes = \"akka.serialization.ByteArraySerializer\"\n    }\n    serialization-bindings {\n      \"[B\" = bytes\n      \"java.io.Serializable\" = java\n    }\n    warn-about-java-serializer-usage = on\n    serialization-identifiers {\n      \"akka.serialization.JavaSerializer\" = 1\n      \"akka.serialization.ByteArraySerializer\" = 4  \n    }\n    dsl {\n      inbox-size = 1000\n      default-timeout = 5s\n    }\n  }\n  scheduler {\n    tick-duration = 10ms\n    ticks-per-wheel = 512\n    #implementation = akka.actor.LightArrayRevolverScheduler\n    implementation = akka.actor.EventLoopScheduler\n    shutdown-timeout = 5s\n  }\n}\n";
   this.config$1 = $m_Lcom_typesafe_config_ConfigFactory$().parseString__T__Lcom_typesafe_config_Config(this.default$1);
   return this
 });
@@ -10892,6 +11135,27 @@ function $m_Ljava_nio_charset_CodingErrorAction$() {
   };
   return $n_Ljava_nio_charset_CodingErrorAction$
 }
+/** @constructor */
+function $c_Ljava_text_SimpleDateFormat() {
+  $c_O.call(this)
+}
+$c_Ljava_text_SimpleDateFormat.prototype = new $h_O();
+$c_Ljava_text_SimpleDateFormat.prototype.constructor = $c_Ljava_text_SimpleDateFormat;
+/** @constructor */
+function $h_Ljava_text_SimpleDateFormat() {
+  /*<skip>*/
+}
+$h_Ljava_text_SimpleDateFormat.prototype = $c_Ljava_text_SimpleDateFormat.prototype;
+$c_Ljava_text_SimpleDateFormat.prototype.init___T = (function(fmt) {
+  return this
+});
+var $d_Ljava_text_SimpleDateFormat = new $TypeData().initClass({
+  Ljava_text_SimpleDateFormat: 0
+}, false, "java.text.SimpleDateFormat", {
+  Ljava_text_SimpleDateFormat: 1,
+  O: 1
+});
+$c_Ljava_text_SimpleDateFormat.prototype.$classData = $d_Ljava_text_SimpleDateFormat;
 /** @constructor */
 function $c_Lraft_Entries() {
   $c_O.call(this);
@@ -14326,75 +14590,6 @@ function $m_scm_WrappedArray$() {
   return $n_scm_WrappedArray$
 }
 /** @constructor */
-function $c_sjs_concurrent_JSExecutionContext$() {
-  $c_O.call(this);
-  this.runNow$1 = null;
-  this.queue$1 = null
-}
-$c_sjs_concurrent_JSExecutionContext$.prototype = new $h_O();
-$c_sjs_concurrent_JSExecutionContext$.prototype.constructor = $c_sjs_concurrent_JSExecutionContext$;
-/** @constructor */
-function $h_sjs_concurrent_JSExecutionContext$() {
-  /*<skip>*/
-}
-$h_sjs_concurrent_JSExecutionContext$.prototype = $c_sjs_concurrent_JSExecutionContext$.prototype;
-$c_sjs_concurrent_JSExecutionContext$.prototype.init___ = (function() {
-  $n_sjs_concurrent_JSExecutionContext$ = this;
-  this.runNow$1 = $m_sjs_concurrent_RunNowExecutionContext$();
-  this.queue$1 = $m_sjs_concurrent_QueueExecutionContext$().apply__s_concurrent_ExecutionContextExecutor();
-  return this
-});
-var $d_sjs_concurrent_JSExecutionContext$ = new $TypeData().initClass({
-  sjs_concurrent_JSExecutionContext$: 0
-}, false, "scala.scalajs.concurrent.JSExecutionContext$", {
-  sjs_concurrent_JSExecutionContext$: 1,
-  O: 1
-});
-$c_sjs_concurrent_JSExecutionContext$.prototype.$classData = $d_sjs_concurrent_JSExecutionContext$;
-var $n_sjs_concurrent_JSExecutionContext$ = (void 0);
-function $m_sjs_concurrent_JSExecutionContext$() {
-  if ((!$n_sjs_concurrent_JSExecutionContext$)) {
-    $n_sjs_concurrent_JSExecutionContext$ = new $c_sjs_concurrent_JSExecutionContext$().init___()
-  };
-  return $n_sjs_concurrent_JSExecutionContext$
-}
-/** @constructor */
-function $c_sjs_concurrent_QueueExecutionContext$() {
-  $c_O.call(this)
-}
-$c_sjs_concurrent_QueueExecutionContext$.prototype = new $h_O();
-$c_sjs_concurrent_QueueExecutionContext$.prototype.constructor = $c_sjs_concurrent_QueueExecutionContext$;
-/** @constructor */
-function $h_sjs_concurrent_QueueExecutionContext$() {
-  /*<skip>*/
-}
-$h_sjs_concurrent_QueueExecutionContext$.prototype = $c_sjs_concurrent_QueueExecutionContext$.prototype;
-$c_sjs_concurrent_QueueExecutionContext$.prototype.init___ = (function() {
-  return this
-});
-$c_sjs_concurrent_QueueExecutionContext$.prototype.apply__s_concurrent_ExecutionContextExecutor = (function() {
-  var v = $g.Promise;
-  if ((v === (void 0))) {
-    return new $c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext().init___()
-  } else {
-    return new $c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext().init___()
-  }
-});
-var $d_sjs_concurrent_QueueExecutionContext$ = new $TypeData().initClass({
-  sjs_concurrent_QueueExecutionContext$: 0
-}, false, "scala.scalajs.concurrent.QueueExecutionContext$", {
-  sjs_concurrent_QueueExecutionContext$: 1,
-  O: 1
-});
-$c_sjs_concurrent_QueueExecutionContext$.prototype.$classData = $d_sjs_concurrent_QueueExecutionContext$;
-var $n_sjs_concurrent_QueueExecutionContext$ = (void 0);
-function $m_sjs_concurrent_QueueExecutionContext$() {
-  if ((!$n_sjs_concurrent_QueueExecutionContext$)) {
-    $n_sjs_concurrent_QueueExecutionContext$ = new $c_sjs_concurrent_QueueExecutionContext$().init___()
-  };
-  return $n_sjs_concurrent_QueueExecutionContext$
-}
-/** @constructor */
 function $c_sjs_js_Dictionary$() {
   $c_O.call(this)
 }
@@ -16106,6 +16301,18 @@ $c_Lakka_actor_ActorSystem.prototype.init___ = (function() {
   this.startTime$1 = $m_jl_System$().currentTimeMillis__J();
   return this
 });
+function $is_Lakka_actor_ActorSystem(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_actor_ActorSystem)))
+}
+function $as_Lakka_actor_ActorSystem(obj) {
+  return (($is_Lakka_actor_ActorSystem(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "akka.actor.ActorSystem"))
+}
+function $isArrayOf_Lakka_actor_ActorSystem(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lakka_actor_ActorSystem)))
+}
+function $asArrayOf_Lakka_actor_ActorSystem(obj, depth) {
+  return (($isArrayOf_Lakka_actor_ActorSystem(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lakka.actor.ActorSystem;", depth))
+}
 /** @constructor */
 function $c_Lakka_actor_ActorSystemImpl$$anon$2() {
   $c_O.call(this);
@@ -16269,6 +16476,13 @@ var $d_Lakka_actor_CreatorFunctionConsumer = new $TypeData().initClass({
   Lakka_actor_IndirectActorProducer: 1
 });
 $c_Lakka_actor_CreatorFunctionConsumer.prototype.$classData = $d_Lakka_actor_CreatorFunctionConsumer;
+var $d_Lakka_actor_DefaultSupervisorStrategy = new $TypeData().initClass({
+  Lakka_actor_DefaultSupervisorStrategy: 0
+}, false, "akka.actor.DefaultSupervisorStrategy", {
+  Lakka_actor_DefaultSupervisorStrategy: 1,
+  O: 1,
+  Lakka_actor_SupervisorStrategyConfigurator: 1
+});
 /** @constructor */
 function $c_Lakka_actor_EventLoopScheduler() {
   $c_O.call(this);
@@ -16397,7 +16611,7 @@ $c_Lakka_actor_JSDynamicAccess.prototype.getClassFor__T__s_reflect_ClassTag__s_u
 });
 $c_Lakka_actor_JSDynamicAccess.prototype.init___jl_ClassLoader = (function(classLoader) {
   this.classLoader$2 = classLoader;
-  var array = [new $c_T2().init___O__O("akka.actor.LocalActorRefProvider", $d_Lakka_actor_LocalActorRefProvider.getClassOf()), new $c_T2().init___O__O("akka.event.LogExt", $d_Lakka_event_LogExt.getClassOf()), new $c_T2().init___O__O("akka.event.DefaultLogger", $d_Lakka_event_DefaultLogger.getClassOf()), new $c_T2().init___O__O("akka.event.LoggingBusActor", $d_Lakka_event_LoggingBusActor.getClassOf()), new $c_T2().init___O__O("akka.event.DefaultLoggingFilter", $d_Lakka_event_DefaultLoggingFilter.getClassOf()), new $c_T2().init___O__O("akka.actor.EventLoopScheduler", $d_Lakka_actor_EventLoopScheduler.getClassOf())];
+  var array = [new $c_T2().init___O__O("akka.actor.LocalActorRefProvider", $d_Lakka_actor_LocalActorRefProvider.getClassOf()), new $c_T2().init___O__O("akka.actor.JSLocalActorRefProvider", $d_Lakka_actor_JSLocalActorRefProvider.getClassOf()), new $c_T2().init___O__O("akka.event.JSDefaultLogger", $d_Lakka_event_JSDefaultLogger.getClassOf()), new $c_T2().init___O__O("akka.event.JSDefaultLoggingFilter", $d_Lakka_event_JSDefaultLoggingFilter.getClassOf()), new $c_T2().init___O__O("akka.actor.EventLoopScheduler", $d_Lakka_actor_EventLoopScheduler.getClassOf()), new $c_T2().init___O__O("akka.actor.DefaultSupervisorStrategy", $d_Lakka_actor_DefaultSupervisorStrategy.getClassOf())];
   var this$14 = new $c_scm_HashMap().init___();
   var i = 0;
   var len = $uI(array.length);
@@ -16482,16 +16696,15 @@ function $c_Lakka_actor_LocalActorRefProvider() {
   this.settings$1 = null;
   this.eventStream$1 = null;
   this.dynamicAccess$1 = null;
-  this.$$unddeadLetters$1 = null;
   this.deployer$1 = null;
   this.rootPath$1 = null;
   this.log$1 = null;
   this.deadLetters$1 = null;
+  this.akka$actor$LocalActorRefProvider$$terminationPromise$f = null;
   this.tempNumber$1 = null;
   this.tempNode$1 = null;
   this.theOneWhoWalksTheBubblesOfSpaceTime$1 = null;
   this.akka$actor$LocalActorRefProvider$$system$1 = null;
-  this.terminationPromise$1 = null;
   this.akka$actor$LocalActorRefProvider$$extraNames$1 = null;
   this.akka$actor$LocalActorRefProvider$$defaultDispatcher$1 = null;
   this.akka$actor$LocalActorRefProvider$$defaultMailbox$1 = null;
@@ -16508,30 +16721,12 @@ function $h_Lakka_actor_LocalActorRefProvider() {
   /*<skip>*/
 }
 $h_Lakka_actor_LocalActorRefProvider.prototype = $c_Lakka_actor_LocalActorRefProvider.prototype;
-$c_Lakka_actor_LocalActorRefProvider.prototype.systemGuardian__Lakka_actor_LocalActorRef = (function() {
-  return (((32 & this.bitmap$0$1) === 0) ? this.systemGuardian$lzycompute__p1__Lakka_actor_LocalActorRef() : this.systemGuardian$1)
-});
 $c_Lakka_actor_LocalActorRefProvider.prototype.registerTempActor__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath__V = (function(actorRef, path) {
   var assertion = (path.parent__Lakka_actor_ActorPath() === this.tempNode$1);
   if ((!assertion)) {
     throw new $c_jl_AssertionError().init___O("assertion failed: cannot registerTempActor() with anything not obtained from tempPath()")
   };
   this.tempContainer__Lakka_actor_VirtualPathContainer().addChild__T__Lakka_actor_InternalActorRef__V(path.name__T(), actorRef)
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.akka$actor$LocalActorRefProvider$$defaultDispatcher$lzycompute__p1__Lakka_dispatch_MessageDispatcher = (function() {
-  if (((2 & this.bitmap$0$1) === 0)) {
-    var this$1 = this.akka$actor$LocalActorRefProvider$$system$1.dispatchers$3;
-    this.akka$actor$LocalActorRefProvider$$defaultDispatcher$1 = this$1.lookup__T__Lakka_dispatch_MessageDispatcher("akka.actor.default-dispatcher");
-    this.bitmap$0$1 = (2 | this.bitmap$0$1)
-  };
-  return this.akka$actor$LocalActorRefProvider$$defaultDispatcher$1
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.akka$actor$LocalActorRefProvider$$defaultMailbox$lzycompute__p1__Lakka_dispatch_MailboxType = (function() {
-  if (((4 & this.bitmap$0$1) === 0)) {
-    this.akka$actor$LocalActorRefProvider$$defaultMailbox$1 = new $c_Lakka_dispatch_UnboundedMailbox().init___();
-    this.bitmap$0$1 = (4 | this.bitmap$0$1)
-  };
-  return this.akka$actor$LocalActorRefProvider$$defaultMailbox$1
 });
 $c_Lakka_actor_LocalActorRefProvider.prototype.rootGuardianAt__Lakka_actor_Address__Lakka_actor_ActorRef = (function(address) {
   var x$2 = this.rootPath$1.address__Lakka_actor_Address();
@@ -16541,181 +16736,21 @@ $c_Lakka_actor_LocalActorRefProvider.prototype.rootGuardianAt__Lakka_actor_Addre
     return this.deadLetters$1
   }
 });
-$c_Lakka_actor_LocalActorRefProvider.prototype.terminationPromise__s_concurrent_Promise = (function() {
-  return (((1 & this.bitmap$0$1) === 0) ? this.terminationPromise$lzycompute__p1__s_concurrent_Promise() : this.terminationPromise$1)
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.akka$actor$LocalActorRefProvider$$defaultMailbox__Lakka_dispatch_MailboxType = (function() {
-  return (((4 & this.bitmap$0$1) === 0) ? this.akka$actor$LocalActorRefProvider$$defaultMailbox$lzycompute__p1__Lakka_dispatch_MailboxType() : this.akka$actor$LocalActorRefProvider$$defaultMailbox$1)
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.guardian$lzycompute__p1__Lakka_actor_LocalActorRef = (function() {
-  if (((16 & this.bitmap$0$1) === 0)) {
-    var this$1 = this.rootGuardian__Lakka_actor_LocalActorRef();
-    var cell = this$1.actorCell$4;
-    $s_Lakka_actor_dungeon_Children$class__reserveChild__Lakka_actor_ActorCell__T__Z(cell, "user");
-    var jsx$1 = this.akka$actor$LocalActorRefProvider$$system$1;
-    var this$3 = $m_Lakka_actor_Props$();
-    var creator = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
-      return (function() {
-        return new $c_Lakka_actor_LocalActorRefProvider$Guardian().init___Lakka_actor_SupervisorStrategy($m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1)
-      })
-    })(this));
-    var ref = new $c_Lakka_actor_LocalActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(jsx$1, this$3.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_LocalActorRefProvider$Guardian.getClassOf(), creator), this.akka$actor$LocalActorRefProvider$$defaultDispatcher__Lakka_dispatch_MessageDispatcher(), this.akka$actor$LocalActorRefProvider$$defaultMailbox__Lakka_dispatch_MailboxType(), this.rootGuardian__Lakka_actor_LocalActorRef(), this.rootPath$1.$$div__T__Lakka_actor_ActorPath("user"));
-    $s_Lakka_actor_dungeon_Children$class__initChild__Lakka_actor_ActorCell__Lakka_actor_ActorRef__s_Option(cell, ref);
-    ref.actorCell$4.start__Lakka_actor_ActorCell();
-    this.guardian$1 = ref;
-    this.bitmap$0$1 = (16 | this.bitmap$0$1)
-  };
-  return this.guardian$1
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.rootGuardian__Lakka_actor_LocalActorRef = (function() {
-  return (((8 & this.bitmap$0$1) === 0) ? this.rootGuardian$lzycompute__p1__Lakka_actor_LocalActorRef() : this.rootGuardian$1)
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.systemGuardian$lzycompute__p1__Lakka_actor_LocalActorRef = (function() {
-  if (((32 & this.bitmap$0$1) === 0)) {
-    var this$1 = this.rootGuardian__Lakka_actor_LocalActorRef();
-    var cell = this$1.actorCell$4;
-    $s_Lakka_actor_dungeon_Children$class__reserveChild__Lakka_actor_ActorCell__T__Z(cell, "system");
-    var jsx$1 = this.akka$actor$LocalActorRefProvider$$system$1;
-    var this$3 = $m_Lakka_actor_Props$();
-    var creator = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
-      return (function() {
-        return new $c_Lakka_actor_LocalActorRefProvider$SystemGuardian().init___Lakka_actor_SupervisorStrategy__Lakka_actor_ActorRef($m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1, arg$outer.guardian__Lakka_actor_LocalActorRef())
-      })
-    })(this));
-    var ref = new $c_Lakka_actor_LocalActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(jsx$1, this$3.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_LocalActorRefProvider$SystemGuardian.getClassOf(), creator), this.akka$actor$LocalActorRefProvider$$defaultDispatcher__Lakka_dispatch_MessageDispatcher(), this.akka$actor$LocalActorRefProvider$$defaultMailbox__Lakka_dispatch_MailboxType(), this.rootGuardian__Lakka_actor_LocalActorRef(), this.rootPath$1.$$div__T__Lakka_actor_ActorPath("system"));
-    $s_Lakka_actor_dungeon_Children$class__initChild__Lakka_actor_ActorCell__Lakka_actor_ActorRef__s_Option(cell, ref);
-    ref.actorCell$4.start__Lakka_actor_ActorCell();
-    this.systemGuardian$1 = ref;
-    this.bitmap$0$1 = (32 | this.bitmap$0$1)
-  };
-  return this.systemGuardian$1
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.actorOf__Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath__Z__s_Option__Z__Z__Lakka_actor_InternalActorRef = (function(system, props, supervisor, path, systemService, deploy, lookupDeploy, async) {
-  var x1 = props.deploy$1.routerConfig$1;
-  var x = $m_Lakka_routing_NoRouter$();
-  if ((x === x1)) {
-    try {
-      var dispatcher = system.dispatchers$3.lookup__T__Lakka_dispatch_MessageDispatcher("akka.actor.default-dispatcher");
-      var mailboxType = new $c_Lakka_dispatch_UnboundedMailbox().init___();
-      return (async ? new $c_Lakka_actor_RepointableActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(system, props, dispatcher, mailboxType, supervisor, path).initialize__Z__Lakka_actor_RepointableActorRef(async) : new $c_Lakka_actor_LocalActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(system, props, dispatcher, mailboxType, supervisor, path))
-    } catch (e) {
-      var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-      if ((e$2 !== null)) {
-        matchEnd8: {
-          var o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
-          if ((!o11.isEmpty__Z())) {
-            var e$3 = $as_jl_Throwable(o11.get__O());
-            throw new $c_Lakka_ConfigurationException().init___T__jl_Throwable(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["configuration problem while creating [", "] with dispatcher [", "] and mailbox [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([path, props.dispatcher__T(), props.mailbox__T()])), e$3)
-          };
-          throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
-        }
-      } else {
-        throw e
-      }
-    }
-  } else {
-    var lookup = $m_s_None$();
-    $m_s_package$();
-    var this$3 = props.deploy$1;
-    var x$3 = this$3.path$1;
-    var this$4 = props.deploy$1;
-    var x$4 = this$4.config$1;
-    var this$5 = props.deploy$1;
-    var x$5 = this$5.scope$1;
-    var this$6 = props.deploy$1;
-    var x$6 = this$6.dispatcher$1;
-    var this$7 = props.deploy$1;
-    var x$7 = this$7.mailbox$1;
-    var elems = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_Lakka_actor_Deploy().init___T__Lcom_typesafe_config_Config__Lakka_routing_RouterConfig__Lakka_actor_Scope__T__T(x$3, x$4, x1, x$5, x$6, x$7)]);
-    var fromProps = new $c_sc_IndexedSeqLike$Elements().init___sc_IndexedSeqLike__I__I(elems, 0, $uI(elems.array$6.length));
-    var that = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(deploy$1) {
-      return (function() {
-        return deploy$1.iterator__sc_Iterator()
-      })
-    })(deploy));
-    var this$10 = new $c_sc_Iterator$JoinIterator().init___sc_Iterator__F0(fromProps, that);
-    var that$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(lookup$1) {
-      return (function() {
-        return lookup$1.iterator__sc_Iterator()
-      })
-    })(lookup));
-    var this$11 = this$10.$$plus$plus__F0__sc_Iterator$ConcatIterator(that$1);
-    if ($s_sc_Iterator$class__isEmpty__sc_Iterator__Z(this$11)) {
-      throw new $c_jl_UnsupportedOperationException().init___T("empty.reduceLeft")
-    };
-    var elem$1 = false;
-    elem$1 = true;
-    var elem$1$1 = null;
-    elem$1$1 = 0;
-    while (this$11.hasNext__Z()) {
-      var arg1 = this$11.next__O();
-      if (elem$1) {
-        elem$1$1 = arg1;
-        elem$1 = false
-      } else {
-        var arg1$1 = elem$1$1;
-        var a = $as_Lakka_actor_Deploy(arg1$1);
-        var b = $as_Lakka_actor_Deploy(arg1);
-        elem$1$1 = b.withFallback__Lakka_actor_Deploy__Lakka_actor_Deploy(a)
-      }
-    };
-    var d = $as_Lakka_actor_Deploy(elem$1$1);
-    var p = props.withRouter__Lakka_routing_RouterConfig__Lakka_actor_Props(d.routerConfig$1);
-    var x$8 = p.deploy$1.routerConfig$1.routerDispatcher__T();
-    var this$14 = p.deploy$1;
-    var x$9 = this$14.path$1;
-    var this$15 = p.deploy$1;
-    var x$10 = this$15.config$1;
-    var this$16 = p.deploy$1;
-    var x$11 = this$16.routerConfig$1;
-    var this$17 = p.deploy$1;
-    var x$12 = this$17.scope$1;
-    var this$18 = p.deploy$1;
-    var x$13 = this$18.mailbox$1;
-    var jsx$2 = new $c_Lakka_actor_Deploy().init___T__Lcom_typesafe_config_Config__Lakka_routing_RouterConfig__Lakka_actor_Scope__T__T(x$9, x$10, x$11, x$12, x$8, x$13);
-    var this$20 = $m_s_package$().Vector$1;
-    var array = [p.deploy$1.routerConfig$1];
-    if (($uI(array.length) === 0)) {
-      var jsx$1 = this$20.NIL$6
-    } else {
-      var b$1 = new $c_sci_VectorBuilder().init___();
-      var i = 0;
-      var len = $uI(array.length);
-      while ((i < len)) {
-        var index = i;
-        var arg1$2 = array[index];
-        b$1.$$plus$eq__O__sci_VectorBuilder(arg1$2);
-        i = ((1 + i) | 0)
-      };
-      var jsx$1 = b$1.result__sci_Vector()
-    };
-    var routerProps = new $c_Lakka_actor_Props().init___Lakka_actor_Deploy__jl_Class__sci_Seq(jsx$2, $d_Lakka_routing_JSRouterActorCreator.getClassOf(), jsx$1);
-    var routeeProps = p.withRouter__Lakka_routing_RouterConfig__Lakka_actor_Props($m_Lakka_routing_NoRouter$());
-    try {
-      var routerDispatcher = system.dispatchers$3.lookup__T__Lakka_dispatch_MessageDispatcher(p.deploy$1.routerConfig$1.routerDispatcher__T());
-      var routerMailbox = new $c_Lakka_dispatch_UnboundedMailbox().init___();
-      var routeeDispatcher = system.dispatchers$3.lookup__T__Lakka_dispatch_MessageDispatcher(p.dispatcher__T());
-      new $c_Lakka_dispatch_UnboundedMailbox().init___();
-      return new $c_Lakka_routing_RoutedActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_Props__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(system, routerProps, routerDispatcher, routerMailbox, routeeProps, supervisor, path).initialize__Z__Lakka_actor_RepointableActorRef(async)
-    } catch (e$4) {
-      var e$5 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e$4);
-      if ((e$5 !== null)) {
-        matchEnd8$2: {
-          var o11$2 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$5);
-          if ((!o11$2.isEmpty__Z())) {
-            var e$6 = $as_jl_Throwable(o11$2.get__O());
-            throw new $c_Lakka_ConfigurationException().init___T__jl_Throwable((("" + new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["configuration problem while creating [", "] with router dispatcher [", "] and mailbox [", "] "])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([path, routerProps.dispatcher__T(), routerProps.mailbox__T()]))) + new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["and routee dispatcher [", "] and mailbox [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([routeeProps.dispatcher__T(), routeeProps.mailbox__T()]))), e$6)
-          };
-          throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$5)
-        }
-      } else {
-        throw e$4
-      }
-    }
-  }
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.akka$actor$LocalActorRefProvider$$defaultDispatcher__Lakka_dispatch_MessageDispatcher = (function() {
-  return (((2 & this.bitmap$0$1) === 0) ? this.akka$actor$LocalActorRefProvider$$defaultDispatcher$lzycompute__p1__Lakka_dispatch_MessageDispatcher() : this.akka$actor$LocalActorRefProvider$$defaultDispatcher$1)
+$c_Lakka_actor_LocalActorRefProvider.prototype.init___T__Lakka_actor_ActorSystem$Settings__Lakka_event_EventStream__Lakka_actor_DynamicAccess__Lakka_actor_Deployer__s_Option = (function(_systemName, settings, eventStream, dynamicAccess, deployer, _deadLetters) {
+  this.settings$1 = settings;
+  this.eventStream$1 = eventStream;
+  this.dynamicAccess$1 = dynamicAccess;
+  this.deployer$1 = deployer;
+  this.rootPath$1 = new $c_Lakka_actor_RootActorPath().init___Lakka_actor_Address__T(new $c_Lakka_actor_Address().init___T__T("akka", _systemName), "/");
+  this.log$1 = $m_Lakka_event_Logging$().apply__Lakka_event_LoggingBus__O__Lakka_event_LogSource__Lakka_event_LoggingAdapter(eventStream, ((($objectGetClass(this).getName__T() + "(") + this.rootPath$1.address__Lakka_actor_Address()) + ")"), $m_Lakka_event_LogSource$().fromString$1);
+  var $default = new $c_Lakka_actor_LocalActorRefProvider$$anonfun$1().init___Lakka_actor_LocalActorRefProvider(this);
+  this.deadLetters$1 = $as_Lakka_actor_InternalActorRef($as_F1((_deadLetters.isEmpty__Z() ? $default.apply__F1() : _deadLetters.get__O())).apply__O__O(this.rootPath$1.$$div__T__Lakka_actor_ActorPath("deadLetters")));
+  this.akka$actor$LocalActorRefProvider$$terminationPromise$f = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
+  this.tempNumber$1 = new $c_ju_concurrent_atomic_AtomicLong().init___();
+  this.tempNode$1 = this.rootPath$1.$$div__T__Lakka_actor_ActorPath("temp");
+  this.theOneWhoWalksTheBubblesOfSpaceTime$1 = new $c_Lakka_actor_LocalActorRefProvider$$anon$2().init___Lakka_actor_LocalActorRefProvider(this);
+  this.akka$actor$LocalActorRefProvider$$extraNames$1 = $as_sci_Map($m_s_Predef$().Map$2.apply__sc_Seq__sc_GenMap($m_sci_Nil$()));
+  return this
 });
 $c_Lakka_actor_LocalActorRefProvider.prototype.init__Lakka_actor_ActorSystemImpl__V = (function(_system) {
   this.akka$actor$LocalActorRefProvider$$system$1 = _system;
@@ -16733,18 +16768,19 @@ $c_Lakka_actor_LocalActorRefProvider.prototype.init__Lakka_actor_ActorSystemImpl
   $s_Lakka_event_LoggingBus$class__startDefaultLoggers__Lakka_event_LoggingBus__Lakka_actor_ActorSystemImpl__V(this$6, _system)
 });
 $c_Lakka_actor_LocalActorRefProvider.prototype.tempContainer$lzycompute__p1__Lakka_actor_VirtualPathContainer = (function() {
-  if (((64 & this.bitmap$0$1) === 0)) {
+  if (((32 & this.bitmap$0$1) === 0)) {
     this.tempContainer$1 = new $c_Lakka_actor_VirtualPathContainer().init___Lakka_actor_ActorRefProvider__Lakka_actor_ActorPath__Lakka_actor_InternalActorRef__Lakka_event_LoggingAdapter(this.akka$actor$LocalActorRefProvider$$system$1.provider$3, this.tempNode$1, this.rootGuardian__Lakka_actor_LocalActorRef(), this.log$1);
-    this.bitmap$0$1 = (64 | this.bitmap$0$1)
+    this.bitmap$0$1 = (32 | this.bitmap$0$1)
   };
   return this.tempContainer$1
 });
-$c_Lakka_actor_LocalActorRefProvider.prototype.tempName__p1__T = (function() {
+$c_Lakka_actor_LocalActorRefProvider.prototype.tempPath__Lakka_actor_ActorPath = (function() {
+  var jsx$2 = this.tempNode$1;
   var jsx$1 = $m_Lakka_util_Helpers$();
   var this$1 = this.tempNumber$1;
   var old = this$1.java$util$concurrent$atomic$AtomicLong$$value$f;
   this$1.java$util$concurrent$atomic$AtomicLong$$value$f = new $c_sjsr_RuntimeLong().init___I__I(1, 0).$$plus__sjsr_RuntimeLong__sjsr_RuntimeLong(old);
-  return jsx$1.base64__J__jl_StringBuilder__T(old, new $c_jl_StringBuilder().init___T("$"))
+  return jsx$2.$$div__T__Lakka_actor_ActorPath(jsx$1.base64__J__jl_StringBuilder__T(old, new $c_jl_StringBuilder().init___T("$")))
 });
 $c_Lakka_actor_LocalActorRefProvider.prototype.unregisterTempActor__Lakka_actor_ActorPath__V = (function(path) {
   var assertion = (path.parent__Lakka_actor_ActorPath() === this.tempNode$1);
@@ -16753,42 +16789,12 @@ $c_Lakka_actor_LocalActorRefProvider.prototype.unregisterTempActor__Lakka_actor_
   };
   this.tempContainer__Lakka_actor_VirtualPathContainer().removeChild__T__V(path.name__T())
 });
-$c_Lakka_actor_LocalActorRefProvider.prototype.init___T__Lakka_actor_ActorSystem$Settings__Lakka_event_EventStream__Lakka_actor_DynamicAccess = (function(_systemName, settings, eventStream, dynamicAccess) {
-  this.settings$1 = settings;
-  this.eventStream$1 = eventStream;
-  this.dynamicAccess$1 = dynamicAccess;
-  this.$$unddeadLetters$1 = $m_s_None$();
-  this.deployer$1 = null;
-  this.rootPath$1 = new $c_Lakka_actor_RootActorPath().init___Lakka_actor_Address__T(new $c_Lakka_actor_Address().init___T__T("akka", _systemName), "/");
-  this.log$1 = $m_Lakka_event_Logging$().apply__Lakka_event_LoggingBus__O__Lakka_event_LogSource__Lakka_event_LoggingAdapter(eventStream, (("LocalActorRefProvider(" + this.rootPath$1.address__Lakka_actor_Address()) + ")"), $m_Lakka_event_LogSource$().fromString$1);
-  var this$2 = this.$$unddeadLetters$1;
-  var $default = new $c_Lakka_actor_LocalActorRefProvider$$anonfun$1().init___Lakka_actor_LocalActorRefProvider(this);
-  this.deadLetters$1 = $as_Lakka_actor_InternalActorRef($as_F1((this$2.isEmpty__Z() ? $default.apply__F1() : this$2.get__O())).apply__O__O(this.rootPath$1.$$div__T__Lakka_actor_ActorPath("deadLetters")));
-  this.tempNumber$1 = new $c_ju_concurrent_atomic_AtomicLong().init___();
-  this.tempNode$1 = this.rootPath$1.$$div__T__Lakka_actor_ActorPath("temp");
-  this.theOneWhoWalksTheBubblesOfSpaceTime$1 = new $c_Lakka_actor_LocalActorRefProvider$$anon$2().init___Lakka_actor_LocalActorRefProvider(this);
-  this.akka$actor$LocalActorRefProvider$$extraNames$1 = $as_sci_Map($m_s_Predef$().Map$2.apply__sc_Seq__sc_GenMap($m_sci_Nil$()));
-  return this
+$c_Lakka_actor_LocalActorRefProvider.prototype.terminationFuture__s_concurrent_Future = (function() {
+  var this$1 = this.akka$actor$LocalActorRefProvider$$terminationPromise$f;
+  return this$1
 });
 $c_Lakka_actor_LocalActorRefProvider.prototype.tempContainer__Lakka_actor_VirtualPathContainer = (function() {
-  return (((64 & this.bitmap$0$1) === 0) ? this.tempContainer$lzycompute__p1__Lakka_actor_VirtualPathContainer() : this.tempContainer$1)
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.terminationPromise$lzycompute__p1__s_concurrent_Promise = (function() {
-  if (((1 & this.bitmap$0$1) === 0)) {
-    this.terminationPromise$1 = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
-    this.bitmap$0$1 = (1 | this.bitmap$0$1)
-  };
-  return this.terminationPromise$1
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.guardian__Lakka_actor_LocalActorRef = (function() {
-  return (((16 & this.bitmap$0$1) === 0) ? this.guardian$lzycompute__p1__Lakka_actor_LocalActorRef() : this.guardian$1)
-});
-$c_Lakka_actor_LocalActorRefProvider.prototype.rootGuardian$lzycompute__p1__Lakka_actor_LocalActorRef = (function() {
-  if (((8 & this.bitmap$0$1) === 0)) {
-    this.rootGuardian$1 = new $c_Lakka_actor_LocalActorRefProvider$$anon$1().init___Lakka_actor_LocalActorRefProvider(this);
-    this.bitmap$0$1 = (8 | this.bitmap$0$1)
-  };
-  return this.rootGuardian$1
+  return (((32 & this.bitmap$0$1) === 0) ? this.tempContainer$lzycompute__p1__Lakka_actor_VirtualPathContainer() : this.tempContainer$1)
 });
 $c_Lakka_actor_LocalActorRefProvider.prototype.rootGuardianStrategy__Lakka_actor_SupervisorStrategy = (function() {
   return new $c_Lakka_actor_OneForOneStrategy().init___I__s_concurrent_duration_Duration__Z__s_PartialFunction((-1), $m_s_concurrent_duration_Duration$().Inf$1, true, new $c_Lakka_actor_LocalActorRefProvider$$anonfun$rootGuardianStrategy$1().init___Lakka_actor_LocalActorRefProvider(this))
@@ -16801,19 +16807,6 @@ var $d_Lakka_actor_LocalActorRefProvider = new $TypeData().initClass({
   Lakka_actor_ActorRefProvider: 1
 });
 $c_Lakka_actor_LocalActorRefProvider.prototype.$classData = $d_Lakka_actor_LocalActorRefProvider;
-$e.akka = ($e.akka || {});
-$e.akka.actor = ($e.akka.actor || {});
-/** @constructor */
-$e.akka.actor.LocalActorRefProvider = (function(arg$1, arg$2, arg$3, arg$4) {
-  var $thiz = new $c_Lakka_actor_LocalActorRefProvider();
-  var prep0 = $as_T(arg$1);
-  var prep1 = $as_Lakka_actor_ActorSystem$Settings(arg$2);
-  var prep2 = $as_Lakka_event_EventStream(arg$3);
-  var prep3 = $as_Lakka_actor_DynamicAccess(arg$4);
-  $c_Lakka_actor_LocalActorRefProvider.prototype.init___T__Lakka_actor_ActorSystem$Settings__Lakka_event_EventStream__Lakka_actor_DynamicAccess.call($thiz, prep0, prep1, prep2, prep3);
-  return $thiz
-});
-$e.akka.actor.LocalActorRefProvider.prototype = $c_Lakka_actor_LocalActorRefProvider.prototype;
 /** @constructor */
 function $c_Lakka_actor_LocalScope() {
   $c_O.call(this)
@@ -16825,6 +16818,18 @@ function $h_Lakka_actor_LocalScope() {
   /*<skip>*/
 }
 $h_Lakka_actor_LocalScope.prototype = $c_Lakka_actor_LocalScope.prototype;
+function $is_Lakka_actor_MinimalActorRef(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_actor_MinimalActorRef)))
+}
+function $as_Lakka_actor_MinimalActorRef(obj) {
+  return (($is_Lakka_actor_MinimalActorRef(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "akka.actor.MinimalActorRef"))
+}
+function $isArrayOf_Lakka_actor_MinimalActorRef(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lakka_actor_MinimalActorRef)))
+}
+function $asArrayOf_Lakka_actor_MinimalActorRef(obj, depth) {
+  return (($isArrayOf_Lakka_actor_MinimalActorRef(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lakka.actor.MinimalActorRef;", depth))
+}
 /** @constructor */
 function $c_Lakka_actor_NoArgsReflectConstructor() {
   $c_O.call(this);
@@ -17672,7 +17677,7 @@ function $h_Lakka_event_BusLogging() {
 }
 $h_Lakka_event_BusLogging.prototype = $c_Lakka_event_BusLogging.prototype;
 $c_Lakka_event_BusLogging.prototype.isErrorEnabled__Z = (function() {
-  return true
+  return this.loggingFilter$1.isErrorEnabled__jl_Class__T__Z(this.logClass$1, this.logSource$1)
 });
 $c_Lakka_event_BusLogging.prototype.notifyInfo__T__V = (function(message) {
   var this$2 = this.bus$1;
@@ -17699,21 +17704,21 @@ $c_Lakka_event_BusLogging.prototype.notifyDebug__T__V = (function(message) {
   $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$2, event)
 });
 $c_Lakka_event_BusLogging.prototype.init___Lakka_event_LoggingBus__T__jl_Class = (function(bus, logSource, logClass) {
-  $c_Lakka_event_BusLogging.prototype.init___Lakka_event_LoggingBus__T__jl_Class__Lakka_event_LoggingFilter.call(this, bus, logSource, logClass, new $c_Lakka_event_DefaultLoggingFilter().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(bus$1) {
+  $c_Lakka_event_BusLogging.prototype.init___Lakka_event_LoggingBus__T__jl_Class__Lakka_event_LoggingFilter.call(this, bus, logSource, logClass, new $c_Lakka_event_DefaultLoggingFilter().init___F0(new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(bus$1) {
     return (function() {
       return new $c_Lakka_event_Logging$LogLevel().init___I(bus$1.akka$event$LoggingBus$$$undlogLevel$1)
     })
-  })(bus))])));
+  })(bus))));
   return this
 });
 $c_Lakka_event_BusLogging.prototype.isWarningEnabled__Z = (function() {
-  return true
+  return this.loggingFilter$1.isWarningEnabled__jl_Class__T__Z(this.logClass$1, this.logSource$1)
 });
 $c_Lakka_event_BusLogging.prototype.isInfoEnabled__Z = (function() {
-  return true
+  return this.loggingFilter$1.isInfoEnabled__jl_Class__T__Z(this.logClass$1, this.logSource$1)
 });
 $c_Lakka_event_BusLogging.prototype.isDebugEnabled__Z = (function() {
-  return true
+  return this.loggingFilter$1.isDebugEnabled__jl_Class__T__Z(this.logClass$1, this.logSource$1)
 });
 $c_Lakka_event_BusLogging.prototype.notifyWarning__T__V = (function(message) {
   var this$2 = this.bus$1;
@@ -17844,7 +17849,8 @@ $e.akka.event.DeadLetterListener = (function() {
 $e.akka.event.DeadLetterListener.prototype = $c_Lakka_event_DeadLetterListener.prototype;
 /** @constructor */
 function $c_Lakka_event_DefaultLoggingFilter() {
-  $c_O.call(this)
+  $c_O.call(this);
+  this.logLevel$1 = null
 }
 $c_Lakka_event_DefaultLoggingFilter.prototype = new $h_O();
 $c_Lakka_event_DefaultLoggingFilter.prototype.constructor = $c_Lakka_event_DefaultLoggingFilter;
@@ -17853,8 +17859,29 @@ function $h_Lakka_event_DefaultLoggingFilter() {
   /*<skip>*/
 }
 $h_Lakka_event_DefaultLoggingFilter.prototype = $c_Lakka_event_DefaultLoggingFilter.prototype;
-$c_Lakka_event_DefaultLoggingFilter.prototype.init___sc_Seq = (function(any) {
+$c_Lakka_event_DefaultLoggingFilter.prototype.init___F0 = (function(logLevel) {
+  this.logLevel$1 = logLevel;
   return this
+});
+$c_Lakka_event_DefaultLoggingFilter.prototype.isDebugEnabled__jl_Class__T__Z = (function(logClass, logSource) {
+  var $$this = $as_Lakka_event_Logging$LogLevel(this.logLevel$1.apply__O()).asInt$1;
+  var other = $m_Lakka_event_Logging$().DebugLevel$1;
+  return ($$this >= other)
+});
+$c_Lakka_event_DefaultLoggingFilter.prototype.isInfoEnabled__jl_Class__T__Z = (function(logClass, logSource) {
+  var $$this = $as_Lakka_event_Logging$LogLevel(this.logLevel$1.apply__O()).asInt$1;
+  var other = $m_Lakka_event_Logging$().InfoLevel$1;
+  return ($$this >= other)
+});
+$c_Lakka_event_DefaultLoggingFilter.prototype.isWarningEnabled__jl_Class__T__Z = (function(logClass, logSource) {
+  var $$this = $as_Lakka_event_Logging$LogLevel(this.logLevel$1.apply__O()).asInt$1;
+  var other = $m_Lakka_event_Logging$().WarningLevel$1;
+  return ($$this >= other)
+});
+$c_Lakka_event_DefaultLoggingFilter.prototype.isErrorEnabled__jl_Class__T__Z = (function(logClass, logSource) {
+  var $$this = $as_Lakka_event_Logging$LogLevel(this.logLevel$1.apply__O()).asInt$1;
+  var other = $m_Lakka_event_Logging$().ErrorLevel$1;
+  return ($$this >= other)
 });
 var $d_Lakka_event_DefaultLoggingFilter = new $TypeData().initClass({
   Lakka_event_DefaultLoggingFilter: 0
@@ -17864,23 +17891,6 @@ var $d_Lakka_event_DefaultLoggingFilter = new $TypeData().initClass({
   Lakka_event_LoggingFilter: 1
 });
 $c_Lakka_event_DefaultLoggingFilter.prototype.$classData = $d_Lakka_event_DefaultLoggingFilter;
-$e.akka = ($e.akka || {});
-$e.akka.event = ($e.akka.event || {});
-/** @constructor */
-$e.akka.event.DefaultLoggingFilter = (function() {
-  var $thiz = new $c_Lakka_event_DefaultLoggingFilter();
-  var jsx$1 = (arguments.length | 0);
-  var jsx$2 = 0;
-  var arg$rest = [];
-  while ((jsx$2 < jsx$1)) {
-    arg$rest.push(arguments[jsx$2]);
-    jsx$2 = ((jsx$2 + 1) | 0)
-  };
-  var prep0 = new $c_sjs_js_WrappedArray().init___sjs_js_Array(arg$rest);
-  $c_Lakka_event_DefaultLoggingFilter.prototype.init___sc_Seq.call($thiz, prep0);
-  return $thiz
-});
-$e.akka.event.DefaultLoggingFilter.prototype = $c_Lakka_event_DefaultLoggingFilter.prototype;
 /** @constructor */
 function $c_Lakka_event_EventStream$$anon$1() {
   $c_O.call(this)
@@ -17906,6 +17916,86 @@ var $d_Lakka_event_EventStream$$anon$1 = new $TypeData().initClass({
   Lakka_util_Subclassification: 1
 });
 $c_Lakka_event_EventStream$$anon$1.prototype.$classData = $d_Lakka_event_EventStream$$anon$1;
+/** @constructor */
+function $c_Lakka_event_EventStreamUnsubscriber() {
+  $c_O.call(this);
+  this.akka$event$EventStreamUnsubscriber$$eventStream$f = null;
+  this.akka$event$EventStreamUnsubscriber$$debug$f = false;
+  this.context$1 = null;
+  this.self$1 = null
+}
+$c_Lakka_event_EventStreamUnsubscriber.prototype = new $h_O();
+$c_Lakka_event_EventStreamUnsubscriber.prototype.constructor = $c_Lakka_event_EventStreamUnsubscriber;
+/** @constructor */
+function $h_Lakka_event_EventStreamUnsubscriber() {
+  /*<skip>*/
+}
+$h_Lakka_event_EventStreamUnsubscriber.prototype = $c_Lakka_event_EventStreamUnsubscriber.prototype;
+$c_Lakka_event_EventStreamUnsubscriber.prototype.self$und$eq__Lakka_actor_ActorRef__ = (function(x$1) {
+  this.self$1 = x$1
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.preStart__V = (function() {
+  if (this.akka$event$EventStreamUnsubscriber$$debug$f) {
+    var this$1 = this.akka$event$EventStreamUnsubscriber$$eventStream$f;
+    var event = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O($m_Lakka_event_Logging$().simpleName__jl_Class__T($objectGetClass(this)), $objectGetClass(this), new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["registering unsubscriber with ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.akka$event$EventStreamUnsubscriber$$eventStream$f])));
+    $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$1, event)
+  };
+  this.akka$event$EventStreamUnsubscriber$$eventStream$f.initUnsubscriber__Lakka_actor_ActorRef__Z(this.self$1)
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.postStop__V = (function() {
+  /*<skip>*/
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
+  return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.receive__s_PartialFunction = (function() {
+  return new $c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1().init___Lakka_event_EventStreamUnsubscriber(this)
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.context__Lakka_actor_ActorContext = (function() {
+  return this.context$1
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
+  this.context$1 = x$1
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.context$und$eq__Lakka_actor_ActorContext__ = (function(x$1) {
+  this.context$1 = x$1
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.$$js$exported$prop$self__O = (function() {
+  return this.self$1
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
+  $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.postRestart__jl_Throwable__V = (function(reason) {
+  this.preStart__V()
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.init___Lakka_event_EventStream__Z = (function(eventStream, debug) {
+  this.akka$event$EventStreamUnsubscriber$$eventStream$f = eventStream;
+  this.akka$event$EventStreamUnsubscriber$$debug$f = debug;
+  $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
+  return this
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
+  this.self$1 = x$1
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.$$js$exported$prop$context__O = (function() {
+  return this.context$1
+});
+$c_Lakka_event_EventStreamUnsubscriber.prototype.self__Lakka_actor_ActorRef = (function() {
+  return this.self$1
+});
+Object.defineProperty($c_Lakka_event_EventStreamUnsubscriber.prototype, "context", {
+  "get": (function() {
+    return this.$$js$exported$prop$context__O()
+  }),
+  "enumerable": true
+});
+Object.defineProperty($c_Lakka_event_EventStreamUnsubscriber.prototype, "self", {
+  "get": (function() {
+    return this.$$js$exported$prop$self__O()
+  }),
+  "enumerable": true
+});
 var $d_Lakka_event_EventStreamUnsubscriber = new $TypeData().initClass({
   Lakka_event_EventStreamUnsubscriber: 0
 }, false, "akka.event.EventStreamUnsubscriber", {
@@ -17913,76 +18003,84 @@ var $d_Lakka_event_EventStreamUnsubscriber = new $TypeData().initClass({
   O: 1,
   Lakka_actor_Actor: 1
 });
-/** @constructor */
-function $c_Lakka_event_LogExt() {
-  $c_O.call(this);
-  this.loggerId$1 = null
-}
-$c_Lakka_event_LogExt.prototype = new $h_O();
-$c_Lakka_event_LogExt.prototype.constructor = $c_Lakka_event_LogExt;
-/** @constructor */
-function $h_Lakka_event_LogExt() {
-  /*<skip>*/
-}
-$h_Lakka_event_LogExt.prototype = $c_Lakka_event_LogExt.prototype;
-$c_Lakka_event_LogExt.prototype.init___Lakka_actor_ExtendedActorSystem = (function(system) {
-  this.loggerId$1 = new $c_ju_concurrent_atomic_AtomicInteger().init___();
-  return this
-});
-var $d_Lakka_event_LogExt = new $TypeData().initClass({
-  Lakka_event_LogExt: 0
-}, false, "akka.event.LogExt", {
-  Lakka_event_LogExt: 1,
-  O: 1,
-  Lakka_actor_Extension: 1
-});
-$c_Lakka_event_LogExt.prototype.$classData = $d_Lakka_event_LogExt;
+$c_Lakka_event_EventStreamUnsubscriber.prototype.$classData = $d_Lakka_event_EventStreamUnsubscriber;
 $e.akka = ($e.akka || {});
 $e.akka.event = ($e.akka.event || {});
 /** @constructor */
-$e.akka.event.LogExt = (function(arg$1) {
-  var $thiz = new $c_Lakka_event_LogExt();
-  var prep0 = $as_Lakka_actor_ExtendedActorSystem(arg$1);
-  $c_Lakka_event_LogExt.prototype.init___Lakka_actor_ExtendedActorSystem.call($thiz, prep0);
+$e.akka.event.EventStreamUnsubscriber = (function(arg$1) {
+  var $thiz = new $c_Lakka_event_EventStreamUnsubscriber();
+  var jsx$1 = (arguments.length | 0);
+  var jsx$2 = 1;
+  var arg$rest = [];
+  while ((jsx$2 < jsx$1)) {
+    arg$rest.push(arguments[jsx$2]);
+    jsx$2 = ((jsx$2 + 1) | 0)
+  };
+  var prep0 = $as_Lakka_event_EventStream(arg$1);
+  var prep1 = ((arg$rest[0] === (void 0)) ? $m_Lakka_event_EventStreamUnsubscriber$().$$lessinit$greater$default$2__Z() : $uZ(arg$rest[0]));
+  $c_Lakka_event_EventStreamUnsubscriber.prototype.init___Lakka_event_EventStream__Z.call($thiz, prep0, prep1);
   return $thiz
 });
-$e.akka.event.LogExt.prototype = $c_Lakka_event_LogExt.prototype;
+$e.akka.event.EventStreamUnsubscriber.prototype = $c_Lakka_event_EventStreamUnsubscriber.prototype;
 /** @constructor */
-function $c_Lakka_event_LogSource$$anon$3() {
-  $c_O.call(this)
+function $c_Lakka_event_JSDefaultLoggingFilter() {
+  $c_O.call(this);
+  this.eventStream$1 = null
 }
-$c_Lakka_event_LogSource$$anon$3.prototype = new $h_O();
-$c_Lakka_event_LogSource$$anon$3.prototype.constructor = $c_Lakka_event_LogSource$$anon$3;
+$c_Lakka_event_JSDefaultLoggingFilter.prototype = new $h_O();
+$c_Lakka_event_JSDefaultLoggingFilter.prototype.constructor = $c_Lakka_event_JSDefaultLoggingFilter;
 /** @constructor */
-function $h_Lakka_event_LogSource$$anon$3() {
+function $h_Lakka_event_JSDefaultLoggingFilter() {
   /*<skip>*/
 }
-$h_Lakka_event_LogSource$$anon$3.prototype = $c_Lakka_event_LogSource$$anon$3.prototype;
-$c_Lakka_event_LogSource$$anon$3.prototype.init___ = (function() {
+$h_Lakka_event_JSDefaultLoggingFilter.prototype = $c_Lakka_event_JSDefaultLoggingFilter.prototype;
+$c_Lakka_event_JSDefaultLoggingFilter.prototype.logLevel__I = (function() {
+  var this$1 = this.eventStream$1;
+  return this$1.akka$event$LoggingBus$$$undlogLevel$1
+});
+$c_Lakka_event_JSDefaultLoggingFilter.prototype.isDebugEnabled__jl_Class__T__Z = (function(logClass, logSource) {
+  var $$this = this.logLevel__I();
+  var other = $m_Lakka_event_Logging$().DebugLevel$1;
+  return ($$this >= other)
+});
+$c_Lakka_event_JSDefaultLoggingFilter.prototype.isInfoEnabled__jl_Class__T__Z = (function(logClass, logSource) {
+  var $$this = this.logLevel__I();
+  var other = $m_Lakka_event_Logging$().InfoLevel$1;
+  return ($$this >= other)
+});
+$c_Lakka_event_JSDefaultLoggingFilter.prototype.isWarningEnabled__jl_Class__T__Z = (function(logClass, logSource) {
+  var $$this = this.logLevel__I();
+  var other = $m_Lakka_event_Logging$().WarningLevel$1;
+  return ($$this >= other)
+});
+$c_Lakka_event_JSDefaultLoggingFilter.prototype.isErrorEnabled__jl_Class__T__Z = (function(logClass, logSource) {
+  var $$this = this.logLevel__I();
+  var other = $m_Lakka_event_Logging$().ErrorLevel$1;
+  return ($$this >= other)
+});
+$c_Lakka_event_JSDefaultLoggingFilter.prototype.init___Lakka_actor_ActorSystem$Settings__Lakka_event_EventStream = (function(settings, eventStream) {
+  this.eventStream$1 = eventStream;
   return this
 });
-$c_Lakka_event_LogSource$$anon$3.prototype.getClazz__O__jl_Class = (function(t) {
-  $as_T(t);
-  return $d_Lakka_event_DummyClassForStringSources.getClassOf()
-});
-$c_Lakka_event_LogSource$$anon$3.prototype.genString__O__Lakka_actor_ActorSystem__T = (function(t, system) {
-  return this.genString__T__Lakka_actor_ActorSystem__T($as_T(t), system)
-});
-$c_Lakka_event_LogSource$$anon$3.prototype.genString__O__T = (function(t) {
-  var s = $as_T(t);
-  return s
-});
-$c_Lakka_event_LogSource$$anon$3.prototype.genString__T__Lakka_actor_ActorSystem__T = (function(s, system) {
-  return (((s + "(") + system) + ")")
-});
-var $d_Lakka_event_LogSource$$anon$3 = new $TypeData().initClass({
-  Lakka_event_LogSource$$anon$3: 0
-}, false, "akka.event.LogSource$$anon$3", {
-  Lakka_event_LogSource$$anon$3: 1,
+var $d_Lakka_event_JSDefaultLoggingFilter = new $TypeData().initClass({
+  Lakka_event_JSDefaultLoggingFilter: 0
+}, false, "akka.event.JSDefaultLoggingFilter", {
+  Lakka_event_JSDefaultLoggingFilter: 1,
   O: 1,
-  Lakka_event_LogSource: 1
+  Lakka_event_LoggingFilter: 1
 });
-$c_Lakka_event_LogSource$$anon$3.prototype.$classData = $d_Lakka_event_LogSource$$anon$3;
+$c_Lakka_event_JSDefaultLoggingFilter.prototype.$classData = $d_Lakka_event_JSDefaultLoggingFilter;
+$e.akka = ($e.akka || {});
+$e.akka.event = ($e.akka.event || {});
+/** @constructor */
+$e.akka.event.JSDefaultLoggingFilter = (function(arg$1, arg$2) {
+  var $thiz = new $c_Lakka_event_JSDefaultLoggingFilter();
+  var prep0 = $as_Lakka_actor_ActorSystem$Settings(arg$1);
+  var prep1 = $as_Lakka_event_EventStream(arg$2);
+  $c_Lakka_event_JSDefaultLoggingFilter.prototype.init___Lakka_actor_ActorSystem$Settings__Lakka_event_EventStream.call($thiz, prep0, prep1);
+  return $thiz
+});
+$e.akka.event.JSDefaultLoggingFilter.prototype = $c_Lakka_event_JSDefaultLoggingFilter.prototype;
 /** @constructor */
 function $c_Lakka_event_LogSource$$anon$4() {
   $c_O.call(this)
@@ -17998,15 +18096,18 @@ $c_Lakka_event_LogSource$$anon$4.prototype.init___ = (function() {
   return this
 });
 $c_Lakka_event_LogSource$$anon$4.prototype.getClazz__O__jl_Class = (function(t) {
-  return $objectGetClass(t)
+  $as_T(t);
+  return $d_Lakka_event_DummyClassForStringSources.getClassOf()
 });
 $c_Lakka_event_LogSource$$anon$4.prototype.genString__O__Lakka_actor_ActorSystem__T = (function(t, system) {
-  var a = $as_Lakka_actor_Actor(t);
-  return $m_Lakka_event_LogSource$().fromActorRef$1.genString__O__Lakka_actor_ActorSystem__T(a.self__Lakka_actor_ActorRef(), system)
+  return this.genString__T__Lakka_actor_ActorSystem__T($as_T(t), system)
 });
 $c_Lakka_event_LogSource$$anon$4.prototype.genString__O__T = (function(t) {
-  var a = $as_Lakka_actor_Actor(t);
-  return $m_Lakka_event_LogSource$().fromActorRef$1.genString__O__T(a.self__Lakka_actor_ActorRef())
+  var s = $as_T(t);
+  return s
+});
+$c_Lakka_event_LogSource$$anon$4.prototype.genString__T__Lakka_actor_ActorSystem__T = (function(s, system) {
+  return (((s + "(") + system) + ")")
 });
 var $d_Lakka_event_LogSource$$anon$4 = new $TypeData().initClass({
   Lakka_event_LogSource$$anon$4: 0
@@ -18034,29 +18135,12 @@ $c_Lakka_event_LogSource$$anon$5.prototype.getClazz__O__jl_Class = (function(t) 
   return $objectGetClass(t)
 });
 $c_Lakka_event_LogSource$$anon$5.prototype.genString__O__Lakka_actor_ActorSystem__T = (function(t, system) {
-  return this.genString__Lakka_actor_ActorRef__Lakka_actor_ActorSystem__T($as_Lakka_actor_ActorRef(t), system)
-});
-$c_Lakka_event_LogSource$$anon$5.prototype.genString__Lakka_actor_ActorRef__Lakka_actor_ActorSystem__T = (function(a, system) {
-  try {
-    var jsx$1 = a.path__Lakka_actor_ActorPath();
-    var this$1 = $as_Lakka_actor_ExtendedActorSystem(system).provider$3;
-    return jsx$1.toStringWithAddress__Lakka_actor_Address__T(this$1.rootPath$1.address__Lakka_actor_Address())
-  } catch (e) {
-    var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-    if ((e$2 !== null)) {
-      var o13 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
-      if ((!o13.isEmpty__Z())) {
-        return a.path__Lakka_actor_ActorPath().toString__T()
-      };
-      throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
-    } else {
-      throw e
-    }
-  }
+  var a = $as_Lakka_actor_Actor(t);
+  return $m_Lakka_event_LogSource$().fromActorRef$1.genString__O__Lakka_actor_ActorSystem__T(a.self__Lakka_actor_ActorRef(), system)
 });
 $c_Lakka_event_LogSource$$anon$5.prototype.genString__O__T = (function(t) {
-  var a = $as_Lakka_actor_ActorRef(t);
-  return a.path__Lakka_actor_ActorPath().toString__T()
+  var a = $as_Lakka_actor_Actor(t);
+  return $m_Lakka_event_LogSource$().fromActorRef$1.genString__O__T(a.self__Lakka_actor_ActorRef())
 });
 var $d_Lakka_event_LogSource$$anon$5 = new $TypeData().initClass({
   Lakka_event_LogSource$$anon$5: 0
@@ -18081,18 +18165,32 @@ $c_Lakka_event_LogSource$$anon$6.prototype.init___ = (function() {
   return this
 });
 $c_Lakka_event_LogSource$$anon$6.prototype.getClazz__O__jl_Class = (function(t) {
-  var c = $as_jl_Class(t);
-  return c
-});
-$c_Lakka_event_LogSource$$anon$6.prototype.genString__jl_Class__Lakka_actor_ActorSystem__T = (function(c, system) {
-  return ((($m_Lakka_event_Logging$().simpleName__jl_Class__T(c) + "(") + system) + ")")
+  return $objectGetClass(t)
 });
 $c_Lakka_event_LogSource$$anon$6.prototype.genString__O__Lakka_actor_ActorSystem__T = (function(t, system) {
-  return this.genString__jl_Class__Lakka_actor_ActorSystem__T($as_jl_Class(t), system)
+  return this.genString__Lakka_actor_ActorRef__Lakka_actor_ActorSystem__T($as_Lakka_actor_ActorRef(t), system)
+});
+$c_Lakka_event_LogSource$$anon$6.prototype.genString__Lakka_actor_ActorRef__Lakka_actor_ActorSystem__T = (function(a, system) {
+  try {
+    var jsx$1 = a.path__Lakka_actor_ActorPath();
+    var this$1 = $as_Lakka_actor_ExtendedActorSystem(system).provider$3;
+    return jsx$1.toStringWithAddress__Lakka_actor_Address__T(this$1.rootPath$1.address__Lakka_actor_Address())
+  } catch (e) {
+    var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+    if ((e$2 !== null)) {
+      var o13 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
+      if ((!o13.isEmpty__Z())) {
+        return a.path__Lakka_actor_ActorPath().toString__T()
+      };
+      throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+    } else {
+      throw e
+    }
+  }
 });
 $c_Lakka_event_LogSource$$anon$6.prototype.genString__O__T = (function(t) {
-  var c = $as_jl_Class(t);
-  return $m_Lakka_event_Logging$().simpleName__jl_Class__T(c)
+  var a = $as_Lakka_actor_ActorRef(t);
+  return a.path__Lakka_actor_ActorPath().toString__T()
 });
 var $d_Lakka_event_LogSource$$anon$6 = new $TypeData().initClass({
   Lakka_event_LogSource$$anon$6: 0
@@ -18102,51 +18200,84 @@ var $d_Lakka_event_LogSource$$anon$6 = new $TypeData().initClass({
   Lakka_event_LogSource: 1
 });
 $c_Lakka_event_LogSource$$anon$6.prototype.$classData = $d_Lakka_event_LogSource$$anon$6;
-function $is_Lakka_event_LoggingBus(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_event_LoggingBus)))
-}
-function $as_Lakka_event_LoggingBus(obj) {
-  return (($is_Lakka_event_LoggingBus(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "akka.event.LoggingBus"))
-}
-function $isArrayOf_Lakka_event_LoggingBus(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lakka_event_LoggingBus)))
-}
-function $asArrayOf_Lakka_event_LoggingBus(obj, depth) {
-  return (($isArrayOf_Lakka_event_LoggingBus(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lakka.event.LoggingBus;", depth))
-}
 /** @constructor */
-function $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2() {
+function $c_Lakka_event_LogSource$$anon$7() {
+  $c_O.call(this)
+}
+$c_Lakka_event_LogSource$$anon$7.prototype = new $h_O();
+$c_Lakka_event_LogSource$$anon$7.prototype.constructor = $c_Lakka_event_LogSource$$anon$7;
+/** @constructor */
+function $h_Lakka_event_LogSource$$anon$7() {
+  /*<skip>*/
+}
+$h_Lakka_event_LogSource$$anon$7.prototype = $c_Lakka_event_LogSource$$anon$7.prototype;
+$c_Lakka_event_LogSource$$anon$7.prototype.init___ = (function() {
+  return this
+});
+$c_Lakka_event_LogSource$$anon$7.prototype.getClazz__O__jl_Class = (function(t) {
+  var c = $as_jl_Class(t);
+  return c
+});
+$c_Lakka_event_LogSource$$anon$7.prototype.genString__jl_Class__Lakka_actor_ActorSystem__T = (function(c, system) {
+  return ((($m_Lakka_event_Logging$().simpleName__jl_Class__T(c) + "(") + system) + ")")
+});
+$c_Lakka_event_LogSource$$anon$7.prototype.genString__O__Lakka_actor_ActorSystem__T = (function(t, system) {
+  return this.genString__jl_Class__Lakka_actor_ActorSystem__T($as_jl_Class(t), system)
+});
+$c_Lakka_event_LogSource$$anon$7.prototype.genString__O__T = (function(t) {
+  var c = $as_jl_Class(t);
+  return $m_Lakka_event_Logging$().simpleName__jl_Class__T(c)
+});
+var $d_Lakka_event_LogSource$$anon$7 = new $TypeData().initClass({
+  Lakka_event_LogSource$$anon$7: 0
+}, false, "akka.event.LogSource$$anon$7", {
+  Lakka_event_LogSource$$anon$7: 1,
+  O: 1,
+  Lakka_event_LogSource: 1
+});
+$c_Lakka_event_LogSource$$anon$7.prototype.$classData = $d_Lakka_event_LogSource$$anon$7;
+/** @constructor */
+function $c_Lakka_event_Logging$LogExt() {
+  $c_O.call(this);
+  this.loggerId$1 = null
+}
+$c_Lakka_event_Logging$LogExt.prototype = new $h_O();
+$c_Lakka_event_Logging$LogExt.prototype.constructor = $c_Lakka_event_Logging$LogExt;
+/** @constructor */
+function $h_Lakka_event_Logging$LogExt() {
+  /*<skip>*/
+}
+$h_Lakka_event_Logging$LogExt.prototype = $c_Lakka_event_Logging$LogExt.prototype;
+$c_Lakka_event_Logging$LogExt.prototype.init___Lakka_actor_ExtendedActorSystem = (function(system) {
+  this.loggerId$1 = new $c_ju_concurrent_atomic_AtomicInteger().init___();
+  return this
+});
+var $d_Lakka_event_Logging$LogExt = new $TypeData().initClass({
+  Lakka_event_Logging$LogExt: 0
+}, false, "akka.event.Logging$LogExt", {
+  Lakka_event_Logging$LogExt: 1,
+  O: 1,
+  Lakka_actor_Extension: 1
+});
+$c_Lakka_event_Logging$LogExt.prototype.$classData = $d_Lakka_event_Logging$LogExt;
+/** @constructor */
+function $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3() {
   $c_O.call(this);
   this.$$outer$1 = null;
   this.context$1 = null;
   this.self$1 = null
 }
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype = new $h_O();
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype = new $h_O();
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3;
 /** @constructor */
-function $h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2() {
+function $h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3() {
   /*<skip>*/
 }
-$h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype;
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.preStart__V = (function() {
+$h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.preStart__V = (function() {
   /*<skip>*/
 });
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.postStop__V = (function() {
-  /*<skip>*/
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
-  return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.receive__s_PartialFunction = (function() {
-  return new $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2().init___Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2(this)
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.context__Lakka_actor_ActorContext = (function() {
-  return this.context$1
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
-  this.context$1 = x$1
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.init___Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1 = (function($$outer) {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.init___Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -18155,163 +18286,59 @@ $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.init_
   $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
   return this
 });
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.$$js$exported$prop$self__O = (function() {
-  return this.self$1
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
-  $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.postRestart__jl_Throwable__V = (function(reason) {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.postStop__V = (function() {
   /*<skip>*/
 });
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
-  this.self$1 = x$1
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.$$js$exported$prop$context__O = (function() {
-  return this.context$1
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.self__Lakka_actor_ActorRef = (function() {
-  return this.self$1
-});
-Object.defineProperty($c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype, "context", {
-  "get": (function() {
-    return this.$$js$exported$prop$context__O()
-  }),
-  "enumerable": true
-});
-Object.defineProperty($c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype, "self", {
-  "get": (function() {
-    return this.$$js$exported$prop$self__O()
-  }),
-  "enumerable": true
-});
-var $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2 = new $TypeData().initClass({
-  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2: 0
-}, false, "akka.event.LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2", {
-  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2: 1,
-  O: 1,
-  Lakka_actor_Actor: 1
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2;
-/** @constructor */
-function $c_Lakka_event_LoggingBusActor() {
-  $c_O.call(this);
-  this.akka$event$LoggingBusActor$$name$f = null;
-  this.akka$event$LoggingBusActor$$logName$f = null;
-  this.akka$event$LoggingBusActor$$lb$f = null;
-  this.akka$event$LoggingBusActor$$actor$f = null;
-  this.akka$event$LoggingBusActor$$level$f = 0;
-  this.timeout$1 = null;
-  this.context$1 = null;
-  this.self$1 = null
-}
-$c_Lakka_event_LoggingBusActor.prototype = new $h_O();
-$c_Lakka_event_LoggingBusActor.prototype.constructor = $c_Lakka_event_LoggingBusActor;
-/** @constructor */
-function $h_Lakka_event_LoggingBusActor() {
-  /*<skip>*/
-}
-$h_Lakka_event_LoggingBusActor.prototype = $c_Lakka_event_LoggingBusActor.prototype;
-$c_Lakka_event_LoggingBusActor.prototype.self$und$eq__Lakka_actor_ActorRef__ = (function(x$1) {
-  this.self$1 = x$1
-});
-$c_Lakka_event_LoggingBusActor.prototype.preStart__V = (function() {
-  var ref = this.akka$event$LoggingBusActor$$actor$f;
-  $as_Lakka_actor_ScalaActorRef(ref).$$bang__O__Lakka_actor_ActorRef__V(new $c_Lakka_event_Logging$InitializeLogger().init___Lakka_event_LoggingBus(this.akka$event$LoggingBusActor$$lb$f), this.self$1)
-});
-$c_Lakka_event_LoggingBusActor.prototype.postStop__V = (function() {
-  /*<skip>*/
-});
-$c_Lakka_event_LoggingBusActor.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
   return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
 });
-$c_Lakka_event_LoggingBusActor.prototype.receive__s_PartialFunction = (function() {
-  var this$1 = this.context$1;
-  var this$3 = this$1.system$1.scheduler$3;
-  var delay = this.timeout$1;
-  var f = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
-    return (function() {
-      var ref = arg$outer.self$1;
-      $as_Lakka_actor_ScalaActorRef(ref).$$bang__O__Lakka_actor_ActorRef__V(new $c_ju_concurrent_TimeoutException().init___(), arg$outer.self$1)
-    })
-  })(this));
-  var executor = $m_sjs_concurrent_JSExecutionContext$().queue$1;
-  var canc = $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$3, delay, f, executor);
-  return new $c_Lakka_event_LoggingBusActor$$anonfun$operative$1().init___Lakka_event_LoggingBusActor__Lakka_actor_Cancellable(this, canc)
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.receive__s_PartialFunction = (function() {
+  return new $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1().init___Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3(this)
 });
-$c_Lakka_event_LoggingBusActor.prototype.context__Lakka_actor_ActorContext = (function() {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.context__Lakka_actor_ActorContext = (function() {
   return this.context$1
 });
-$c_Lakka_event_LoggingBusActor.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
   this.context$1 = x$1
 });
-$c_Lakka_event_LoggingBusActor.prototype.context$und$eq__Lakka_actor_ActorContext__ = (function(x$1) {
-  this.context$1 = x$1
-});
-$c_Lakka_event_LoggingBusActor.prototype.init___T__T__Lakka_event_LoggingBus__Lakka_actor_ActorRef__I = (function(name, logName, lb, actor, level) {
-  this.akka$event$LoggingBusActor$$name$f = name;
-  this.akka$event$LoggingBusActor$$logName$f = logName;
-  this.akka$event$LoggingBusActor$$lb$f = lb;
-  this.akka$event$LoggingBusActor$$actor$f = actor;
-  this.akka$event$LoggingBusActor$$level$f = level;
-  $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
-  var this$2 = new $c_s_concurrent_duration_package$DurationInt().init___I(5);
-  var unit = $m_ju_concurrent_TimeUnit$().SECONDS$1;
-  this.timeout$1 = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$2.scala$concurrent$duration$DurationInt$$n$1, unit);
-  return this
-});
-$c_Lakka_event_LoggingBusActor.prototype.$$js$exported$prop$self__O = (function() {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.$$js$exported$prop$self__O = (function() {
   return this.self$1
 });
-$c_Lakka_event_LoggingBusActor.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
   $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
 });
-$c_Lakka_event_LoggingBusActor.prototype.postRestart__jl_Throwable__V = (function(reason) {
-  this.preStart__V()
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.postRestart__jl_Throwable__V = (function(reason) {
+  /*<skip>*/
 });
-$c_Lakka_event_LoggingBusActor.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
   this.self$1 = x$1
 });
-$c_Lakka_event_LoggingBusActor.prototype.self__Lakka_actor_ActorRef = (function() {
-  return this.self$1
-});
-$c_Lakka_event_LoggingBusActor.prototype.$$js$exported$prop$context__O = (function() {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.$$js$exported$prop$context__O = (function() {
   return this.context$1
 });
-Object.defineProperty($c_Lakka_event_LoggingBusActor.prototype, "context", {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.self__Lakka_actor_ActorRef = (function() {
+  return this.self$1
+});
+Object.defineProperty($c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype, "context", {
   "get": (function() {
     return this.$$js$exported$prop$context__O()
   }),
   "enumerable": true
 });
-Object.defineProperty($c_Lakka_event_LoggingBusActor.prototype, "self", {
+Object.defineProperty($c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype, "self", {
   "get": (function() {
     return this.$$js$exported$prop$self__O()
   }),
   "enumerable": true
 });
-var $d_Lakka_event_LoggingBusActor = new $TypeData().initClass({
-  Lakka_event_LoggingBusActor: 0
-}, false, "akka.event.LoggingBusActor", {
-  Lakka_event_LoggingBusActor: 1,
+var $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3 = new $TypeData().initClass({
+  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3: 0
+}, false, "akka.event.LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3", {
+  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3: 1,
   O: 1,
   Lakka_actor_Actor: 1
 });
-$c_Lakka_event_LoggingBusActor.prototype.$classData = $d_Lakka_event_LoggingBusActor;
-$e.akka = ($e.akka || {});
-$e.akka.event = ($e.akka.event || {});
-/** @constructor */
-$e.akka.event.LoggingBusActor = (function(arg$1, arg$2, arg$3, arg$4, arg$5) {
-  var $thiz = new $c_Lakka_event_LoggingBusActor();
-  var prep0 = $as_T(arg$1);
-  var prep1 = $as_T(arg$2);
-  var prep2 = $as_Lakka_event_LoggingBus(arg$3);
-  var prep3 = $as_Lakka_actor_ActorRef(arg$4);
-  var prep4 = $as_Lakka_event_Logging$LogLevel(arg$5).asInt__I();
-  $c_Lakka_event_LoggingBusActor.prototype.init___T__T__Lakka_event_LoggingBus__Lakka_actor_ActorRef__I.call($thiz, prep0, prep1, prep2, prep3, prep4);
-  return $thiz
-});
-$e.akka.event.LoggingBusActor.prototype = $c_Lakka_event_LoggingBusActor.prototype;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3;
 function $is_Lakka_japi_Creator(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_japi_Creator)))
 }
@@ -23108,7 +23135,10 @@ $c_Lakka_actor_ActorSelection.prototype.toString__T = (function() {
 $c_Lakka_actor_ActorSelection.prototype.resolveOne__Lakka_util_Timeout__s_concurrent_Future = (function(timeout) {
   var ec = $m_Lakka_dispatch_ExecutionContexts$sameThreadExecutionContext$();
   var p = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
-  $m_Lakka_pattern_AskableActorSelection$().ask$extension__Lakka_actor_ActorSelection__O__Lakka_util_Timeout__s_concurrent_Future(this, new $c_Lakka_actor_Identify().init___O($m_s_None$()), timeout).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, p$1) {
+  var x$3 = new $c_Lakka_actor_Identify().init___O($m_s_None$());
+  var x$5 = $m_Lakka_actor_Actor$().noSender$1;
+  var this$4 = $m_Lakka_pattern_AskableActorSelection$();
+  this$4.internalAsk$extension__Lakka_actor_ActorSelection__O__Lakka_util_Timeout__Lakka_actor_ActorRef__s_concurrent_Future(this, x$3, timeout, x$5).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer, p$1) {
     return (function(x0$1$2) {
       var x0$1 = $as_s_util_Try(x0$1$2);
       if ($is_s_util_Success(x0$1)) {
@@ -23235,10 +23265,10 @@ $c_Lakka_actor_ActorSelection$.prototype.rec$1__p1__Lakka_actor_InternalActorRef
             } else {
               $m_sci_Vector$();
               var cbf = $m_sc_IndexedSeq$().ReusableCBF$6;
-              var x$3$2 = $as_sci_Vector($s_sc_TraversableOnce$class__to__sc_TraversableOnce__scg_CanBuildFrom__O(iter$1, cbf));
-              var x$4$2 = (sel$1.wildcardFanOut$1 || (matchingChildren$2.size__I() > 1));
-              var x$5$2 = sel$1.msg$1;
-              var m = new $c_Lakka_actor_ActorSelectionMessage().init___O__sci_Iterable__Z(x$5$2, x$3$2, x$4$2);
+              var x$6 = $as_sci_Vector($s_sc_TraversableOnce$class__to__sc_TraversableOnce__scg_CanBuildFrom__O(iter$1, cbf));
+              var x$7 = (sel$1.wildcardFanOut$1 || (matchingChildren$2.size__I() > 1));
+              var x$8 = sel$1.msg$1;
+              var m = new $c_Lakka_actor_ActorSelectionMessage().init___O__sci_Iterable__Z(x$8, x$6, x$7);
               matchingChildren$2.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(sender$1$2, m$1) {
                 return (function(c$2$2) {
                   var c$3 = $as_Lakka_actor_ActorRef(c$2$2);
@@ -23254,10 +23284,10 @@ $c_Lakka_actor_ActorSelection$.prototype.rec$1__p1__Lakka_actor_InternalActorRef
         var this$10 = ref;
         $m_sci_Vector$();
         var cbf$1 = $m_sc_IndexedSeq$().ReusableCBF$6;
-        var x$6 = $as_sci_Vector($s_sc_TraversableOnce$class__to__sc_TraversableOnce__scg_CanBuildFrom__O(iter$1, cbf$1));
-        var x$7 = sel$1.msg$1;
-        var x$8 = sel$1.wildcardFanOut$1;
-        var msg$3 = new $c_Lakka_actor_ActorSelectionMessage().init___O__sci_Iterable__Z(x$7, x$6, x$8);
+        var x$9 = $as_sci_Vector($s_sc_TraversableOnce$class__to__sc_TraversableOnce__scg_CanBuildFrom__O(iter$1, cbf$1));
+        var x$10 = sel$1.msg$1;
+        var x$11 = sel$1.wildcardFanOut$1;
+        var msg$3 = new $c_Lakka_actor_ActorSelectionMessage().init___O__sci_Iterable__Z(x$10, x$9, x$11);
         this$10.$$bang__O__Lakka_actor_ActorRef__V(msg$3, sender$1)
       };
       break x
@@ -23423,89 +23453,372 @@ var $d_Lakka_actor_ExtendedActorSystem = new $TypeData().initClass({
 });
 $c_Lakka_actor_ExtendedActorSystem.prototype.$classData = $d_Lakka_actor_ExtendedActorSystem;
 /** @constructor */
-function $c_Lakka_actor_LocalActorRefProvider$Guardian() {
+function $c_Lakka_actor_ExtensionKey() {
+  $c_O.call(this);
+  this.m$1 = null
+}
+$c_Lakka_actor_ExtensionKey.prototype = new $h_O();
+$c_Lakka_actor_ExtensionKey.prototype.constructor = $c_Lakka_actor_ExtensionKey;
+/** @constructor */
+function $h_Lakka_actor_ExtensionKey() {
+  /*<skip>*/
+}
+$h_Lakka_actor_ExtensionKey.prototype = $c_Lakka_actor_ExtensionKey.prototype;
+$c_Lakka_actor_ExtensionKey.prototype.init___s_reflect_ClassTag = (function(m) {
+  this.m$1 = m;
+  return this
+});
+$c_Lakka_actor_ExtensionKey.prototype.equals__O__Z = (function(other) {
+  return $s_Lakka_actor_ExtensionId$class__equals__Lakka_actor_ExtensionId__O__Z(this, other)
+});
+$c_Lakka_actor_ExtensionKey.prototype.createExtension__Lakka_actor_ExtendedActorSystem__Lakka_actor_Extension = (function(system) {
+  var jsx$2 = system.$$undpm$3;
+  var jsx$1 = this.m$1.runtimeClass__jl_Class();
+  $m_sci_List$();
+  var xs = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_T2().init___O__O($d_Lakka_actor_ExtendedActorSystem.getClassOf(), system)]);
+  var this$4 = $m_sci_List$();
+  var cbf = this$4.ReusableCBFInstance$2;
+  return $as_Lakka_actor_Extension(jsx$2.createInstanceFor__jl_Class__sci_Seq__s_reflect_ClassTag__s_util_Try(jsx$1, $as_sci_List($s_sc_TraversableLike$class__to__sc_TraversableLike__scg_CanBuildFrom__O(xs, cbf)), this.m$1).get__O())
+});
+$c_Lakka_actor_ExtensionKey.prototype.lookup__Lakka_actor_ExtensionId = (function() {
+  return this
+});
+$c_Lakka_actor_ExtensionKey.prototype.hashCode__I = (function() {
+  return $systemIdentityHashCode(this)
+});
+/** @constructor */
+function $c_Lakka_actor_JSLocalActorRefProvider() {
+  $c_Lakka_actor_LocalActorRefProvider.call(this);
+  this.akka$actor$JSLocalActorRefProvider$$system$2 = null;
+  this.akka$actor$JSLocalActorRefProvider$$defaultDispatcher$2 = null;
+  this.akka$actor$JSLocalActorRefProvider$$defaultMailbox$2 = null;
+  this.akka$actor$JSLocalActorRefProvider$$extraNames$2 = null;
+  this.rootGuardian$2 = null;
+  this.guardian$2 = null;
+  this.systemGuardian$2 = null;
+  this.bitmap$0$2 = 0
+}
+$c_Lakka_actor_JSLocalActorRefProvider.prototype = new $h_Lakka_actor_LocalActorRefProvider();
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.constructor = $c_Lakka_actor_JSLocalActorRefProvider;
+/** @constructor */
+function $h_Lakka_actor_JSLocalActorRefProvider() {
+  /*<skip>*/
+}
+$h_Lakka_actor_JSLocalActorRefProvider.prototype = $c_Lakka_actor_JSLocalActorRefProvider.prototype;
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.systemGuardian__Lakka_actor_LocalActorRef = (function() {
+  return (((16 & this.bitmap$0$2) === 0) ? this.systemGuardian$lzycompute__p2__Lakka_actor_LocalActorRef() : this.systemGuardian$2)
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.rootGuardian$lzycompute__p2__Lakka_actor_LocalActorRef = (function() {
+  if (((4 & this.bitmap$0$2) === 0)) {
+    this.rootGuardian$2 = new $c_Lakka_actor_JSLocalActorRefProvider$$anon$1().init___Lakka_actor_JSLocalActorRefProvider(this);
+    this.bitmap$0$2 = (4 | this.bitmap$0$2)
+  };
+  return this.rootGuardian$2
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.rootGuardian__Lakka_actor_LocalActorRef = (function() {
+  return (((4 & this.bitmap$0$2) === 0) ? this.rootGuardian$lzycompute__p2__Lakka_actor_LocalActorRef() : this.rootGuardian$2)
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.actorOf__Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath__Z__s_Option__Z__Z__Lakka_actor_InternalActorRef = (function(system, props, supervisor, path, systemService, deploy, lookupDeploy, async) {
+  var x1 = props.deploy$1.routerConfig$1;
+  var x = $m_Lakka_routing_NoRouter$();
+  if ((x === x1)) {
+    try {
+      var dispatcher = system.dispatchers$3.lookup__T__Lakka_dispatch_MessageDispatcher("akka.actor.default-dispatcher");
+      var mailboxType = new $c_Lakka_dispatch_UnboundedMailbox().init___();
+      return (async ? new $c_Lakka_actor_RepointableActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(system, props, dispatcher, mailboxType, supervisor, path).initialize__Z__Lakka_actor_RepointableActorRef(async) : new $c_Lakka_actor_LocalActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(system, props, dispatcher, mailboxType, supervisor, path))
+    } catch (e) {
+      var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+      if ((e$2 !== null)) {
+        matchEnd8: {
+          var o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
+          if ((!o11.isEmpty__Z())) {
+            var e$3 = $as_jl_Throwable(o11.get__O());
+            throw new $c_Lakka_ConfigurationException().init___T__jl_Throwable(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["configuration problem while creating [", "] with dispatcher [", "] and mailbox [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([path, props.dispatcher__T(), props.mailbox__T()])), e$3)
+          };
+          throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+        }
+      } else {
+        throw e
+      }
+    }
+  } else {
+    var lookup = $m_s_None$();
+    $m_s_package$();
+    var this$3 = props.deploy$1;
+    var x$3 = this$3.path$1;
+    var this$4 = props.deploy$1;
+    var x$4 = this$4.config$1;
+    var this$5 = props.deploy$1;
+    var x$5 = this$5.scope$1;
+    var this$6 = props.deploy$1;
+    var x$6 = this$6.dispatcher$1;
+    var this$7 = props.deploy$1;
+    var x$7 = this$7.mailbox$1;
+    var elems = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_Lakka_actor_Deploy().init___T__Lcom_typesafe_config_Config__Lakka_routing_RouterConfig__Lakka_actor_Scope__T__T(x$3, x$4, x1, x$5, x$6, x$7)]);
+    var fromProps = new $c_sc_IndexedSeqLike$Elements().init___sc_IndexedSeqLike__I__I(elems, 0, $uI(elems.array$6.length));
+    var that = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(deploy$1) {
+      return (function() {
+        return deploy$1.iterator__sc_Iterator()
+      })
+    })(deploy));
+    var this$10 = new $c_sc_Iterator$JoinIterator().init___sc_Iterator__F0(fromProps, that);
+    var that$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(lookup$1) {
+      return (function() {
+        return lookup$1.iterator__sc_Iterator()
+      })
+    })(lookup));
+    var this$11 = this$10.$$plus$plus__F0__sc_Iterator$ConcatIterator(that$1);
+    if ($s_sc_Iterator$class__isEmpty__sc_Iterator__Z(this$11)) {
+      throw new $c_jl_UnsupportedOperationException().init___T("empty.reduceLeft")
+    };
+    var elem$1 = false;
+    elem$1 = true;
+    var elem$1$1 = null;
+    elem$1$1 = 0;
+    while (this$11.hasNext__Z()) {
+      var arg1 = this$11.next__O();
+      if (elem$1) {
+        elem$1$1 = arg1;
+        elem$1 = false
+      } else {
+        var arg1$1 = elem$1$1;
+        var a = $as_Lakka_actor_Deploy(arg1$1);
+        var b = $as_Lakka_actor_Deploy(arg1);
+        elem$1$1 = b.withFallback__Lakka_actor_Deploy__Lakka_actor_Deploy(a)
+      }
+    };
+    var d = $as_Lakka_actor_Deploy(elem$1$1);
+    var p = props.withRouter__Lakka_routing_RouterConfig__Lakka_actor_Props(d.routerConfig$1);
+    var x$8 = p.deploy$1.routerConfig$1.routerDispatcher__T();
+    var this$14 = p.deploy$1;
+    var x$9 = this$14.path$1;
+    var this$15 = p.deploy$1;
+    var x$10 = this$15.config$1;
+    var this$16 = p.deploy$1;
+    var x$11 = this$16.routerConfig$1;
+    var this$17 = p.deploy$1;
+    var x$12 = this$17.scope$1;
+    var this$18 = p.deploy$1;
+    var x$13 = this$18.mailbox$1;
+    var jsx$2 = new $c_Lakka_actor_Deploy().init___T__Lcom_typesafe_config_Config__Lakka_routing_RouterConfig__Lakka_actor_Scope__T__T(x$9, x$10, x$11, x$12, x$8, x$13);
+    var this$20 = $m_s_package$().Vector$1;
+    var array = [p.deploy$1.routerConfig$1];
+    if (($uI(array.length) === 0)) {
+      var jsx$1 = this$20.NIL$6
+    } else {
+      var b$1 = new $c_sci_VectorBuilder().init___();
+      var i = 0;
+      var len = $uI(array.length);
+      while ((i < len)) {
+        var index = i;
+        var arg1$2 = array[index];
+        b$1.$$plus$eq__O__sci_VectorBuilder(arg1$2);
+        i = ((1 + i) | 0)
+      };
+      var jsx$1 = b$1.result__sci_Vector()
+    };
+    var routerProps = new $c_Lakka_actor_Props().init___Lakka_actor_Deploy__jl_Class__sci_Seq(jsx$2, $d_Lakka_routing_JSRouterActorCreator.getClassOf(), jsx$1);
+    var routeeProps = p.withRouter__Lakka_routing_RouterConfig__Lakka_actor_Props($m_Lakka_routing_NoRouter$());
+    try {
+      var routerDispatcher = system.dispatchers$3.lookup__T__Lakka_dispatch_MessageDispatcher(p.deploy$1.routerConfig$1.routerDispatcher__T());
+      var routerMailbox = new $c_Lakka_dispatch_UnboundedMailbox().init___();
+      var routeeDispatcher = system.dispatchers$3.lookup__T__Lakka_dispatch_MessageDispatcher(p.dispatcher__T());
+      new $c_Lakka_dispatch_UnboundedMailbox().init___();
+      return new $c_Lakka_routing_RoutedActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_Props__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(system, routerProps, routerDispatcher, routerMailbox, routeeProps, supervisor, path).initialize__Z__Lakka_actor_RepointableActorRef(async)
+    } catch (e$4) {
+      var e$5 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e$4);
+      if ((e$5 !== null)) {
+        matchEnd8$2: {
+          var o11$2 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$5);
+          if ((!o11$2.isEmpty__Z())) {
+            var e$6 = $as_jl_Throwable(o11$2.get__O());
+            throw new $c_Lakka_ConfigurationException().init___T__jl_Throwable((("" + new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["configuration problem while creating [", "] with router dispatcher [", "] and mailbox [", "] "])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([path, routerProps.dispatcher__T(), routerProps.mailbox__T()]))) + new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["and routee dispatcher [", "] and mailbox [", "]"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([routeeProps.dispatcher__T(), routeeProps.mailbox__T()]))), e$6)
+          };
+          throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$5)
+        }
+      } else {
+        throw e$4
+      }
+    }
+  }
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.akka$actor$JSLocalActorRefProvider$$defaultMailbox__Lakka_dispatch_MailboxType = (function() {
+  return (((2 & this.bitmap$0$2) === 0) ? this.akka$actor$JSLocalActorRefProvider$$defaultMailbox$lzycompute__p2__Lakka_dispatch_MailboxType() : this.akka$actor$JSLocalActorRefProvider$$defaultMailbox$2)
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.init__Lakka_actor_ActorSystemImpl__V = (function(_system) {
+  this.akka$actor$JSLocalActorRefProvider$$system$2 = _system;
+  $c_Lakka_actor_LocalActorRefProvider.prototype.init__Lakka_actor_ActorSystemImpl__V.call(this, _system)
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.guardian$lzycompute__p2__Lakka_actor_LocalActorRef = (function() {
+  if (((8 & this.bitmap$0$2) === 0)) {
+    var this$1 = this.rootGuardian__Lakka_actor_LocalActorRef();
+    var cell = this$1.actorCell$4;
+    $s_Lakka_actor_dungeon_Children$class__reserveChild__Lakka_actor_ActorCell__T__Z(cell, "user");
+    var jsx$2 = this.akka$actor$JSLocalActorRefProvider$$system$2;
+    var this$2 = this.akka$actor$JSLocalActorRefProvider$$system$2.guardianProps$3;
+    if (this$2.isEmpty__Z()) {
+      var this$4 = $m_Lakka_actor_Props$();
+      var creator = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function() {
+        return new $c_Lakka_actor_JSLocalActorRefProvider$Guardian().init___Lakka_actor_SupervisorStrategy($m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1)
+      }));
+      var jsx$1 = this$4.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_JSLocalActorRefProvider$Guardian.getClassOf(), creator)
+    } else {
+      var jsx$1 = this$2.get__O()
+    };
+    var ref = new $c_Lakka_actor_LocalActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(jsx$2, $as_Lakka_actor_Props(jsx$1), this.akka$actor$JSLocalActorRefProvider$$defaultDispatcher__Lakka_dispatch_MessageDispatcher(), this.akka$actor$JSLocalActorRefProvider$$defaultMailbox__Lakka_dispatch_MailboxType(), this.rootGuardian__Lakka_actor_LocalActorRef(), this.rootPath$1.$$div__T__Lakka_actor_ActorPath("user"));
+    $s_Lakka_actor_dungeon_Children$class__initChild__Lakka_actor_ActorCell__Lakka_actor_ActorRef__s_Option(cell, ref);
+    ref.actorCell$4.start__Lakka_actor_ActorCell();
+    this.guardian$2 = ref;
+    this.bitmap$0$2 = (8 | this.bitmap$0$2)
+  };
+  return this.guardian$2
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.systemGuardian$lzycompute__p2__Lakka_actor_LocalActorRef = (function() {
+  if (((16 & this.bitmap$0$2) === 0)) {
+    var this$1 = this.rootGuardian__Lakka_actor_LocalActorRef();
+    var cell = this$1.actorCell$4;
+    $s_Lakka_actor_dungeon_Children$class__reserveChild__Lakka_actor_ActorCell__T__Z(cell, "system");
+    var jsx$1 = this.akka$actor$JSLocalActorRefProvider$$system$2;
+    var this$3 = $m_Lakka_actor_Props$();
+    var creator = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
+      return (function() {
+        return new $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian().init___Lakka_actor_SupervisorStrategy__Lakka_actor_ActorRef($m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1, arg$outer.guardian__Lakka_actor_LocalActorRef())
+      })
+    })(this));
+    var ref = new $c_Lakka_actor_LocalActorRef().init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath(jsx$1, this$3.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.getClassOf(), creator), this.akka$actor$JSLocalActorRefProvider$$defaultDispatcher__Lakka_dispatch_MessageDispatcher(), this.akka$actor$JSLocalActorRefProvider$$defaultMailbox__Lakka_dispatch_MailboxType(), this.rootGuardian__Lakka_actor_LocalActorRef(), this.rootPath$1.$$div__T__Lakka_actor_ActorPath("system"));
+    $s_Lakka_actor_dungeon_Children$class__initChild__Lakka_actor_ActorCell__Lakka_actor_ActorRef__s_Option(cell, ref);
+    ref.actorCell$4.start__Lakka_actor_ActorCell();
+    this.systemGuardian$2 = ref;
+    this.bitmap$0$2 = (16 | this.bitmap$0$2)
+  };
+  return this.systemGuardian$2
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.init___T__Lakka_actor_ActorSystem$Settings__Lakka_event_EventStream__Lakka_actor_DynamicAccess = (function(_systemName, settings, _eventStream, _dynamicAccess) {
+  $c_Lakka_actor_LocalActorRefProvider.prototype.init___T__Lakka_actor_ActorSystem$Settings__Lakka_event_EventStream__Lakka_actor_DynamicAccess__Lakka_actor_Deployer__s_Option.call(this, _systemName, settings, _eventStream, _dynamicAccess, null, $m_s_None$());
+  this.akka$actor$JSLocalActorRefProvider$$extraNames$2 = $as_sci_Map($m_s_Predef$().Map$2.apply__sc_Seq__sc_GenMap($m_sci_Nil$()));
+  return this
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.akka$actor$JSLocalActorRefProvider$$defaultDispatcher__Lakka_dispatch_MessageDispatcher = (function() {
+  return (((1 & this.bitmap$0$2) === 0) ? this.akka$actor$JSLocalActorRefProvider$$defaultDispatcher$lzycompute__p2__Lakka_dispatch_MessageDispatcher() : this.akka$actor$JSLocalActorRefProvider$$defaultDispatcher$2)
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.guardian__Lakka_actor_LocalActorRef = (function() {
+  return (((8 & this.bitmap$0$2) === 0) ? this.guardian$lzycompute__p2__Lakka_actor_LocalActorRef() : this.guardian$2)
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.akka$actor$JSLocalActorRefProvider$$defaultMailbox$lzycompute__p2__Lakka_dispatch_MailboxType = (function() {
+  if (((2 & this.bitmap$0$2) === 0)) {
+    this.akka$actor$JSLocalActorRefProvider$$defaultMailbox$2 = new $c_Lakka_dispatch_UnboundedMailbox().init___();
+    this.bitmap$0$2 = (2 | this.bitmap$0$2)
+  };
+  return this.akka$actor$JSLocalActorRefProvider$$defaultMailbox$2
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.akka$actor$JSLocalActorRefProvider$$defaultDispatcher$lzycompute__p2__Lakka_dispatch_MessageDispatcher = (function() {
+  if (((1 & this.bitmap$0$2) === 0)) {
+    var this$1 = this.akka$actor$JSLocalActorRefProvider$$system$2.dispatchers$3;
+    this.akka$actor$JSLocalActorRefProvider$$defaultDispatcher$2 = this$1.lookup__T__Lakka_dispatch_MessageDispatcher("akka.actor.default-dispatcher");
+    this.bitmap$0$2 = (1 | this.bitmap$0$2)
+  };
+  return this.akka$actor$JSLocalActorRefProvider$$defaultDispatcher$2
+});
+var $d_Lakka_actor_JSLocalActorRefProvider = new $TypeData().initClass({
+  Lakka_actor_JSLocalActorRefProvider: 0
+}, false, "akka.actor.JSLocalActorRefProvider", {
+  Lakka_actor_JSLocalActorRefProvider: 1,
+  Lakka_actor_LocalActorRefProvider: 1,
+  O: 1,
+  Lakka_actor_ActorRefProvider: 1
+});
+$c_Lakka_actor_JSLocalActorRefProvider.prototype.$classData = $d_Lakka_actor_JSLocalActorRefProvider;
+$e.akka = ($e.akka || {});
+$e.akka.actor = ($e.akka.actor || {});
+/** @constructor */
+$e.akka.actor.JSLocalActorRefProvider = (function(arg$1, arg$2, arg$3, arg$4) {
+  var $thiz = new $c_Lakka_actor_JSLocalActorRefProvider();
+  var prep0 = $as_T(arg$1);
+  var prep1 = $as_Lakka_actor_ActorSystem$Settings(arg$2);
+  var prep2 = $as_Lakka_event_EventStream(arg$3);
+  var prep3 = $as_Lakka_actor_DynamicAccess(arg$4);
+  $c_Lakka_actor_JSLocalActorRefProvider.prototype.init___T__Lakka_actor_ActorSystem$Settings__Lakka_event_EventStream__Lakka_actor_DynamicAccess.call($thiz, prep0, prep1, prep2, prep3);
+  return $thiz
+});
+$e.akka.actor.JSLocalActorRefProvider.prototype = $c_Lakka_actor_JSLocalActorRefProvider.prototype;
+/** @constructor */
+function $c_Lakka_actor_JSLocalActorRefProvider$Guardian() {
   $c_O.call(this);
   this.supervisorStrategy$1 = null;
   this.context$1 = null;
   this.self$1 = null
 }
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype = new $h_O();
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.constructor = $c_Lakka_actor_LocalActorRefProvider$Guardian;
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype = new $h_O();
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.constructor = $c_Lakka_actor_JSLocalActorRefProvider$Guardian;
 /** @constructor */
-function $h_Lakka_actor_LocalActorRefProvider$Guardian() {
+function $h_Lakka_actor_JSLocalActorRefProvider$Guardian() {
   /*<skip>*/
 }
-$h_Lakka_actor_LocalActorRefProvider$Guardian.prototype = $c_Lakka_actor_LocalActorRefProvider$Guardian.prototype;
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.self$und$eq__Lakka_actor_ActorRef__ = (function(x$1) {
-  this.self$1 = x$1
-});
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.preStart__V = (function() {
+$h_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype = $c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype;
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.preStart__V = (function() {
   /*<skip>*/
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.postStop__V = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.postStop__V = (function() {
   /*<skip>*/
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
   return this.supervisorStrategy$1
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.receive__s_PartialFunction = (function() {
-  return new $c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1().init___Lakka_actor_LocalActorRefProvider$Guardian(this)
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.receive__s_PartialFunction = (function() {
+  return new $c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1().init___Lakka_actor_JSLocalActorRefProvider$Guardian(this)
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.context__Lakka_actor_ActorContext = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.context__Lakka_actor_ActorContext = (function() {
   return this.context$1
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
   this.context$1 = x$1
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.context$und$eq__Lakka_actor_ActorContext__ = (function(x$1) {
-  this.context$1 = x$1
-});
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.init___Lakka_actor_SupervisorStrategy = (function(supervisorStrategy) {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.init___Lakka_actor_SupervisorStrategy = (function(supervisorStrategy) {
   this.supervisorStrategy$1 = supervisorStrategy;
   $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
   return this
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.preRestart__jl_Throwable__s_Option__V = (function(cause, msg) {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.preRestart__jl_Throwable__s_Option__V = (function(cause, msg) {
   /*<skip>*/
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.$$js$exported$prop$self__O = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.$$js$exported$prop$self__O = (function() {
   return this.self$1
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.postRestart__jl_Throwable__V = (function(reason) {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.postRestart__jl_Throwable__V = (function(reason) {
   /*<skip>*/
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
   this.self$1 = x$1
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.$$js$exported$prop$context__O = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.$$js$exported$prop$context__O = (function() {
   return this.context$1
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.self__Lakka_actor_ActorRef = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.self__Lakka_actor_ActorRef = (function() {
   return this.self$1
 });
-Object.defineProperty($c_Lakka_actor_LocalActorRefProvider$Guardian.prototype, "context", {
+Object.defineProperty($c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype, "context", {
   "get": (function() {
     return this.$$js$exported$prop$context__O()
   }),
   "enumerable": true
 });
-Object.defineProperty($c_Lakka_actor_LocalActorRefProvider$Guardian.prototype, "self", {
+Object.defineProperty($c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype, "self", {
   "get": (function() {
     return this.$$js$exported$prop$self__O()
   }),
   "enumerable": true
 });
-var $d_Lakka_actor_LocalActorRefProvider$Guardian = new $TypeData().initClass({
-  Lakka_actor_LocalActorRefProvider$Guardian: 0
-}, false, "akka.actor.LocalActorRefProvider$Guardian", {
-  Lakka_actor_LocalActorRefProvider$Guardian: 1,
+var $d_Lakka_actor_JSLocalActorRefProvider$Guardian = new $TypeData().initClass({
+  Lakka_actor_JSLocalActorRefProvider$Guardian: 0
+}, false, "akka.actor.JSLocalActorRefProvider$Guardian", {
+  Lakka_actor_JSLocalActorRefProvider$Guardian: 1,
   O: 1,
   Lakka_actor_Actor: 1,
   Lakka_dispatch_RequiresMessageQueue: 1
 });
-$c_Lakka_actor_LocalActorRefProvider$Guardian.prototype.$classData = $d_Lakka_actor_LocalActorRefProvider$Guardian;
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian.prototype.$classData = $d_Lakka_actor_JSLocalActorRefProvider$Guardian;
 /** @constructor */
-function $c_Lakka_actor_LocalActorRefProvider$SystemGuardian() {
+function $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian() {
   $c_O.call(this);
   this.supervisorStrategy$1 = null;
   this.guardian$1 = null;
@@ -23513,43 +23826,40 @@ function $c_Lakka_actor_LocalActorRefProvider$SystemGuardian() {
   this.context$1 = null;
   this.self$1 = null
 }
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype = new $h_O();
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.constructor = $c_Lakka_actor_LocalActorRefProvider$SystemGuardian;
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype = new $h_O();
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.constructor = $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian;
 /** @constructor */
-function $h_Lakka_actor_LocalActorRefProvider$SystemGuardian() {
+function $h_Lakka_actor_JSLocalActorRefProvider$SystemGuardian() {
   /*<skip>*/
 }
-$h_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype = $c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype;
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.self$und$eq__Lakka_actor_ActorRef__ = (function(x$1) {
-  this.self$1 = x$1
-});
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.preStart__V = (function() {
+$h_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype = $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype;
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.preStart__V = (function() {
   /*<skip>*/
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.postStop__V = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.postStop__V = (function() {
   /*<skip>*/
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
   return this.supervisorStrategy$1
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.receive__s_PartialFunction = (function() {
-  return new $c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2().init___Lakka_actor_LocalActorRefProvider$SystemGuardian(this)
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.receive__s_PartialFunction = (function() {
+  return new $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2().init___Lakka_actor_JSLocalActorRefProvider$SystemGuardian(this)
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.init___Lakka_actor_SupervisorStrategy__Lakka_actor_ActorRef = (function(supervisorStrategy, guardian) {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.init___Lakka_actor_SupervisorStrategy__Lakka_actor_ActorRef = (function(supervisorStrategy, guardian) {
   this.supervisorStrategy$1 = supervisorStrategy;
   this.guardian$1 = guardian;
   $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
   this.terminationHooks$1 = $m_sci_Set$EmptySet$();
   return this
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.context__Lakka_actor_ActorContext = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.context__Lakka_actor_ActorContext = (function() {
   return this.context$1
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.stopWhenAllTerminationHooksDone__Lakka_actor_ActorRef__V = (function(remove) {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.stopWhenAllTerminationHooksDone__Lakka_actor_ActorRef__V = (function(remove) {
   this.terminationHooks$1 = $as_sci_Set(this.terminationHooks$1.$$minus__O__sc_Set(remove));
   this.stopWhenAllTerminationHooksDone__V()
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.stopWhenAllTerminationHooksDone__V = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.stopWhenAllTerminationHooksDone__V = (function() {
   if (this.terminationHooks$1.isEmpty__Z()) {
     var this$1 = this.context$1;
     var this$3 = this$1.system$1.eventStream$3;
@@ -23561,51 +23871,48 @@ $c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.stopWhenAllTermina
     $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(this$4, actor)
   }
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
   this.context$1 = x$1
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.context$und$eq__Lakka_actor_ActorContext__ = (function(x$1) {
-  this.context$1 = x$1
-});
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.$$js$exported$prop$self__O = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.$$js$exported$prop$self__O = (function() {
   return this.self$1
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.preRestart__jl_Throwable__s_Option__V = (function(cause, msg) {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.preRestart__jl_Throwable__s_Option__V = (function(cause, msg) {
   /*<skip>*/
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.postRestart__jl_Throwable__V = (function(reason) {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.postRestart__jl_Throwable__V = (function(reason) {
   /*<skip>*/
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
   this.self$1 = x$1
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.self__Lakka_actor_ActorRef = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.self__Lakka_actor_ActorRef = (function() {
   return this.self$1
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.$$js$exported$prop$context__O = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.$$js$exported$prop$context__O = (function() {
   return this.context$1
 });
-Object.defineProperty($c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype, "context", {
+Object.defineProperty($c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype, "context", {
   "get": (function() {
     return this.$$js$exported$prop$context__O()
   }),
   "enumerable": true
 });
-Object.defineProperty($c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype, "self", {
+Object.defineProperty($c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype, "self", {
   "get": (function() {
     return this.$$js$exported$prop$self__O()
   }),
   "enumerable": true
 });
-var $d_Lakka_actor_LocalActorRefProvider$SystemGuardian = new $TypeData().initClass({
-  Lakka_actor_LocalActorRefProvider$SystemGuardian: 0
-}, false, "akka.actor.LocalActorRefProvider$SystemGuardian", {
-  Lakka_actor_LocalActorRefProvider$SystemGuardian: 1,
+var $d_Lakka_actor_JSLocalActorRefProvider$SystemGuardian = new $TypeData().initClass({
+  Lakka_actor_JSLocalActorRefProvider$SystemGuardian: 0
+}, false, "akka.actor.JSLocalActorRefProvider$SystemGuardian", {
+  Lakka_actor_JSLocalActorRefProvider$SystemGuardian: 1,
   O: 1,
   Lakka_actor_Actor: 1,
   Lakka_dispatch_RequiresMessageQueue: 1
 });
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian.prototype.$classData = $d_Lakka_actor_LocalActorRefProvider$SystemGuardian;
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian.prototype.$classData = $d_Lakka_actor_JSLocalActorRefProvider$SystemGuardian;
 /** @constructor */
 function $c_Lakka_actor_ReflectiveDynamicAccess() {
   $c_Lakka_actor_JSDynamicAccess.call(this)
@@ -24291,137 +24598,62 @@ function $m_Lakka_event_AddressTerminatedTopic$() {
   return $n_Lakka_event_AddressTerminatedTopic$
 }
 /** @constructor */
-function $c_Lakka_event_DefaultLogger() {
-  $c_O.call(this);
-  this.akka$event$Logging$StdOutLogger$$date$1 = null;
-  this.akka$event$Logging$StdOutLogger$$errorFormat$1 = null;
-  this.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$1 = null;
-  this.akka$event$Logging$StdOutLogger$$warningFormat$1 = null;
-  this.akka$event$Logging$StdOutLogger$$infoFormat$1 = null;
-  this.akka$event$Logging$StdOutLogger$$debugFormat$1 = null;
-  this.context$1 = null;
-  this.self$1 = null
+function $c_Lakka_event_ExtensionKey$$anon$1() {
+  $c_Lakka_event_Logging$LogExt.call(this);
+  this.$$outer$2 = null
 }
-$c_Lakka_event_DefaultLogger.prototype = new $h_O();
-$c_Lakka_event_DefaultLogger.prototype.constructor = $c_Lakka_event_DefaultLogger;
+$c_Lakka_event_ExtensionKey$$anon$1.prototype = new $h_Lakka_event_Logging$LogExt();
+$c_Lakka_event_ExtensionKey$$anon$1.prototype.constructor = $c_Lakka_event_ExtensionKey$$anon$1;
 /** @constructor */
-function $h_Lakka_event_DefaultLogger() {
+function $h_Lakka_event_ExtensionKey$$anon$1() {
   /*<skip>*/
 }
-$h_Lakka_event_DefaultLogger.prototype = $c_Lakka_event_DefaultLogger.prototype;
-$c_Lakka_event_DefaultLogger.prototype.self$und$eq__Lakka_actor_ActorRef__ = (function(x$1) {
-  this.self$1 = x$1
+$h_Lakka_event_ExtensionKey$$anon$1.prototype = $c_Lakka_event_ExtensionKey$$anon$1.prototype;
+$c_Lakka_event_ExtensionKey$$anon$1.prototype.id__I = (function() {
+  this.$$outer$2.loggerId$2 = ((1 + this.$$outer$2.loggerId$2) | 0);
+  return this.$$outer$2.loggerId$2
 });
-$c_Lakka_event_DefaultLogger.prototype.init___ = (function() {
-  $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
-  $s_Lakka_event_Logging$StdOutLogger$class__$$init$__Lakka_event_Logging$StdOutLogger__V(this);
+$c_Lakka_event_ExtensionKey$$anon$1.prototype.init___Lakka_event_ExtensionKey__Lakka_actor_ActorSystem = (function($$outer, system$1) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  $c_Lakka_event_Logging$LogExt.prototype.init___Lakka_actor_ExtendedActorSystem.call(this, $as_Lakka_actor_ExtendedActorSystem(system$1));
   return this
 });
-$c_Lakka_event_DefaultLogger.prototype.preStart__V = (function() {
-  /*<skip>*/
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$infoFormat__T = (function() {
-  return this.akka$event$Logging$StdOutLogger$$infoFormat$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$warningFormat$und$eq__T__V = (function(x$1) {
-  this.akka$event$Logging$StdOutLogger$$warningFormat$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$warningFormat__T = (function() {
-  return this.akka$event$Logging$StdOutLogger$$warningFormat$1
-});
-$c_Lakka_event_DefaultLogger.prototype.postStop__V = (function() {
-  /*<skip>*/
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$debugFormat$und$eq__T__V = (function(x$1) {
-  this.akka$event$Logging$StdOutLogger$$debugFormat$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$und$eq__T__V = (function(x$1) {
-  this.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$debugFormat__T = (function() {
-  return this.akka$event$Logging$StdOutLogger$$debugFormat$1
-});
-$c_Lakka_event_DefaultLogger.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
-  return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$errorFormat__T = (function() {
-  return this.akka$event$Logging$StdOutLogger$$errorFormat$1
-});
-$c_Lakka_event_DefaultLogger.prototype.receive__s_PartialFunction = (function() {
-  return new $c_Lakka_event_DefaultLogger$$anonfun$receive$3().init___Lakka_event_DefaultLogger(this)
-});
-$c_Lakka_event_DefaultLogger.prototype.context__Lakka_actor_ActorContext = (function() {
-  return this.context$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$date__ju_Date = (function() {
-  return this.akka$event$Logging$StdOutLogger$$date$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
-  this.context$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.context$und$eq__Lakka_actor_ActorContext__ = (function(x$1) {
-  this.context$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause__T = (function() {
-  return this.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$1
-});
-$c_Lakka_event_DefaultLogger.prototype.$$js$exported$prop$self__O = (function() {
-  return this.self$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$date$und$eq__ju_Date__V = (function(x$1) {
-  this.akka$event$Logging$StdOutLogger$$date$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
-  $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
-});
-$c_Lakka_event_DefaultLogger.prototype.postRestart__jl_Throwable__V = (function(reason) {
-  /*<skip>*/
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$infoFormat$und$eq__T__V = (function(x$1) {
-  this.akka$event$Logging$StdOutLogger$$infoFormat$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
-  this.self$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$errorFormat$und$eq__T__V = (function(x$1) {
-  this.akka$event$Logging$StdOutLogger$$errorFormat$1 = x$1
-});
-$c_Lakka_event_DefaultLogger.prototype.self__Lakka_actor_ActorRef = (function() {
-  return this.self$1
-});
-$c_Lakka_event_DefaultLogger.prototype.$$js$exported$prop$context__O = (function() {
-  return this.context$1
-});
-Object.defineProperty($c_Lakka_event_DefaultLogger.prototype, "context", {
-  "get": (function() {
-    return this.$$js$exported$prop$context__O()
-  }),
-  "enumerable": true
-});
-Object.defineProperty($c_Lakka_event_DefaultLogger.prototype, "self", {
-  "get": (function() {
-    return this.$$js$exported$prop$self__O()
-  }),
-  "enumerable": true
-});
-var $d_Lakka_event_DefaultLogger = new $TypeData().initClass({
-  Lakka_event_DefaultLogger: 0
-}, false, "akka.event.DefaultLogger", {
-  Lakka_event_DefaultLogger: 1,
+var $d_Lakka_event_ExtensionKey$$anon$1 = new $TypeData().initClass({
+  Lakka_event_ExtensionKey$$anon$1: 0
+}, false, "akka.event.ExtensionKey$$anon$1", {
+  Lakka_event_ExtensionKey$$anon$1: 1,
+  Lakka_event_Logging$LogExt: 1,
   O: 1,
-  Lakka_actor_Actor: 1,
-  Lakka_event_Logging$StdOutLogger: 1
+  Lakka_actor_Extension: 1
 });
-$c_Lakka_event_DefaultLogger.prototype.$classData = $d_Lakka_event_DefaultLogger;
-$e.akka = ($e.akka || {});
-$e.akka.event = ($e.akka.event || {});
+$c_Lakka_event_ExtensionKey$$anon$1.prototype.$classData = $d_Lakka_event_ExtensionKey$$anon$1;
 /** @constructor */
-$e.akka.event.DefaultLogger = (function() {
-  var $thiz = new $c_Lakka_event_DefaultLogger();
-  $c_Lakka_event_DefaultLogger.prototype.init___.call($thiz);
-  return $thiz
+function $c_Lakka_event_Logging$SerializedStandardOutLogger() {
+  $c_O.call(this)
+}
+$c_Lakka_event_Logging$SerializedStandardOutLogger.prototype = new $h_O();
+$c_Lakka_event_Logging$SerializedStandardOutLogger.prototype.constructor = $c_Lakka_event_Logging$SerializedStandardOutLogger;
+/** @constructor */
+function $h_Lakka_event_Logging$SerializedStandardOutLogger() {
+  /*<skip>*/
+}
+$h_Lakka_event_Logging$SerializedStandardOutLogger.prototype = $c_Lakka_event_Logging$SerializedStandardOutLogger.prototype;
+$c_Lakka_event_Logging$SerializedStandardOutLogger.prototype.init___ = (function() {
+  return this
 });
-$e.akka.event.DefaultLogger.prototype = $c_Lakka_event_DefaultLogger.prototype;
+var $d_Lakka_event_Logging$SerializedStandardOutLogger = new $TypeData().initClass({
+  Lakka_event_Logging$SerializedStandardOutLogger: 0
+}, false, "akka.event.Logging$SerializedStandardOutLogger", {
+  Lakka_event_Logging$SerializedStandardOutLogger: 1,
+  O: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lakka_event_Logging$SerializedStandardOutLogger.prototype.$classData = $d_Lakka_event_Logging$SerializedStandardOutLogger;
 /** @constructor */
 function $c_Lakka_pattern_PromiseActorRef$() {
   $c_O.call(this);
@@ -24439,26 +24671,26 @@ $c_Lakka_pattern_PromiseActorRef$.prototype.init___ = (function() {
   this.akka$pattern$PromiseActorRef$$ActorStopResult$1 = new $c_s_util_Failure().init___jl_Throwable(new $c_Lakka_actor_ActorKilledException().init___T("Stopped"));
   return this
 });
-$c_Lakka_pattern_PromiseActorRef$.prototype.apply__Lakka_actor_ActorRefProvider__Lakka_util_Timeout__T__Lakka_pattern_PromiseActorRef = (function(provider, timeout, targetName) {
+$c_Lakka_pattern_PromiseActorRef$.prototype.apply__Lakka_actor_ActorRefProvider__Lakka_util_Timeout__O__T__Lakka_actor_ActorRef__Lakka_pattern_PromiseActorRef = (function(provider, timeout, targetName, messageClassName, sender) {
   var result = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
   var this$2 = provider.guardian__Lakka_actor_LocalActorRef();
   var scheduler = this$2.actorCell$4.system$1.scheduler$3;
-  var a = new $c_Lakka_pattern_PromiseActorRef().init___Lakka_actor_ActorRefProvider__s_concurrent_Promise(provider, result);
-  var ec = $m_sjs_concurrent_JSExecutionContext$().queue$1;
+  var a = new $c_Lakka_pattern_PromiseActorRef().init___Lakka_actor_ActorRefProvider__s_concurrent_Promise__T(provider, result, messageClassName);
+  var ec = a.internalCallingThreadExecutionContext__s_concurrent_ExecutionContext();
   var delay = timeout.duration$1;
-  var f = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(timeout$1, targetName$1, result$1) {
+  var f = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(timeout$1, targetName$1, sender$1, result$1, a$1) {
     return (function() {
-      var jsx$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Ask timed out on [", "] after [", " ms]"]));
+      var jsx$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Ask timed out on [", "] after [", " ms]. Sender[", "] sent message of type \"", "\"."]));
       var this$3 = timeout$1.duration$1;
-      result$1.tryComplete__s_util_Try__Z(new $c_s_util_Failure().init___jl_Throwable(new $c_Lakka_pattern_AskTimeoutException().init___T(jsx$1.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([targetName$1, this$3.unit$2.toMillis__J__J(this$3.length$2)])))))
+      result$1.tryComplete__s_util_Try__Z(new $c_s_util_Failure().init___jl_Throwable(new $c_Lakka_pattern_AskTimeoutException().init___T(jsx$1.s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([targetName$1, this$3.unit$2.toMillis__J__J(this$3.length$2), sender$1, a$1.messageClassName$3])))))
     })
-  })(timeout, targetName, result));
+  })(timeout, targetName, sender, result, a));
   var f$1 = $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(scheduler, delay, f, ec);
-  result.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(a$1, f$1$1) {
+  result.onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(a$1$1, f$1$1) {
     return (function(x$1$2) {
       $as_s_util_Try(x$1$2);
       try {
-        a$1.stop__V()
+        a$1$1.stop__V()
       } finally {
         f$1$1.cancel__Z()
       }
@@ -30020,9 +30252,7 @@ $c_Lakka_actor_ActorSystemImpl.prototype.init___T__Lcom_typesafe_config_Config__
     }
   };
   this.internalCallingThreadExecutionContext$3 = $as_s_concurrent_ExecutionContext(jsx$10.getOrElse__F0__O(new $c_Lakka_actor_ActorSystemImpl$$anonfun$5().init___Lakka_actor_ActorSystemImpl(this)));
-  var this$69 = this.provider$3;
-  var this$70 = this$69.terminationPromise__s_concurrent_Promise();
-  this.terminationCallbacks$3 = new $c_Lakka_actor_ActorSystemImpl$TerminationCallbacks().init___Lakka_actor_ActorSystemImpl__s_concurrent_Future__s_concurrent_ExecutionContext(this, this$70, this.dispatcher$3);
+  this.terminationCallbacks$3 = new $c_Lakka_actor_ActorSystemImpl$TerminationCallbacks().init___Lakka_actor_ActorSystemImpl__s_concurrent_Future__s_concurrent_ExecutionContext(this, this.provider$3.terminationFuture__s_concurrent_Future(), this.dispatcher$3);
   this.aborting$3 = false;
   this.extensions$3 = new $c_ju_concurrent_ConcurrentHashMap().init___();
   return this
@@ -30469,7 +30699,7 @@ $c_Lakka_dispatch_MessageDispatcher.prototype.akka$dispatch$MessageDispatcher$$u
 });
 $c_Lakka_dispatch_MessageDispatcher.prototype.suspend__Lakka_actor_ActorCell__V = (function(actor) {
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var mbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(actor, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var mbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(actor, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   if (((mbox.actor$1 === actor) && (mbox.actor$1.dispatcher$1 === this))) {
     mbox.suspend__Z()
   }
@@ -30488,7 +30718,7 @@ $c_Lakka_dispatch_MessageDispatcher.prototype.akka$dispatch$MessageDispatcher$$s
 $c_Lakka_dispatch_MessageDispatcher.prototype.attach__Lakka_actor_ActorCell__V = (function(actor) {
   this.akka$dispatch$MessageDispatcher$$addInhabitants__J__J(new $c_sjsr_RuntimeLong().init___I__I(1, 0));
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  this.registerForExecution__Lakka_dispatch_Mailbox__Z__Z__Z($as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(actor, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)), false, true)
+  this.registerForExecution__Lakka_dispatch_Mailbox__Z__Z__Z($as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(actor, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1))), false, true)
 });
 $c_Lakka_dispatch_MessageDispatcher.prototype.detach__Lakka_actor_ActorCell__V = (function(actor) {
   try {
@@ -30542,7 +30772,7 @@ $c_Lakka_dispatch_MessageDispatcher.prototype.init___Lakka_dispatch_MessageDispa
 });
 $c_Lakka_dispatch_MessageDispatcher.prototype.resume__Lakka_actor_ActorCell__V = (function(actor) {
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var mbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(actor, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var mbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(actor, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   if ((((mbox.actor$1 === actor) && (mbox.actor$1.dispatcher$1 === this)) && mbox.resume__Z())) {
     this.registerForExecution__Lakka_dispatch_Mailbox__Z__Z__Z(mbox, false, false)
   }
@@ -30572,6 +30802,172 @@ $c_Lakka_dispatch_MessageDispatcher.prototype.akka$dispatch$MessageDispatcher$$i
 });
 $c_Lakka_dispatch_MessageDispatcher.prototype.execute__jl_Runnable__V = (function(runnable) {
   this.unbatchedExecute__jl_Runnable__V(runnable)
+});
+/** @constructor */
+function $c_Lakka_event_ExtensionKey() {
+  $c_Lakka_actor_ExtensionKey.call(this);
+  this.loggerId$2 = 0
+}
+$c_Lakka_event_ExtensionKey.prototype = new $h_Lakka_actor_ExtensionKey();
+$c_Lakka_event_ExtensionKey.prototype.constructor = $c_Lakka_event_ExtensionKey;
+/** @constructor */
+function $h_Lakka_event_ExtensionKey() {
+  /*<skip>*/
+}
+$h_Lakka_event_ExtensionKey.prototype = $c_Lakka_event_ExtensionKey.prototype;
+$c_Lakka_event_ExtensionKey.prototype.init___s_reflect_ClassTag = (function(m) {
+  $c_Lakka_actor_ExtensionKey.prototype.init___s_reflect_ClassTag.call(this, m);
+  this.loggerId$2 = 0;
+  return this
+});
+/** @constructor */
+function $c_Lakka_event_JSDefaultLogger() {
+  $c_O.call(this);
+  this.akka$event$Logging$StdOutLogger$$date$1 = null;
+  this.akka$event$Logging$StdOutLogger$$dateFormat$1 = null;
+  this.akka$event$Logging$StdOutLogger$$errorFormat$1 = null;
+  this.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$1 = null;
+  this.akka$event$Logging$StdOutLogger$$warningFormat$1 = null;
+  this.akka$event$Logging$StdOutLogger$$infoFormat$1 = null;
+  this.akka$event$Logging$StdOutLogger$$debugFormat$1 = null;
+  this.context$1 = null;
+  this.self$1 = null
+}
+$c_Lakka_event_JSDefaultLogger.prototype = new $h_O();
+$c_Lakka_event_JSDefaultLogger.prototype.constructor = $c_Lakka_event_JSDefaultLogger;
+/** @constructor */
+function $h_Lakka_event_JSDefaultLogger() {
+  /*<skip>*/
+}
+$h_Lakka_event_JSDefaultLogger.prototype = $c_Lakka_event_JSDefaultLogger.prototype;
+$c_Lakka_event_JSDefaultLogger.prototype.self$und$eq__Lakka_actor_ActorRef__ = (function(x$1) {
+  this.self$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.init___ = (function() {
+  $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
+  $s_Lakka_event_Logging$StdOutLogger$class__$$init$__Lakka_event_Logging$StdOutLogger__V(this);
+  return this
+});
+$c_Lakka_event_JSDefaultLogger.prototype.preStart__V = (function() {
+  /*<skip>*/
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$infoFormat__T = (function() {
+  return this.akka$event$Logging$StdOutLogger$$infoFormat$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$warningFormat$und$eq__T__V = (function(x$1) {
+  this.akka$event$Logging$StdOutLogger$$warningFormat$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$warningFormat__T = (function() {
+  return this.akka$event$Logging$StdOutLogger$$warningFormat$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.postStop__V = (function() {
+  /*<skip>*/
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$debugFormat$und$eq__T__V = (function(x$1) {
+  this.akka$event$Logging$StdOutLogger$$debugFormat$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$und$eq__T__V = (function(x$1) {
+  this.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$debugFormat__T = (function() {
+  return this.akka$event$Logging$StdOutLogger$$debugFormat$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
+  return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$errorFormat__T = (function() {
+  return this.akka$event$Logging$StdOutLogger$$errorFormat$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.receive__s_PartialFunction = (function() {
+  return new $c_Lakka_event_JSDefaultLogger$$anonfun$receive$1().init___Lakka_event_JSDefaultLogger(this)
+});
+$c_Lakka_event_JSDefaultLogger.prototype.context__Lakka_actor_ActorContext = (function() {
+  return this.context$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$date__ju_Date = (function() {
+  return this.akka$event$Logging$StdOutLogger$$date$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
+  this.context$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.context$und$eq__Lakka_actor_ActorContext__ = (function(x$1) {
+  this.context$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$dateFormat$und$eq__Ljava_text_SimpleDateFormat__V = (function(x$1) {
+  this.akka$event$Logging$StdOutLogger$$dateFormat$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause__T = (function() {
+  return this.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.$$js$exported$prop$self__O = (function() {
+  return this.self$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$date$und$eq__ju_Date__V = (function(x$1) {
+  this.akka$event$Logging$StdOutLogger$$date$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
+  $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$dateFormat__Ljava_text_SimpleDateFormat = (function() {
+  return this.akka$event$Logging$StdOutLogger$$dateFormat$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.postRestart__jl_Throwable__V = (function(reason) {
+  /*<skip>*/
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$infoFormat$und$eq__T__V = (function(x$1) {
+  this.akka$event$Logging$StdOutLogger$$infoFormat$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
+  this.self$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$errorFormat$und$eq__T__V = (function(x$1) {
+  this.akka$event$Logging$StdOutLogger$$errorFormat$1 = x$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.self__Lakka_actor_ActorRef = (function() {
+  return this.self$1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.$$js$exported$prop$context__O = (function() {
+  return this.context$1
+});
+Object.defineProperty($c_Lakka_event_JSDefaultLogger.prototype, "context", {
+  "get": (function() {
+    return this.$$js$exported$prop$context__O()
+  }),
+  "enumerable": true
+});
+Object.defineProperty($c_Lakka_event_JSDefaultLogger.prototype, "self", {
+  "get": (function() {
+    return this.$$js$exported$prop$self__O()
+  }),
+  "enumerable": true
+});
+var $d_Lakka_event_JSDefaultLogger = new $TypeData().initClass({
+  Lakka_event_JSDefaultLogger: 0
+}, false, "akka.event.JSDefaultLogger", {
+  Lakka_event_JSDefaultLogger: 1,
+  O: 1,
+  Lakka_actor_Actor: 1,
+  Lakka_event_Logging$StdOutLogger: 1,
+  Lakka_dispatch_RequiresMessageQueue: 1
+});
+$c_Lakka_event_JSDefaultLogger.prototype.$classData = $d_Lakka_event_JSDefaultLogger;
+$e.akka = ($e.akka || {});
+$e.akka.event = ($e.akka.event || {});
+/** @constructor */
+$e.akka.event.JSDefaultLogger = (function() {
+  var $thiz = new $c_Lakka_event_JSDefaultLogger();
+  $c_Lakka_event_JSDefaultLogger.prototype.init___.call($thiz);
+  return $thiz
+});
+$e.akka.event.JSDefaultLogger.prototype = $c_Lakka_event_JSDefaultLogger.prototype;
+var $d_Lakka_event_Logging$DefaultLogger = new $TypeData().initClass({
+  Lakka_event_Logging$DefaultLogger: 0
+}, false, "akka.event.Logging$DefaultLogger", {
+  Lakka_event_Logging$DefaultLogger: 1,
+  O: 1,
+  Lakka_actor_Actor: 1,
+  Lakka_event_Logging$StdOutLogger: 1,
+  Lakka_dispatch_RequiresMessageQueue: 1
 });
 /** @constructor */
 function $c_Lakka_event_Logging$Error$NoCause$() {
@@ -30758,6 +31154,31 @@ var $d_Lakka_util_Collections$PartialImmutableValuesIterable$$anon$1 = new $Type
   sc_GenTraversableOnce: 1
 });
 $c_Lakka_util_Collections$PartialImmutableValuesIterable$$anon$1.prototype.$classData = $d_Lakka_util_Collections$PartialImmutableValuesIterable$$anon$1;
+/** @constructor */
+function $c_Lakka_util_ReentrantGuard() {
+  $c_ju_concurrent_locks_ReentrantLock.call(this)
+}
+$c_Lakka_util_ReentrantGuard.prototype = new $h_ju_concurrent_locks_ReentrantLock();
+$c_Lakka_util_ReentrantGuard.prototype.constructor = $c_Lakka_util_ReentrantGuard;
+/** @constructor */
+function $h_Lakka_util_ReentrantGuard() {
+  /*<skip>*/
+}
+$h_Lakka_util_ReentrantGuard.prototype = $c_Lakka_util_ReentrantGuard.prototype;
+$c_Lakka_util_ReentrantGuard.prototype.init___ = (function() {
+  $c_ju_concurrent_locks_ReentrantLock.prototype.init___Z.call(this, false);
+  return this
+});
+var $d_Lakka_util_ReentrantGuard = new $TypeData().initClass({
+  Lakka_util_ReentrantGuard: 0
+}, false, "akka.util.ReentrantGuard", {
+  Lakka_util_ReentrantGuard: 1,
+  ju_concurrent_locks_ReentrantLock: 1,
+  O: 1,
+  ju_concurrent_locks_Lock: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lakka_util_ReentrantGuard.prototype.$classData = $d_Lakka_util_ReentrantGuard;
 /** @constructor */
 function $c_Lfastparse_parsers_Intrinsics$CharSet() {
   $c_O.call(this);
@@ -31994,10 +32415,6 @@ function $h_ju_concurrent_TimeoutException() {
   /*<skip>*/
 }
 $h_ju_concurrent_TimeoutException.prototype = $c_ju_concurrent_TimeoutException.prototype;
-$c_ju_concurrent_TimeoutException.prototype.init___ = (function() {
-  $c_jl_Throwable.prototype.init___T__jl_Throwable.call(this, null, null);
-  return this
-});
 function $is_ju_concurrent_TimeoutException(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.ju_concurrent_TimeoutException)))
 }
@@ -32010,16 +32427,6 @@ function $isArrayOf_ju_concurrent_TimeoutException(obj, depth) {
 function $asArrayOf_ju_concurrent_TimeoutException(obj, depth) {
   return (($isArrayOf_ju_concurrent_TimeoutException(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.util.concurrent.TimeoutException;", depth))
 }
-var $d_ju_concurrent_TimeoutException = new $TypeData().initClass({
-  ju_concurrent_TimeoutException: 0
-}, false, "java.util.concurrent.TimeoutException", {
-  ju_concurrent_TimeoutException: 1,
-  jl_Exception: 1,
-  jl_Throwable: 1,
-  O: 1,
-  Ljava_io_Serializable: 1
-});
-$c_ju_concurrent_TimeoutException.prototype.$classData = $d_ju_concurrent_TimeoutException;
 /** @constructor */
 function $c_ju_concurrent_atomic_AtomicInteger() {
   $c_jl_Number.call(this);
@@ -33682,141 +34089,6 @@ var $d_scm_WrappedArrayBuilder = new $TypeData().initClass({
   scg_Clearable: 1
 });
 $c_scm_WrappedArrayBuilder.prototype.$classData = $d_scm_WrappedArrayBuilder;
-/** @constructor */
-function $c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext() {
-  $c_O.call(this);
-  this.resolvedUnitPromise$1 = null
-}
-$c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype = new $h_O();
-$c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype.constructor = $c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext;
-/** @constructor */
-function $h_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext() {
-  /*<skip>*/
-}
-$h_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype = $c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype;
-$c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype.init___ = (function() {
-  this.resolvedUnitPromise$1 = $g.Promise.resolve((void 0));
-  return this
-});
-$c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype.reportFailure__jl_Throwable__V = (function(t) {
-  t.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1)
-});
-$c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype.execute__jl_Runnable__V = (function(runnable) {
-  this.resolvedUnitPromise$1.then((function($this, runnable$1) {
-    return (function(x$1$2) {
-      $asUnit(x$1$2);
-      try {
-        runnable$1.run__V()
-      } catch (e) {
-        var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-        if ((e$2 !== null)) {
-          e$2.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1)
-        } else {
-          throw e
-        }
-      }
-    })
-  })(this, runnable))
-});
-var $d_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext = new $TypeData().initClass({
-  sjs_concurrent_QueueExecutionContext$PromisesExecutionContext: 0
-}, false, "scala.scalajs.concurrent.QueueExecutionContext$PromisesExecutionContext", {
-  sjs_concurrent_QueueExecutionContext$PromisesExecutionContext: 1,
-  O: 1,
-  s_concurrent_ExecutionContextExecutor: 1,
-  s_concurrent_ExecutionContext: 1,
-  ju_concurrent_Executor: 1
-});
-$c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype.$classData = $d_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext;
-/** @constructor */
-function $c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext() {
-  $c_O.call(this)
-}
-$c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype = new $h_O();
-$c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype.constructor = $c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext;
-/** @constructor */
-function $h_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext() {
-  /*<skip>*/
-}
-$h_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype = $c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype;
-$c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype.init___ = (function() {
-  return this
-});
-$c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype.reportFailure__jl_Throwable__V = (function(t) {
-  t.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1)
-});
-$c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype.execute__jl_Runnable__V = (function(runnable) {
-  $g.setTimeout((function(arg$outer, runnable$1) {
-    return (function() {
-      try {
-        runnable$1.run__V()
-      } catch (e) {
-        var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-        if ((e$2 !== null)) {
-          e$2.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1)
-        } else {
-          throw e
-        }
-      }
-    })
-  })(this, runnable), 0)
-});
-var $d_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext = new $TypeData().initClass({
-  sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext: 0
-}, false, "scala.scalajs.concurrent.QueueExecutionContext$TimeoutsExecutionContext", {
-  sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext: 1,
-  O: 1,
-  s_concurrent_ExecutionContextExecutor: 1,
-  s_concurrent_ExecutionContext: 1,
-  ju_concurrent_Executor: 1
-});
-$c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype.$classData = $d_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext;
-/** @constructor */
-function $c_sjs_concurrent_RunNowExecutionContext$() {
-  $c_O.call(this)
-}
-$c_sjs_concurrent_RunNowExecutionContext$.prototype = new $h_O();
-$c_sjs_concurrent_RunNowExecutionContext$.prototype.constructor = $c_sjs_concurrent_RunNowExecutionContext$;
-/** @constructor */
-function $h_sjs_concurrent_RunNowExecutionContext$() {
-  /*<skip>*/
-}
-$h_sjs_concurrent_RunNowExecutionContext$.prototype = $c_sjs_concurrent_RunNowExecutionContext$.prototype;
-$c_sjs_concurrent_RunNowExecutionContext$.prototype.init___ = (function() {
-  return this
-});
-$c_sjs_concurrent_RunNowExecutionContext$.prototype.reportFailure__jl_Throwable__V = (function(t) {
-  t.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1)
-});
-$c_sjs_concurrent_RunNowExecutionContext$.prototype.execute__jl_Runnable__V = (function(runnable) {
-  try {
-    runnable.run__V()
-  } catch (e) {
-    var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-    if ((e$2 !== null)) {
-      e$2.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$().err$1)
-    } else {
-      throw e
-    }
-  }
-});
-var $d_sjs_concurrent_RunNowExecutionContext$ = new $TypeData().initClass({
-  sjs_concurrent_RunNowExecutionContext$: 0
-}, false, "scala.scalajs.concurrent.RunNowExecutionContext$", {
-  sjs_concurrent_RunNowExecutionContext$: 1,
-  O: 1,
-  s_concurrent_ExecutionContextExecutor: 1,
-  s_concurrent_ExecutionContext: 1,
-  ju_concurrent_Executor: 1
-});
-$c_sjs_concurrent_RunNowExecutionContext$.prototype.$classData = $d_sjs_concurrent_RunNowExecutionContext$;
-var $n_sjs_concurrent_RunNowExecutionContext$ = (void 0);
-function $m_sjs_concurrent_RunNowExecutionContext$() {
-  if ((!$n_sjs_concurrent_RunNowExecutionContext$)) {
-    $n_sjs_concurrent_RunNowExecutionContext$ = new $c_sjs_concurrent_RunNowExecutionContext$().init___()
-  };
-  return $n_sjs_concurrent_RunNowExecutionContext$
-}
 /** @constructor */
 function $c_sjs_js_WrappedDictionary$DictionaryIterator() {
   $c_O.call(this);
@@ -35577,6 +35849,42 @@ $c_Lakka_actor_Props.prototype.withRouter__Lakka_routing_RouterConfig__Lakka_act
 $c_Lakka_actor_Props.prototype.productIterator__sc_Iterator = (function() {
   return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
 });
+$c_Lakka_actor_Props.prototype.withDispatcher__T__Lakka_actor_Props = (function(d) {
+  var x1 = this.deploy$1.dispatcher$1;
+  if ((x1 === "")) {
+    var this$1 = this.deploy$1;
+    var x$2 = this$1.path$1;
+    var this$2 = this.deploy$1;
+    var x$3 = this$2.config$1;
+    var this$3 = this.deploy$1;
+    var x$4 = this$3.routerConfig$1;
+    var this$4 = this.deploy$1;
+    var x$5 = this$4.scope$1;
+    var this$5 = this.deploy$1;
+    var x$6 = this$5.mailbox$1;
+    var deploy = new $c_Lakka_actor_Deploy().init___T__Lcom_typesafe_config_Config__Lakka_routing_RouterConfig__Lakka_actor_Scope__T__T(x$2, x$3, x$4, x$5, d, x$6);
+    var clazz = this.clazz$1;
+    var args = this.args$1;
+    return new $c_Lakka_actor_Props().init___Lakka_actor_Deploy__jl_Class__sci_Seq(deploy, clazz, args)
+  } else if ((x1 === d)) {
+    return this
+  } else {
+    var this$7 = this.deploy$1;
+    var x$8 = this$7.path$1;
+    var this$8 = this.deploy$1;
+    var x$9 = this$8.config$1;
+    var this$9 = this.deploy$1;
+    var x$10 = this$9.routerConfig$1;
+    var this$10 = this.deploy$1;
+    var x$11 = this$10.scope$1;
+    var this$11 = this.deploy$1;
+    var x$12 = this$11.mailbox$1;
+    var deploy$1 = new $c_Lakka_actor_Deploy().init___T__Lcom_typesafe_config_Config__Lakka_routing_RouterConfig__Lakka_actor_Scope__T__T(x$8, x$9, x$10, x$11, d, x$12);
+    var clazz$1 = this.clazz$1;
+    var args$1 = this.args$1;
+    return new $c_Lakka_actor_Props().init___Lakka_actor_Deploy__jl_Class__sci_Seq(deploy$1, clazz$1, args$1)
+  }
+});
 function $is_Lakka_actor_Props(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_actor_Props)))
 }
@@ -35953,7 +36261,7 @@ $c_Lakka_actor_dungeon_FaultHandling$$anonfun$3.prototype.apply__jl_Throwable__V
   jsx$3.publish__Lakka_event_Logging$LogEvent__V(new $c_Lakka_event_Logging$Error().init___jl_Throwable__T__jl_Class__O(e, jsx$2, jsx$1, (("emergency stop: exception in failure handling for " + $objectGetClass(this$1)) + $m_Lakka_event_Logging$().stackTraceFor__jl_Throwable__T(this.t$1$2))));
   try {
     var this$2 = this.$$outer$2;
-    this$2.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
+    $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer(this$2).children__sci_Iterable().foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
       return (function(actor$2) {
         var actor = $as_Lakka_actor_ActorRef(actor$2);
         var this$3 = arg$outer.$$outer$2;
@@ -36066,7 +36374,7 @@ function $h_Lakka_dispatch_Dispatcher() {
 $h_Lakka_dispatch_Dispatcher.prototype = $c_Lakka_dispatch_Dispatcher.prototype;
 $c_Lakka_dispatch_Dispatcher.prototype.systemDispatch__Lakka_actor_ActorCell__Lakka_dispatch_sysmsg_SystemMessage__V = (function(receiver, invocation) {
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var mbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(receiver, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var mbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(receiver, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   mbox.systemEnqueue__Lakka_actor_ActorRef__Lakka_dispatch_sysmsg_SystemMessage__V(receiver.self$1, invocation);
   this.registerForExecution__Lakka_dispatch_Mailbox__Z__Z__Z(mbox, false, true)
 });
@@ -36092,7 +36400,7 @@ $c_Lakka_dispatch_Dispatcher.prototype.init___Lakka_dispatch_MessageDispatcherCo
 });
 $c_Lakka_dispatch_Dispatcher.prototype.dispatch__Lakka_actor_ActorCell__Lakka_dispatch_Envelope__V = (function(receiver, invocation) {
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var mbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(receiver, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var mbox = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(receiver, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   var receiver$1 = receiver.self$1;
   mbox.messageQueue$1.enqueue__Lakka_actor_ActorRef__Lakka_dispatch_Envelope__V(receiver$1, invocation);
   this.registerForExecution__Lakka_dispatch_Mailbox__Z__Z__Z(mbox, true, false)
@@ -36254,6 +36562,7 @@ function $c_Lakka_event_EventStream() {
   this.subclassification$1 = null;
   this.akka$event$SubchannelClassification$$subscriptions$1 = null;
   this.akka$event$SubchannelClassification$$cache$1 = null;
+  this.akka$event$LoggingBus$$guard$1 = null;
   this.akka$event$LoggingBus$$loggers$1 = null;
   this.akka$event$LoggingBus$$$undlogLevel$1 = 0;
   this.bitmap$0$1 = false
@@ -36265,6 +36574,9 @@ function $h_Lakka_event_EventStream() {
   /*<skip>*/
 }
 $h_Lakka_event_EventStream.prototype = $c_Lakka_event_EventStream.prototype;
+$c_Lakka_event_EventStream.prototype.self$und$eq__Lakka_actor_ActorRef__ = (function(x$1) {
+  this.self$1 = x$1
+});
 $c_Lakka_event_EventStream.prototype.subscribe__Lakka_actor_ActorRef__jl_Class__Z = (function(subscriber, channel) {
   if ((subscriber === null)) {
     throw new $c_jl_IllegalArgumentException().init___T("subscriber is null")
@@ -36280,10 +36592,7 @@ $c_Lakka_event_EventStream.prototype.subscribe__Lakka_actor_ActorRef__jl_Class__
 $c_Lakka_event_EventStream.prototype.init___Lakka_actor_ActorSystem__Z = (function(sys, debug) {
   this.sys$1 = sys;
   this.debug$1 = debug;
-  $m_sc_Seq$();
-  $m_sci_Seq$();
-  var this$3 = new $c_scm_ListBuffer().init___();
-  this.akka$event$LoggingBus$$loggers$1 = this$3.toList__sci_List();
+  $s_Lakka_event_LoggingBus$class__$$init$__Lakka_event_LoggingBus__V(this);
   $s_Lakka_event_SubchannelClassification$class__$$init$__Lakka_event_SubchannelClassification__V(this);
   $m_s_package$();
   var a = $m_sci_Set$EmptySet$();
@@ -36301,6 +36610,49 @@ $c_Lakka_event_EventStream.prototype.akka$event$SubchannelClassification$$subscr
   };
   return this.akka$event$SubchannelClassification$$subscriptions$1
 });
+$c_Lakka_event_EventStream.prototype.initUnsubscriber__Lakka_actor_ActorRef__Z = (function(unsubscriber) {
+  _initUnsubscriber: while (true) {
+    if ((this.sys$1 !== null)) {
+      var x1 = $as_s_util_Either(this.initiallySubscribedOrUnsubscriber$1.value$1);
+      if ($is_s_util_Left(x1)) {
+        var x2 = $as_s_util_Left(x1);
+        var subscribers = $as_sci_Set(x2.a$2);
+        if (this.initiallySubscribedOrUnsubscriber$1.compareAndSet__O__O__Z(x2, ($m_s_package$(), new $c_s_util_Right().init___O(unsubscriber)))) {
+          if (this.debug$1) {
+            var this$2 = $m_Lakka_event_Logging$();
+            var event = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(this$2.simpleName__jl_Class__T($objectGetClass(this)), $objectGetClass(this), (((("initialized unsubscriber to: " + unsubscriber) + ", registering ") + subscribers.size__I()) + " initial subscribers with it"));
+            $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this, event)
+          };
+          subscribers.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
+            return (function(subscriber$2) {
+              var subscriber = $as_Lakka_actor_ActorRef(subscriber$2);
+              arg$outer.akka$event$EventStream$$registerWithUnsubscriber__Lakka_actor_ActorRef__V(subscriber)
+            })
+          })(this)));
+          return true
+        } else {
+          continue _initUnsubscriber
+        }
+      } else if ($is_s_util_Right(x1)) {
+        var x3 = $as_s_util_Right(x1);
+        var presentUnsubscriber = $as_Lakka_actor_ActorRef(x3.b$2);
+        if (this.debug$1) {
+          var this$3 = $m_Lakka_event_Logging$();
+          var event$1 = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(this$3.simpleName__jl_Class__T($objectGetClass(this)), $objectGetClass(this), new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["not using unsubscriber ", ", because already initialized with ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([unsubscriber, presentUnsubscriber])));
+          $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this, event$1)
+        };
+        return false
+      } else {
+        throw new $c_s_MatchError().init___O(x1)
+      }
+    } else {
+      return false
+    }
+  }
+});
+$c_Lakka_event_EventStream.prototype.context$und$eq__Lakka_actor_ActorContext__ = (function(x$1) {
+  this.context$1 = x$1
+});
 $c_Lakka_event_EventStream.prototype.unregisterIfNoMoreSubscribedChannels__p1__Lakka_actor_ActorRef__V = (function(subscriber) {
   x: {
     _unregisterIfNoMoreSubscribedChannels: while (true) {
@@ -36317,7 +36669,7 @@ $c_Lakka_event_EventStream.prototype.unregisterIfNoMoreSubscribedChannels__p1__L
           }
         } else if ($is_s_util_Right(x1)) {
           var x3 = $as_s_util_Right(x1);
-          var unsubscriber = $as_Lakka_actor_ActorRef(x3.b__O());
+          var unsubscriber = $as_Lakka_actor_ActorRef(x3.b$2);
           var qual$3 = $as_Lakka_actor_ScalaActorRef(unsubscriber);
           var x$5 = new $c_Lakka_event_EventStreamUnsubscriber$UnregisterIfNoMoreSubscribedChannels().init___Lakka_actor_ActorRef(subscriber);
           var x$6 = qual$3.$$bang$default$2__O__Lakka_actor_ActorRef(x$5);
@@ -36346,7 +36698,7 @@ $c_Lakka_event_EventStream.prototype.akka$event$EventStream$$registerWithUnsubsc
           }
         } else if ($is_s_util_Right(x1)) {
           var x3 = $as_s_util_Right(x1);
-          var unsubscriber = $as_Lakka_actor_ActorRef(x3.b__O());
+          var unsubscriber = $as_Lakka_actor_ActorRef(x3.b$2);
           var qual$2 = $as_Lakka_actor_ScalaActorRef(unsubscriber);
           var x$3 = new $c_Lakka_event_EventStreamUnsubscriber$Register().init___Lakka_actor_ActorRef(subscriber);
           var x$4 = qual$2.$$bang$default$2__O__Lakka_actor_ActorRef(x$3);
@@ -36408,6 +36760,17 @@ var $d_Lakka_event_EventStream = new $TypeData().initClass({
   Lakka_event_SubchannelClassification: 1
 });
 $c_Lakka_event_EventStream.prototype.$classData = $d_Lakka_event_EventStream;
+$e.akka = ($e.akka || {});
+$e.akka.event = ($e.akka.event || {});
+/** @constructor */
+$e.akka.event.EventStream = (function(arg$1, arg$2) {
+  var $thiz = new $c_Lakka_event_EventStream();
+  var prep0 = $as_Lakka_actor_ActorSystem(arg$1);
+  var prep1 = $uZ(arg$2);
+  $c_Lakka_event_EventStream.prototype.init___Lakka_actor_ActorSystem__Z.call($thiz, prep0, prep1);
+  return $thiz
+});
+$e.akka.event.EventStream.prototype = $c_Lakka_event_EventStream.prototype;
 /** @constructor */
 function $c_Lakka_event_EventStreamUnsubscriber$Register() {
   $c_O.call(this);
@@ -36565,6 +36928,39 @@ var $d_Lakka_event_EventStreamUnsubscriber$UnregisterIfNoMoreSubscribedChannels 
 });
 $c_Lakka_event_EventStreamUnsubscriber$UnregisterIfNoMoreSubscribedChannels.prototype.$classData = $d_Lakka_event_EventStreamUnsubscriber$UnregisterIfNoMoreSubscribedChannels;
 /** @constructor */
+function $c_Lakka_event_Logging$Extension$() {
+  $c_Lakka_event_ExtensionKey.call(this)
+}
+$c_Lakka_event_Logging$Extension$.prototype = new $h_Lakka_event_ExtensionKey();
+$c_Lakka_event_Logging$Extension$.prototype.constructor = $c_Lakka_event_Logging$Extension$;
+/** @constructor */
+function $h_Lakka_event_Logging$Extension$() {
+  /*<skip>*/
+}
+$h_Lakka_event_Logging$Extension$.prototype = $c_Lakka_event_Logging$Extension$.prototype;
+$c_Lakka_event_Logging$Extension$.prototype.init___ = (function() {
+  $c_Lakka_event_ExtensionKey.prototype.init___s_reflect_ClassTag.call(this, new $c_s_reflect_ClassTag$ClassClassTag().init___jl_Class($d_Lakka_event_Logging$LogExt.getClassOf()));
+  return this
+});
+var $d_Lakka_event_Logging$Extension$ = new $TypeData().initClass({
+  Lakka_event_Logging$Extension$: 0
+}, false, "akka.event.Logging$Extension$", {
+  Lakka_event_Logging$Extension$: 1,
+  Lakka_event_ExtensionKey: 1,
+  Lakka_actor_ExtensionKey: 1,
+  O: 1,
+  Lakka_actor_ExtensionId: 1,
+  Lakka_actor_ExtensionIdProvider: 1
+});
+$c_Lakka_event_Logging$Extension$.prototype.$classData = $d_Lakka_event_Logging$Extension$;
+var $n_Lakka_event_Logging$Extension$ = (void 0);
+function $m_Lakka_event_Logging$Extension$() {
+  if ((!$n_Lakka_event_Logging$Extension$)) {
+    $n_Lakka_event_Logging$Extension$ = new $c_Lakka_event_Logging$Extension$().init___()
+  };
+  return $n_Lakka_event_Logging$Extension$
+}
+/** @constructor */
 function $c_Lakka_event_Logging$LogLevel() {
   $c_O.call(this);
   this.asInt$1 = 0
@@ -36594,9 +36990,6 @@ $c_Lakka_event_Logging$LogLevel.prototype.toString__T = (function() {
 $c_Lakka_event_Logging$LogLevel.prototype.init___I = (function(asInt) {
   this.asInt$1 = asInt;
   return this
-});
-$c_Lakka_event_Logging$LogLevel.prototype.asInt__I = (function() {
-  return this.asInt$1
 });
 $c_Lakka_event_Logging$LogLevel.prototype.hashCode__I = (function() {
   var $$this = this.asInt$1;
@@ -36694,21 +37087,21 @@ function $m_Lakka_event_Logging$LogLevel$() {
   return $n_Lakka_event_Logging$LogLevel$
 }
 /** @constructor */
-function $c_Lakka_event_LoggingBus$$anonfun$2() {
+function $c_Lakka_event_LoggingBus$$anonfun$4() {
   $c_sr_AbstractFunction1.call(this);
   this.$$outer$2 = null;
   this.logName$1$f = null;
   this.level$2$f = 0;
-  this.system$1$f = null
+  this.system$4$f = null
 }
-$c_Lakka_event_LoggingBus$$anonfun$2.prototype = new $h_sr_AbstractFunction1();
-$c_Lakka_event_LoggingBus$$anonfun$2.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$2;
+$c_Lakka_event_LoggingBus$$anonfun$4.prototype = new $h_sr_AbstractFunction1();
+$c_Lakka_event_LoggingBus$$anonfun$4.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$4;
 /** @constructor */
-function $h_Lakka_event_LoggingBus$$anonfun$2() {
+function $h_Lakka_event_LoggingBus$$anonfun$4() {
   /*<skip>*/
 }
-$h_Lakka_event_LoggingBus$$anonfun$2.prototype = $c_Lakka_event_LoggingBus$$anonfun$2.prototype;
-$c_Lakka_event_LoggingBus$$anonfun$2.prototype.init___Lakka_event_LoggingBus__T__I__Lakka_actor_ActorSystemImpl = (function($$outer, logName$1, level$2, system$1) {
+$h_Lakka_event_LoggingBus$$anonfun$4.prototype = $c_Lakka_event_LoggingBus$$anonfun$4.prototype;
+$c_Lakka_event_LoggingBus$$anonfun$4.prototype.init___Lakka_event_LoggingBus__T__I__Lakka_actor_ActorSystemImpl = (function($$outer, logName$1, level$2, system$4) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -36716,14 +37109,14 @@ $c_Lakka_event_LoggingBus$$anonfun$2.prototype.init___Lakka_event_LoggingBus__T_
   };
   this.logName$1$f = logName$1;
   this.level$2$f = level$2;
-  this.system$1$f = system$1;
+  this.system$4$f = system$4;
   return this
 });
-$c_Lakka_event_LoggingBus$$anonfun$2.prototype.apply__O__O = (function(v1) {
+$c_Lakka_event_LoggingBus$$anonfun$4.prototype.apply__O__O = (function(v1) {
   return this.apply__T__Lakka_actor_ActorRef($as_T(v1))
 });
-$c_Lakka_event_LoggingBus$$anonfun$2.prototype.apply__T__Lakka_actor_ActorRef = (function(loggerName) {
-  var this$1 = this.system$1$f;
+$c_Lakka_event_LoggingBus$$anonfun$4.prototype.apply__T__Lakka_actor_ActorRef = (function(loggerName) {
+  var this$1 = this.system$4$f;
   var this$3 = this$1.$$undpm$3;
   try {
     var jsx$1 = new $c_s_util_Success().init___O($as_jl_Class(this$3.akka$actor$JSDynamicAccess$$classes$undmap$2.apply__O__O(loggerName)))
@@ -36748,35 +37141,34 @@ $c_Lakka_event_LoggingBus$$anonfun$2.prototype.apply__T__Lakka_actor_ActorRef = 
   return $as_Lakka_actor_ActorRef(jsx$1.map__F1__s_util_Try(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
     return (function(x0$1$2) {
       var x0$1 = $as_jl_Class(x0$1$2);
-      var tmp = $s_Lakka_event_LoggingBus$class__akka$event$LoggingBus$$addLogger__Lakka_event_LoggingBus__Lakka_actor_ActorSystemImpl__jl_Class__I__T__Lakka_actor_ActorRef(arg$outer.$$outer$2, arg$outer.system$1$f, x0$1, arg$outer.level$2$f, arg$outer.logName$1$f);
-      return tmp
+      return $s_Lakka_event_LoggingBus$class__akka$event$LoggingBus$$addLogger__Lakka_event_LoggingBus__Lakka_actor_ActorSystemImpl__jl_Class__I__T__Lakka_actor_ActorRef(arg$outer.$$outer$2, arg$outer.system$4$f, x0$1, arg$outer.level$2$f, arg$outer.logName$1$f)
     })
-  })(this))).recover__s_PartialFunction__s_util_Try(new $c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1().init___Lakka_event_LoggingBus$$anonfun$2__T(this, loggerName)).get__O())
+  })(this))).recover__s_PartialFunction__s_util_Try(new $c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1().init___Lakka_event_LoggingBus$$anonfun$4__T(this, loggerName)).get__O())
 });
-var $d_Lakka_event_LoggingBus$$anonfun$2 = new $TypeData().initClass({
-  Lakka_event_LoggingBus$$anonfun$2: 0
-}, false, "akka.event.LoggingBus$$anonfun$2", {
-  Lakka_event_LoggingBus$$anonfun$2: 1,
+var $d_Lakka_event_LoggingBus$$anonfun$4 = new $TypeData().initClass({
+  Lakka_event_LoggingBus$$anonfun$4: 0
+}, false, "akka.event.LoggingBus$$anonfun$4", {
+  Lakka_event_LoggingBus$$anonfun$4: 1,
   sr_AbstractFunction1: 1,
   O: 1,
   F1: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lakka_event_LoggingBus$$anonfun$2.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$2;
+$c_Lakka_event_LoggingBus$$anonfun$4.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$4;
 /** @constructor */
-function $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1() {
+function $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2() {
   $c_sr_AbstractFunction0.call(this);
   this.$$outer$2 = null
 }
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1.prototype = new $h_sr_AbstractFunction0();
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2.prototype = new $h_sr_AbstractFunction0();
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2;
 /** @constructor */
-function $h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1() {
+function $h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2() {
   /*<skip>*/
 }
-$h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1.prototype = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1.prototype;
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1.prototype.init___Lakka_event_LoggingBus = (function($$outer) {
+$h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2.prototype = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2.prototype;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2.prototype.init___Lakka_event_LoggingBus = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -36784,20 +37176,20 @@ $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1.prototype.init___Lakka_
   };
   return this
 });
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1.prototype.apply__O = (function() {
-  return new $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2().init___Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1(this)
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2.prototype.apply__O = (function() {
+  return new $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3().init___Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2(this)
 });
-var $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1 = new $TypeData().initClass({
-  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1: 0
-}, false, "akka.event.LoggingBus$$anonfun$startDefaultLoggers$1", {
-  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1: 1,
+var $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2 = new $TypeData().initClass({
+  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2: 0
+}, false, "akka.event.LoggingBus$$anonfun$startDefaultLoggers$2", {
+  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2: 1,
   sr_AbstractFunction0: 1,
   O: 1,
   F0: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2;
 /** @constructor */
 function $c_Lakka_event_SubchannelClassification$$anonfun$addToCache$1() {
   $c_sr_AbstractFunction2.call(this)
@@ -36832,7 +37224,7 @@ $c_Lakka_event_SubchannelClassification$$anonfun$addToCache$1.prototype.apply__s
         throw new $c_s_MatchError().init___O(x1$1)
       }
     };
-    return m.updated__O__O__sci_Map(c, $as_sc_SetLike(jsx$1).$$plus$plus__sc_GenTraversableOnce__sc_Set(cs))
+    return m.updated__O__O__sci_Map(c, $as_sc_SetLike(jsx$1).union__sc_GenSet__sc_Set(cs))
   };
   throw new $c_s_MatchError().init___O(x1)
 });
@@ -36884,7 +37276,7 @@ $c_Lakka_event_SubchannelClassification$$anonfun$removeFromCache$1.prototype.app
         throw new $c_s_MatchError().init___O(x1$2)
       }
     };
-    return m.updated__O__O__sci_Map(c, $as_scg_Subtractable(jsx$1).$$minus$minus__sc_GenTraversableOnce__scg_Subtractable(cs))
+    return m.updated__O__O__sci_Map(c, $as_sc_SetLike(jsx$1).diff__sc_GenSet__sc_Set(cs))
   };
   throw new $c_s_MatchError().init___O(x1)
 });
@@ -39464,17 +39856,18 @@ $c_Lraft_RaftClient$$anonfun$decide$1.prototype.apply__O__O = (function(v1) {
   return this.apply__Lakka_actor_ActorRef__s_concurrent_Future($as_Lakka_actor_ActorRef(v1))
 });
 $c_Lraft_RaftClient$$anonfun$decide$1.prototype.apply__Lakka_actor_ActorRef__s_concurrent_Future = (function(member) {
-  var this$3 = $m_Lakka_pattern_AskableActorRef$();
   var this$2 = this.$$outer$2;
-  var message = new $c_Lraft_ClientRequest().init___I__T($s_Lraft_RaftClient$class__tick__Lraft_RaftClient__I(this$2), this.command$1$2);
-  var timeout = this.$$outer$2.tc$1;
-  var this$5 = this$3.ask$extension__Lakka_actor_ActorRef__O__Lakka_util_Timeout__s_concurrent_Future(member, message, timeout);
+  var x$1 = new $c_Lraft_ClientRequest().init___I__T($s_Lraft_RaftClient$class__tick__Lraft_RaftClient__I(this$2), this.command$1$2);
+  var x$2 = this.$$outer$2.tc$1;
+  var x$3 = $m_Lakka_actor_Actor$().noSender$1;
+  var this$4 = $m_Lakka_pattern_AskableActorRef$();
+  var this$6 = this$4.internalAsk$extension__Lakka_actor_ActorRef__O__Lakka_util_Timeout__Lakka_actor_ActorRef__s_concurrent_Future(member, x$1, x$2, x$3);
   var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(reply$2) {
     return $as_T2(reply$2).$$und2$mcI$sp__I()
   }));
-  var this$4 = $as_Lakka_actor_Actor(this.$$outer$2).context__Lakka_actor_ActorContext();
-  var executor = this$4.dispatcher$1;
-  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$5, f, executor)
+  var this$5 = $as_Lakka_actor_Actor(this.$$outer$2).context__Lakka_actor_ActorContext();
+  var executor = this$5.dispatcher$1;
+  return $s_s_concurrent_Future$class__map__s_concurrent_Future__F1__s_concurrent_ExecutionContext__s_concurrent_Future(this$6, f, executor)
 });
 $c_Lraft_RaftClient$$anonfun$decide$1.prototype.init___Lraft_RaftClient__T = (function($$outer, command$1) {
   if (($$outer === null)) {
@@ -42531,6 +42924,39 @@ var $d_scm_HashMap$$anon$3 = new $TypeData().initClass({
 });
 $c_scm_HashMap$$anon$3.prototype.$classData = $d_scm_HashMap$$anon$3;
 /** @constructor */
+function $c_scm_HashMap$$anon$4() {
+  $c_sc_AbstractIterator.call(this);
+  this.iter$2 = null
+}
+$c_scm_HashMap$$anon$4.prototype = new $h_sc_AbstractIterator();
+$c_scm_HashMap$$anon$4.prototype.constructor = $c_scm_HashMap$$anon$4;
+/** @constructor */
+function $h_scm_HashMap$$anon$4() {
+  /*<skip>*/
+}
+$h_scm_HashMap$$anon$4.prototype = $c_scm_HashMap$$anon$4.prototype;
+$c_scm_HashMap$$anon$4.prototype.next__O = (function() {
+  return $as_scm_DefaultEntry(this.iter$2.next__O()).value$1
+});
+$c_scm_HashMap$$anon$4.prototype.init___scm_HashMap = (function($$outer) {
+  this.iter$2 = new $c_scm_HashTable$$anon$1().init___scm_HashTable($$outer);
+  return this
+});
+$c_scm_HashMap$$anon$4.prototype.hasNext__Z = (function() {
+  return this.iter$2.hasNext__Z()
+});
+var $d_scm_HashMap$$anon$4 = new $TypeData().initClass({
+  scm_HashMap$$anon$4: 0
+}, false, "scala.collection.mutable.HashMap$$anon$4", {
+  scm_HashMap$$anon$4: 1,
+  sc_AbstractIterator: 1,
+  O: 1,
+  sc_Iterator: 1,
+  sc_TraversableOnce: 1,
+  sc_GenTraversableOnce: 1
+});
+$c_scm_HashMap$$anon$4.prototype.$classData = $d_scm_HashMap$$anon$4;
+/** @constructor */
 function $c_scm_HashTable$$anon$1() {
   $c_sc_AbstractIterator.call(this);
   this.iterTable$2 = null;
@@ -43576,6 +44002,236 @@ var $d_Lakka_actor_JSDynamicAccess$$anonfun$createInstanceFor$1 = new $TypeData(
 });
 $c_Lakka_actor_JSDynamicAccess$$anonfun$createInstanceFor$1.prototype.$classData = $d_Lakka_actor_JSDynamicAccess$$anonfun$createInstanceFor$1;
 /** @constructor */
+function $c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1() {
+  $c_sr_AbstractPartialFunction.call(this);
+  this.$$outer$2 = null
+}
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1.prototype = new $h_sr_AbstractPartialFunction();
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.constructor = $c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1;
+/** @constructor */
+function $h_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1() {
+  /*<skip>*/
+}
+$h_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1.prototype = $c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1.prototype;
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.init___Lakka_actor_JSLocalActorRefProvider$Guardian = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.isDefinedAt__O__Z = (function(x1) {
+  return ($is_Lakka_actor_Terminated(x1) || $is_Lakka_actor_StopChild(x1))
+});
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.applyOrElse__O__F1__O = (function(x1, $default) {
+  if ($is_Lakka_actor_Terminated(x1)) {
+    var this$1 = this.$$outer$2.context$1;
+    var actor = this.$$outer$2.self$1;
+    $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(this$1, actor);
+    return (void 0)
+  } else if ($is_Lakka_actor_StopChild(x1)) {
+    var x4 = $as_Lakka_actor_StopChild(x1);
+    var child = x4.child$1;
+    var this$2 = this.$$outer$2.context$1;
+    $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(this$2, child);
+    return (void 0)
+  } else {
+    return $default.apply__O__O(x1)
+  }
+});
+var $d_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1 = new $TypeData().initClass({
+  Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1: 0
+}, false, "akka.actor.JSLocalActorRefProvider$Guardian$$anonfun$receive$1", {
+  Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1: 1,
+  sr_AbstractPartialFunction: 1,
+  O: 1,
+  F1: 1,
+  s_PartialFunction: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.$classData = $d_Lakka_actor_JSLocalActorRefProvider$Guardian$$anonfun$receive$1;
+/** @constructor */
+function $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2() {
+  $c_sr_AbstractPartialFunction.call(this);
+  this.$$outer$2 = null
+}
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype = new $h_sr_AbstractPartialFunction();
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.constructor = $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2;
+/** @constructor */
+function $h_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2() {
+  /*<skip>*/
+}
+$h_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype = $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype;
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.init___Lakka_actor_JSLocalActorRefProvider$SystemGuardian = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.isDefinedAt__O__Z = (function(x2) {
+  var rc9 = false;
+  var x2$2 = null;
+  if ($is_Lakka_actor_Terminated(x2)) {
+    rc9 = true;
+    x2$2 = $as_Lakka_actor_Terminated(x2);
+    var p3 = x2$2.actor$1;
+    var x = this.$$outer$2.guardian$1;
+    if (((x === null) ? (p3 === null) : x.equals__O__Z(p3))) {
+      return true
+    }
+  };
+  if (rc9) {
+    return true
+  };
+  if ($is_Lakka_actor_StopChild(x2)) {
+    return true
+  };
+  var x$3 = $m_Lakka_actor_SystemGuardian$RegisterTerminationHook$();
+  if ((x$3 === x2)) {
+    var this$1 = this.$$outer$2;
+    var x$5 = this$1.context$1.sender__Lakka_actor_ActorRef();
+    var this$2 = this.$$outer$2.context$1;
+    var this$3 = this$2.system$1;
+    var this$4 = this$3.provider$3;
+    var x$6 = this$4.deadLetters$1;
+    if ((!((x$5 === null) ? (x$6 === null) : x$5.equals__O__Z(x$6)))) {
+      return true
+    }
+  };
+  return false
+});
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.applyOrElse__O__F1__O = (function(x2, $default) {
+  var rc9 = false;
+  var x2$2 = null;
+  if ($is_Lakka_actor_Terminated(x2)) {
+    rc9 = true;
+    x2$2 = $as_Lakka_actor_Terminated(x2);
+    var p3 = x2$2.actor$1;
+    var x = this.$$outer$2.guardian$1;
+    if (((x === null) ? (p3 === null) : x.equals__O__Z(p3))) {
+      var this$2 = this.$$outer$2.context$1;
+      var this$1 = this.$$outer$2;
+      var behavior = new $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1().init___Lakka_actor_JSLocalActorRefProvider$SystemGuardian(this$1);
+      this$2.become__s_PartialFunction__Z__V(behavior, true);
+      this.$$outer$2.terminationHooks$1.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
+        return (function(x$1$2) {
+          var x$1 = $as_Lakka_actor_ActorRef(x$1$2);
+          $as_Lakka_actor_ScalaActorRef(x$1).$$bang__O__Lakka_actor_ActorRef__V($m_Lakka_actor_SystemGuardian$TerminationHook$(), arg$outer.$$outer$2.self$1)
+        })
+      })(this)));
+      this.$$outer$2.stopWhenAllTerminationHooksDone__V();
+      return (void 0)
+    }
+  };
+  if (rc9) {
+    var a = x2$2.actor$1;
+    this.$$outer$2.terminationHooks$1 = $as_sci_Set(this.$$outer$2.terminationHooks$1.$$minus__O__sc_Set(a));
+    return (void 0)
+  };
+  if ($is_Lakka_actor_StopChild(x2)) {
+    var x5 = $as_Lakka_actor_StopChild(x2);
+    var child = x5.child$1;
+    var this$4 = this.$$outer$2.context$1;
+    $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(this$4, child);
+    return (void 0)
+  };
+  var x$3 = $m_Lakka_actor_SystemGuardian$RegisterTerminationHook$();
+  if ((x$3 === x2)) {
+    var this$5 = this.$$outer$2;
+    var x$5 = this$5.context$1.sender__Lakka_actor_ActorRef();
+    var this$6 = this.$$outer$2.context$1;
+    var this$7 = this$6.system$1;
+    var this$8 = this$7.provider$3;
+    var x$6 = this$8.deadLetters$1;
+    if ((!((x$5 === null) ? (x$6 === null) : x$5.equals__O__Z(x$6)))) {
+      var jsx$2 = this.$$outer$2;
+      var jsx$1 = this.$$outer$2.terminationHooks$1;
+      var this$9 = this.$$outer$2;
+      jsx$2.terminationHooks$1 = $as_sci_Set(jsx$1.$$plus__O__sc_Set(this$9.context$1.sender__Lakka_actor_ActorRef()));
+      var this$11 = this.$$outer$2.context$1;
+      var this$10 = this.$$outer$2;
+      var subject = this$10.context$1.sender__Lakka_actor_ActorRef();
+      $s_Lakka_actor_dungeon_DeathWatch$class__watch__Lakka_actor_ActorCell__Lakka_actor_ActorRef__Lakka_actor_ActorRef(this$11, subject);
+      return (void 0)
+    }
+  };
+  return $default.apply__O__O(x2)
+});
+var $d_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2 = new $TypeData().initClass({
+  Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2: 0
+}, false, "akka.actor.JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2", {
+  Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2: 1,
+  sr_AbstractPartialFunction: 1,
+  O: 1,
+  F1: 1,
+  s_PartialFunction: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.$classData = $d_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$receive$2;
+/** @constructor */
+function $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1() {
+  $c_sr_AbstractPartialFunction.call(this);
+  this.$$outer$2 = null
+}
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype = new $h_sr_AbstractPartialFunction();
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.constructor = $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1;
+/** @constructor */
+function $h_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1() {
+  /*<skip>*/
+}
+$h_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype = $c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype;
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.init___Lakka_actor_JSLocalActorRefProvider$SystemGuardian = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
+  return this
+});
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.isDefinedAt__O__Z = (function(x3) {
+  if ($is_Lakka_actor_Terminated(x3)) {
+    return true
+  } else {
+    var x = $m_Lakka_actor_SystemGuardian$TerminationHookDone$();
+    return (x === x3)
+  }
+});
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.applyOrElse__O__F1__O = (function(x3, $default) {
+  if ($is_Lakka_actor_Terminated(x3)) {
+    var x2 = $as_Lakka_actor_Terminated(x3);
+    var a = x2.actor$1;
+    this.$$outer$2.stopWhenAllTerminationHooksDone__Lakka_actor_ActorRef__V(a);
+    return (void 0)
+  } else {
+    var x = $m_Lakka_actor_SystemGuardian$TerminationHookDone$();
+    if ((x === x3)) {
+      var jsx$1 = this.$$outer$2;
+      var this$1 = this.$$outer$2;
+      jsx$1.stopWhenAllTerminationHooksDone__Lakka_actor_ActorRef__V(this$1.context$1.sender__Lakka_actor_ActorRef());
+      return (void 0)
+    } else {
+      return $default.apply__O__O(x3)
+    }
+  }
+});
+var $d_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1 = new $TypeData().initClass({
+  Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1: 0
+}, false, "akka.actor.JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1", {
+  Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1: 1,
+  sr_AbstractPartialFunction: 1,
+  O: 1,
+  F1: 1,
+  s_PartialFunction: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.$classData = $d_Lakka_actor_JSLocalActorRefProvider$SystemGuardian$$anonfun$terminating$1;
+/** @constructor */
 function $c_Lakka_actor_LocalActorRefProvider$$anonfun$rootGuardianStrategy$1() {
   $c_sr_AbstractPartialFunction.call(this);
   this.$$outer$2 = null
@@ -43621,262 +44277,6 @@ var $d_Lakka_actor_LocalActorRefProvider$$anonfun$rootGuardianStrategy$1 = new $
   Ljava_io_Serializable: 1
 });
 $c_Lakka_actor_LocalActorRefProvider$$anonfun$rootGuardianStrategy$1.prototype.$classData = $d_Lakka_actor_LocalActorRefProvider$$anonfun$rootGuardianStrategy$1;
-/** @constructor */
-function $c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1() {
-  $c_sr_AbstractPartialFunction.call(this);
-  this.$$outer$2 = null
-}
-$c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1.prototype = new $h_sr_AbstractPartialFunction();
-$c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.constructor = $c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1;
-/** @constructor */
-function $h_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1() {
-  /*<skip>*/
-}
-$h_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1.prototype = $c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1.prototype;
-$c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.init___Lakka_actor_LocalActorRefProvider$Guardian = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-$c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.isDefinedAt__O__Z = (function(x1) {
-  return ($is_Lakka_actor_Terminated(x1) || true)
-});
-$c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.applyOrElse__O__F1__O = (function(x1, $default) {
-  if ($is_Lakka_actor_Terminated(x1)) {
-    var this$1 = this.$$outer$2.context$1;
-    var actor = this.$$outer$2.self$1;
-    $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(this$1, actor);
-    return (void 0)
-  } else if ($is_Lakka_actor_StopChild(x1)) {
-    var x4 = $as_Lakka_actor_StopChild(x1);
-    var child = x4.child$1;
-    var this$2 = this.$$outer$2.context$1;
-    $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(this$2, child);
-    return (void 0)
-  } else {
-    var this$3 = this.$$outer$2.context$1;
-    var this$4 = this$3.system$1;
-    var this$5 = this$4.provider$3;
-    var this$7 = this$5.deadLetters$1;
-    var this$6 = this.$$outer$2;
-    var message = new $c_Lakka_actor_DeadLetter().init___O__Lakka_actor_ActorRef__Lakka_actor_ActorRef(x1, this$6.context$1.sender__Lakka_actor_ActorRef(), this.$$outer$2.self$1);
-    var context = this.$$outer$2.context$1;
-    var sender = context.sender__Lakka_actor_ActorRef();
-    this$7.$$bang__O__Lakka_actor_ActorRef__V(message, sender);
-    return (void 0)
-  }
-});
-var $d_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1 = new $TypeData().initClass({
-  Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1: 0
-}, false, "akka.actor.LocalActorRefProvider$Guardian$$anonfun$receive$1", {
-  Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1: 1,
-  sr_AbstractPartialFunction: 1,
-  O: 1,
-  F1: 1,
-  s_PartialFunction: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1.prototype.$classData = $d_Lakka_actor_LocalActorRefProvider$Guardian$$anonfun$receive$1;
-/** @constructor */
-function $c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2() {
-  $c_sr_AbstractPartialFunction.call(this);
-  this.$$outer$2 = null
-}
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype = new $h_sr_AbstractPartialFunction();
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.constructor = $c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2;
-/** @constructor */
-function $h_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2() {
-  /*<skip>*/
-}
-$h_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype = $c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype;
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.isDefinedAt__O__Z = (function(x2) {
-  var rc9 = false;
-  var x2$2 = null;
-  if ($is_Lakka_actor_Terminated(x2)) {
-    rc9 = true;
-    x2$2 = $as_Lakka_actor_Terminated(x2);
-    var p3 = x2$2.actor$1;
-    var x = this.$$outer$2.guardian$1;
-    if (((x === null) ? (p3 === null) : x.equals__O__Z(p3))) {
-      return true
-    }
-  };
-  if (rc9) {
-    return true
-  };
-  if ($is_Lakka_actor_StopChild(x2)) {
-    return true
-  };
-  var x$3 = $m_Lakka_actor_SystemGuardian$RegisterTerminationHook$();
-  if ((x$3 === x2)) {
-    var this$1 = this.$$outer$2;
-    var x$5 = this$1.context$1.sender__Lakka_actor_ActorRef();
-    var this$2 = this.$$outer$2.context$1;
-    var this$3 = this$2.system$1;
-    var this$4 = this$3.provider$3;
-    var x$6 = this$4.deadLetters$1;
-    if ((!((x$5 === null) ? (x$6 === null) : x$5.equals__O__Z(x$6)))) {
-      return true
-    }
-  };
-  return true
-});
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.applyOrElse__O__F1__O = (function(x2, $default) {
-  var rc9 = false;
-  var x2$2 = null;
-  if ($is_Lakka_actor_Terminated(x2)) {
-    rc9 = true;
-    x2$2 = $as_Lakka_actor_Terminated(x2);
-    var p3 = x2$2.actor$1;
-    var x = this.$$outer$2.guardian$1;
-    if (((x === null) ? (p3 === null) : x.equals__O__Z(p3))) {
-      var this$2 = this.$$outer$2.context$1;
-      var this$1 = this.$$outer$2;
-      var behavior = new $c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1().init___Lakka_actor_LocalActorRefProvider$SystemGuardian(this$1);
-      this$2.become__s_PartialFunction__Z__V(behavior, true);
-      this.$$outer$2.terminationHooks$1.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
-        return (function(x$1$2) {
-          var x$1 = $as_Lakka_actor_ActorRef(x$1$2);
-          $as_Lakka_actor_ScalaActorRef(x$1).$$bang__O__Lakka_actor_ActorRef__V($m_Lakka_actor_SystemGuardian$TerminationHook$(), arg$outer.$$outer$2.self$1)
-        })
-      })(this)));
-      this.$$outer$2.stopWhenAllTerminationHooksDone__V();
-      return (void 0)
-    }
-  };
-  if (rc9) {
-    var a = x2$2.actor$1;
-    this.$$outer$2.terminationHooks$1 = $as_sci_Set(this.$$outer$2.terminationHooks$1.$$minus__O__sc_Set(a));
-    return (void 0)
-  };
-  if ($is_Lakka_actor_StopChild(x2)) {
-    var x5 = $as_Lakka_actor_StopChild(x2);
-    var child = x5.child$1;
-    var this$4 = this.$$outer$2.context$1;
-    $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(this$4, child);
-    return (void 0)
-  };
-  var x$3 = $m_Lakka_actor_SystemGuardian$RegisterTerminationHook$();
-  if ((x$3 === x2)) {
-    var this$5 = this.$$outer$2;
-    var x$5 = this$5.context$1.sender__Lakka_actor_ActorRef();
-    var this$6 = this.$$outer$2.context$1;
-    var this$7 = this$6.system$1;
-    var this$8 = this$7.provider$3;
-    var x$6 = this$8.deadLetters$1;
-    if ((!((x$5 === null) ? (x$6 === null) : x$5.equals__O__Z(x$6)))) {
-      var jsx$2 = this.$$outer$2;
-      var jsx$1 = this.$$outer$2.terminationHooks$1;
-      var this$9 = this.$$outer$2;
-      jsx$2.terminationHooks$1 = $as_sci_Set(jsx$1.$$plus__O__sc_Set(this$9.context$1.sender__Lakka_actor_ActorRef()));
-      var this$11 = this.$$outer$2.context$1;
-      var this$10 = this.$$outer$2;
-      var subject = this$10.context$1.sender__Lakka_actor_ActorRef();
-      $s_Lakka_actor_dungeon_DeathWatch$class__watch__Lakka_actor_ActorCell__Lakka_actor_ActorRef__Lakka_actor_ActorRef(this$11, subject);
-      return (void 0)
-    }
-  };
-  var this$12 = this.$$outer$2.context$1;
-  var this$13 = this$12.system$1;
-  var this$14 = this$13.provider$3;
-  var this$16 = this$14.deadLetters$1;
-  var this$15 = this.$$outer$2;
-  var message = new $c_Lakka_actor_DeadLetter().init___O__Lakka_actor_ActorRef__Lakka_actor_ActorRef(x2, this$15.context$1.sender__Lakka_actor_ActorRef(), this.$$outer$2.self$1);
-  var context = this.$$outer$2.context$1;
-  var sender = context.sender__Lakka_actor_ActorRef();
-  this$16.$$bang__O__Lakka_actor_ActorRef__V(message, sender)
-});
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.init___Lakka_actor_LocalActorRefProvider$SystemGuardian = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-var $d_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2 = new $TypeData().initClass({
-  Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2: 0
-}, false, "akka.actor.LocalActorRefProvider$SystemGuardian$$anonfun$receive$2", {
-  Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2: 1,
-  sr_AbstractPartialFunction: 1,
-  O: 1,
-  F1: 1,
-  s_PartialFunction: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2.prototype.$classData = $d_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$receive$2;
-/** @constructor */
-function $c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1() {
-  $c_sr_AbstractPartialFunction.call(this);
-  this.$$outer$2 = null
-}
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype = new $h_sr_AbstractPartialFunction();
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.constructor = $c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1;
-/** @constructor */
-function $h_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1() {
-  /*<skip>*/
-}
-$h_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype = $c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype;
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.isDefinedAt__O__Z = (function(x3) {
-  if ($is_Lakka_actor_Terminated(x3)) {
-    return true
-  } else {
-    var x = $m_Lakka_actor_SystemGuardian$TerminationHookDone$();
-    return true
-  }
-});
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.applyOrElse__O__F1__O = (function(x3, $default) {
-  if ($is_Lakka_actor_Terminated(x3)) {
-    var x2 = $as_Lakka_actor_Terminated(x3);
-    var a = x2.actor$1;
-    this.$$outer$2.stopWhenAllTerminationHooksDone__Lakka_actor_ActorRef__V(a);
-    return (void 0)
-  } else {
-    var x = $m_Lakka_actor_SystemGuardian$TerminationHookDone$();
-    if ((x === x3)) {
-      var jsx$1 = this.$$outer$2;
-      var this$1 = this.$$outer$2;
-      jsx$1.stopWhenAllTerminationHooksDone__Lakka_actor_ActorRef__V(this$1.context$1.sender__Lakka_actor_ActorRef());
-      return (void 0)
-    } else {
-      var this$2 = this.$$outer$2.context$1;
-      var this$3 = this$2.system$1;
-      var this$4 = this$3.provider$3;
-      var this$6 = this$4.deadLetters$1;
-      var this$5 = this.$$outer$2;
-      var message = new $c_Lakka_actor_DeadLetter().init___O__Lakka_actor_ActorRef__Lakka_actor_ActorRef(x3, this$5.context$1.sender__Lakka_actor_ActorRef(), this.$$outer$2.self$1);
-      var context = this.$$outer$2.context$1;
-      var sender = context.sender__Lakka_actor_ActorRef();
-      this$6.$$bang__O__Lakka_actor_ActorRef__V(message, sender);
-      return (void 0)
-    }
-  }
-});
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.init___Lakka_actor_LocalActorRefProvider$SystemGuardian = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-var $d_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1 = new $TypeData().initClass({
-  Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1: 0
-}, false, "akka.actor.LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1", {
-  Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1: 1,
-  sr_AbstractPartialFunction: 1,
-  O: 1,
-  F1: 1,
-  s_PartialFunction: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1.prototype.$classData = $d_Lakka_actor_LocalActorRefProvider$SystemGuardian$$anonfun$terminating$1;
 /** @constructor */
 function $c_Lakka_actor_OneForOneStrategy() {
   $c_Lakka_actor_SupervisorStrategy.call(this);
@@ -45074,6 +45474,18 @@ var $d_Lakka_actor_dungeon_FaultHandling$$anonfun$handleNonFatalOrInterruptedExc
   Ljava_io_Serializable: 1
 });
 $c_Lakka_actor_dungeon_FaultHandling$$anonfun$handleNonFatalOrInterruptedException$1.prototype.$classData = $d_Lakka_actor_dungeon_FaultHandling$$anonfun$handleNonFatalOrInterruptedException$1;
+function $is_Lakka_dispatch_BalancingDispatcher(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_dispatch_BalancingDispatcher)))
+}
+function $as_Lakka_dispatch_BalancingDispatcher(obj) {
+  return (($is_Lakka_dispatch_BalancingDispatcher(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "akka.dispatch.BalancingDispatcher"))
+}
+function $isArrayOf_Lakka_dispatch_BalancingDispatcher(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lakka_dispatch_BalancingDispatcher)))
+}
+function $asArrayOf_Lakka_dispatch_BalancingDispatcher(obj, depth) {
+  return (($isArrayOf_Lakka_dispatch_BalancingDispatcher(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lakka.dispatch.BalancingDispatcher;", depth))
+}
 /** @constructor */
 function $c_Lakka_dispatch_DefaultDispatcherPrerequisites() {
   $c_O.call(this);
@@ -45544,18 +45956,18 @@ var $d_Lakka_event_DeadLetterListener$$anonfun$receive$1 = new $TypeData().initC
 });
 $c_Lakka_event_DeadLetterListener$$anonfun$receive$1.prototype.$classData = $d_Lakka_event_DeadLetterListener$$anonfun$receive$1;
 /** @constructor */
-function $c_Lakka_event_DefaultLogger$$anonfun$receive$3() {
+function $c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1() {
   $c_sr_AbstractPartialFunction.call(this);
   this.$$outer$2 = null
 }
-$c_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype = new $h_sr_AbstractPartialFunction();
-$c_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype.constructor = $c_Lakka_event_DefaultLogger$$anonfun$receive$3;
+$c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1.prototype = new $h_sr_AbstractPartialFunction();
+$c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1.prototype.constructor = $c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1;
 /** @constructor */
-function $h_Lakka_event_DefaultLogger$$anonfun$receive$3() {
+function $h_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1() {
   /*<skip>*/
 }
-$h_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype = $c_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype;
-$c_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype.init___Lakka_event_DefaultLogger = (function($$outer) {
+$h_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1.prototype = $c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1.prototype;
+$c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1.prototype.init___Lakka_event_EventStreamUnsubscriber = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -45563,28 +45975,93 @@ $c_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype.init___Lakka_event_Def
   };
   return this
 });
-$c_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype.isDefinedAt__O__Z = (function(x4) {
-  return ($is_Lakka_event_Logging$InitializeLogger(x4) || $is_Lakka_event_Logging$LogEvent(x4))
+$c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1.prototype.isDefinedAt__O__Z = (function(x1) {
+  var rc7 = false;
+  var x3 = null;
+  if ($is_Lakka_event_EventStreamUnsubscriber$Register(x1)) {
+    return true
+  };
+  if ($is_Lakka_event_EventStreamUnsubscriber$UnregisterIfNoMoreSubscribedChannels(x1)) {
+    rc7 = true;
+    x3 = $as_Lakka_event_EventStreamUnsubscriber$UnregisterIfNoMoreSubscribedChannels(x1);
+    var actor = x3.actor$1;
+    var this$1 = this.$$outer$2.akka$event$EventStreamUnsubscriber$$eventStream$f;
+    if ($s_Lakka_event_SubchannelClassification$class__hasSubscriptions__Lakka_event_SubchannelClassification__O__Z(this$1, actor)) {
+      return true
+    }
+  };
+  if (rc7) {
+    return true
+  };
+  if ($is_Lakka_actor_Terminated(x1)) {
+    return true
+  };
+  return false
 });
-$c_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype.applyOrElse__O__F1__O = (function(x4, $default) {
-  if ($is_Lakka_event_Logging$InitializeLogger(x4)) {
-    var this$1 = this.$$outer$2;
-    var ref = this$1.context$1.sender__Lakka_actor_ActorRef();
-    $as_Lakka_actor_ScalaActorRef(ref).$$bang__O__Lakka_actor_ActorRef__V($m_Lakka_event_Logging$LoggerInitialized$(), this.$$outer$2.self$1);
+$c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1.prototype.applyOrElse__O__F1__O = (function(x1, $default) {
+  var rc7 = false;
+  var x3 = null;
+  if ($is_Lakka_event_EventStreamUnsubscriber$Register(x1)) {
+    var x2 = $as_Lakka_event_EventStreamUnsubscriber$Register(x1);
+    var actor = x2.actor$1;
+    if (this.$$outer$2.akka$event$EventStreamUnsubscriber$$debug$f) {
+      var this$3 = this.$$outer$2.akka$event$EventStreamUnsubscriber$$eventStream$f;
+      var jsx$2 = $m_Lakka_event_Logging$();
+      var this$1 = this.$$outer$2;
+      var jsx$1 = jsx$2.simpleName__jl_Class__T($objectGetClass(this$1));
+      var this$2 = this.$$outer$2;
+      var event = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(jsx$1, $objectGetClass(this$2), new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["watching ", " in order to unsubscribe from EventStream when it terminates"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([actor])));
+      $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$3, event)
+    };
+    var this$4 = this.$$outer$2.context$1;
+    $s_Lakka_actor_dungeon_DeathWatch$class__watch__Lakka_actor_ActorCell__Lakka_actor_ActorRef__Lakka_actor_ActorRef(this$4, actor);
     return (void 0)
-  } else if ($is_Lakka_event_Logging$LogEvent(x4)) {
-    var x4$2 = $as_Lakka_event_Logging$LogEvent(x4);
-    var this$3 = this.$$outer$2;
-    $s_Lakka_event_Logging$StdOutLogger$class__print__Lakka_event_Logging$StdOutLogger__O__V(this$3, x4$2);
+  };
+  if ($is_Lakka_event_EventStreamUnsubscriber$UnregisterIfNoMoreSubscribedChannels(x1)) {
+    rc7 = true;
+    x3 = $as_Lakka_event_EventStreamUnsubscriber$UnregisterIfNoMoreSubscribedChannels(x1);
+    var actor$2 = x3.actor$1;
+    var this$5 = this.$$outer$2.akka$event$EventStreamUnsubscriber$$eventStream$f;
+    if ($s_Lakka_event_SubchannelClassification$class__hasSubscriptions__Lakka_event_SubchannelClassification__O__Z(this$5, actor$2)) {
+      return (void 0)
+    }
+  };
+  if (rc7) {
+    var actor$3 = x3.actor$1;
+    if (this.$$outer$2.akka$event$EventStreamUnsubscriber$$debug$f) {
+      var this$8 = this.$$outer$2.akka$event$EventStreamUnsubscriber$$eventStream$f;
+      var jsx$4 = $m_Lakka_event_Logging$();
+      var this$6 = this.$$outer$2;
+      var jsx$3 = jsx$4.simpleName__jl_Class__T($objectGetClass(this$6));
+      var this$7 = this.$$outer$2;
+      var event$1 = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(jsx$3, $objectGetClass(this$7), new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unwatching ", ", since has no subscriptions"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([actor$3])));
+      $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$8, event$1)
+    };
+    var this$9 = this.$$outer$2.context$1;
+    $s_Lakka_actor_dungeon_DeathWatch$class__unwatch__Lakka_actor_ActorCell__Lakka_actor_ActorRef__Lakka_actor_ActorRef(this$9, actor$3);
     return (void 0)
-  } else {
-    return $default.apply__O__O(x4)
-  }
+  };
+  if ($is_Lakka_actor_Terminated(x1)) {
+    var x5 = $as_Lakka_actor_Terminated(x1);
+    var actor$4 = x5.actor$1;
+    if (this.$$outer$2.akka$event$EventStreamUnsubscriber$$debug$f) {
+      var this$12 = this.$$outer$2.akka$event$EventStreamUnsubscriber$$eventStream$f;
+      var jsx$6 = $m_Lakka_event_Logging$();
+      var this$10 = this.$$outer$2;
+      var jsx$5 = jsx$6.simpleName__jl_Class__T($objectGetClass(this$10));
+      var this$11 = this.$$outer$2;
+      var event$2 = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(jsx$5, $objectGetClass(this$11), new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["unsubscribe ", " from ", ", because it was terminated"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([actor$4, this.$$outer$2.akka$event$EventStreamUnsubscriber$$eventStream$f])));
+      $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$12, event$2)
+    };
+    this.$$outer$2.akka$event$EventStreamUnsubscriber$$eventStream$f.unsubscribe__Lakka_actor_ActorRef__V(actor$4);
+    return (void 0)
+  };
+  return $default.apply__O__O(x1)
 });
-var $d_Lakka_event_DefaultLogger$$anonfun$receive$3 = new $TypeData().initClass({
-  Lakka_event_DefaultLogger$$anonfun$receive$3: 0
-}, false, "akka.event.DefaultLogger$$anonfun$receive$3", {
-  Lakka_event_DefaultLogger$$anonfun$receive$3: 1,
+var $d_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1 = new $TypeData().initClass({
+  Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1: 0
+}, false, "akka.event.EventStreamUnsubscriber$$anonfun$receive$1", {
+  Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1: 1,
   sr_AbstractPartialFunction: 1,
   O: 1,
   F1: 1,
@@ -45592,62 +46069,57 @@ var $d_Lakka_event_DefaultLogger$$anonfun$receive$3 = new $TypeData().initClass(
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lakka_event_DefaultLogger$$anonfun$receive$3.prototype.$classData = $d_Lakka_event_DefaultLogger$$anonfun$receive$3;
+$c_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1.prototype.$classData = $d_Lakka_event_EventStreamUnsubscriber$$anonfun$receive$1;
 /** @constructor */
-function $c_Lakka_event_Logging$InitializeLogger() {
-  $c_O.call(this);
-  this.bus$1 = null
+function $c_Lakka_event_JSDefaultLogger$$anonfun$receive$1() {
+  $c_sr_AbstractPartialFunction.call(this);
+  this.$$outer$2 = null
 }
-$c_Lakka_event_Logging$InitializeLogger.prototype = new $h_O();
-$c_Lakka_event_Logging$InitializeLogger.prototype.constructor = $c_Lakka_event_Logging$InitializeLogger;
+$c_Lakka_event_JSDefaultLogger$$anonfun$receive$1.prototype = new $h_sr_AbstractPartialFunction();
+$c_Lakka_event_JSDefaultLogger$$anonfun$receive$1.prototype.constructor = $c_Lakka_event_JSDefaultLogger$$anonfun$receive$1;
 /** @constructor */
-function $h_Lakka_event_Logging$InitializeLogger() {
+function $h_Lakka_event_JSDefaultLogger$$anonfun$receive$1() {
   /*<skip>*/
 }
-$h_Lakka_event_Logging$InitializeLogger.prototype = $c_Lakka_event_Logging$InitializeLogger.prototype;
-$c_Lakka_event_Logging$InitializeLogger.prototype.productPrefix__T = (function() {
-  return "InitializeLogger"
-});
-$c_Lakka_event_Logging$InitializeLogger.prototype.productArity__I = (function() {
-  return 1
-});
-$c_Lakka_event_Logging$InitializeLogger.prototype.init___Lakka_event_LoggingBus = (function(bus) {
-  this.bus$1 = bus;
+$h_Lakka_event_JSDefaultLogger$$anonfun$receive$1.prototype = $c_Lakka_event_JSDefaultLogger$$anonfun$receive$1.prototype;
+$c_Lakka_event_JSDefaultLogger$$anonfun$receive$1.prototype.init___Lakka_event_JSDefaultLogger = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$2 = $$outer
+  };
   return this
 });
-$c_Lakka_event_Logging$InitializeLogger.prototype.equals__O__Z = (function(x$1) {
-  if ((this === x$1)) {
-    return true
-  } else if ($is_Lakka_event_Logging$InitializeLogger(x$1)) {
-    var InitializeLogger$1 = $as_Lakka_event_Logging$InitializeLogger(x$1);
-    var x = this.bus$1;
-    var x$2 = InitializeLogger$1.bus$1;
-    return (x === x$2)
+$c_Lakka_event_JSDefaultLogger$$anonfun$receive$1.prototype.isDefinedAt__O__Z = (function(x1) {
+  return ($is_Lakka_event_Logging$InitializeLogger(x1) || $is_Lakka_event_Logging$LogEvent(x1))
+});
+$c_Lakka_event_JSDefaultLogger$$anonfun$receive$1.prototype.applyOrElse__O__F1__O = (function(x1, $default) {
+  if ($is_Lakka_event_Logging$InitializeLogger(x1)) {
+    var this$1 = this.$$outer$2;
+    var ref = this$1.context$1.sender__Lakka_actor_ActorRef();
+    $as_Lakka_actor_ScalaActorRef(ref).$$bang__O__Lakka_actor_ActorRef__V($m_Lakka_event_Logging$LoggerInitialized$(), this.$$outer$2.self$1);
+    return (void 0)
+  } else if ($is_Lakka_event_Logging$LogEvent(x1)) {
+    var x4 = $as_Lakka_event_Logging$LogEvent(x1);
+    var this$3 = this.$$outer$2;
+    $s_Lakka_event_Logging$StdOutLogger$class__print__Lakka_event_Logging$StdOutLogger__O__V(this$3, x4);
+    return (void 0)
   } else {
-    return false
+    return $default.apply__O__O(x1)
   }
 });
-$c_Lakka_event_Logging$InitializeLogger.prototype.productElement__I__O = (function(x$1) {
-  switch (x$1) {
-    case 0: {
-      return this.bus$1;
-      break
-    }
-    default: {
-      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
-    }
-  }
+var $d_Lakka_event_JSDefaultLogger$$anonfun$receive$1 = new $TypeData().initClass({
+  Lakka_event_JSDefaultLogger$$anonfun$receive$1: 0
+}, false, "akka.event.JSDefaultLogger$$anonfun$receive$1", {
+  Lakka_event_JSDefaultLogger$$anonfun$receive$1: 1,
+  sr_AbstractPartialFunction: 1,
+  O: 1,
+  F1: 1,
+  s_PartialFunction: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
 });
-$c_Lakka_event_Logging$InitializeLogger.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
-});
-$c_Lakka_event_Logging$InitializeLogger.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__I(this, (-889275714))
-});
-$c_Lakka_event_Logging$InitializeLogger.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
-});
+$c_Lakka_event_JSDefaultLogger$$anonfun$receive$1.prototype.$classData = $d_Lakka_event_JSDefaultLogger$$anonfun$receive$1;
 function $is_Lakka_event_Logging$InitializeLogger(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_event_Logging$InitializeLogger)))
 }
@@ -45660,18 +46132,6 @@ function $isArrayOf_Lakka_event_Logging$InitializeLogger(obj, depth) {
 function $asArrayOf_Lakka_event_Logging$InitializeLogger(obj, depth) {
   return (($isArrayOf_Lakka_event_Logging$InitializeLogger(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lakka.event.Logging$InitializeLogger;", depth))
 }
-var $d_Lakka_event_Logging$InitializeLogger = new $TypeData().initClass({
-  Lakka_event_Logging$InitializeLogger: 0
-}, false, "akka.event.Logging$InitializeLogger", {
-  Lakka_event_Logging$InitializeLogger: 1,
-  O: 1,
-  Lakka_actor_NoSerializationVerificationNeeded: 1,
-  s_Product: 1,
-  s_Equals: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lakka_event_Logging$InitializeLogger.prototype.$classData = $d_Lakka_event_Logging$InitializeLogger;
 /** @constructor */
 function $c_Lakka_event_Logging$LoggerInitialized$() {
   $c_Lakka_event_Logging$LoggerInitialized.call(this)
@@ -45724,37 +46184,37 @@ function $m_Lakka_event_Logging$LoggerInitialized$() {
   return $n_Lakka_event_Logging$LoggerInitialized$
 }
 /** @constructor */
-function $c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1() {
+function $c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1() {
   $c_sr_AbstractPartialFunction.call(this);
   this.loggerName$1$2 = null
 }
-$c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype = new $h_sr_AbstractPartialFunction();
-$c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1;
+$c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype = new $h_sr_AbstractPartialFunction();
+$c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1;
 /** @constructor */
-function $h_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1() {
+function $h_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1() {
   /*<skip>*/
 }
-$h_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype = $c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype;
-$c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype.isDefinedAt__jl_Throwable__Z = (function(x2) {
+$h_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype = $c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype;
+$c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype.isDefinedAt__jl_Throwable__Z = (function(x1) {
   return true
 });
-$c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype.applyOrElse__jl_Throwable__F1__O = (function(x2, $default) {
-  throw new $c_Lakka_ConfigurationException().init___T__jl_Throwable((((("Logger specified in config can't be loaded [" + this.loggerName$1$2) + "] due to [") + x2.toString__T()) + "]"), x2)
+$c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype.applyOrElse__jl_Throwable__F1__O = (function(x1, $default) {
+  throw new $c_Lakka_ConfigurationException().init___T__jl_Throwable((((("Logger specified in config can't be loaded [" + this.loggerName$1$2) + "] due to [") + x1.toString__T()) + "]"), x1)
 });
-$c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype.isDefinedAt__O__Z = (function(x) {
+$c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype.isDefinedAt__O__Z = (function(x) {
   return this.isDefinedAt__jl_Throwable__Z($as_jl_Throwable(x))
 });
-$c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype.applyOrElse__O__F1__O = (function(x, $default) {
+$c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype.applyOrElse__O__F1__O = (function(x, $default) {
   return this.applyOrElse__jl_Throwable__F1__O($as_jl_Throwable(x), $default)
 });
-$c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype.init___Lakka_event_LoggingBus$$anonfun$2__T = (function($$outer, loggerName$1) {
+$c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype.init___Lakka_event_LoggingBus$$anonfun$4__T = (function($$outer, loggerName$1) {
   this.loggerName$1$2 = loggerName$1;
   return this
 });
-var $d_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1 = new $TypeData().initClass({
-  Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1: 0
-}, false, "akka.event.LoggingBus$$anonfun$2$$anonfun$apply$1", {
-  Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1: 1,
+var $d_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1 = new $TypeData().initClass({
+  Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1: 0
+}, false, "akka.event.LoggingBus$$anonfun$4$$anonfun$apply$1", {
+  Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1: 1,
   sr_AbstractPartialFunction: 1,
   O: 1,
   F1: 1,
@@ -45762,131 +46222,48 @@ var $d_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1 = new $TypeData().init
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$2$$anonfun$apply$1;
+$c_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$4$$anonfun$apply$1;
 /** @constructor */
-function $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2() {
+function $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1() {
   $c_sr_AbstractPartialFunction.call(this);
   this.$$outer$2 = null
 }
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2.prototype = new $h_sr_AbstractPartialFunction();
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1.prototype = new $h_sr_AbstractPartialFunction();
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1.prototype.constructor = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1;
 /** @constructor */
-function $h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2() {
+function $h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1() {
   /*<skip>*/
 }
-$h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2.prototype = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2.prototype;
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2.prototype.init___Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2 = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
+$h_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1.prototype = $c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1.prototype;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1.prototype.isDefinedAt__O__Z = (function(x2) {
+  return $is_Lakka_actor_UnhandledMessage(x2)
 });
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2.prototype.isDefinedAt__O__Z = (function(x3) {
-  return $is_Lakka_actor_UnhandledMessage(x3)
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2.prototype.applyOrElse__O__F1__O = (function(x3, $default) {
-  if ($is_Lakka_actor_UnhandledMessage(x3)) {
-    var x2 = $as_Lakka_actor_UnhandledMessage(x3);
-    var msg = x2.message$1;
-    var sender = x2.sender$1;
-    var rcp = x2.recipient$1;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1.prototype.applyOrElse__O__F1__O = (function(x2, $default) {
+  if ($is_Lakka_actor_UnhandledMessage(x2)) {
+    var x2$2 = $as_Lakka_actor_UnhandledMessage(x2);
+    var msg = x2$2.message$1;
+    var sender = x2$2.sender$1;
+    var rcp = x2$2.recipient$1;
     var this$1 = this.$$outer$2.$$outer$1.$$outer$2;
     var event = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(rcp.path__Lakka_actor_ActorPath().toString__T(), $objectGetClass(rcp), ((("unhandled message from " + sender) + ": ") + msg));
     $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$1, event);
     return (void 0)
   } else {
-    return $default.apply__O__O(x3)
+    return $default.apply__O__O(x2)
   }
 });
-var $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2 = new $TypeData().initClass({
-  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2: 0
-}, false, "akka.event.LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2", {
-  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2: 1,
-  sr_AbstractPartialFunction: 1,
-  O: 1,
-  F1: 1,
-  s_PartialFunction: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$1$$anon$2$$anonfun$receive$2;
-/** @constructor */
-function $c_Lakka_event_LoggingBusActor$$anonfun$operative$1() {
-  $c_sr_AbstractPartialFunction.call(this);
-  this.$$outer$2 = null;
-  this.canc$1$2 = null
-}
-$c_Lakka_event_LoggingBusActor$$anonfun$operative$1.prototype = new $h_sr_AbstractPartialFunction();
-$c_Lakka_event_LoggingBusActor$$anonfun$operative$1.prototype.constructor = $c_Lakka_event_LoggingBusActor$$anonfun$operative$1;
-/** @constructor */
-function $h_Lakka_event_LoggingBusActor$$anonfun$operative$1() {
-  /*<skip>*/
-}
-$h_Lakka_event_LoggingBusActor$$anonfun$operative$1.prototype = $c_Lakka_event_LoggingBusActor$$anonfun$operative$1.prototype;
-$c_Lakka_event_LoggingBusActor$$anonfun$operative$1.prototype.init___Lakka_event_LoggingBusActor__Lakka_actor_Cancellable = (function($$outer, canc$1) {
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1.prototype.init___Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
     this.$$outer$2 = $$outer
   };
-  this.canc$1$2 = canc$1;
   return this
 });
-$c_Lakka_event_LoggingBusActor$$anonfun$operative$1.prototype.isDefinedAt__O__Z = (function(x1) {
-  if ($is_ju_concurrent_TimeoutException(x1)) {
-    return true
-  } else {
-    var x = $m_Lakka_event_Logging$LoggerInitialized$();
-    return true
-  }
-});
-$c_Lakka_event_LoggingBusActor$$anonfun$operative$1.prototype.applyOrElse__O__F1__O = (function(x1, $default) {
-  if ($is_ju_concurrent_TimeoutException(x1)) {
-    var this$2 = this.$$outer$2.akka$event$LoggingBusActor$$lb$f;
-    var jsx$1 = this.$$outer$2.akka$event$LoggingBusActor$$logName$f;
-    var this$1 = this.$$outer$2;
-    var event = new $c_Lakka_event_Logging$Warning().init___T__jl_Class__O(jsx$1, $objectGetClass(this$1), (((("Logger " + this.$$outer$2.akka$event$LoggingBusActor$$name$f) + " did not respond within ") + this.$$outer$2.timeout$1) + " to InitializeLogger(bus)"));
-    $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$2, event);
-    return (void 0)
-  } else {
-    var x = $m_Lakka_event_Logging$LoggerInitialized$();
-    if ((x === x1)) {
-      $as_sc_IterableLike($m_Lakka_event_Logging$().AllLogLevels$1.filter__F1__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
-        return (function(x$1$2) {
-          var x$1 = $as_Lakka_event_Logging$LogLevel(x$1$2).asInt$1;
-          var $$this = arg$outer.$$outer$2.akka$event$LoggingBusActor$$level$f;
-          return ($$this >= x$1)
-        })
-      })(this)))).foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer$1) {
-        return (function(l$2) {
-          var l = $as_Lakka_event_Logging$LogLevel(l$2).asInt$1;
-          var this$4 = arg$outer$1.$$outer$2.akka$event$LoggingBusActor$$lb$f;
-          var subscriber = arg$outer$1.$$outer$2.akka$event$LoggingBusActor$$actor$f;
-          var to = $m_Lakka_event_Logging$().classFor__I__jl_Class(l);
-          return this$4.subscribe__Lakka_actor_ActorRef__jl_Class__Z(subscriber, to)
-        })
-      })(this)));
-      var this$6 = this.$$outer$2.akka$event$LoggingBusActor$$lb$f;
-      var jsx$2 = this.$$outer$2.akka$event$LoggingBusActor$$logName$f;
-      var this$5 = this.$$outer$2;
-      var event$1 = new $c_Lakka_event_Logging$Debug().init___T__jl_Class__O(jsx$2, $objectGetClass(this$5), (("logger " + this.$$outer$2.akka$event$LoggingBusActor$$name$f) + " started"));
-      $s_Lakka_event_SubchannelClassification$class__publish__Lakka_event_SubchannelClassification__O__V(this$6, event$1);
-      var this$7 = this.$$outer$2.context$1;
-      var actor = this.$$outer$2.self$1;
-      $s_Lakka_actor_dungeon_Children$class__stop__Lakka_actor_ActorCell__Lakka_actor_ActorRef__V(this$7, actor);
-      this.canc$1$2.cancel__Z();
-      return (void 0)
-    } else {
-      throw new $c_Lakka_event_Logging$LoggerInitializationException().init___T(((("Logger " + this.$$outer$2.akka$event$LoggingBusActor$$name$f) + " did not respond with LoggerInitialized, sent instead ") + x1))
-    }
-  }
-});
-var $d_Lakka_event_LoggingBusActor$$anonfun$operative$1 = new $TypeData().initClass({
-  Lakka_event_LoggingBusActor$$anonfun$operative$1: 0
-}, false, "akka.event.LoggingBusActor$$anonfun$operative$1", {
-  Lakka_event_LoggingBusActor$$anonfun$operative$1: 1,
+var $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1 = new $TypeData().initClass({
+  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1: 0
+}, false, "akka.event.LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1", {
+  Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1: 1,
   sr_AbstractPartialFunction: 1,
   O: 1,
   F1: 1,
@@ -45894,7 +46271,7 @@ var $d_Lakka_event_LoggingBusActor$$anonfun$operative$1 = new $TypeData().initCl
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Lakka_event_LoggingBusActor$$anonfun$operative$1.prototype.$classData = $d_Lakka_event_LoggingBusActor$$anonfun$operative$1;
+$c_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1.prototype.$classData = $d_Lakka_event_LoggingBus$$anonfun$startDefaultLoggers$2$$anon$3$$anonfun$receive$1;
 function $is_Lakka_routing_ActorRefRoutee(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lakka_routing_ActorRefRoutee)))
 }
@@ -49833,6 +50210,59 @@ var $d_s_util_Left = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_s_util_Left.prototype.$classData = $d_s_util_Left;
+/** @constructor */
+function $c_s_util_Right() {
+  $c_s_util_Either.call(this);
+  this.b$2 = null
+}
+$c_s_util_Right.prototype = new $h_s_util_Either();
+$c_s_util_Right.prototype.constructor = $c_s_util_Right;
+/** @constructor */
+function $h_s_util_Right() {
+  /*<skip>*/
+}
+$h_s_util_Right.prototype = $c_s_util_Right.prototype;
+$c_s_util_Right.prototype.productPrefix__T = (function() {
+  return "Right"
+});
+$c_s_util_Right.prototype.productArity__I = (function() {
+  return 1
+});
+$c_s_util_Right.prototype.equals__O__Z = (function(x$1) {
+  if ((this === x$1)) {
+    return true
+  } else if ($is_s_util_Right(x$1)) {
+    var Right$1 = $as_s_util_Right(x$1);
+    return $m_sr_BoxesRunTime$().equals__O__O__Z(this.b$2, Right$1.b$2)
+  } else {
+    return false
+  }
+});
+$c_s_util_Right.prototype.productElement__I__O = (function(x$1) {
+  switch (x$1) {
+    case 0: {
+      return this.b$2;
+      break
+    }
+    default: {
+      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
+    }
+  }
+});
+$c_s_util_Right.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
+});
+$c_s_util_Right.prototype.init___O = (function(b) {
+  this.b$2 = b;
+  return this
+});
+$c_s_util_Right.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__I(this, (-889275714))
+});
+$c_s_util_Right.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
+});
 function $is_s_util_Right(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.s_util_Right)))
 }
@@ -49845,6 +50275,18 @@ function $isArrayOf_s_util_Right(obj, depth) {
 function $asArrayOf_s_util_Right(obj, depth) {
   return (($isArrayOf_s_util_Right(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.util.Right;", depth))
 }
+var $d_s_util_Right = new $TypeData().initClass({
+  s_util_Right: 0
+}, false, "scala.util.Right", {
+  s_util_Right: 1,
+  s_util_Either: 1,
+  O: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_s_util_Right.prototype.$classData = $d_s_util_Right;
 /** @constructor */
 function $c_s_util_Success() {
   $c_s_util_Try.call(this);
@@ -52127,6 +52569,34 @@ var $d_Lakka_event_Logging$Info = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Lakka_event_Logging$Info.prototype.$classData = $d_Lakka_event_Logging$Info;
+/** @constructor */
+function $c_Lakka_event_Logging$LoggerException() {
+  $c_Lakka_AkkaException.call(this)
+}
+$c_Lakka_event_Logging$LoggerException.prototype = new $h_Lakka_AkkaException();
+$c_Lakka_event_Logging$LoggerException.prototype.constructor = $c_Lakka_event_Logging$LoggerException;
+/** @constructor */
+function $h_Lakka_event_Logging$LoggerException() {
+  /*<skip>*/
+}
+$h_Lakka_event_Logging$LoggerException.prototype = $c_Lakka_event_Logging$LoggerException.prototype;
+$c_Lakka_event_Logging$LoggerException.prototype.init___ = (function() {
+  $c_jl_Throwable.prototype.init___T__jl_Throwable.call(this, "", null);
+  return this
+});
+var $d_Lakka_event_Logging$LoggerException = new $TypeData().initClass({
+  Lakka_event_Logging$LoggerException: 0
+}, false, "akka.event.Logging$LoggerException", {
+  Lakka_event_Logging$LoggerException: 1,
+  Lakka_AkkaException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1,
+  s_Serializable: 1
+});
+$c_Lakka_event_Logging$LoggerException.prototype.$classData = $d_Lakka_event_Logging$LoggerException;
 /** @constructor */
 function $c_Lakka_event_Logging$LoggerInitializationException() {
   $c_Lakka_AkkaException.call(this)
@@ -58536,48 +59006,6 @@ var $d_s_Tuple2$mcII$sp = new $TypeData().initClass({
 });
 $c_s_Tuple2$mcII$sp.prototype.$classData = $d_s_Tuple2$mcII$sp;
 /** @constructor */
-function $c_s_Tuple2$mcJJ$sp() {
-  $c_T2.call(this);
-  this.$$und1$mcJ$sp$f = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong();
-  this.$$und2$mcJ$sp$f = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong()
-}
-$c_s_Tuple2$mcJJ$sp.prototype = new $h_T2();
-$c_s_Tuple2$mcJJ$sp.prototype.constructor = $c_s_Tuple2$mcJJ$sp;
-/** @constructor */
-function $h_s_Tuple2$mcJJ$sp() {
-  /*<skip>*/
-}
-$h_s_Tuple2$mcJJ$sp.prototype = $c_s_Tuple2$mcJJ$sp.prototype;
-$c_s_Tuple2$mcJJ$sp.prototype.copy$default$2__O = (function() {
-  return this.$$und2$mcJ$sp$f
-});
-$c_s_Tuple2$mcJJ$sp.prototype.$$und2__O = (function() {
-  return this.$$und2$mcJ$sp$f
-});
-$c_s_Tuple2$mcJJ$sp.prototype.init___J__J = (function(_1$mcJ$sp, _2$mcJ$sp) {
-  this.$$und1$mcJ$sp$f = _1$mcJ$sp;
-  this.$$und2$mcJ$sp$f = _2$mcJ$sp;
-  $c_T2.prototype.init___O__O.call(this, null, null);
-  return this
-});
-$c_s_Tuple2$mcJJ$sp.prototype.$$und1__O = (function() {
-  return this.$$und1$mcJ$sp$f
-});
-var $d_s_Tuple2$mcJJ$sp = new $TypeData().initClass({
-  s_Tuple2$mcJJ$sp: 0
-}, false, "scala.Tuple2$mcJJ$sp", {
-  s_Tuple2$mcJJ$sp: 1,
-  T2: 1,
-  O: 1,
-  s_Product2: 1,
-  s_Product: 1,
-  s_Equals: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1,
-  s_Product2$mcJJ$sp: 1
-});
-$c_s_Tuple2$mcJJ$sp.prototype.$classData = $d_s_Tuple2$mcJJ$sp;
-/** @constructor */
 function $c_s_math_Ordering$Byte$() {
   $c_O.call(this)
 }
@@ -61452,7 +61880,7 @@ $c_Lakka_actor_LocalActorRef.prototype.start__V = (function() {
 });
 $c_Lakka_actor_LocalActorRef.prototype.children__sci_Iterable = (function() {
   var this$1 = this.actorCell$4;
-  return this$1.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.children__sci_Iterable()
+  return $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer(this$1).children__sci_Iterable()
 });
 $c_Lakka_actor_LocalActorRef.prototype.path__Lakka_actor_ActorPath = (function() {
   return this.path$4
@@ -61468,7 +61896,7 @@ $c_Lakka_actor_LocalActorRef.prototype.$$bang__O__Lakka_actor_ActorRef__V = (fun
 $c_Lakka_actor_LocalActorRef.prototype.isTerminated__Z = (function() {
   var this$1 = this.actorCell$4;
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var this$2 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(this$1, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var this$2 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(this$1, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   return (this$2.$$undstatusDoNotCallMeDirectly$1 === 1)
 });
 $c_Lakka_actor_LocalActorRef.prototype.stop__V = (function() {
@@ -61608,7 +62036,7 @@ $c_Lakka_actor_LocalActorRefProvider$$anon$2.prototype.stop__V = (function() {
   var actor = this$1.rootGuardian__Lakka_actor_LocalActorRef();
   var value = new $c_Lakka_actor_Terminated().init___Lakka_actor_ActorRef__Z__Z(actor, true, true);
   $s_s_concurrent_Promise$class__trySuccess__s_concurrent_Promise__O__Z(this$3, value);
-  var this$5 = this.$$outer$3.terminationPromise__s_concurrent_Promise();
+  var this$5 = this.$$outer$3.akka$actor$LocalActorRefProvider$$terminationPromise$f;
   var other = this.causeOfTermination$3;
   $s_s_concurrent_Promise$class__tryCompleteWith__s_concurrent_Promise__s_concurrent_Future__s_concurrent_Promise(this$5, other)
 });
@@ -62295,8 +62723,9 @@ function $c_Lakka_pattern_PromiseActorRef() {
   $c_Lakka_actor_InternalActorRef.call(this);
   this.provider$3 = null;
   this.result$3 = null;
-  this.watchedBy$3 = null;
-  this.akka$pattern$PromiseActorRef$$state$f = null
+  this.messageClassName$3 = null;
+  this.$$undstateDoNotCallMeDirectly$3 = null;
+  this.$$undwatchedByDoNotCallMeDirectly$3 = null
 }
 $c_Lakka_pattern_PromiseActorRef.prototype = new $h_Lakka_actor_InternalActorRef();
 $c_Lakka_pattern_PromiseActorRef.prototype.constructor = $c_Lakka_pattern_PromiseActorRef;
@@ -62314,12 +62743,6 @@ $c_Lakka_pattern_PromiseActorRef.prototype.provider__Lakka_actor_ActorRefProvide
 $c_Lakka_pattern_PromiseActorRef.prototype.restart__jl_Throwable__V = (function(cause) {
   /*<skip>*/
 });
-$c_Lakka_pattern_PromiseActorRef.prototype.init___Lakka_actor_ActorRefProvider__s_concurrent_Promise = (function(provider, result) {
-  this.provider$3 = provider;
-  this.result$3 = result;
-  this.watchedBy$3 = $m_Lakka_actor_ActorCell$().emptyActorRefSet$1;
-  return this
-});
 $c_Lakka_pattern_PromiseActorRef.prototype.suspend__V = (function() {
   /*<skip>*/
 });
@@ -62327,38 +62750,55 @@ $c_Lakka_pattern_PromiseActorRef.prototype.start__V = (function() {
   /*<skip>*/
 });
 $c_Lakka_pattern_PromiseActorRef.prototype.addWatcher__p3__Lakka_actor_ActorRef__Z = (function(watcher) {
-  var x1 = this.watchedBy$3;
-  if ((x1 !== null)) {
-    this.watchedBy$3 = $as_sci_Set(x1.$$plus__O__sc_Set(watcher));
-    return true
-  } else {
-    return false
+  _addWatcher: while (true) {
+    var x = $m_Lakka_util_Unsafe$().instance$1;
+    var x1 = $as_sci_Set(x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I__I(31, 0)));
+    if ((x1 !== null)) {
+      var newWatchedBy = $as_sci_Set(x1.$$plus__O__sc_Set(watcher));
+      var x$1 = $m_Lakka_util_Unsafe$().instance$1;
+      if ($uZ(x$1.compareAndSwapObject__O__J__O__O__(this, new $c_sjsr_RuntimeLong().init___I__I(31, 0), x1, newWatchedBy))) {
+        return true
+      } else {
+        continue _addWatcher
+      }
+    } else {
+      return false
+    }
   }
 });
 $c_Lakka_pattern_PromiseActorRef.prototype.clearWatchers__p3__sci_Set = (function() {
-  var x1 = this.watchedBy$3;
-  if ((x1 === null)) {
-    return $m_Lakka_actor_ActorCell$().emptyActorRefSet$1
-  } else {
-    this.watchedBy$3 = null;
-    return x1
+  _clearWatchers: while (true) {
+    var x = $m_Lakka_util_Unsafe$().instance$1;
+    var x1 = $as_sci_Set(x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I__I(31, 0)));
+    if ((x1 === null)) {
+      return $m_Lakka_actor_ActorCell$().emptyActorRefSet$1
+    } else {
+      var x$1 = $m_Lakka_util_Unsafe$().instance$1;
+      if ((!$uZ(x$1.compareAndSwapObject__O__J__O__O__(this, new $c_sjsr_RuntimeLong().init___I__I(31, 0), x1, null)))) {
+        continue _clearWatchers
+      } else {
+        return x1
+      }
+    }
   }
 });
 $c_Lakka_pattern_PromiseActorRef.prototype.path__Lakka_actor_ActorPath = (function() {
   _path: while (true) {
-    var x1 = this.akka$pattern$PromiseActorRef$$state$f;
+    var x = $m_Lakka_util_Unsafe$().instance$1;
+    var x1 = x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I__I(30, 0));
     if ((x1 === null)) {
       var newState = $m_Lakka_pattern_PromiseActorRef$Registering$();
-      this.akka$pattern$PromiseActorRef$$state$f = newState;
-      if (true) {
+      var x$1 = $m_Lakka_util_Unsafe$().instance$1;
+      if ($uZ(x$1.compareAndSwapObject__O__J__O__O__(this, new $c_sjsr_RuntimeLong().init___I__I(30, 0), null, newState))) {
         var p = null;
         try {
-          var this$1 = this.provider$3;
-          p = this$1.tempNode$1.$$div__T__Lakka_actor_ActorPath(this$1.tempName__p1__T());
+          p = this.provider$3.tempPath__Lakka_actor_ActorPath();
           this.provider$3.registerTempActor__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath__V(this, p);
           return p
         } finally {
-          this.akka$pattern$PromiseActorRef$$state$f = p
+          var newState$1 = p;
+          var x$2 = $m_Lakka_util_Unsafe$().instance$1;
+          x$2.putObjectVolatile__O__I__O__(this, 30, newState$1)
         }
       } else {
         continue _path
@@ -62371,11 +62811,12 @@ $c_Lakka_pattern_PromiseActorRef.prototype.path__Lakka_actor_ActorPath = (functi
       var p$2 = x2.path$1;
       return p$2
     } else {
-      var x$2 = $m_Lakka_pattern_PromiseActorRef$Stopped$();
-      if ((x$2 === x1)) {
-        var this$2 = this.provider$3;
-        var newState$1 = new $c_Lakka_pattern_PromiseActorRef$StoppedWithPath().init___Lakka_actor_ActorPath(this$2.tempNode$1.$$div__T__Lakka_actor_ActorPath(this$2.tempName__p1__T()));
-        this.akka$pattern$PromiseActorRef$$state$f = newState$1;
+      var x$2$1 = $m_Lakka_pattern_PromiseActorRef$Stopped$();
+      if ((x$2$1 === x1)) {
+        var oldState = $m_Lakka_pattern_PromiseActorRef$Stopped$();
+        var newState$2 = new $c_Lakka_pattern_PromiseActorRef$StoppedWithPath().init___Lakka_actor_ActorPath(this.provider$3.tempPath__Lakka_actor_ActorPath());
+        var x$3 = $m_Lakka_util_Unsafe$().instance$1;
+        $uZ(x$3.compareAndSwapObject__O__J__O__O__(this, new $c_sjsr_RuntimeLong().init___I__I(30, 0), oldState, newState$2));
         continue _path
       } else {
         var x$4 = $m_Lakka_pattern_PromiseActorRef$Registering$();
@@ -62396,9 +62837,9 @@ $c_Lakka_pattern_PromiseActorRef.prototype.sendSystemMessage__Lakka_dispatch_sys
     var a = x2.actor$1;
     var ec = x2.existenceConfirmed$1;
     var at = x2.addressTerminated$1;
-    var x$2 = new $c_Lakka_actor_Terminated().init___Lakka_actor_ActorRef__Z__Z(a, ec, at);
-    var x$3 = $m_Lakka_actor_Actor$().noSender$1;
-    this.$$bang__O__Lakka_actor_ActorRef__V(x$2, x$3)
+    var x$6 = new $c_Lakka_actor_Terminated().init___Lakka_actor_ActorRef__Z__Z(a, ec, at);
+    var x$7 = $m_Lakka_actor_Actor$().noSender$1;
+    this.$$bang__O__Lakka_actor_ActorRef__V(x$6, x$7)
   } else if ($is_Lakka_dispatch_sysmsg_Watch(message)) {
     var x3 = $as_Lakka_dispatch_sysmsg_Watch(message);
     var watchee = x3.watchee$1;
@@ -62491,19 +62932,11 @@ $c_Lakka_pattern_PromiseActorRef.prototype.sendSystemMessage__Lakka_dispatch_sys
     }
   }
 });
-$c_Lakka_pattern_PromiseActorRef.prototype.isTerminated__Z = (function() {
-  var x1 = this.akka$pattern$PromiseActorRef$$state$f;
-  var x = $m_Lakka_pattern_PromiseActorRef$Stopped$();
-  if ((x === x1)) {
-    return true
-  } else {
-    return $is_Lakka_pattern_PromiseActorRef$StoppedWithPath(x1)
-  }
-});
 $c_Lakka_pattern_PromiseActorRef.prototype.$$bang__O__Lakka_actor_ActorRef__V = (function(message, sender) {
-  var x1 = this.akka$pattern$PromiseActorRef$$state$f;
-  var x = $m_Lakka_pattern_PromiseActorRef$Stopped$();
-  if (((x === x1) || $is_Lakka_pattern_PromiseActorRef$StoppedWithPath(x1))) {
+  var x = $m_Lakka_util_Unsafe$().instance$1;
+  var x1 = x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I__I(30, 0));
+  var x$1 = $m_Lakka_pattern_PromiseActorRef$Stopped$();
+  if (((x$1 === x1) || $is_Lakka_pattern_PromiseActorRef$StoppedWithPath(x1))) {
     var this$1 = this.provider$3;
     this$1.deadLetters$1.$$bang__O__Lakka_actor_ActorRef__V(message, sender)
   } else {
@@ -62528,14 +62961,25 @@ $c_Lakka_pattern_PromiseActorRef.prototype.$$bang__O__Lakka_actor_ActorRef__V = 
     }
   }
 });
+$c_Lakka_pattern_PromiseActorRef.prototype.isTerminated__Z = (function() {
+  var x = $m_Lakka_util_Unsafe$().instance$1;
+  var x1 = x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I__I(30, 0));
+  var x$1 = $m_Lakka_pattern_PromiseActorRef$Stopped$();
+  if ((x$1 === x1)) {
+    return true
+  } else {
+    return $is_Lakka_pattern_PromiseActorRef$StoppedWithPath(x1)
+  }
+});
 $c_Lakka_pattern_PromiseActorRef.prototype.stop__V = (function() {
   x: {
     _stop: while (true) {
-      var x1 = this.akka$pattern$PromiseActorRef$$state$f;
+      var x = $m_Lakka_util_Unsafe$().instance$1;
+      var x1 = x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I__I(30, 0));
       if ((x1 === null)) {
         var newState = $m_Lakka_pattern_PromiseActorRef$Stopped$();
-        this.akka$pattern$PromiseActorRef$$state$f = newState;
-        if (true) {
+        var x$1 = $m_Lakka_util_Unsafe$().instance$1;
+        if ($uZ(x$1.compareAndSwapObject__O__J__O__O__(this, new $c_sjsr_RuntimeLong().init___I__I(30, 0), null, newState))) {
           this.ensureCompleted$1__p3__V()
         } else {
           continue _stop
@@ -62543,8 +62987,8 @@ $c_Lakka_pattern_PromiseActorRef.prototype.stop__V = (function() {
       } else if ($is_Lakka_actor_ActorPath(x1)) {
         var x3 = $as_Lakka_actor_ActorPath(x1);
         var newState$1 = new $c_Lakka_pattern_PromiseActorRef$StoppedWithPath().init___Lakka_actor_ActorPath(x3);
-        this.akka$pattern$PromiseActorRef$$state$f = newState$1;
-        if (true) {
+        var x$2 = $m_Lakka_util_Unsafe$().instance$1;
+        if ($uZ(x$2.compareAndSwapObject__O__J__O__O__(this, new $c_sjsr_RuntimeLong().init___I__I(30, 0), x3, newState$1))) {
           try {
             this.ensureCompleted$1__p3__V()
           } finally {
@@ -62554,8 +62998,8 @@ $c_Lakka_pattern_PromiseActorRef.prototype.stop__V = (function() {
           continue _stop
         }
       } else {
-        var x$2 = $m_Lakka_pattern_PromiseActorRef$Stopped$();
-        if ((!((x$2 === x1) || $is_Lakka_pattern_PromiseActorRef$StoppedWithPath(x1)))) {
+        var x$2$1 = $m_Lakka_pattern_PromiseActorRef$Stopped$();
+        if ((!((x$2$1 === x1) || $is_Lakka_pattern_PromiseActorRef$StoppedWithPath(x1)))) {
           var x$4 = $m_Lakka_pattern_PromiseActorRef$Registering$();
           if ((x$4 === x1)) {
             continue _stop
@@ -62572,22 +63016,46 @@ $c_Lakka_pattern_PromiseActorRef.prototype.ensureCompleted$1__p3__V = (function(
   this.result$3.tryComplete__s_util_Try__Z($m_Lakka_pattern_PromiseActorRef$().akka$pattern$PromiseActorRef$$ActorStopResult$1);
   var watchers = this.clearWatchers__p3__sci_Set();
   if ((!watchers.isEmpty__Z())) {
-    watchers.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(watcher$2) {
-      var watcher = $as_Lakka_actor_ActorRef(watcher$2);
-      $as_Lakka_actor_InternalActorRef(watcher).sendSystemMessage__Lakka_dispatch_sysmsg_SystemMessage__V(new $c_Lakka_dispatch_sysmsg_DeathWatchNotification().init___Lakka_actor_ActorRef__Z__Z(watcher, true, false))
-    })))
+    watchers.foreach__F1__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(arg$outer) {
+      return (function(watcher$2) {
+        var watcher = $as_Lakka_actor_ActorRef(watcher$2);
+        $as_Lakka_actor_InternalActorRef(watcher).sendSystemMessage__Lakka_dispatch_sysmsg_SystemMessage__V(new $c_Lakka_dispatch_sysmsg_DeathWatchNotification().init___Lakka_actor_ActorRef__Z__Z(arg$outer, true, false))
+      })
+    })(this)))
   }
 });
 $c_Lakka_pattern_PromiseActorRef.prototype.$$bang$default$2__O__Lakka_actor_ActorRef = (function(message) {
   return $m_Lakka_actor_Actor$().noSender$1
 });
+$c_Lakka_pattern_PromiseActorRef.prototype.internalCallingThreadExecutionContext__s_concurrent_ExecutionContext = (function() {
+  var this$1 = this.provider$3.guardian__Lakka_actor_LocalActorRef();
+  var this$2 = this$1.actorCell$4;
+  return this$2.system$1.internalCallingThreadExecutionContext$3
+});
+$c_Lakka_pattern_PromiseActorRef.prototype.init___Lakka_actor_ActorRefProvider__s_concurrent_Promise__T = (function(provider, result, _mcn) {
+  this.provider$3 = provider;
+  this.result$3 = result;
+  this.messageClassName$3 = _mcn;
+  this.$$undwatchedByDoNotCallMeDirectly$3 = $m_Lakka_actor_ActorCell$().emptyActorRefSet$1;
+  return this
+});
 $c_Lakka_pattern_PromiseActorRef.prototype.isLocal__Z = (function() {
   return true
 });
 $c_Lakka_pattern_PromiseActorRef.prototype.remWatcher__p3__Lakka_actor_ActorRef__V = (function(watcher) {
-  var x1 = this.watchedBy$3;
-  if ((x1 !== null)) {
-    this.watchedBy$3 = $as_sci_Set(x1.$$minus__O__sc_Set(watcher))
+  x: {
+    _remWatcher: while (true) {
+      var x = $m_Lakka_util_Unsafe$().instance$1;
+      var x1 = $as_sci_Set(x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I__I(31, 0)));
+      if ((x1 !== null)) {
+        var newWatchedBy = $as_sci_Set(x1.$$minus__O__sc_Set(watcher));
+        var x$1 = $m_Lakka_util_Unsafe$().instance$1;
+        if ((!$uZ(x$1.compareAndSwapObject__O__J__O__O__(this, new $c_sjsr_RuntimeLong().init___I__I(31, 0), x1, newWatchedBy)))) {
+          continue _remWatcher
+        }
+      };
+      break x
+    }
   }
 });
 $c_Lakka_pattern_PromiseActorRef.prototype.getParent__Lakka_actor_InternalActorRef = (function() {
@@ -63376,7 +63844,7 @@ $c_Lakka_actor_ActorCell.prototype.invokeAll$1__p1__Lakka_dispatch_sysmsg_System
         var todo = rest
       };
       var x = $m_Lakka_util_Unsafe$().instance$1;
-      var this$2 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+      var this$2 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
       if ((this$2.$$undstatusDoNotCallMeDirectly$1 === 1)) {
         this.sendAllToDeadLetters$1__p1__Lakka_dispatch_sysmsg_SystemMessage__V(todo)
       } else if ($m_Lakka_dispatch_sysmsg_EarliestFirstSystemMessageList$().nonEmpty$extension__Lakka_dispatch_sysmsg_SystemMessage__Z(todo)) {
@@ -63460,7 +63928,7 @@ $c_Lakka_actor_ActorCell.prototype.lookupRoot__Lakka_actor_InternalActorRef = (f
   return this.self$1
 });
 $c_Lakka_actor_ActorCell.prototype.supervise__p1__Lakka_actor_ActorRef__Z__V = (function(child, async) {
-  if ((!this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1.isTerminating__Z())) {
+  if ((!$s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer(this).isTerminating__Z())) {
     var x1 = $s_Lakka_actor_dungeon_Children$class__initChild__Lakka_actor_ActorCell__Lakka_actor_ActorRef__s_Option(this, child);
     if ($is_s_Some(x1)) {
       this.handleSupervise__Lakka_actor_ActorRef__Z__V(child, async);
@@ -63533,7 +64001,7 @@ $c_Lakka_actor_ActorCell.prototype.sendAllToDeadLetters$1__p1__Lakka_dispatch_sy
 });
 $c_Lakka_actor_ActorCell.prototype.isTerminated__Z = (function() {
   var x = $m_Lakka_util_Unsafe$().instance$1;
-  var this$1 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+  var this$1 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
   return (this$1.$$undstatusDoNotCallMeDirectly$1 === 1)
 });
 $c_Lakka_actor_ActorCell.prototype.props$und$eq__Lakka_actor_Props__ = (function(x$1) {
@@ -63583,7 +64051,7 @@ $c_Lakka_actor_ActorCell.prototype.setActorFields__Lakka_actor_Actor__Lakka_acto
   }
 });
 $c_Lakka_actor_ActorCell.prototype.childrenRefs__Lakka_actor_dungeon_ChildrenContainer = (function() {
-  return this.akka$actor$dungeon$Children$$$undchildrenRefsDoNotCallMeDirectly$1
+  return $s_Lakka_actor_dungeon_Children$class__childrenRefs__Lakka_actor_ActorCell__Lakka_actor_dungeon_ChildrenContainer(this)
 });
 $c_Lakka_actor_ActorCell.prototype.publish__Lakka_event_Logging$LogEvent__V = (function(e) {
   try {
@@ -63632,7 +64100,7 @@ $c_Lakka_actor_ActorCell.prototype.calculateState$1__p1__I = (function() {
     return 2
   } else {
     var x = $m_Lakka_util_Unsafe$().instance$1;
-    var this$1 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(this, $m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1));
+    var this$1 = $as_Lakka_dispatch_Mailbox(x.getObjectVolatile__O__J__(this, new $c_sjsr_RuntimeLong().init___I($m_Lakka_actor_dungeon_AbstractActorCell$().mailboxOffset$1)));
     if (((this$1.$$undstatusDoNotCallMeDirectly$1 & $m_Lakka_dispatch_Mailbox$().suspendMask$1) !== 0)) {
       return 1
     } else {
@@ -63742,40 +64210,40 @@ var $d_Lakka_actor_DeadLetterActorRef = new $TypeData().initClass({
 });
 $c_Lakka_actor_DeadLetterActorRef.prototype.$classData = $d_Lakka_actor_DeadLetterActorRef;
 /** @constructor */
-function $c_Lakka_actor_LocalActorRefProvider$$anon$1() {
+function $c_Lakka_actor_JSLocalActorRefProvider$$anon$1() {
   $c_Lakka_actor_LocalActorRef.call(this);
   this.$$outer$5 = null
 }
-$c_Lakka_actor_LocalActorRefProvider$$anon$1.prototype = new $h_Lakka_actor_LocalActorRef();
-$c_Lakka_actor_LocalActorRefProvider$$anon$1.prototype.constructor = $c_Lakka_actor_LocalActorRefProvider$$anon$1;
+$c_Lakka_actor_JSLocalActorRefProvider$$anon$1.prototype = new $h_Lakka_actor_LocalActorRef();
+$c_Lakka_actor_JSLocalActorRefProvider$$anon$1.prototype.constructor = $c_Lakka_actor_JSLocalActorRefProvider$$anon$1;
 /** @constructor */
-function $h_Lakka_actor_LocalActorRefProvider$$anon$1() {
+function $h_Lakka_actor_JSLocalActorRefProvider$$anon$1() {
   /*<skip>*/
 }
-$h_Lakka_actor_LocalActorRefProvider$$anon$1.prototype = $c_Lakka_actor_LocalActorRefProvider$$anon$1.prototype;
-$c_Lakka_actor_LocalActorRefProvider$$anon$1.prototype.init___Lakka_actor_LocalActorRefProvider = (function($$outer) {
+$h_Lakka_actor_JSLocalActorRefProvider$$anon$1.prototype = $c_Lakka_actor_JSLocalActorRefProvider$$anon$1.prototype;
+$c_Lakka_actor_JSLocalActorRefProvider$$anon$1.prototype.init___Lakka_actor_JSLocalActorRefProvider = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
     this.$$outer$5 = $$outer
   };
-  var jsx$1 = $$outer.akka$actor$LocalActorRefProvider$$system$1;
+  var jsx$1 = $$outer.akka$actor$JSLocalActorRefProvider$$system$2;
   var this$2 = $m_Lakka_actor_Props$();
   var creator = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(arg$outer) {
     return (function() {
-      return new $c_Lakka_actor_LocalActorRefProvider$Guardian().init___Lakka_actor_SupervisorStrategy(arg$outer.rootGuardianStrategy__Lakka_actor_SupervisorStrategy())
+      return new $c_Lakka_actor_JSLocalActorRefProvider$Guardian().init___Lakka_actor_SupervisorStrategy(arg$outer.rootGuardianStrategy__Lakka_actor_SupervisorStrategy())
     })
   })($$outer));
-  $c_Lakka_actor_LocalActorRef.prototype.init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath.call(this, jsx$1, this$2.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_LocalActorRefProvider$Guardian.getClassOf(), creator), $$outer.akka$actor$LocalActorRefProvider$$defaultDispatcher__Lakka_dispatch_MessageDispatcher(), $$outer.akka$actor$LocalActorRefProvider$$defaultMailbox__Lakka_dispatch_MailboxType(), $$outer.theOneWhoWalksTheBubblesOfSpaceTime$1, $$outer.rootPath$1);
+  $c_Lakka_actor_LocalActorRef.prototype.init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath.call(this, jsx$1, this$2.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_JSLocalActorRefProvider$Guardian.getClassOf(), creator), $$outer.akka$actor$JSLocalActorRefProvider$$defaultDispatcher__Lakka_dispatch_MessageDispatcher(), $$outer.akka$actor$JSLocalActorRefProvider$$defaultMailbox__Lakka_dispatch_MailboxType(), $$outer.theOneWhoWalksTheBubblesOfSpaceTime$1, $$outer.rootPath$1);
   return this
 });
-$c_Lakka_actor_LocalActorRefProvider$$anon$1.prototype.getSingleChild__T__Lakka_actor_InternalActorRef = (function(name) {
+$c_Lakka_actor_JSLocalActorRefProvider$$anon$1.prototype.getSingleChild__T__Lakka_actor_InternalActorRef = (function(name) {
   if ((name === "temp")) {
     return this.$$outer$5.tempContainer__Lakka_actor_VirtualPathContainer()
   } else if ((name === "deadLetters")) {
     return this.$$outer$5.deadLetters$1
   } else {
-    var this$1 = this.$$outer$5.akka$actor$LocalActorRefProvider$$extraNames$1.get__O__s_Option(name);
+    var this$1 = this.$$outer$5.akka$actor$JSLocalActorRefProvider$$extraNames$2.get__O__s_Option(name);
     if (this$1.isEmpty__Z()) {
       var this$2 = this.actorCell$4;
       var jsx$1 = $s_Lakka_actor_dungeon_Children$class__getSingleChild__Lakka_actor_ActorCell__T__Lakka_actor_InternalActorRef(this$2, name)
@@ -63785,13 +64253,13 @@ $c_Lakka_actor_LocalActorRefProvider$$anon$1.prototype.getSingleChild__T__Lakka_
     return $as_Lakka_actor_InternalActorRef(jsx$1)
   }
 });
-$c_Lakka_actor_LocalActorRefProvider$$anon$1.prototype.getParent__Lakka_actor_InternalActorRef = (function() {
+$c_Lakka_actor_JSLocalActorRefProvider$$anon$1.prototype.getParent__Lakka_actor_InternalActorRef = (function() {
   return this
 });
-var $d_Lakka_actor_LocalActorRefProvider$$anon$1 = new $TypeData().initClass({
-  Lakka_actor_LocalActorRefProvider$$anon$1: 0
-}, false, "akka.actor.LocalActorRefProvider$$anon$1", {
-  Lakka_actor_LocalActorRefProvider$$anon$1: 1,
+var $d_Lakka_actor_JSLocalActorRefProvider$$anon$1 = new $TypeData().initClass({
+  Lakka_actor_JSLocalActorRefProvider$$anon$1: 0
+}, false, "akka.actor.JSLocalActorRefProvider$$anon$1", {
+  Lakka_actor_JSLocalActorRefProvider$$anon$1: 1,
   Lakka_actor_LocalActorRef: 1,
   Lakka_actor_ActorRefWithCell: 1,
   Lakka_actor_InternalActorRef: 1,
@@ -63804,13 +64272,14 @@ var $d_Lakka_actor_LocalActorRefProvider$$anon$1 = new $TypeData().initClass({
   Lakka_actor_LocalRef: 1,
   Lakka_actor_ActorRefScope: 1
 });
-$c_Lakka_actor_LocalActorRefProvider$$anon$1.prototype.$classData = $d_Lakka_actor_LocalActorRefProvider$$anon$1;
+$c_Lakka_actor_JSLocalActorRefProvider$$anon$1.prototype.$classData = $d_Lakka_actor_JSLocalActorRefProvider$$anon$1;
 /** @constructor */
 function $c_Lakka_event_Logging$StandardOutLogger() {
   $c_Lakka_actor_InternalActorRef.call(this);
   this.path$3 = null;
   this.toString$3 = null;
   this.akka$event$Logging$StdOutLogger$$date$3 = null;
+  this.akka$event$Logging$StdOutLogger$$dateFormat$3 = null;
   this.akka$event$Logging$StdOutLogger$$errorFormat$3 = null;
   this.akka$event$Logging$StdOutLogger$$errorFormatWithoutCause$3 = null;
   this.akka$event$Logging$StdOutLogger$$warningFormat$3 = null;
@@ -63824,6 +64293,9 @@ function $h_Lakka_event_Logging$StandardOutLogger() {
   /*<skip>*/
 }
 $h_Lakka_event_Logging$StandardOutLogger.prototype = $c_Lakka_event_Logging$StandardOutLogger.prototype;
+$c_Lakka_event_Logging$StandardOutLogger.prototype.self$und$eq__Lakka_actor_ActorRef__ = (function(x$1) {
+  this.self$1 = x$1
+});
 $c_Lakka_event_Logging$StandardOutLogger.prototype.init___ = (function() {
   $s_Lakka_event_Logging$StdOutLogger$class__$$init$__Lakka_event_Logging$StdOutLogger__V(this);
   this.path$3 = new $c_Lakka_actor_RootActorPath().init___Lakka_actor_Address__T(new $c_Lakka_actor_Address().init___T__T("akka", "all-systems"), "/StandardOutLogger");
@@ -63872,8 +64344,14 @@ $c_Lakka_event_Logging$StandardOutLogger.prototype.start__V = (function() {
 $c_Lakka_event_Logging$StandardOutLogger.prototype.akka$event$Logging$StdOutLogger$$date__ju_Date = (function() {
   return this.akka$event$Logging$StdOutLogger$$date$3
 });
+$c_Lakka_event_Logging$StandardOutLogger.prototype.context$und$eq__Lakka_actor_ActorContext__ = (function(x$1) {
+  this.context$1 = x$1
+});
 $c_Lakka_event_Logging$StandardOutLogger.prototype.path__Lakka_actor_ActorPath = (function() {
   return this.path$3
+});
+$c_Lakka_event_Logging$StandardOutLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$dateFormat$und$eq__Ljava_text_SimpleDateFormat__V = (function(x$1) {
+  this.akka$event$Logging$StdOutLogger$$dateFormat$3 = x$1
 });
 $c_Lakka_event_Logging$StandardOutLogger.prototype.sendSystemMessage__Lakka_dispatch_sysmsg_SystemMessage__V = (function(message) {
   /*<skip>*/
@@ -63899,6 +64377,9 @@ $c_Lakka_event_Logging$StandardOutLogger.prototype.akka$event$Logging$StdOutLogg
 });
 $c_Lakka_event_Logging$StandardOutLogger.prototype.$$bang$default$2__O__Lakka_actor_ActorRef = (function(message) {
   return $m_Lakka_actor_Actor$().noSender$1
+});
+$c_Lakka_event_Logging$StandardOutLogger.prototype.akka$event$Logging$StdOutLogger$$dateFormat__Ljava_text_SimpleDateFormat = (function() {
+  return this.akka$event$Logging$StdOutLogger$$dateFormat$3
 });
 $c_Lakka_event_Logging$StandardOutLogger.prototype.akka$event$Logging$StdOutLogger$$undsetter$und$akka$event$Logging$StdOutLogger$$infoFormat$und$eq__T__V = (function(x$1) {
   this.akka$event$Logging$StdOutLogger$$infoFormat$3 = x$1
@@ -63962,7 +64443,14 @@ $c_Lakka_routing_RoutedActorRef.prototype.newCell__Lakka_actor_UnstartedCell__La
 $c_Lakka_routing_RoutedActorRef.prototype.init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_Props__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath = (function(_system, _routerProps, _routerDispatcher, _routerMailbox, _routeeProps, _supervisor, _path) {
   this.$$undrouteeProps$5 = _routeeProps;
   $c_Lakka_actor_RepointableActorRef.prototype.init___Lakka_actor_ActorSystemImpl__Lakka_actor_Props__Lakka_dispatch_MessageDispatcher__Lakka_dispatch_MailboxType__Lakka_actor_InternalActorRef__Lakka_actor_ActorPath.call(this, _system, _routerProps, _routerDispatcher, _routerMailbox, _supervisor, _path);
-  this.props$4;
+  var this$1 = this.props$4;
+  var x = this$1.deploy$1.routerConfig$1;
+  var x$2 = $m_Lakka_routing_NoRouter$();
+  if (((!((x !== null) && (x === x$2))) && $is_Lakka_dispatch_BalancingDispatcher(this.dispatcher$4))) {
+    throw new $c_Lakka_ConfigurationException().init___T((("Configuration for " + this) + " is invalid - you can not use a 'BalancingDispatcher' as a Router's dispatcher, you can however use it for the routees."))
+  } else {
+    this.props$4
+  };
   return this
 });
 var $d_Lakka_routing_RoutedActorRef = new $TypeData().initClass({
@@ -65759,6 +66247,9 @@ $c_sc_AbstractIterable.prototype.thisCollection__sc_Traversable = (function() {
 $c_sc_AbstractIterable.prototype.seq__sc_Iterable = (function() {
   return this
 });
+$c_sc_AbstractIterable.prototype.isEmpty__Z = (function() {
+  return $s_sc_IterableLike$class__isEmpty__sc_IterableLike__Z(this)
+});
 $c_sc_AbstractIterable.prototype.companion__scg_GenericCompanion = (function() {
   return $m_sc_Iterable$()
 });
@@ -65773,11 +66264,11 @@ $c_sc_AbstractIterable.prototype.foreach__F1__V = (function(f) {
 $c_sc_AbstractIterable.prototype.take__I__O = (function(n) {
   return $s_sc_IterableLike$class__take__sc_IterableLike__I__O(this, n)
 });
-$c_sc_AbstractIterable.prototype.drop__I__O = (function(n) {
-  return $s_sc_IterableLike$class__drop__sc_IterableLike__I__O(this, n)
-});
 $c_sc_AbstractIterable.prototype.toStream__sci_Stream = (function() {
   return this.iterator__sc_Iterator().toStream__sci_Stream()
+});
+$c_sc_AbstractIterable.prototype.drop__I__O = (function(n) {
+  return $s_sc_IterableLike$class__drop__sc_IterableLike__I__O(this, n)
 });
 $c_sc_AbstractIterable.prototype.copyToArray__O__I__I__V = (function(xs, start, len) {
   $s_sc_IterableLike$class__copyToArray__sc_IterableLike__O__I__I__V(this, xs, start, len)
@@ -66288,6 +66779,62 @@ var $d_Lakka_actor_dungeon_ChildrenContainer$ChildrenIterable = new $TypeData().
   s_Equals: 1
 });
 $c_Lakka_actor_dungeon_ChildrenContainer$ChildrenIterable.prototype.$classData = $d_Lakka_actor_dungeon_ChildrenContainer$ChildrenIterable;
+/** @constructor */
+function $c_sc_MapLike$DefaultValuesIterable() {
+  $c_sc_AbstractIterable.call(this);
+  this.$$outer$f = null
+}
+$c_sc_MapLike$DefaultValuesIterable.prototype = new $h_sc_AbstractIterable();
+$c_sc_MapLike$DefaultValuesIterable.prototype.constructor = $c_sc_MapLike$DefaultValuesIterable;
+/** @constructor */
+function $h_sc_MapLike$DefaultValuesIterable() {
+  /*<skip>*/
+}
+$h_sc_MapLike$DefaultValuesIterable.prototype = $c_sc_MapLike$DefaultValuesIterable.prototype;
+$c_sc_MapLike$DefaultValuesIterable.prototype.foreach__F1__V = (function(f) {
+  var this$1 = this.$$outer$f.valuesIterator__sc_Iterator();
+  $s_sc_Iterator$class__foreach__sc_Iterator__F1__V(this$1, f)
+});
+$c_sc_MapLike$DefaultValuesIterable.prototype.size__I = (function() {
+  return this.$$outer$f.size__I()
+});
+$c_sc_MapLike$DefaultValuesIterable.prototype.iterator__sc_Iterator = (function() {
+  return this.$$outer$f.valuesIterator__sc_Iterator()
+});
+$c_sc_MapLike$DefaultValuesIterable.prototype.init___sc_MapLike = (function($$outer) {
+  if (($$outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    this.$$outer$f = $$outer
+  };
+  return this
+});
+var $d_sc_MapLike$DefaultValuesIterable = new $TypeData().initClass({
+  sc_MapLike$DefaultValuesIterable: 0
+}, false, "scala.collection.MapLike$DefaultValuesIterable", {
+  sc_MapLike$DefaultValuesIterable: 1,
+  sc_AbstractIterable: 1,
+  sc_AbstractTraversable: 1,
+  O: 1,
+  sc_Traversable: 1,
+  sc_TraversableLike: 1,
+  scg_HasNewBuilder: 1,
+  scg_FilterMonadic: 1,
+  sc_TraversableOnce: 1,
+  sc_GenTraversableOnce: 1,
+  sc_GenTraversableLike: 1,
+  sc_Parallelizable: 1,
+  sc_GenTraversable: 1,
+  scg_GenericTraversableTemplate: 1,
+  sc_Iterable: 1,
+  sc_GenIterable: 1,
+  sc_GenIterableLike: 1,
+  sc_IterableLike: 1,
+  s_Equals: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_sc_MapLike$DefaultValuesIterable.prototype.$classData = $d_sc_MapLike$DefaultValuesIterable;
 function $is_sc_Seq(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sc_Seq)))
 }
@@ -68749,9 +69296,6 @@ $c_sc_AbstractMap.prototype.toString__T = (function() {
 $c_sc_AbstractMap.prototype.keysIterator__sc_Iterator = (function() {
   return new $c_sc_MapLike$$anon$1().init___sc_MapLike(this)
 });
-$c_sc_AbstractMap.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  return $s_scg_Subtractable$class__$$minus$minus__scg_Subtractable__sc_GenTraversableOnce__scg_Subtractable(this, xs)
-});
 $c_sc_AbstractMap.prototype.toBuffer__scm_Buffer = (function() {
   return $s_sc_MapLike$class__toBuffer__sc_MapLike__scm_Buffer(this)
 });
@@ -68831,9 +69375,6 @@ $c_sc_AbstractSet.prototype.companion__scg_GenericCompanion = (function() {
 $c_sc_AbstractSet.prototype.subsetOf__sc_GenSet__Z = (function(that) {
   return this.forall__F1__Z(that)
 });
-$c_sc_AbstractSet.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  return $s_scg_Subtractable$class__$$minus$minus__scg_Subtractable__sc_GenTraversableOnce__scg_Subtractable(this, xs)
-});
 $c_sc_AbstractSet.prototype.toBuffer__scm_Buffer = (function() {
   return $s_sc_SetLike$class__toBuffer__sc_SetLike__scm_Buffer(this)
 });
@@ -68842,6 +69383,9 @@ $c_sc_AbstractSet.prototype.empty__sc_Set = (function() {
 });
 $c_sc_AbstractSet.prototype.seq__sc_Set = (function() {
   return this
+});
+$c_sc_AbstractSet.prototype.diff__sc_GenSet__sc_Set = (function(that) {
+  return $as_sc_Set($s_scg_Subtractable$class__$$minus$minus__scg_Subtractable__sc_GenTraversableOnce__scg_Subtractable(this, that))
 });
 $c_sc_AbstractSet.prototype.empty__sc_GenSet = (function() {
   return $as_sc_GenSet(this.companion__scg_GenericCompanion().empty__sc_GenTraversable())
@@ -68862,6 +69406,9 @@ $c_sc_AbstractSet.prototype.newBuilder__scm_Builder = (function() {
 });
 $c_sc_AbstractSet.prototype.stringPrefix__T = (function() {
   return "Set"
+});
+$c_sc_AbstractSet.prototype.union__sc_GenSet__sc_Set = (function(that) {
+  return this.$$plus$plus__sc_GenTraversableOnce__sc_Set(that)
 });
 function $is_sci_Set(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sci_Set)))
@@ -70231,6 +70778,18 @@ function $h_sci_HashSet() {
   /*<skip>*/
 }
 $h_sci_HashSet.prototype = $c_sci_HashSet.prototype;
+$c_sci_HashSet.prototype.diff__sc_GenSet__sci_HashSet = (function(that) {
+  if ($is_sci_HashSet(that)) {
+    var x2 = $as_sci_HashSet(that);
+    var size = this.size__I();
+    var $$this = ((6 + size) | 0);
+    var buffer = $newArrayObject($d_sci_HashSet.getArrayOf(), [(($$this < 224) ? $$this : 224)]);
+    var s = this.diff0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet(x2, 0, buffer, 0);
+    return ((s === null) ? $m_sci_HashSet$EmptyHashSet$() : s)
+  } else {
+    return $as_sci_HashSet($as_sc_Set($s_scg_Subtractable$class__$$minus$minus__scg_Subtractable__sc_GenTraversableOnce__scg_Subtractable(this, that)))
+  }
+});
 $c_sci_HashSet.prototype.updated0__O__I__I__sci_HashSet = (function(key, hash, level) {
   return new $c_sci_HashSet$HashSet1().init___O__I(key, hash)
 });
@@ -70261,8 +70820,14 @@ $c_sci_HashSet.prototype.seq__sc_Iterable = (function() {
 $c_sci_HashSet.prototype.thisCollection__sc_Traversable = (function() {
   return this
 });
+$c_sci_HashSet.prototype.union0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet = (function(that, level, buffer, offset0) {
+  return that
+});
 $c_sci_HashSet.prototype.companion__scg_GenericCompanion = (function() {
   return $m_sci_HashSet$()
+});
+$c_sci_HashSet.prototype.foreach__F1__V = (function(f) {
+  /*<skip>*/
 });
 $c_sci_HashSet.prototype.filter__F1__sci_HashSet = (function(p) {
   var size = this.size__I();
@@ -70270,9 +70835,6 @@ $c_sci_HashSet.prototype.filter__F1__sci_HashSet = (function(p) {
   var buffer = $newArrayObject($d_sci_HashSet.getArrayOf(), [(($$this < 224) ? $$this : 224)]);
   var s = this.filter0__F1__Z__I__Asci_HashSet__I__sci_HashSet(p, false, 0, buffer, 0);
   return ((s === null) ? $m_sci_HashSet$EmptyHashSet$() : s)
-});
-$c_sci_HashSet.prototype.foreach__F1__V = (function(f) {
-  /*<skip>*/
 });
 $c_sci_HashSet.prototype.subsetOf__sc_GenSet__Z = (function(that) {
   if ($is_sci_HashSet(that)) {
@@ -70282,6 +70844,9 @@ $c_sci_HashSet.prototype.subsetOf__sc_GenSet__Z = (function(that) {
     var this$1 = this.iterator__sc_Iterator();
     return $s_sc_Iterator$class__forall__sc_Iterator__F1__Z(this$1, that)
   }
+});
+$c_sci_HashSet.prototype.union0__sci_HashSet$LeafHashSet__I__sci_HashSet = (function(that, level) {
+  return that
 });
 $c_sci_HashSet.prototype.filter__F1__O = (function(p) {
   return this.filter__F1__sci_HashSet(p)
@@ -70324,14 +70889,32 @@ $c_sci_HashSet.prototype.improve__I__I = (function(hcode) {
 $c_sci_HashSet.prototype.seq__sc_Set = (function() {
   return this
 });
+$c_sci_HashSet.prototype.union__sc_GenSet__sci_HashSet = (function(that) {
+  if ($is_sci_HashSet(that)) {
+    var x2 = $as_sci_HashSet(that);
+    var size = ((this.size__I() + x2.size__I()) | 0);
+    var $$this = ((6 + size) | 0);
+    var buffer = $newArrayObject($d_sci_HashSet.getArrayOf(), [(($$this < 224) ? $$this : 224)]);
+    var s = this.union0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet(x2, 0, buffer, 0);
+    return ((s === null) ? $m_sci_HashSet$EmptyHashSet$() : s)
+  } else {
+    return $as_sci_HashSet($s_sc_SetLike$class__$$plus$plus__sc_SetLike__sc_GenTraversableOnce__sc_Set(this, that))
+  }
+});
 $c_sci_HashSet.prototype.contains__O__Z = (function(e) {
   return this.get0__O__I__I__Z(e, this.computeHash__O__I(e), 0)
+});
+$c_sci_HashSet.prototype.diff__sc_GenSet__sc_Set = (function(that) {
+  return this.diff__sc_GenSet__sci_HashSet(that)
 });
 $c_sci_HashSet.prototype.empty__sc_GenSet = (function() {
   return $m_sci_HashSet$EmptyHashSet$()
 });
 $c_sci_HashSet.prototype.toSet__sci_Set = (function() {
   return this
+});
+$c_sci_HashSet.prototype.diff0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet = (function(that, level, buffer, offset0) {
+  return null
 });
 $c_sci_HashSet.prototype.filter0__F1__Z__I__Asci_HashSet__I__sci_HashSet = (function(p, negate, level, buffer, offset0) {
   return null
@@ -70344,6 +70927,9 @@ $c_sci_HashSet.prototype.get0__O__I__I__Z = (function(key, hash, level) {
 });
 $c_sci_HashSet.prototype.subsetOf0__sci_HashSet__I__Z = (function(that, level) {
   return true
+});
+$c_sci_HashSet.prototype.union__sc_GenSet__sc_Set = (function(that) {
+  return this.union__sc_GenSet__sci_HashSet(that)
 });
 function $is_sci_HashSet(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sci_HashSet)))
@@ -70716,11 +71302,97 @@ $c_sci_HashSet$HashTrieSet.prototype.updated0__O__I__I__sci_HashSet = (function(
     return new $c_sci_HashSet$HashTrieSet().init___I__Asci_HashSet__I(bitmapNew, elemsNew$2, ((1 + this.size0$5) | 0))
   }
 });
+$c_sci_HashSet$HashTrieSet.prototype.union0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet = (function(that, level, buffer, offset0) {
+  if ((that === this)) {
+    return this
+  } else if ($is_sci_HashSet$LeafHashSet(that)) {
+    var x2 = $as_sci_HashSet$LeafHashSet(that);
+    return this.union0__sci_HashSet$LeafHashSet__I__sci_HashSet(x2, level)
+  } else if ($is_sci_HashSet$HashTrieSet(that)) {
+    var x3 = $as_sci_HashSet$HashTrieSet(that);
+    var a = this.elems$5;
+    var abm = this.bitmap$5;
+    var ai = 0;
+    var b = x3.elems$5;
+    var bbm = x3.bitmap$5;
+    var bi = 0;
+    var offset = offset0;
+    var rs = 0;
+    while (((abm | bbm) !== 0)) {
+      var alsb = (abm ^ (abm & (((-1) + abm) | 0)));
+      var blsb = (bbm ^ (bbm & (((-1) + bbm) | 0)));
+      if ((alsb === blsb)) {
+        var sub1 = a.u[ai].union0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet(b.u[bi], ((5 + level) | 0), buffer, offset);
+        rs = ((rs + sub1.size__I()) | 0);
+        buffer.u[offset] = sub1;
+        offset = ((1 + offset) | 0);
+        abm = (abm & (~alsb));
+        ai = ((1 + ai) | 0);
+        bbm = (bbm & (~blsb));
+        bi = ((1 + bi) | 0)
+      } else {
+        var i = (((-1) + alsb) | 0);
+        var j = (((-1) + blsb) | 0);
+        if ((((i < j) !== (i < 0)) !== (j < 0))) {
+          var sub1$2 = a.u[ai];
+          rs = ((rs + sub1$2.size__I()) | 0);
+          buffer.u[offset] = sub1$2;
+          offset = ((1 + offset) | 0);
+          abm = (abm & (~alsb));
+          ai = ((1 + ai) | 0)
+        } else {
+          var sub1$3 = b.u[bi];
+          rs = ((rs + sub1$3.size__I()) | 0);
+          buffer.u[offset] = sub1$3;
+          offset = ((1 + offset) | 0);
+          bbm = (bbm & (~blsb));
+          bi = ((1 + bi) | 0)
+        }
+      }
+    };
+    if ((rs === this.size0$5)) {
+      return this
+    } else if ((rs === x3.size0$5)) {
+      return x3
+    } else {
+      var length = ((offset - offset0) | 0);
+      var elems = $newArrayObject($d_sci_HashSet.getArrayOf(), [length]);
+      $systemArraycopy(buffer, offset0, elems, 0, length);
+      return new $c_sci_HashSet$HashTrieSet().init___I__Asci_HashSet__I((this.bitmap$5 | x3.bitmap$5), elems, rs)
+    }
+  } else {
+    return this
+  }
+});
 $c_sci_HashSet$HashTrieSet.prototype.foreach__F1__V = (function(f) {
   var i = 0;
   while ((i < this.elems$5.u.length)) {
     this.elems$5.u[i].foreach__F1__V(f);
     i = ((1 + i) | 0)
+  }
+});
+$c_sci_HashSet$HashTrieSet.prototype.union0__sci_HashSet$LeafHashSet__I__sci_HashSet = (function(that, level) {
+  var index = (31 & ((that.hash__I() >>> level) | 0));
+  var mask = (1 << index);
+  var offset = $m_jl_Integer$().bitCount__I__I((this.bitmap$5 & (((-1) + mask) | 0)));
+  if (((this.bitmap$5 & mask) !== 0)) {
+    var sub = this.elems$5.u[offset];
+    var sub1 = sub.union0__sci_HashSet$LeafHashSet__I__sci_HashSet(that, ((5 + level) | 0));
+    if ((sub === sub1)) {
+      return this
+    } else {
+      var elems1 = $newArrayObject($d_sci_HashSet.getArrayOf(), [this.elems$5.u.length]);
+      $m_s_Array$().copy__O__I__O__I__I__V(this.elems$5, 0, elems1, 0, this.elems$5.u.length);
+      elems1.u[offset] = sub1;
+      return new $c_sci_HashSet$HashTrieSet().init___I__Asci_HashSet__I(this.bitmap$5, elems1, ((this.size0$5 + ((sub1.size__I() - sub.size__I()) | 0)) | 0))
+    }
+  } else {
+    var elems1$2 = $newArrayObject($d_sci_HashSet.getArrayOf(), [((1 + this.elems$5.u.length) | 0)]);
+    $m_s_Array$().copy__O__I__O__I__I__V(this.elems$5, 0, elems1$2, 0, offset);
+    elems1$2.u[offset] = that;
+    $m_s_Array$().copy__O__I__O__I__I__V(this.elems$5, offset, elems1$2, ((1 + offset) | 0), ((this.elems$5.u.length - offset) | 0));
+    var bitmap1 = (this.bitmap$5 | mask);
+    return new $c_sci_HashSet$HashTrieSet().init___I__Asci_HashSet__I(bitmap1, elems1$2, ((this.size0$5 + that.size__I()) | 0))
   }
 });
 $c_sci_HashSet$HashTrieSet.prototype.size__I = (function() {
@@ -70762,6 +71434,83 @@ $c_sci_HashSet$HashTrieSet.prototype.removed0__O__I__I__sci_HashSet = (function(
     return this
   }
 });
+$c_sci_HashSet$HashTrieSet.prototype.diff0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet = (function(that, level, buffer, offset0) {
+  if ((that === this)) {
+    return null
+  } else if ($is_sci_HashSet$HashSet1(that)) {
+    var x2 = $as_sci_HashSet$HashSet1(that);
+    return this.removed0__O__I__I__sci_HashSet(x2.key$6, x2.hash$6, level)
+  } else if ($is_sci_HashSet$HashTrieSet(that)) {
+    var x3 = $as_sci_HashSet$HashTrieSet(that);
+    var a = this.elems$5;
+    var abm = this.bitmap$5;
+    var ai = 0;
+    var b = x3.elems$5;
+    var bbm = x3.bitmap$5;
+    var bi = 0;
+    var offset = offset0;
+    var rs = 0;
+    var rbm = 0;
+    while ((abm !== 0)) {
+      var alsb = (abm ^ (abm & (((-1) + abm) | 0)));
+      var blsb = (bbm ^ (bbm & (((-1) + bbm) | 0)));
+      if ((alsb === blsb)) {
+        var sub1 = a.u[ai].diff0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet(b.u[bi], ((5 + level) | 0), buffer, offset);
+        if ((sub1 !== null)) {
+          rs = ((rs + sub1.size__I()) | 0);
+          rbm = (rbm | alsb);
+          buffer.u[offset] = sub1;
+          offset = ((1 + offset) | 0)
+        };
+        abm = (abm & (~alsb));
+        ai = ((1 + ai) | 0);
+        bbm = (bbm & (~blsb));
+        bi = ((1 + bi) | 0)
+      } else {
+        var i = (((-1) + alsb) | 0);
+        var j = (((-1) + blsb) | 0);
+        if ((((i < j) !== (i < 0)) !== (j < 0))) {
+          var sub1$2 = a.u[ai];
+          rs = ((rs + sub1$2.size__I()) | 0);
+          rbm = (rbm | alsb);
+          buffer.u[offset] = sub1$2;
+          offset = ((1 + offset) | 0);
+          abm = (abm & (~alsb));
+          ai = ((1 + ai) | 0)
+        } else {
+          bbm = (bbm & (~blsb));
+          bi = ((1 + bi) | 0)
+        }
+      }
+    };
+    if ((rbm === 0)) {
+      return null
+    } else if ((rs === this.size0$5)) {
+      return this
+    } else {
+      var length = ((offset - offset0) | 0);
+      if (((length === 1) && (!$is_sci_HashSet$HashTrieSet(buffer.u[offset0])))) {
+        return buffer.u[offset0]
+      } else {
+        var elems = $newArrayObject($d_sci_HashSet.getArrayOf(), [length]);
+        $systemArraycopy(buffer, offset0, elems, 0, length);
+        return new $c_sci_HashSet$HashTrieSet().init___I__Asci_HashSet__I(rbm, elems, rs)
+      }
+    }
+  } else if ($is_sci_HashSet$HashSetCollision1(that)) {
+    var x4 = $as_sci_HashSet$HashSetCollision1(that);
+    return this.removeAll$1__p5__sci_HashSet__sci_ListSet__I__sci_HashSet$HashSetCollision1__sci_HashSet(this, x4.ks$6, level, x4)
+  } else {
+    return this
+  }
+});
+$c_sci_HashSet$HashTrieSet.prototype.init___I__Asci_HashSet__I = (function(bitmap, elems, size0) {
+  this.bitmap$5 = bitmap;
+  this.elems$5 = elems;
+  this.size0$5 = size0;
+  $m_s_Predef$().assert__Z__V(($m_jl_Integer$().bitCount__I__I(bitmap) === elems.u.length));
+  return this
+});
 $c_sci_HashSet$HashTrieSet.prototype.filter0__F1__Z__I__Asci_HashSet__I__sci_HashSet = (function(p, negate, level, buffer, offset0) {
   var offset = offset0;
   var rs = 0;
@@ -70791,13 +71540,6 @@ $c_sci_HashSet$HashTrieSet.prototype.filter0__F1__Z__I__Asci_HashSet__I__sci_Has
     return new $c_sci_HashSet$HashTrieSet().init___I__Asci_HashSet__I(bitmap1, elems1, rs)
   }
 });
-$c_sci_HashSet$HashTrieSet.prototype.init___I__Asci_HashSet__I = (function(bitmap, elems, size0) {
-  this.bitmap$5 = bitmap;
-  this.elems$5 = elems;
-  this.size0$5 = size0;
-  $m_s_Predef$().assert__Z__V(($m_jl_Integer$().bitCount__I__I(bitmap) === elems.u.length));
-  return this
-});
 $c_sci_HashSet$HashTrieSet.prototype.get0__O__I__I__Z = (function(key, hash, level) {
   var index = (31 & ((hash >>> level) | 0));
   var mask = (1 << index);
@@ -70808,6 +71550,19 @@ $c_sci_HashSet$HashTrieSet.prototype.get0__O__I__I__Z = (function(key, hash, lev
     return this.elems$5.u[offset].get0__O__I__I__Z(key, hash, ((5 + level) | 0))
   } else {
     return false
+  }
+});
+$c_sci_HashSet$HashTrieSet.prototype.removeAll$1__p5__sci_HashSet__sci_ListSet__I__sci_HashSet$HashSetCollision1__sci_HashSet = (function(s, r, level$4, x4$1) {
+  _removeAll: while (true) {
+    if ((r.isEmpty__Z() || (s === null))) {
+      return s
+    } else {
+      var temp$s = s.removed0__O__I__I__sci_HashSet(r.head__O(), x4$1.hash$6, level$4);
+      var temp$r = r.tail__sci_ListSet();
+      s = temp$s;
+      r = temp$r;
+      continue _removeAll
+    }
   }
 });
 $c_sci_HashSet$HashTrieSet.prototype.subsetOf0__sci_HashSet__I__Z = (function(that, level) {
@@ -70909,6 +71664,18 @@ function $h_sci_HashSet$LeafHashSet() {
   /*<skip>*/
 }
 $h_sci_HashSet$LeafHashSet.prototype = $c_sci_HashSet$LeafHashSet.prototype;
+function $is_sci_HashSet$LeafHashSet(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sci_HashSet$LeafHashSet)))
+}
+function $as_sci_HashSet$LeafHashSet(obj) {
+  return (($is_sci_HashSet$LeafHashSet(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.immutable.HashSet$LeafHashSet"))
+}
+function $isArrayOf_sci_HashSet$LeafHashSet(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.sci_HashSet$LeafHashSet)))
+}
+function $asArrayOf_sci_HashSet$LeafHashSet(obj, depth) {
+  return (($isArrayOf_sci_HashSet$LeafHashSet(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.immutable.HashSet$LeafHashSet;", depth))
+}
 /** @constructor */
 function $c_sci_ListMap() {
   $c_sci_AbstractMap.call(this)
@@ -72063,9 +72830,6 @@ $c_sci_TreeMap.prototype.drop__I__sci_TreeMap = (function(n) {
     return new $c_sci_TreeMap().init___sci_RedBlackTree$Tree__s_math_Ordering($m_sci_RedBlackTree$().drop__sci_RedBlackTree$Tree__I__s_math_Ordering__sci_RedBlackTree$Tree(this.tree$1, n, this.ordering$1), this.ordering$1)
   }
 });
-$c_sci_TreeMap.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  return $s_scg_Subtractable$class__$$minus$minus__scg_Subtractable__sc_GenTraversableOnce__scg_Subtractable(this, xs)
-});
 $c_sci_TreeMap.prototype.toVector__sci_Vector = (function() {
   $m_sci_Vector$();
   var cbf = $m_sc_IndexedSeq$().ReusableCBF$6;
@@ -72440,6 +73204,9 @@ $c_sci_HashSet$HashSet1.prototype.updated0__O__I__I__sci_HashSet = (function(key
     return new $c_sci_HashSet$HashSetCollision1().init___I__sci_ListSet(hash, new $c_sci_ListSet$Node().init___sci_ListSet__O(this$2, elem).$$plus__O__sci_ListSet(key))
   }
 });
+$c_sci_HashSet$HashSet1.prototype.union0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet = (function(that, level, buffer, offset0) {
+  return that.union0__sci_HashSet$LeafHashSet__I__sci_HashSet(this, level)
+});
 $c_sci_HashSet$HashSet1.prototype.init___O__I = (function(key, hash) {
   this.key$6 = key;
   this.hash$6 = hash;
@@ -72448,19 +73215,46 @@ $c_sci_HashSet$HashSet1.prototype.init___O__I = (function(key, hash) {
 $c_sci_HashSet$HashSet1.prototype.foreach__F1__V = (function(f) {
   f.apply__O__O(this.key$6)
 });
+$c_sci_HashSet$HashSet1.prototype.union0__sci_HashSet$LeafHashSet__I__sci_HashSet = (function(that, level) {
+  if ((that.hash__I() !== this.hash$6)) {
+    return $m_sci_HashSet$().scala$collection$immutable$HashSet$$makeHashTrieSet__I__sci_HashSet__I__sci_HashSet__I__sci_HashSet$HashTrieSet(this.hash$6, this, that.hash__I(), that, level)
+  } else if ($is_sci_HashSet$HashSet1(that)) {
+    var x2 = $as_sci_HashSet$HashSet1(that);
+    if ($m_sr_BoxesRunTime$().equals__O__O__Z(this.key$6, x2.key$6)) {
+      return this
+    } else {
+      var jsx$1 = this.hash$6;
+      var this$2 = $m_sci_ListSet$EmptyListSet$();
+      var elem = this.key$6;
+      return new $c_sci_HashSet$HashSetCollision1().init___I__sci_ListSet(jsx$1, new $c_sci_ListSet$Node().init___sci_ListSet__O(this$2, elem).$$plus__O__sci_ListSet(x2.key$6))
+    }
+  } else if ($is_sci_HashSet$HashSetCollision1(that)) {
+    var x3 = $as_sci_HashSet$HashSetCollision1(that);
+    var ks1 = x3.ks$6.$$plus__O__sci_ListSet(this.key$6);
+    return ((ks1.size__I() === x3.ks$6.size__I()) ? x3 : new $c_sci_HashSet$HashSetCollision1().init___I__sci_ListSet(this.hash$6, ks1))
+  } else {
+    throw new $c_s_MatchError().init___O(that)
+  }
+});
+$c_sci_HashSet$HashSet1.prototype.size__I = (function() {
+  return 1
+});
 $c_sci_HashSet$HashSet1.prototype.iterator__sc_Iterator = (function() {
   $m_sc_Iterator$();
   var elems = new $c_sjs_js_WrappedArray().init___sjs_js_Array([this.key$6]);
   return new $c_sc_IndexedSeqLike$Elements().init___sc_IndexedSeqLike__I__I(elems, 0, $uI(elems.array$6.length))
 });
-$c_sci_HashSet$HashSet1.prototype.size__I = (function() {
-  return 1
-});
 $c_sci_HashSet$HashSet1.prototype.removed0__O__I__I__sci_HashSet = (function(key, hash, level) {
   return (((hash === this.hash$6) && $m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key$6)) ? null : this)
 });
+$c_sci_HashSet$HashSet1.prototype.diff0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet = (function(that, level, buffer, offset0) {
+  return (that.get0__O__I__I__Z(this.key$6, this.hash$6, level) ? null : this)
+});
 $c_sci_HashSet$HashSet1.prototype.filter0__F1__Z__I__Asci_HashSet__I__sci_HashSet = (function(p, negate, level, buffer, offset0) {
   return ((negate !== $uZ(p.apply__O__O(this.key$6))) ? this : null)
+});
+$c_sci_HashSet$HashSet1.prototype.hash__I = (function() {
+  return this.hash$6
 });
 $c_sci_HashSet$HashSet1.prototype.get0__O__I__I__Z = (function(key, hash, level) {
   return ((hash === this.hash$6) && $m_sr_BoxesRunTime$().equals__O__O__Z(key, this.key$6))
@@ -72537,17 +73331,48 @@ $h_sci_HashSet$HashSetCollision1.prototype = $c_sci_HashSet$HashSetCollision1.pr
 $c_sci_HashSet$HashSetCollision1.prototype.updated0__O__I__I__sci_HashSet = (function(key, hash, level) {
   return ((hash === this.hash$6) ? new $c_sci_HashSet$HashSetCollision1().init___I__sci_ListSet(hash, this.ks$6.$$plus__O__sci_ListSet(key)) : $m_sci_HashSet$().scala$collection$immutable$HashSet$$makeHashTrieSet__I__sci_HashSet__I__sci_HashSet__I__sci_HashSet$HashTrieSet(this.hash$6, this, hash, new $c_sci_HashSet$HashSet1().init___O__I(key, hash), level))
 });
+$c_sci_HashSet$HashSetCollision1.prototype.union0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet = (function(that, level, buffer, offset0) {
+  if ($is_sci_HashSet$LeafHashSet(that)) {
+    var x2 = $as_sci_HashSet$LeafHashSet(that);
+    return this.union0__sci_HashSet$LeafHashSet__I__sci_HashSet(x2, level)
+  } else if ($is_sci_HashSet$HashTrieSet(that)) {
+    var x3 = $as_sci_HashSet$HashTrieSet(that);
+    return x3.union0__sci_HashSet$LeafHashSet__I__sci_HashSet(this, level)
+  } else {
+    return this
+  }
+});
 $c_sci_HashSet$HashSetCollision1.prototype.foreach__F1__V = (function(f) {
   var this$1 = this.ks$6;
   var this$2 = new $c_sci_ListSet$$anon$1().init___sci_ListSet(this$1);
   $s_sc_Iterator$class__foreach__sc_Iterator__F1__V(this$2, f)
 });
-$c_sci_HashSet$HashSetCollision1.prototype.iterator__sc_Iterator = (function() {
-  var this$1 = this.ks$6;
-  return new $c_sci_ListSet$$anon$1().init___sci_ListSet(this$1)
+$c_sci_HashSet$HashSetCollision1.prototype.union0__sci_HashSet$LeafHashSet__I__sci_HashSet = (function(that, level) {
+  if ((that.hash__I() !== this.hash$6)) {
+    return $m_sci_HashSet$().scala$collection$immutable$HashSet$$makeHashTrieSet__I__sci_HashSet__I__sci_HashSet__I__sci_HashSet$HashTrieSet(this.hash$6, this, that.hash__I(), that, level)
+  } else if ($is_sci_HashSet$HashSet1(that)) {
+    var x2 = $as_sci_HashSet$HashSet1(that);
+    var ks1 = this.ks$6.$$plus__O__sci_ListSet(x2.key$6);
+    return ((ks1.size__I() === this.ks$6.size__I()) ? this : new $c_sci_HashSet$HashSetCollision1().init___I__sci_ListSet(this.hash$6, ks1))
+  } else if ($is_sci_HashSet$HashSetCollision1(that)) {
+    var x3 = $as_sci_HashSet$HashSetCollision1(that);
+    var ks1$2 = this.ks$6.$$plus$plus__sc_GenTraversableOnce__sci_ListSet(x3.ks$6);
+    var x1$2 = ks1$2.size__I();
+    switch (x1$2) {
+      default: {
+        return ((x1$2 === this.ks$6.size__I()) ? this : ((x1$2 === x3.ks$6.size__I()) ? x3 : new $c_sci_HashSet$HashSetCollision1().init___I__sci_ListSet(this.hash$6, ks1$2)))
+      }
+    }
+  } else {
+    throw new $c_s_MatchError().init___O(that)
+  }
 });
 $c_sci_HashSet$HashSetCollision1.prototype.size__I = (function() {
   return this.ks$6.size__I()
+});
+$c_sci_HashSet$HashSetCollision1.prototype.iterator__sc_Iterator = (function() {
+  var this$1 = this.ks$6;
+  return new $c_sci_ListSet$$anon$1().init___sci_ListSet(this$1)
 });
 $c_sci_HashSet$HashSetCollision1.prototype.removed0__O__I__I__sci_HashSet = (function(key, hash, level) {
   if ((hash === this.hash$6)) {
@@ -72575,6 +73400,25 @@ $c_sci_HashSet$HashSetCollision1.prototype.init___I__sci_ListSet = (function(has
   this.ks$6 = ks;
   return this
 });
+$c_sci_HashSet$HashSetCollision1.prototype.diff0__sci_HashSet__I__Asci_HashSet__I__sci_HashSet = (function(that, level, buffer, offset0) {
+  var this$1 = this.ks$6;
+  var b = new $c_scm_SetBuilder().init___sc_Set($m_sci_ListSet$EmptyListSet$());
+  var this$3 = new $c_sci_ListSet$$anon$1().init___sci_ListSet(this$1);
+  while (true) {
+    var this$4 = this$3.that$2;
+    if ($s_sc_TraversableOnce$class__nonEmpty__sc_TraversableOnce__Z(this$4)) {
+      var arg1 = this$3.next__O();
+      if ((!that.get0__O__I__I__Z(arg1, this.hash$6, level))) {
+        b.$$plus$eq__O__scm_SetBuilder(arg1)
+      }
+    } else {
+      break
+    }
+  };
+  var ks1 = $as_sci_ListSet(b.elems$1);
+  var x1 = ks1.size__I();
+  return ((x1 === 0) ? null : ((x1 === this.ks$6.size__I()) ? this : ((x1 === 1) ? new $c_sci_HashSet$HashSet1().init___O__I(ks1.head__O(), this.hash$6) : new $c_sci_HashSet$HashSetCollision1().init___I__sci_ListSet(this.hash$6, ks1))))
+});
 $c_sci_HashSet$HashSetCollision1.prototype.filter0__F1__Z__I__Asci_HashSet__I__sci_HashSet = (function(p, negate, level, buffer, offset0) {
   if (negate) {
     var this$1 = this.ks$6;
@@ -72597,6 +73441,9 @@ $c_sci_HashSet$HashSetCollision1.prototype.filter0__F1__Z__I__Asci_HashSet__I__s
       return ((x1 === this.ks$6.size__I()) ? this : new $c_sci_HashSet$HashSetCollision1().init___I__sci_ListSet(this.hash$6, ks1))
     }
   }
+});
+$c_sci_HashSet$HashSetCollision1.prototype.hash__I = (function() {
+  return this.hash$6
 });
 $c_sci_HashSet$HashSetCollision1.prototype.get0__O__I__I__Z = (function(key, hash, level) {
   return ((hash === this.hash$6) && this.ks$6.contains__O__Z(key))
@@ -72621,6 +73468,18 @@ $c_sci_HashSet$HashSetCollision1.prototype.subsetOf0__sci_HashSet__I__Z = (funct
   };
   return res
 });
+function $is_sci_HashSet$HashSetCollision1(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.sci_HashSet$HashSetCollision1)))
+}
+function $as_sci_HashSet$HashSetCollision1(obj) {
+  return (($is_sci_HashSet$HashSetCollision1(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.collection.immutable.HashSet$HashSetCollision1"))
+}
+function $isArrayOf_sci_HashSet$HashSetCollision1(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.sci_HashSet$HashSetCollision1)))
+}
+function $asArrayOf_sci_HashSet$HashSetCollision1(obj, depth) {
+  return (($isArrayOf_sci_HashSet$HashSetCollision1(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.immutable.HashSet$HashSetCollision1;", depth))
+}
 var $d_sci_HashSet$HashSetCollision1 = new $TypeData().initClass({
   sci_HashSet$HashSetCollision1: 0
 }, false, "scala.collection.immutable.HashSet$HashSetCollision1", {
@@ -75707,6 +76566,11 @@ $c_scm_AbstractSet.prototype.sizeHintBounded__I__sc_TraversableLike__V = (functi
 $c_scm_AbstractSet.prototype.clone__scm_Set = (function() {
   return $s_scm_SetLike$class__clone__scm_SetLike__scm_Set(this)
 });
+$c_scm_AbstractSet.prototype.diff__sc_GenSet__sc_Set = (function(that) {
+  var this$1 = this.clone__scm_Set();
+  var xs = that.seq__sc_TraversableOnce();
+  return $as_scm_Set($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$1, xs))
+});
 $c_scm_AbstractSet.prototype.hashCode__I = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
   return this$1.unorderedHash__sc_TraversableOnce__I__I(this, this$1.setSeed$2)
@@ -75722,6 +76586,11 @@ $c_scm_AbstractSet.prototype.newBuilder__scm_Builder = (function() {
 });
 $c_scm_AbstractSet.prototype.$$plus$plus$eq__sc_TraversableOnce__scg_Growable = (function(xs) {
   return $s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable(this, xs)
+});
+$c_scm_AbstractSet.prototype.union__sc_GenSet__sc_Set = (function(that) {
+  var this$1 = this.clone__scm_Set();
+  var xs = that.seq__sc_TraversableOnce();
+  return $as_scm_Set($s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable(this$1, xs))
 });
 $c_scm_AbstractSet.prototype.stringPrefix__T = (function() {
   return "Set"
@@ -75767,12 +76636,6 @@ $c_sjs_js_WrappedDictionary.prototype.$$minus__O__sc_Map = (function(key) {
 });
 $c_sjs_js_WrappedDictionary.prototype.empty__sc_Map = (function() {
   return new $c_sjs_js_WrappedDictionary().init___sjs_js_Dictionary($m_sjs_js_Dictionary$().empty__sjs_js_Dictionary())
-});
-$c_sjs_js_WrappedDictionary.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = new $c_sjs_js_WrappedDictionary().init___sjs_js_Dictionary($m_sjs_js_Dictionary$().empty__sjs_js_Dictionary());
-  var this$2 = $as_scm_Map($s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable(this$1, this));
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Map($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$2, xs$1))
 });
 $c_sjs_js_WrappedDictionary.prototype.update__O__O__V = (function(key, value) {
   this.update__T__O__V($as_T(key), value)
@@ -76053,11 +76916,6 @@ $c_scm_AbstractBuffer.prototype.clone__scm_Buffer = (function() {
 $c_scm_AbstractBuffer.prototype.companion__scg_GenericCompanion = (function() {
   return $m_scm_Buffer$()
 });
-$c_scm_AbstractBuffer.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = this.clone__scm_Buffer();
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Buffer($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$1, xs$1))
-});
 $c_scm_AbstractBuffer.prototype.seq__sc_Seq = (function() {
   return this.seq__scm_Seq()
 });
@@ -76266,12 +77124,6 @@ $c_sc_convert_Wrappers$JMapWrapper.prototype.$$minus__O__sc_Map = (function(key)
   var this$1 = new $c_sc_convert_Wrappers$JMapWrapper().init___sc_convert_Wrappers__ju_Map(this.$$outer$f, new $c_ju_HashMap().init___());
   return $as_scm_Map($as_scm_Map($s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable(this$1, this)).$$minus$eq__O__scm_MapLike(key))
 });
-$c_sc_convert_Wrappers$JMapWrapper.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = new $c_sc_convert_Wrappers$JMapWrapper().init___sc_convert_Wrappers__ju_Map(this.$$outer$f, new $c_ju_HashMap().init___());
-  var this$2 = $as_scm_Map($s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable(this$1, this));
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Map($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$2, xs$1))
-});
 $c_sc_convert_Wrappers$JMapWrapper.prototype.init___sc_convert_Wrappers__ju_Map = (function($$outer, underlying) {
   this.underlying$5 = underlying;
   if (($$outer === null)) {
@@ -76432,11 +77284,6 @@ $c_sc_convert_Wrappers$JSetWrapper.prototype.$$plus$eq__O__scg_Growable = (funct
 });
 $c_sc_convert_Wrappers$JSetWrapper.prototype.$$plus$eq__O__scm_SetLike = (function(elem) {
   return this.$$plus$eq__O__sc_convert_Wrappers$JSetWrapper(elem)
-});
-$c_sc_convert_Wrappers$JSetWrapper.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = this.clone__sc_convert_Wrappers$JSetWrapper();
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Set($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$1, xs$1))
 });
 $c_sc_convert_Wrappers$JSetWrapper.prototype.size__I = (function() {
   return this.underlying$5.size__I()
@@ -76903,12 +77750,6 @@ $c_scm_HashMap.prototype.$$minus__O__sc_Map = (function(key) {
 $c_scm_HashMap.prototype.keysIterator__sc_Iterator = (function() {
   return new $c_scm_HashMap$$anon$3().init___scm_HashMap(this)
 });
-$c_scm_HashMap.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$2 = new $c_scm_HashMap().init___();
-  var this$3 = $as_scm_Map($s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable(this$2, this));
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Map($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$3, xs$1))
-});
 $c_scm_HashMap.prototype.table__Ascm_HashEntry = (function() {
   return this.table$5
 });
@@ -76933,6 +77774,9 @@ $c_scm_HashMap.prototype.iterator__sc_Iterator = (function() {
     })
   })(this));
   return new $c_sc_Iterator$$anon$11().init___sc_Iterator__F1(this$1, f)
+});
+$c_scm_HashMap.prototype.valuesIterator__sc_Iterator = (function() {
+  return new $c_scm_HashMap$$anon$4().init___scm_HashMap(this)
 });
 $c_scm_HashMap.prototype.init___scm_HashTable$Contents = (function(contents) {
   $s_scm_HashTable$class__$$init$__scm_HashTable__V(this);
@@ -77120,11 +77964,6 @@ $c_scm_LinkedHashSet.prototype.foreach__F1__V = (function(f) {
 $c_scm_LinkedHashSet.prototype.$$plus$eq__O__scm_LinkedHashSet = (function(elem) {
   this.add__O__Z(elem);
   return this
-});
-$c_scm_LinkedHashSet.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = $s_scm_SetLike$class__clone__scm_SetLike__scm_Set(this);
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Set($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$1, xs$1))
 });
 $c_scm_LinkedHashSet.prototype.$$plus$eq__O__scm_SetLike = (function(elem) {
   return this.$$plus$eq__O__scm_LinkedHashSet(elem)
@@ -77635,12 +78474,6 @@ $c_scm_HashSet.prototype.foreach__F1__V = (function(f) {
     };
     i = ((1 + i) | 0)
   }
-});
-$c_scm_HashSet.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = new $c_scm_HashSet().init___();
-  var this$2 = $as_scm_HashSet($s_scg_Growable$class__$$plus$plus$eq__scg_Growable__sc_TraversableOnce__scg_Growable(this$1, this));
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Set($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$2, xs$1))
 });
 $c_scm_HashSet.prototype.$$plus$eq__O__scm_SetLike = (function(elem) {
   return this.$$plus$eq__O__scm_HashSet(elem)
@@ -78947,11 +79780,6 @@ $c_scm_ListBuffer.prototype.foldLeft__O__F2__O = (function(z, op) {
   var this$1 = this.scala$collection$mutable$ListBuffer$$start$6;
   return $s_sc_LinearSeqOptimized$class__foldLeft__sc_LinearSeqOptimized__O__F2__O(this$1, z, op)
 });
-$c_scm_ListBuffer.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = new $c_scm_ListBuffer().init___().$$plus$plus$eq__sc_TraversableOnce__scm_ListBuffer(this);
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Buffer($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$1, xs$1))
-});
 $c_scm_ListBuffer.prototype.indexWhere__F1__I__I = (function(p, from) {
   var this$1 = this.scala$collection$mutable$ListBuffer$$start$6;
   return $s_sc_LinearSeqOptimized$class__indexWhere__sc_LinearSeqOptimized__F1__I__I(this$1, p, from)
@@ -79597,11 +80425,6 @@ $c_sjs_js_WrappedArray.prototype.foldLeft__O__F2__O = (function(z, op) {
 $c_sjs_js_WrappedArray.prototype.indexWhere__F1__I__I = (function(p, from) {
   return $s_sc_IndexedSeqOptimized$class__indexWhere__sc_IndexedSeqOptimized__F1__I__I(this, p, from)
 });
-$c_sjs_js_WrappedArray.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = $s_scm_BufferLike$class__clone__scm_Buffer__scm_Buffer(this);
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Buffer($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$1, xs$1))
-});
 $c_sjs_js_WrappedArray.prototype.$$plus$eq__O__scm_Buffer = (function(elem) {
   this.array$6.push(elem);
   return this
@@ -79926,11 +80749,6 @@ $c_scm_ArrayBuffer.prototype.foreach__F1__V = (function(f) {
 });
 $c_scm_ArrayBuffer.prototype.foldLeft__O__F2__O = (function(z, op) {
   return $s_sc_IndexedSeqOptimized$class__foldl__p0__sc_IndexedSeqOptimized__I__I__O__F2__O(this, 0, this.size0$6, z, op)
-});
-$c_scm_ArrayBuffer.prototype.$$minus$minus__sc_GenTraversableOnce__scg_Subtractable = (function(xs) {
-  var this$1 = $s_scm_BufferLike$class__clone__scm_Buffer__scm_Buffer(this);
-  var xs$1 = xs.seq__sc_TraversableOnce();
-  return $as_scm_Buffer($s_scg_Shrinkable$class__$$minus$minus$eq__scg_Shrinkable__sc_TraversableOnce__scg_Shrinkable(this$1, xs$1))
 });
 $c_scm_ArrayBuffer.prototype.indexWhere__F1__I__I = (function(p, from) {
   return $s_sc_IndexedSeqOptimized$class__indexWhere__sc_IndexedSeqOptimized__F1__I__I(this, p, from)
