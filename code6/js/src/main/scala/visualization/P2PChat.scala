@@ -13,23 +13,63 @@ object P2PChat {
   implicit lazy val system = ActorSystem("p2pchat", config)
 
   def run =
-    system.actorOf(Props(AddConnection()), "page")
+    system.actorOf(Props(Page()), "page")
 
-  case class AddConnection() extends DomActor {
+  case class Page() extends DomActor {
     override val domElement = Some(getElem("root"))
 
+    
+
+    def template = div(h2("P2P Chat"))
+
+    override def operative = {
+      val tv = context.actorOf(Props(TreeView()), "treeview")
+
+      val treeManager = system.actorOf(Props(TreeManager(tv)))
+
+      context.actorOf(Props(SetName(treeManager)), "setname")
+      context.actorOf(Props(AddConnection(treeManager)), "addconnection")
+      context.actorOf(Props(ChatBox(treeManager)), "chatbox")
+
+      domManagement
+    }
+  }
+
+  case class SetName(tm: ActorRef) extends DomActor {
+
     val nameBox =
-      input("placeholder".attr := "connection name").render
+      input("placeholder".attr := "write here your name").render
 
     def template() = ul(cls := "pure-menu-list")(
-        h1("ToDo:"),
         div(cls := "pure-form")(
           nameBox,
           button(
             cls := "pure-button pure-button-primary",
             onclick := {
-              () => context.actorOf(Props(ConnectionBox(nameBox.value)))})(
-            " Add connection"
+              () => {
+                tm ! TreeMsgs.SetName(nameBox.value)
+                self ! PoisonPill
+                }})(
+            "Set"
+          )
+        )
+      )
+  }
+
+  case class AddConnection(tm: ActorRef) extends DomActor {
+    def template() = ul(cls := "pure-menu-list")(
+        div(cls := "pure-form")(
+          button(
+            cls := "pure-button pure-button-primary",
+            onclick := {
+              () => context.actorOf(Props(ConnectionBox(ConnStatus.BuildOffer, tm)))})(
+            " Add child"
+          ),
+          button(
+            cls := "pure-button pure-button-primary",
+            onclick := {
+              () => context.actorOf(Props(ConnectionBox(ConnStatus.BuildAnswer, tm)))})(
+            " Answer parent"
           )
         )
       )
@@ -48,16 +88,16 @@ object P2PChat {
     case object Connected extends Status
   }
 
-  case class ConnectionBox(name: String) extends DomActorWithParams[ConnStatus.Status] {
+  case class ConnectionBox(_initValue: ConnStatus.Status, tm: ActorRef) extends DomActorWithParams[ConnStatus.Status] {
     import ConnStatus._
 
-    val initValue = Choose
+    val initValue = _initValue//Choose
 
-    val conn = context.actorOf(Props(WebRTCConnection(name, self)))
+    val conn = context.system.actorOf(Props(WebRTCConnection(self)))
 
     def template(s: Status) = 
     div(
-      h3(s"Channel: $name"),
+      h3(s"Channel: "),
       s match {
         case Choose =>
           div(
@@ -80,7 +120,7 @@ object P2PChat {
           div(h3("Waiting offer"))
         case Offer(token) =>
           val answerBox =
-            input("placeholder".attr := "paste here answer").render    
+            input("placeholder".attr := "paste here answer").render
 
             div(
               input(value := token/*, "disabled".attr := "true"*/),
@@ -119,9 +159,17 @@ object P2PChat {
 
           div(h3("Waiting connection"))
         case Connected =>
-          val treeManager = context.actorOf(Props(TreeManager(name, conn)))
-
-          div(h3("Connected"))
+          initValue match {
+            case BuildOffer =>
+              tm ! TreeMsgs.AddChannel(conn, {id: String => TreeMsgs.AddChild(TreeMsgs.Node(id, conn))})
+            case BuildAnswer =>
+              tm ! TreeMsgs.AddChannel(conn, {id: String => TreeMsgs.AddParent(TreeMsgs.Node(id, conn))})
+          }
+          div(h3("Connected"),
+              button(
+                cls := "pure-button pure-button-primary",
+                onclick := {() => self ! PoisonPill})("Close")
+          )
       },
       hr()
     )

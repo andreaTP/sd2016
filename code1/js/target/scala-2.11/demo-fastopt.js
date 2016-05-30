@@ -8719,42 +8719,41 @@ $c_Leu_unicredit_PingPong$.prototype.system__Lakka_actor_ActorSystem = (function
   return ((!this.bitmap$0$1) ? this.system$lzycompute__p1__Lakka_actor_ActorSystem() : this.system$1)
 });
 $c_Leu_unicredit_PingPong$.prototype.start__Lakka_actor_Cancellable = (function() {
-  var this$2 = $m_s_Console$();
-  var this$3 = $as_Ljava_io_PrintStream(this$2.outVar$2.v$1);
-  this$3.java$lang$JSConsoleBasedPrintStream$$printString__T__V("Starting ping pong!\n");
-  var jsx$1 = this.system__Lakka_actor_ActorSystem();
-  var this$5 = $m_Lakka_actor_Props$();
-  var creator = new $c_Leu_unicredit_PingPong$$anonfun$1().init___();
-  var ponger = jsx$1.actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(this$5.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator));
-  var jsx$2 = this.system__Lakka_actor_ActorSystem();
-  var this$8 = $m_Lakka_actor_Props$();
-  var creator$1 = new $c_Leu_unicredit_PingPong$$anonfun$2().init___Lakka_actor_ActorRef(ponger);
-  var pinger = jsx$2.actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(this$8.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator$1));
-  var this$13 = this.system__Lakka_actor_ActorSystem().scheduler$3;
-  var this$11 = new $c_s_concurrent_duration_package$DurationInt().init___I(1);
+  var ponger = this.system__Lakka_actor_ActorSystem().actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(this.ppActor__T__F1__T__Lakka_actor_Props("ping", new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(sender$2) {
+    var sender = $as_Lakka_actor_ActorRef(sender$2);
+    return sender
+  })), "pong"));
+  var pinger = this.system__Lakka_actor_ActorSystem().actorOf__Lakka_actor_Props__Lakka_actor_ActorRef(this.ppActor__T__F1__T__Lakka_actor_Props("pong", new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(ponger$1) {
+    return (function(x$1$2) {
+      $as_Lakka_actor_ActorRef(x$1$2);
+      return ponger$1
+    })
+  })(ponger)), "ping"));
+  var this$4 = this.system__Lakka_actor_ActorSystem().scheduler$3;
+  var this$2 = new $c_s_concurrent_duration_package$DurationInt().init___I(1);
   var unit = $m_ju_concurrent_TimeUnit$().SECONDS$1;
-  var delay = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$11.scala$concurrent$duration$DurationInt$$n$1, unit);
+  var delay = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$2.scala$concurrent$duration$DurationInt$$n$1, unit);
   var f = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(pinger$1) {
     return (function() {
       var qual$1 = $as_Lakka_actor_ScalaActorRef(pinger$1);
-      var x$2 = qual$1.$$bang$default$2__O__Lakka_actor_ActorRef("pong");
-      qual$1.$$bang__O__Lakka_actor_ActorRef__V("pong", x$2)
+      var x$3 = qual$1.$$bang$default$2__O__Lakka_actor_ActorRef("pong");
+      qual$1.$$bang__O__Lakka_actor_ActorRef__V("pong", x$3)
     })
   })(pinger));
   var executor = this.system__Lakka_actor_ActorSystem().dispatcher$3;
-  $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$13, delay, f, executor);
-  var this$19 = this.system__Lakka_actor_ActorSystem().scheduler$3;
-  var this$15 = new $c_s_concurrent_duration_package$DurationInt().init___I(2);
+  $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$4, delay, f, executor);
+  var this$10 = this.system__Lakka_actor_ActorSystem().scheduler$3;
+  var this$6 = new $c_s_concurrent_duration_package$DurationInt().init___I(2);
   var unit$1 = $m_ju_concurrent_TimeUnit$().SECONDS$1;
-  var delay$1 = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$15.scala$concurrent$duration$DurationInt$$n$1, unit$1);
+  var delay$1 = $m_s_concurrent_duration_package$DurationInt$().durationIn$extension__I__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$6.scala$concurrent$duration$DurationInt$$n$1, unit$1);
   var f$1 = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function() {
     $m_jl_System$();
-    var this$17 = $m_jl_Runtime$();
-    var this$18 = this$17.currentRuntime$1;
-    this$18.halt__I__V(0)
+    var this$8 = $m_jl_Runtime$();
+    var this$9 = this$8.currentRuntime$1;
+    this$9.halt__I__V(0)
   }));
   var executor$1 = this.system__Lakka_actor_ActorSystem().dispatcher$3;
-  return $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$19, delay$1, f$1, executor$1)
+  return $s_Lakka_actor_Scheduler$class__scheduleOnce__Lakka_actor_Scheduler__s_concurrent_duration_FiniteDuration__F0__s_concurrent_ExecutionContext__Lakka_actor_Cancellable(this$10, delay$1, f$1, executor$1)
 });
 $c_Leu_unicredit_PingPong$.prototype.system$lzycompute__p1__Lakka_actor_ActorSystem = (function() {
   if ((!this.bitmap$0$1)) {
@@ -8762,6 +8761,11 @@ $c_Leu_unicredit_PingPong$.prototype.system$lzycompute__p1__Lakka_actor_ActorSys
     this.bitmap$0$1 = true
   };
   return this.system$1
+});
+$c_Leu_unicredit_PingPong$.prototype.ppActor__T__F1__T__Lakka_actor_Props = (function(matcher, answerTo, answer) {
+  var this$2 = $m_Lakka_actor_Props$();
+  var creator = new $c_Leu_unicredit_PingPong$$anonfun$ppActor$1().init___F1__T(answerTo, answer);
+  return this$2.mkProps__p1__jl_Class__F0__Lakka_actor_Props($d_Lakka_actor_Actor.getClassOf(), creator)
 });
 var $d_Leu_unicredit_PingPong$ = new $TypeData().initClass({
   Leu_unicredit_PingPong$: 0
@@ -17534,96 +17538,50 @@ $e.eu = ($e.eu || {});
 $e.eu.unicredit = ($e.eu.unicredit || {});
 $e.eu.unicredit.Main = $m_Leu_unicredit_Main$;
 /** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1() {
-  $c_O.call(this);
-  this.context$1 = null;
-  this.self$1 = null
-}
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype = new $h_O();
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1;
-/** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$1$$anon$1() {
-  /*<skip>*/
-}
-$h_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype = $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.preStart__V = (function() {
-  /*<skip>*/
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.postStop__V = (function() {
-  /*<skip>*/
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
-  return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.receive__s_PartialFunction = (function() {
-  return new $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1().init___Leu_unicredit_PingPong$$anonfun$1$$anon$1(this)
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.context__Lakka_actor_ActorContext = (function() {
-  return this.context$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.init___Leu_unicredit_PingPong$$anonfun$1 = (function($$outer) {
-  $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
-  return this
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
-  this.context$1 = x$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.$$js$exported$prop$self__O = (function() {
-  return this.self$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
-  $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.postRestart__jl_Throwable__V = (function(reason) {
-  /*<skip>*/
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
-  this.self$1 = x$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.$$js$exported$prop$context__O = (function() {
-  return this.context$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.self__Lakka_actor_ActorRef = (function() {
-  return this.self$1
-});
-Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype, "context", {
-  "get": (function() {
-    return this.$$js$exported$prop$context__O()
-  }),
-  "enumerable": true
-});
-Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype, "self", {
-  "get": (function() {
-    return this.$$js$exported$prop$self__O()
-  }),
-  "enumerable": true
-});
-var $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$1$$anon$1: 0
-}, false, "eu.unicredit.PingPong$$anonfun$1$$anon$1", {
-  Leu_unicredit_PingPong$$anonfun$1$$anon$1: 1,
-  O: 1,
-  Lakka_actor_Actor: 1
-});
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1;
-/** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2() {
+function $c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1() {
   $c_O.call(this);
   this.$$outer$1 = null;
   this.context$1 = null;
   this.self$1 = null
 }
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype = new $h_O();
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype = new $h_O();
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1;
 /** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$2$$anon$2() {
+function $h_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1() {
   /*<skip>*/
 }
-$h_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype = $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.preStart__V = (function() {
+$h_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype = $c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.preStart__V = (function() {
   /*<skip>*/
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.init___Leu_unicredit_PingPong$$anonfun$2 = (function($$outer) {
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.postStop__V = (function() {
+  /*<skip>*/
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
+  return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.receive__s_PartialFunction = (function() {
+  return new $c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1().init___Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1(this)
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.context__Lakka_actor_ActorContext = (function() {
+  return this.context$1
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
+  this.context$1 = x$1
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.$$js$exported$prop$self__O = (function() {
+  return this.self$1
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
+  $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.postRestart__jl_Throwable__V = (function(reason) {
+  /*<skip>*/
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
+  this.self$1 = x$1
+});
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.init___Leu_unicredit_PingPong$$anonfun$ppActor$1 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -17632,59 +17590,32 @@ $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.init___Leu_unicredit_Ping
   $s_Lakka_actor_Actor$class__$$init$__Lakka_actor_Actor__V(this);
   return this
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.postStop__V = (function() {
-  /*<skip>*/
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.supervisorStrategy__Lakka_actor_SupervisorStrategy = (function() {
-  return $m_Lakka_actor_SupervisorStrategy$().defaultStrategy$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.receive__s_PartialFunction = (function() {
-  return new $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2().init___Leu_unicredit_PingPong$$anonfun$2$$anon$2(this)
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.context__Lakka_actor_ActorContext = (function() {
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.$$js$exported$prop$context__O = (function() {
   return this.context$1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.akka$actor$Actor$$undsetter$und$context$und$eq__Lakka_actor_ActorContext__V = (function(x$1) {
-  this.context$1 = x$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.$$js$exported$prop$self__O = (function() {
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.self__Lakka_actor_ActorRef = (function() {
   return this.self$1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.preRestart__jl_Throwable__s_Option__V = (function(reason, message) {
-  $s_Lakka_actor_Actor$class__preRestart__Lakka_actor_Actor__jl_Throwable__s_Option__V(this, reason, message)
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.postRestart__jl_Throwable__V = (function(reason) {
-  /*<skip>*/
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.akka$actor$Actor$$undsetter$und$self$und$eq__Lakka_actor_ActorRef__V = (function(x$1) {
-  this.self$1 = x$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.$$js$exported$prop$context__O = (function() {
-  return this.context$1
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.self__Lakka_actor_ActorRef = (function() {
-  return this.self$1
-});
-Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype, "context", {
+Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype, "context", {
   "get": (function() {
     return this.$$js$exported$prop$context__O()
   }),
   "enumerable": true
 });
-Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype, "self", {
+Object.defineProperty($c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype, "self", {
   "get": (function() {
     return this.$$js$exported$prop$self__O()
   }),
   "enumerable": true
 });
-var $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$2$$anon$2: 0
-}, false, "eu.unicredit.PingPong$$anonfun$2$$anon$2", {
-  Leu_unicredit_PingPong$$anonfun$2$$anon$2: 1,
+var $d_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1 = new $TypeData().initClass({
+  Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1: 0
+}, false, "eu.unicredit.PingPong$$anonfun$ppActor$1$$anon$1", {
+  Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1: 1,
   O: 1,
   Lakka_actor_Actor: 1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1;
 /** @constructor */
 function $c_Leu_unicredit_shocon_Extractors$() {
   $c_O.call(this);
@@ -33456,63 +33387,37 @@ var $d_Lcom_typesafe_config_Config$$anon$1$$anonfun$entrySet$1 = new $TypeData()
 });
 $c_Lcom_typesafe_config_Config$$anon$1$$anonfun$entrySet$1.prototype.$classData = $d_Lcom_typesafe_config_Config$$anon$1$$anonfun$entrySet$1;
 /** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$1() {
-  $c_sr_AbstractFunction0.call(this)
-}
-$c_Leu_unicredit_PingPong$$anonfun$1.prototype = new $h_sr_AbstractFunction0();
-$c_Leu_unicredit_PingPong$$anonfun$1.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$1;
-/** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$1() {
-  /*<skip>*/
-}
-$h_Leu_unicredit_PingPong$$anonfun$1.prototype = $c_Leu_unicredit_PingPong$$anonfun$1.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$1.prototype.init___ = (function() {
-  return this
-});
-$c_Leu_unicredit_PingPong$$anonfun$1.prototype.apply__O = (function() {
-  return new $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1().init___Leu_unicredit_PingPong$$anonfun$1(this)
-});
-var $d_Leu_unicredit_PingPong$$anonfun$1 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$1: 0
-}, false, "eu.unicredit.PingPong$$anonfun$1", {
-  Leu_unicredit_PingPong$$anonfun$1: 1,
-  sr_AbstractFunction0: 1,
-  O: 1,
-  F0: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Leu_unicredit_PingPong$$anonfun$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$1;
-/** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$2() {
+function $c_Leu_unicredit_PingPong$$anonfun$ppActor$1() {
   $c_sr_AbstractFunction0.call(this);
-  this.ponger$1$f = null
+  this.answerTo$1$f = null;
+  this.answer$1$f = null
 }
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype = new $h_sr_AbstractFunction0();
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$2;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1.prototype = new $h_sr_AbstractFunction0();
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$ppActor$1;
 /** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$2() {
+function $h_Leu_unicredit_PingPong$$anonfun$ppActor$1() {
   /*<skip>*/
 }
-$h_Leu_unicredit_PingPong$$anonfun$2.prototype = $c_Leu_unicredit_PingPong$$anonfun$2.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype.init___Lakka_actor_ActorRef = (function(ponger$1) {
-  this.ponger$1$f = ponger$1;
+$h_Leu_unicredit_PingPong$$anonfun$ppActor$1.prototype = $c_Leu_unicredit_PingPong$$anonfun$ppActor$1.prototype;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1.prototype.init___F1__T = (function(answerTo$1, answer$1) {
+  this.answerTo$1$f = answerTo$1;
+  this.answer$1$f = answer$1;
   return this
 });
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype.apply__O = (function() {
-  return new $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2().init___Leu_unicredit_PingPong$$anonfun$2(this)
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1.prototype.apply__O = (function() {
+  return new $c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1().init___Leu_unicredit_PingPong$$anonfun$ppActor$1(this)
 });
-var $d_Leu_unicredit_PingPong$$anonfun$2 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$2: 0
-}, false, "eu.unicredit.PingPong$$anonfun$2", {
-  Leu_unicredit_PingPong$$anonfun$2: 1,
+var $d_Leu_unicredit_PingPong$$anonfun$ppActor$1 = new $TypeData().initClass({
+  Leu_unicredit_PingPong$$anonfun$ppActor$1: 0
+}, false, "eu.unicredit.PingPong$$anonfun$ppActor$1", {
+  Leu_unicredit_PingPong$$anonfun$ppActor$1: 1,
   sr_AbstractFunction0: 1,
   O: 1,
   F0: 1,
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Leu_unicredit_PingPong$$anonfun$2.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$2;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$ppActor$1;
 /** @constructor */
 function $c_Leu_unicredit_shocon_ConfigParser$$anonfun$11() {
   $c_sr_AbstractFunction0.call(this)
@@ -40861,18 +40766,18 @@ var $d_Lcom_typesafe_config_Config$$anon$1 = new $TypeData().initClass({
 });
 $c_Lcom_typesafe_config_Config$$anon$1.prototype.$classData = $d_Lcom_typesafe_config_Config$$anon$1;
 /** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1() {
+function $c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1() {
   $c_sr_AbstractPartialFunction.call(this);
   this.$$outer$2 = null
 }
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype = new $h_sr_AbstractPartialFunction();
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1.prototype = new $h_sr_AbstractPartialFunction();
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1;
 /** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1() {
+function $h_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1() {
   /*<skip>*/
 }
-$h_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype = $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype.init___Leu_unicredit_PingPong$$anonfun$1$$anon$1 = (function($$outer) {
+$h_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1.prototype = $c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1.prototype;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1.prototype.init___Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1 = (function($$outer) {
   if (($$outer === null)) {
     throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
   } else {
@@ -40880,26 +40785,23 @@ $c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype.init__
   };
   return this
 });
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype.isDefinedAt__O__Z = (function(x1) {
-  return (x1 === "ping")
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1.prototype.isDefinedAt__O__Z = (function(x1) {
+  return true
 });
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype.applyOrElse__O__F1__O = (function(x1, $default) {
-  if ((x1 === "ping")) {
-    var this$2 = $m_s_Console$();
-    var this$3 = $as_Ljava_io_PrintStream(this$2.outVar$2.v$1);
-    this$3.java$lang$JSConsoleBasedPrintStream$$printString__T__V("received ping sending pong\n");
-    var this$4 = this.$$outer$2;
-    var ref = this$4.context$1.sender__Lakka_actor_ActorRef();
-    $as_Lakka_actor_ScalaActorRef(ref).$$bang__O__Lakka_actor_ActorRef__V("pong", this.$$outer$2.self$1);
-    return (void 0)
-  } else {
-    return $default.apply__O__O(x1)
-  }
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1.prototype.applyOrElse__O__F1__O = (function(x1, $default) {
+  var jsx$1 = this.$$outer$2.$$outer$1.answerTo$1$f;
+  var this$1 = this.$$outer$2;
+  var ref = $as_Lakka_actor_ActorRef(jsx$1.apply__O__O(this$1.context$1.sender__Lakka_actor_ActorRef()));
+  $as_Lakka_actor_ScalaActorRef(ref).$$bang__O__Lakka_actor_ActorRef__V(this.$$outer$2.$$outer$1.answer$1$f, this.$$outer$2.self$1);
+  var x = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["received ", " sending answer ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([x1, this.$$outer$2.$$outer$1.answer$1$f]));
+  var this$4 = $m_s_Console$();
+  var this$5 = $as_Ljava_io_PrintStream(this$4.outVar$2.v$1);
+  this$5.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"))
 });
-var $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1: 0
-}, false, "eu.unicredit.PingPong$$anonfun$1$$anon$1$$anonfun$receive$1", {
-  Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1: 1,
+var $d_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1 = new $TypeData().initClass({
+  Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1: 0
+}, false, "eu.unicredit.PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1", {
+  Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1: 1,
   sr_AbstractPartialFunction: 1,
   O: 1,
   F1: 1,
@@ -40907,54 +40809,7 @@ var $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1 = new $TypeD
   s_Serializable: 1,
   Ljava_io_Serializable: 1
 });
-$c_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$1$$anon$1$$anonfun$receive$1;
-/** @constructor */
-function $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2() {
-  $c_sr_AbstractPartialFunction.call(this);
-  this.$$outer$2 = null
-}
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype = new $h_sr_AbstractPartialFunction();
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.constructor = $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2;
-/** @constructor */
-function $h_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2() {
-  /*<skip>*/
-}
-$h_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype = $c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype;
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.init___Leu_unicredit_PingPong$$anonfun$2$$anon$2 = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$2 = $$outer
-  };
-  return this
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.isDefinedAt__O__Z = (function(x2) {
-  return (x2 === "pong")
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.applyOrElse__O__F1__O = (function(x2, $default) {
-  if ((x2 === "pong")) {
-    var this$2 = $m_s_Console$();
-    var this$3 = $as_Ljava_io_PrintStream(this$2.outVar$2.v$1);
-    this$3.java$lang$JSConsoleBasedPrintStream$$printString__T__V("received pong sending ping\n");
-    var ref = this.$$outer$2.$$outer$1.ponger$1$f;
-    $as_Lakka_actor_ScalaActorRef(ref).$$bang__O__Lakka_actor_ActorRef__V("ping", this.$$outer$2.self$1);
-    return (void 0)
-  } else {
-    return $default.apply__O__O(x2)
-  }
-});
-var $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2 = new $TypeData().initClass({
-  Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2: 0
-}, false, "eu.unicredit.PingPong$$anonfun$2$$anon$2$$anonfun$receive$2", {
-  Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2: 1,
-  sr_AbstractPartialFunction: 1,
-  O: 1,
-  F1: 1,
-  s_PartialFunction: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$2$$anon$2$$anonfun$receive$2;
+$c_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1.prototype.$classData = $d_Leu_unicredit_PingPong$$anonfun$ppActor$1$$anon$1$$anonfun$receive$1;
 /** @constructor */
 function $c_Leu_unicredit_shocon_ConfigParser$NamedFunction() {
   $c_O.call(this);

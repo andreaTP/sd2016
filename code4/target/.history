@@ -133,3 +133,7 @@ demoJS/run
 exit
 fastOptJS
 ~fastOptJS
+demoJVM/compile
+reload
+compile
+exit

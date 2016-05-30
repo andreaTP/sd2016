@@ -17,7 +17,8 @@ lazy val demo = crossProject.in(file(".")).
       "akka.js" %%% "akkaactor" % "0.1.1-SNAPSHOT",
       "org.scala-js" %%% "scalajs-dom" % "0.9.0",
       "com.lihaoyi" %%% "scalatags" % "0.5.4",
-      "com.lihaoyi" %%% "upickle" % "0.4.0"
+      "com.lihaoyi" %%% "upickle" % "0.4.0",
+      "eu.unicredit" %%% "paths-scala-js" % "0.4.4"
     ),
     jsDependencies += "org.webjars.bower" % "webrtc-adapter" % "0.2.9" / "adapter.js",
     persistLauncher in Compile := true,

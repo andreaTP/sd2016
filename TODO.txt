@@ -1,9 +1,9 @@
 
 Presentazione effettiva
 
--> chat distribuita
+-> ridurre il codice nelle slide a una porzione leggibile lo slider è difficile da usare
 
--> fare un path verso un caso d'uso reale?
+-> chat distribuita
 
 Tecnica
 

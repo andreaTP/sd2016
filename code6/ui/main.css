@@ -30,3 +30,19 @@ button {
 li {
   color: white;
 }
+
+circle {
+  stroke: #003366;
+  fill: #dddddd;
+}
+
+path {
+  stroke: #336699;
+  stroke-width: 3px;
+  fill: none;
+}
+
+text {
+  stroke: white;
+  fill: white;
+}

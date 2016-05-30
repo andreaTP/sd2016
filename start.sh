@@ -18,6 +18,10 @@ sbt "demoJVM/run"&
 sbt "demoJS/run"&
 cd ..
 
+cd code6
+sbt "~fastOptJS"&
+cd ..
+
 cd ..
 cd stunserver
 ./stunserver --mode basic --primaryinterface lo&

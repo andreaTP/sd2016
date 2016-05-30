@@ -206,6 +206,11 @@ akka {
     shutdown-timeout = 5s
   }
 }
+akka.http.server.idle-timeout = 10 hours
+akka.http.client.idle-timeout = 10 hours
+akka.http.client.connecting-timeout = 10 hours
+akka.http.http-connection-pool.idle-timeout = 10 hours
+akka.http.http-connection-pool.client.idle-timeout = 10 hours
 """
 
   import com.typesafe.config.{ Config, ConfigFactory }
