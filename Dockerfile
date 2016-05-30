@@ -52,21 +52,41 @@ WORKDIR /home/wetty
 
 RUN npm install
 
-RUN useradd -d /home/disruptor_talk -m -s /bin/bash term
+RUN useradd -d /home/sd2016 -m -s /bin/bash term
 
 RUN echo 'term:term' | chpasswd
 
 WORKDIR /home
 
-RUN rm -rf ./disruptor_talk
+RUN rm -rf ./sd2016
 
-RUN git clone https://github.com/andreaTP/disruptor_talk
+RUN git clone https://github.com/andreaTP/sd2016
 
-WORKDIR /home/disruptor_talk/code
+WORKDIR /home/sd2016/code1
 
 RUN sbt compile
 
-WORKDIR /home/disruptor_talk
+WORKDIR /home/sd2016/code2
+
+RUN sbt compile
+
+WORKDIR /home/sd2016/code3
+
+RUN sbt compile
+
+WORKDIR /home/sd2016/code4
+
+RUN sbt compile
+
+WORKDIR /home/sd2016/code5
+
+RUN sbt compile
+
+WORKDIR /home/sd2016/code6
+
+RUN sbt compile
+
+WORKDIR /home/sd2016
 
 EXPOSE 3000 8000
 

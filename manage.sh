@@ -5,7 +5,6 @@ case "$1" in
     docker -D build -t="slide-docker-akkajs:latest" .
   ;;
   run)
-    #remember to start nvidia-docker-plugin
     docker run --rm -i -t -p 4000:4000 -p 8000:8000 "slide-docker-akkajs:latest"
   ;;
   *)

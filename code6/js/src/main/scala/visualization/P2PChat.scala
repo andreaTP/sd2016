@@ -20,7 +20,7 @@ object P2PChat {
 
     
 
-    def template = div(h2("P2P Chat"))
+    def template = div(/*cls := "pure-g"*/)()
 
     override def operative = {
       val tv = context.actorOf(Props(TreeView()), "treeview")
@@ -40,7 +40,8 @@ object P2PChat {
     val nameBox =
       input("placeholder".attr := "write here your name").render
 
-    def template() = ul(cls := "pure-menu-list")(
+    def template() = 
+      div(cls := "pure-u-1-3")(
         div(cls := "pure-form")(
           nameBox,
           button(
@@ -57,7 +58,7 @@ object P2PChat {
   }
 
   case class AddConnection(tm: ActorRef) extends DomActor {
-    def template() = ul(cls := "pure-menu-list")(
+    def template() = div(cls := "pure-u-1-3")(
         div(cls := "pure-form")(
           button(
             cls := "pure-button pure-button-primary",

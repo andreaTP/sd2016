@@ -124,11 +124,14 @@ case class TreeManager(tv: ActorRef) extends Actor with JsonTreeHelpers {
       })
 
     case _chat @ Chat(target, sender, content) =>
-      val chat =
-        if (sender != "") _chat
-        else Chat(target, name, content)
-
       val chatBox = context.system.actorSelection("akka://p2pchat/user/page/chatbox") 
+
+      val chat =
+        if (sender != "") {
+          chatBox ! ChatBoxMsgs.NewMsg(name, content)
+          _chat
+        } else Chat(target, name, content)
+
       println("ok chat msg! "+target+" my id "+id+" sender "+sender)
       if (target == id) chatBox ! ChatBoxMsgs.NewMsg(sender, content)
       else {

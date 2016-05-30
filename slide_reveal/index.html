@@ -75,7 +75,7 @@
 					<pre>
 						<code class="scala" data-code="http://localhost:8000/code1/shared/src/main/scala/PingPong.scala" data-trim></code>
 					</pre>
-					<iframe width="90%" src="http://localhost:4000/wetty/ssh/andrea"></iframe>
+					<iframe class="term" width="90%" src="http://localhost:4000"></iframe>
 
 					<aside class="notes">
 						cd workspace/akka.js_talk/code1/
@@ -86,7 +86,7 @@
 					<pre>
 						<code class="scala" data-code="http://localhost:8000/code2/shared/src/main/scala/raft/Raft.scala" data-trim></code>
 					</pre>
-					<iframe width="90%" src="http://localhost:4000/wetty/ssh/andrea"></iframe>
+					<iframe class="term" width="90%" src="http://localhost:4000/"></iframe>
 
 					<aside class="notes">
 						cd workspace/akka.js_talk/code2/
@@ -287,6 +287,14 @@ protected def writeReplace(): AnyRef = SerializedActorRef(this)
 					{ src: './plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } }
 				]
 			});
+		</script>
+		<script>
+			/* OsX docker container compatibility .... */
+			var hostname = window.location.hostname
+			var iframes = document.getElementsByClassName("term")
+			for (var i = 0; i < iframes.length; i++) {
+				iframes[i].src = "http://"+hostname+":4000/"
+			}
 		</script>
 	</body>
 </html>

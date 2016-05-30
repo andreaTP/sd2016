@@ -3,7 +3,7 @@ python -m SimpleHTTPServer&
 cd ..
 cd wetty
 ./start.sh&
-cd ../akka.js_talk
+cd ../sd2016
 
 cd code3
 sbt "~fastOptJS"&
@@ -22,9 +22,9 @@ cd code6
 sbt "~fastOptJS"&
 cd ..
 
-cd ..
-cd stunserver
-./stunserver --mode basic --primaryinterface lo&
-cd ../akka.js_talk
+#cd ..
+#cd stunserver
+#./stunserver --mode basic --primaryinterface lo&
+#cd ../sd2016
 
-browser-sync start --config bs-config.js
+#browser-sync start --config bs-config.js

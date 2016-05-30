@@ -29,13 +29,27 @@ case class TreeView() extends DomActorWithParams[Node] {
   def template(n: Node) = {
     try {
     val tree = getTree(n)
-    div(
-      p("I'm "+myid),
-      svg(width := 460, height := 400)(
+
+    val tv = svg(visibility := "hidden", width := 0, height := 0)(
         g(transform := "translate(400, 50) rotate(90)")(
           (branches(tree) ++ nodes(tree)) : _*
         )
-      )
+      ).render
+    div(
+      button(onclick := {
+        () => {
+          if (tv.style.visibility == "hidden") {
+            tv.style.visibility = "visible"
+            tv.style.width = "400"
+            tv.style.height = "400"
+          }
+          else {
+            tv.style.visibility = "hidden"
+            tv.style.width = "0"
+            tv.style.height = "0"
+          }
+        }})("show tree"),
+      tv
     )
     } catch {
       case err: Throwable =>
