@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Akka.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					![alt text](./images/akkajs-grey.png "")
+					##Drop Your Actors Outside the JVM Boundaries
+					<img data-src="./images/akkajs-grey.png" />
+				</section>
+				<section data-markdown>
+				  ##Who am I?
+				  ![alt text](./images/me_sleep.png "")
+				  <img data-src="./images/me_sleep.png" />
+				  ![alt text](./images/unilogo-white.png "")
+				  <img data-src="./images/unilogo-white.png" />
+				  - GitHub [andreaTP]()
+				  - Twitter [@and_prf]()
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					##Why should I care?
+					- Code reuse<!-- .element: class="fragment" data-fragment-index="1" -->
+					- Code portability<!-- .element: class="fragment" data-fragment-index="2" -->
+					- Same programming model<!-- .element: class="fragment" data-fragment-index="3" -->
+					- High modularization<!-- .element: class="fragment" data-fragment-index="4" -->
+					- Transparent communication<!-- .element: class="fragment" data-fragment-index="5" -->
+					- Concurrency management<!-- .element: class="fragment" data-fragment-index="6" -->
+					- Parallelism management<!-- .element: class="fragment" data-fragment-index="7" -->
+					</script>
+			
+					Note:
+		        "s" on keyboard.
+		        You choose this trak while there are other 3 :-P
+		        I should ask you why!
+					 </aside>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						##My goal
+						###Be lazy<!-- .element: class="fragment" data-fragment-index="1" style="color:white;"-->
+						<img height="50%" style="max-height : 20%;" data-src="./images/akka_team.jpg" /><!-- .element: class="fragment" data-fragment-index="4" style="max-height:50%""-->
+						###Thanks guys!<!-- .element: class="fragment" data-fragment-index="4" style="color:white;"-->
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					##Does it work?
+					#YES!<!-- .element: class="fragment" data-fragment-index="1" style="color:white;"-->
+					</script>
+				</section>
+				<section>
+					<h3>PingPong</h3>
+					<pre>
+						<code class="scala" data-code="http://localhost:8000/code1/shared/src/main/scala/PingPong.scala" data-trim></code>
+					</pre>
+					<iframe width="90%" src="http://localhost:4000/wetty/ssh/andrea"></iframe>
+
+					<aside class="notes">
+						cd workspace/akka.js_talk/code1/
+					</aside>
+				</section>
+				<section>
+					<h3>Raft</h3>
+					<pre>
+						<code class="scala" data-code="http://localhost:8000/code2/shared/src/main/scala/raft/Raft.scala" data-trim></code>
+					</pre>
+					<iframe width="90%" src="http://localhost:4000/wetty/ssh/andrea"></iframe>
+
+					<aside class="notes">
+						cd workspace/akka.js_talk/code2/
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h3>ToDo</h3>
+						<pre>
+							<code class="scala" data-code="http://localhost:8000/code3/js/src/main/scala/visualization/ToDo.scala" data-trim></code>
+						</pre>
+					</section>
+					<section>
+						<iframe width="90%" height="500px" src="http://localhost:8000/code3/ui/index.html"></iframe>
+					</section>
+
+					<aside class="notes">
+						cd workspace/akka.js_talk/code3/
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h3>Chat</h3>
+						<pre>
+							<code class="scala" data-code="http://localhost:8000/code4/js/src/main/scala/visualization/ChatUI.scala" data-trim></code>
+						</pre>
+					</section>
+					<section>
+						<iframe width="90%" height="500px" src="http://localhost:8000/code4/ui/index.html"></iframe>
+					</section>
+					<section>
+						<h3>Shared</h3>
+						<pre>
+							<code class="scala" class="scala" data-code="http://localhost:8000/code5/shared/src/main/scala/chat/ChatServer.scala" data-trim></code>
+						</pre>
+					</section>
+					<section>
+						<h3>Jvm</h3>
+						<pre>
+							<code class="scala" data-code="http://localhost:8000/code5/jvm/src/main/scala/ChatServerAkkaHttp.scala" data-trim></code>
+						</pre>
+					</section>
+					<section>
+						<h3>Js</h3>
+						<pre>
+							<code class="scala" data-code="http://localhost:8000/code5/js/src/main/scala/ChatServerNode.scala" data-trim></code>
+						</pre>
+					</section>
+
+					<aside class="notes">
+						cd workspace/akka.js_talk/code4/
+						cd workspace/akka.js_talk/code5/
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h3>P2P WebRTC Chat</h3>
+						<iframe width="90%" height="500px" src="http://localhost:8000/code6/ui/index.html"></iframe>
+					</section>
+					<section>
+						<h3>P2P WebRTC Chat</h3>
+						<iframe width="90%" height="500px" src="http://localhost:8000/code6/ui/index.html"></iframe>
+					</section>
+					<section>
+						<h3>P2P WebRTC Chat</h3>
+						<iframe width="90%" height="500px" src="http://localhost:8000/code6/ui/index.html"></iframe>
+					</section>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						##Challenges
+						- JVM<!-- .element: class="fragment" data-fragment-index="1" -->
+						- JVM<!-- .element: class="fragment" data-fragment-index="2" -->
+						- JVM<!-- .element: class="fragment" data-fragment-index="3" -->
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						##Challenges
+						- Java stdlib<!-- .element: class="fragment" data-fragment-index="1" -->
+						- Reflection<!-- .element: class="fragment" data-fragment-index="2" -->
+						- Serialization<!-- .element: class="fragment" data-fragment-index="3" -->
+						- Unlinkable methods<!-- .element: class="fragment" data-fragment-index="4" -->
+					</script>
+				</section>
+				<section>
+					<section data-markdown>
+					<script type="text/template">
+						##Java stdlib
+						<img class="fragment" data-fragment-index="1" data-src="./images/git_before.jpg" />
+					</script>
+					</section>
+					<section data-markdown>
+					<script type="text/template">
+						##Java stdlib
+						<img data-src="./images/git2_after.png" />
+					</script>
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+					<script type="text/template">
+						##Reflection
+						###Fields<!-- .element: style="color:white" -->
+						<pre><code style="max-height:300px" class="scala" data-code="http://localhost:8000/slide_reveal/ActorContext.scala" data-trim></code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
+						<pre><code class="scala" data-code="http://localhost:8000/slide_reveal/ActorContextReflect.scala" data-trim></code></pre><!-- .element: class="fragment" data-fragment-index="2" -->
+						###ARGH!<!-- .element: class="fragment" data-fragment-index="3" style="color:white" -->
+					</script>
+					</section>
+					<section data-markdown>
+					<script type="text/template">
+						##Reflection
+						###Fields > Patch after compilation<!-- .element: style="color:white" -->
+						<pre><code class="scala" data-code="http://localhost:8000/slide_reveal/ActorPatch.scala" data-trim></code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
+						<pre><code class="scala" data-code="http://localhost:8000/slide_reveal/ActorPatchIR.scala" data-trim></code></pre><!-- .element: class="fragment" data-fragment-index="2" -->
+					</script>
+					</section>
+					<section data-markdown>
+					<script type="text/template">
+						##Reflection
+						###Runtime<!-- .element: style="color:white" -->
+						<pre><code class="scala" data-trim>
+@scala.scalajs.js.annotation.JSExportDescendentClasses
+trait Actor {
+						</code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
+						####Added at compile time<!-- .element: class="fragment" data-fragment-index="2" style="color:white" -->
+					</script>
+					</section>
+				</section>
+				<section data-markdown>
+				<script type="text/template">
+					##Serialization
+					###Scala/Pickling<!-- .element: style="color:white" -->
+					###errrrr... WIP<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
+					###:-)<!-- .element: class="fragment" data-fragment-index="2" style="color:white"-->
+				</script>
+				</section>
+				<section data-markdown>
+				<script type="text/template">
+					##Unlinkable methods
+					<pre><code class="scala" data-trim>
+@throws(classOf[java.io.ObjectStreamException])
+protected def writeReplace(): AnyRef = SerializedActorRef(this)
+					</code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
+					####Deleted at compile time<!-- .element: class="fragment" data-fragment-index="2" style="color:white" -->
+				</script>
+				</section>
+				<section data-markdown>
+				<script type="text/template">
+					##LOC statistics
+					- Akka-actor ~ 31924<!-- .element: class="fragment" data-fragment-index="1" -->
+					- Akka.Js total ~ 20158<!-- .element: class="fragment" data-fragment-index="2" -->
+					- Akka.Js shared ~ 16999 (> 84%)<!-- .element: class="fragment" data-fragment-index="3" -->
+					- Akka.Js JS ~ 3159<!-- .element: class="fragment" data-fragment-index="3" -->
+				</script>
+				</section>
+				<section data-markdown>
+				<script type="text/template">
+					##What next?
+					- Increase shared code<!-- .element: class="fragment" data-fragment-index="1" -->
+					- Proper testing<!-- .element: class="fragment" data-fragment-index="2" -->
+					- Portable serialization<!-- .element: class="fragment" data-fragment-index="3" -->
+					- Akka-remote<!-- .element: class="fragment" data-fragment-index="4" -->
+					- ... at some point ... performances<!-- .element: class="fragment" data-fragment-index="5" -->
+				</script>
+				</section>
+				<section data-markdown>
+				<script type="text/template">
+					#BOD
+					###Bothering<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
+					###Oriented<!-- .element: class="fragment" data-fragment-index="1" style="color:white" -->
+					###Development<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
+					####Thanks to everyone involved in this!<!-- .element: class="fragment" data-fragment-index="2" -->
+				</script>
+				</section>
+				<section data-markdown>
+					##Thank you!
+
+					[https://github.com/unicredit/akka.js](Akka.js)
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: './plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } }
+				]
+			});
+		</script>
+	</body>
+</html>
