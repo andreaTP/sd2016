@@ -1,8 +1,0 @@
-compile
-demoJS/run
-demoJVM/compile
-demoJS/compile
-compile
-exit
-demoJVM/compile
-exit
