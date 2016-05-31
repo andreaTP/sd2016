@@ -19,7 +19,11 @@ trait RaftClient {
     cid
   }
 
-  def raftMember = system.actorSelection("/user/member*").resolveOne
+  def raftMember = {
+//    scala.util.Random.shuffle(
+//    Raft.members).head
+    system.actorSelection("/user/member*").resolveOne
+  }
 
   def decide(command: String): Future[Int] =
     for {

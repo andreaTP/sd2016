@@ -128,6 +128,7 @@ class Raft(val i: Int, val ui: ActorRef) extends Actor {
       forwardRequest(rpc, data)
     case Timeout =>
       data = preparedForCandidate(data)
+      println("timeout again")
       switchState(Candidate)
   }    
   
@@ -342,17 +343,23 @@ class Raft(val i: Int, val ui: ActorRef) extends Actor {
 }
 
 object Raft {
+  self =>
+
+  var members: List[ActorRef] = List()
+
   def apply(size: Int, ui: ActorRef)(implicit system: ActorSystem): List[NodeId] = {
     
-    val members =
+    val _members =
       for (i <- 0 until size) yield
       system.actorOf(Props(new Raft(i, ui)), "member" + i)
 
-    import system._
-    system.scheduler.scheduleOnce(0 millis)(
-      members.foreach(m => m ! Init(members.toList))
-    )
 
-    members.toList
+    import system._
+    system.scheduler.scheduleOnce(0 millis)({
+      _members.foreach(m => m ! Init(members.toList))
+      self.members = _members.toList
+    })
+
+    _members.toList
   }
 }
