@@ -18,17 +18,5 @@ trait RaftClient {
     cid = cid + 1
     cid
   }
-
-  def raftMember = {
-//    scala.util.Random.shuffle(
-//    Raft.members).head
-    system.actorSelection("/user/member*").resolveOne
-  }
-
-  def decide(command: String): Future[Int] =
-    for {
-      member <- raftMember
-      reply <- (member ? ClientRequest(tick, command))
-    } yield reply.asInstanceOf[(Int, Int)]._2
 }
 

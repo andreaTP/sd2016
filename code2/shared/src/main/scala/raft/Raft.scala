@@ -128,7 +128,6 @@ class Raft(val i: Int, val ui: ActorRef) extends Actor {
       forwardRequest(rpc, data)
     case Timeout =>
       data = preparedForCandidate(data)
-      println("timeout again")
       switchState(Candidate)
   }    
   
@@ -356,7 +355,7 @@ object Raft {
 
     import system._
     system.scheduler.scheduleOnce(0 millis)({
-      _members.foreach(m => m ! Init(members.toList))
+      _members.foreach(m => m ! Init(_members.toList))
       self.members = _members.toList
     })
 

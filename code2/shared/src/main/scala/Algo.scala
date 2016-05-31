@@ -22,7 +22,7 @@ object Algo {
         role match {
           case Leader => println("NEW LEADER -> "+id)
           case _ =>
-            println("NEW STATE "+role.getClass().getSimpleName.toLowerCase()+" -> "+id)
+            println("NEW STATE "+role.getClass().getSimpleName.toLowerCase().replace("$","")+" -> "+id)
         }
       case UIHeartbeat(from) =>
         print("<3 ")
@@ -43,16 +43,7 @@ object Algo {
       case (f: Int, s: Int) =>
         ui ! s
       case "sequence" =>
-        //system.scheduler.scheduleOnce(100 millis)(
-          system.actorSelection("/user/member*") ! ClientRequest(tick, "get")
-          //scala.util.Random.shuffle(Raft.members).head ! ClientRequest(tick, "get")
-        //)
-        /*
-        decide("get") onComplete {
-          case Success(x) => ui ! x
-          case Failure(t) => println(s"Error ${t.getMessage()}")
-        }
-        */
+        scala.util.Random.shuffle(Raft.members).head ! ClientRequest(tick, "get")
 
         schedule
     }
