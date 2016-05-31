@@ -89,16 +89,26 @@ case class TreeManager(tv: ActorRef) extends Actor with JsonTreeHelpers {
     case UpdateStatus(newStatus) =>
       println("NEW STATUS!\n"+newStatus)
       val ns = js.JSON.parse(newStatus)
-      tv ! TreeViewMsgs.NewStatus(ns)
-      children.foreach(_.channel ! UpdateStatus(js.JSON.stringify(ns)))
-      context.become(operative(name, parent, children, ns))
+
+      val ssize = ns.selectDynamic(id).sons.asInstanceOf[js.Array[String]].size
+      if (ssize == children.size) {
+        tv ! TreeViewMsgs.NewStatus(ns)
+        children.foreach(_.channel ! UpdateStatus(js.JSON.stringify(ns)))
+        context.become(operative(name, parent, children, ns))
+      } else self ! UpdateStatus(newStatus)
     case ura @ UpdateRootAdd(nid, ntree) =>
       println("received update root add")
       if (parent.isEmpty) {
         merge(nid)(status, js.JSON.parse(ntree))
 
         tv ! TreeViewMsgs.NewStatus(status)
-        children.foreach(_.channel ! UpdateStatus(js.JSON.stringify(status)))
+
+        //have to check if all the childrend are added...
+        val ssize = status.selectDynamic(id).sons.asInstanceOf[js.Array[String]].size
+        if (ssize == children.size) {
+          println("children are "+children.map(_.id).mkString("[",",","]"))
+          children.foreach(_.channel ! UpdateStatus(js.JSON.stringify(status)))
+        } else self ! UpdateStatus(js.JSON.stringify(status))
       } else parent.get.channel ! ura
     case urr @ UpdateRootRemove(oid) =>
       if (parent.isEmpty) {
@@ -124,8 +134,7 @@ case class TreeManager(tv: ActorRef) extends Actor with JsonTreeHelpers {
       })
 
     case _chat @ Chat(target, sender, content) =>
-      val chatBox = context.system.actorSelection("akka://p2pchat/user/page/chatbox") 
-
+      val chatBox = context.system.actorSelection("akka://p2pchat/user/page/chatbox")
       val chat =
         if (sender != "") {
           chatBox ! ChatBoxMsgs.NewMsg(name, content)

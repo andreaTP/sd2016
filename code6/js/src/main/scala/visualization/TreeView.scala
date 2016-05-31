@@ -17,38 +17,34 @@ object TreeViewMsgs {
 
 case class Node(name: String, descendants: List[Node] = List())
 
-case class TreeView() extends DomActorWithParams[Node] {
+case class TreeView() extends DomActorWithParams[(Node, Boolean)] {
   import svgTags._
   import svgAttrs._
   import paths.high.Tree
 
   var myid: String = ""
 
-  val initValue = Node("-", List())
+  val initValue = (Node("-"), false)
 
-  def template(n: Node) = {
+  def template(nb: (Node, Boolean)) = {
     try {
+    val (n, v) = nb
     val tree = getTree(n)
 
-    val tv = svg(visibility := "hidden", width := 0, height := 0)(
+    val tv = svg(
+        if (!v) style := "visibility : 'hidden'; width : 0; height : 0"
+        else style := "visibility : 'visible'; width : 600; height : 400")(
         g(transform := "translate(400, 50) rotate(90)")(
           (branches(tree) ++ nodes(tree)) : _*
         )
       ).render
     div(
-      button(onclick := {
+      button(
+        cls := "pure-button pure-button-primary",
+        onclick := {
         () => {
-          if (tv.style.visibility == "hidden") {
-            tv.style.visibility = "visible"
-            tv.style.width = "400"
-            tv.style.height = "400"
-          }
-          else {
-            tv.style.visibility = "hidden"
-            tv.style.width = "0"
-            tv.style.height = "0"
-          }
-        }})("show tree"),
+          self ! UpdateValue((n, !v))
+        }})("show/hide tree"),
       tv
     )
     } catch {
@@ -122,9 +118,9 @@ case class TreeView() extends DomActorWithParams[Node] {
   override def operative = domManagement orElse {
     case TreeViewMsgs.SetId(id) =>
       myid = id
-      self ! UpdateValue(Node(id))
+      self ! UpdateValue((Node(id), false))
     case TreeViewMsgs.NewStatus(tree) =>
-      self ! UpdateValue(fromJsonToNode(tree, tree.root.toString))
+      self ! UpdateValue((fromJsonToNode(tree, tree.root.toString), false))
   }
 
 }

@@ -55,7 +55,9 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
       voiceActivityDetection = false)
 
   val channelOptions =
-    RTCDataChannelInit()
+    RTCDataChannelInit(
+      ordered = true
+    )
 
   val connection =
     new RTCPeerConnection(

@@ -58,6 +58,30 @@ RUN echo 'term:term' | chpasswd
 
 WORKDIR /home
 
+RUN git clone https://github.com/scala-js/scala-js.git
+
+WORKDIR /home/scala-js
+
+RUN sbt ";++2.11.8;compiler/publishLocal;library/publishLocal;javalibEx/publishLocal;testInterface/publishLocal;stubs/publishLocal;jasmineTestFramework/publishLocal;jUnitRuntime/publishLocal;jUnitPlugin/publishLocal"
+
+RUN sbt ";++2.10.6;ir/publishLocal;tools/publishLocal;jsEnvs/publishLocal;jsEnvsTestKit/publishLocal;testAdapter/publishLocal;sbtPlugin/publishLocal"
+
+WORKDIR /home
+
+RUN git clone https://github.com/unicredit/akka.js.git
+
+WORKDIR /home/akka.js
+
+RUN git checkout refactoring
+
+RUN git submodule init
+
+RUN git submodule update
+
+RUN sbt akkaJsActorIrPatches/compile
+
+RUN sbt akkaJsActor/publishLocal
+
 RUN rm -rf ./sd2016
 
 RUN git clone https://github.com/andreaTP/sd2016
