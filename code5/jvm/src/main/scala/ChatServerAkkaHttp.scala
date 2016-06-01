@@ -38,7 +38,7 @@ object ChatServerAkkaHttp {
       override val requestStrategy = new MaxInFlightRequestStrategy(max = 1) {
         override def inFlightInternally: Int = 0
       }
-      
+
       def receive = {
         case OnNext(any: Any) =>
           any match {
@@ -53,15 +53,15 @@ object ChatServerAkkaHttp {
 
     def msgFlow(): Flow[Message,Message,Any] =
       Flow.fromSinkAndSource(actorSink, actorSource)
-     
+
     val route =
       path("") {
         get {
             handleWebSocketMessages(msgFlow)
         }
       }
-   
-    val bindingFuture = Http().bindAndHandle(route, "localhost", 9001)
-   
+
+    val bindingFuture = Http().bindAndHandle(route, "0.0.0.0", 9001)
+
   }
 }
