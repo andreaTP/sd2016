@@ -30,3 +30,5 @@ lazy val demoJVM = demo.jvm
 lazy val demoJS = demo.js
 
 cancelable in Global := true
+
+resolvers += "Sonatype-Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
