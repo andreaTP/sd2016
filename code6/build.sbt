@@ -13,6 +13,7 @@ lazy val demo = crossProject.in(file(".")).
     fork in run := true
   ).
   jsSettings(
+    resolvers += Resolver.sonatypeRepo("snapshots"),
     libraryDependencies ++= Seq(
       "akka.js" %%% "akkaactor" % "0.1.1-SNAPSHOT",
       "org.scala-js" %%% "scalajs-dom" % "0.9.0",
@@ -30,5 +31,3 @@ lazy val demoJVM = demo.jvm
 lazy val demoJS = demo.js
 
 cancelable in Global := true
-
-resolvers += "Sonatype-Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"

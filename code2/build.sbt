@@ -19,6 +19,7 @@ lazy val demo = crossProject.in(file(".")).
     )
   ).
   jsSettings(
+    resolvers += Resolver.sonatypeRepo("snapshots"),
     libraryDependencies ++= Seq(
       "akka.js" %%% "akkaactor" % "0.1.1-SNAPSHOT"
     ),
@@ -31,5 +32,3 @@ lazy val demoJVM = demo.jvm
 lazy val demoJS = demo.js
 
 cancelable in Global := true
-
-resolvers += "Sonatype-Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
