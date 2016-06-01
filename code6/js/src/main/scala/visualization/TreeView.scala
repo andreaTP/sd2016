@@ -33,8 +33,8 @@ case class TreeView() extends DomActorWithParams[(Node, Boolean)] {
 
     val tv = svg(
         if (!v) style := "visibility : 'hidden'; width : 0; height : 0"
-        else style := "visibility : 'visible'; width : 600; height : 400")(
-        g(transform := "translate(400, 50) rotate(90)")(
+        else style := "visibility : 'visible'; width : 350; height : 400")(
+        g(transform := "translate(310, 50) rotate(90)")(
           (branches(tree) ++ nodes(tree)) : _*
         )
       ).render
@@ -54,7 +54,7 @@ case class TreeView() extends DomActorWithParams[(Node, Boolean)] {
     }
   }
 
-  def getTree(treeNodes: Node) = 
+  def getTree(treeNodes: Node) =
     Tree[Node](
       data = treeNodes,
       children = _.descendants,
@@ -70,14 +70,14 @@ case class TreeView() extends DomActorWithParams[(Node, Boolean)] {
     val p1 =
       if (p(1).toString == "NaN") 0
       else p(1)
-    
+
     s"translate(${ p0 },${ p1 })"
   }
-  private def isLeaf(node: Node) = node.descendants.length == 0  
+  private def isLeaf(node: Node) = node.descendants.length == 0
 
   def branches(tree: Tree[Node]) = tree.curves map { curve =>
     path(d := curve.connector.path.print,
-      stroke := "grey", 
+      stroke := "grey",
       fill := "none"
     )
   }
@@ -95,11 +95,11 @@ case class TreeView() extends DomActorWithParams[(Node, Boolean)] {
 
   def fromJsonToNode(tree: js.Dynamic, id: String): Node = {
     val name = tree.selectDynamic(id).name
-    val symName = 
+    val symName =
       if (js.isUndefined(name)) {
         if (myid == id)
           "ME: "+id.toString
-        else 
+        else
           id
       } else if (myid == id)
         "ME: "+name.toString
@@ -118,7 +118,8 @@ case class TreeView() extends DomActorWithParams[(Node, Boolean)] {
   override def operative = domManagement orElse {
     case TreeViewMsgs.SetId(id) =>
       myid = id
-      self ! UpdateValue((Node(id), false))
+      //self ! UpdateValue((Node(id), false))
+      self ! UpdateValue(Node("a", List(Node("b"), Node("c"))), true)
     case TreeViewMsgs.NewStatus(tree) =>
       self ! UpdateValue((fromJsonToNode(tree, tree.root.toString), false))
   }
