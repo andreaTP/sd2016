@@ -88,6 +88,10 @@ RUN rm -rf /home/sd2016/
 
 RUN git clone https://github.com/andreaTP/sd2016
 
+WORKDIR /home/sd2016
+
+RUN git pull
+
 WORKDIR /home/sd2016/code5
 
 RUN npm install websocket
@@ -118,7 +122,9 @@ WORKDIR /home/sd2016/code6
 
 RUN sbt fullOptJS
 
-EXPOSE 3000 8000
+WORKDIR /home/sd2016
+
+EXPOSE 3000 8000 9001 9002
 
 RUN echo "root:root" | chpasswd
 
