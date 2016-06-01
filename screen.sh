@@ -1,1 +1,0 @@
-screen -x shared

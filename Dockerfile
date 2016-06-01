@@ -92,7 +92,31 @@ WORKDIR /home/sd2016/code5
 
 RUN npm install websocket
 
-WORKDIR /home/sd2016
+WORKDIR /home/sd2016/code1
+
+RUN sbt compile
+RUN sbt clean
+
+WORKDIR /home/sd2016/code2
+
+RUN sbt compile
+RUN sbt clean
+
+WORKDIR /home/sd2016/code3
+
+RUN sbt fullOptJS
+
+WORKDIR /home/sd2016/code4
+
+RUN sbt fullOptJS
+
+WORKDIR /home/sd2016/code5
+
+RUN sbt fullOptJS
+
+WORKDIR /home/sd2016/code6
+
+RUN sbt fullOptJS
 
 EXPOSE 3000 8000
 
