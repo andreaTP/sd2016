@@ -88,6 +88,10 @@ RUN rm -rf /home/sd2016/
 
 RUN git clone https://github.com/andreaTP/sd2016
 
+WORKDIR /home/sd2016/code5
+
+RUN npm install websocket
+
 WORKDIR /home/sd2016
 
 EXPOSE 3000 8000
