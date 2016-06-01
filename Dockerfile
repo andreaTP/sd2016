@@ -116,6 +116,7 @@ RUN sbt fullOptJS
 
 WORKDIR /home/sd2016/code5
 
+RUN sbt compile
 RUN sbt fullOptJS
 
 WORKDIR /home/sd2016/code6
