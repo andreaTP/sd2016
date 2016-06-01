@@ -78,37 +78,15 @@ RUN git submodule init
 
 RUN git submodule update
 
-RUN sbt akkaJsActorIrPatches/compile
+RUN sbt akkaActorJSIrPatches/compile
 
-RUN sbt akkaJsActor/publishLocal
+RUN sbt akkaActorJS/publishLocal
 
-RUN rm -rf ./sd2016
+WORKDIR /home
+
+RUN rm -rf /home/sd2016/
 
 RUN git clone https://github.com/andreaTP/sd2016
-
-WORKDIR /home/sd2016/code1
-
-RUN sbt compile
-
-WORKDIR /home/sd2016/code2
-
-RUN sbt compile
-
-WORKDIR /home/sd2016/code3
-
-RUN sbt compile
-
-WORKDIR /home/sd2016/code4
-
-RUN sbt compile
-
-WORKDIR /home/sd2016/code5
-
-RUN sbt compile
-
-WORKDIR /home/sd2016/code6
-
-RUN sbt compile
 
 WORKDIR /home/sd2016
 

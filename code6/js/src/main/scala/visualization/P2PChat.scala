@@ -18,7 +18,7 @@ object P2PChat {
   case class Page() extends DomActor {
     override val domElement = Some(getElem("root"))
 
-    
+
 
     def template = div(/*cls := "pure-g"*/)()
 
@@ -35,30 +35,37 @@ object P2PChat {
     }
   }
 
-  case class SetName(tm: ActorRef) extends DomActor {
+  case class SetName(tm: ActorRef) extends DomActorWithParams[String] {
+
+    val initValue = ""
 
     val nameBox =
       input("placeholder".attr := "write here your name").render
 
-    def template() = 
-      div(cls := "pure-u-1-3")(
-        div(cls := "pure-form")(
-          nameBox,
-          button(
-            cls := "pure-button pure-button-primary",
-            onclick := {
-              () => {
-                tm ! TreeMsgs.SetName(nameBox.value)
-                self ! PoisonPill
-                }})(
-            "Set"
+    def template(name: String) =
+      if (name == "")
+        div(cls := "pure-u-3-3")(
+          div(cls := "pure-form")(
+            nameBox,
+            button(
+              cls := "pure-button pure-button-primary",
+              onclick := {
+                () => {
+                  tm ! TreeMsgs.SetName(nameBox.value)
+                  self ! UpdateValue(nameBox.value)
+                  }})(
+              "Set"
+            )
           )
         )
-      )
+      else
+        div(cls := "pure-u-3-3")(
+          h4(s"$name")
+        )
   }
 
   case class AddConnection(tm: ActorRef) extends DomActor {
-    def template() = div(cls := "pure-u-1-3")(
+    def template() = div(cls := "pure-u-3-3")(
         div(cls := "pure-form")(
           button(
             cls := "pure-button pure-button-primary",
@@ -83,7 +90,7 @@ object P2PChat {
     case object BuildOffer extends Status
     case class Offer(token: String) extends Status
     case object BuildAnswer extends Status
-    case class Answer(token: String) extends Status    
+    case class Answer(token: String) extends Status
     case class WaitingAnswer(token: String) extends Status
     case class WaitingConnection(token: String) extends Status
     case object Connected extends Status
@@ -96,7 +103,7 @@ object P2PChat {
 
     val conn = context.system.actorOf(Props(WebRTCConnection(self)))
 
-    def template(s: Status) = 
+    def template(s: Status) =
     div(
       h3(s"Channel: "),
       s match {
@@ -135,7 +142,7 @@ object P2PChat {
           )
         case BuildAnswer =>
           val offerBox =
-            input("placeholder".attr := "paste here offer").render    
+            input("placeholder".attr := "paste here offer").render
 
             div(
               offerBox,

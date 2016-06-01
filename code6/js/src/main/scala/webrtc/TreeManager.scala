@@ -13,7 +13,7 @@ object TreeMsgs {
 
   case class SetName(name: String)
 
-  case class Node(id: String, channel: ActorRef) { 
+  case class Node(id: String, channel: ActorRef) {
     override def equals(x: Any) = {
       x match {
         case Node(xid, _) => xid == id
@@ -24,7 +24,7 @@ object TreeMsgs {
 
   class TreeMsg
   case class AddChannel(conn: ActorRef, fn: String => TreeMsg) extends TreeMsg
-  case class RemoveChannel(conn: ActorRef) extends TreeMsg  
+  case class RemoveChannel(conn: ActorRef) extends TreeMsg
   case class AddParent(node: Node) extends TreeMsg
   case class AddChild(node: Node) extends TreeMsg
   case class Remove(node: Node) extends TreeMsg
@@ -136,10 +136,10 @@ case class TreeManager(tv: ActorRef) extends Actor with JsonTreeHelpers {
     case _chat @ Chat(target, sender, content) =>
       val chatBox = context.system.actorSelection("akka://p2pchat/user/page/chatbox")
       val chat =
-        if (sender != "") {
+        if (sender != "") _chat else {
           chatBox ! ChatBoxMsgs.NewMsg(name, content)
-          _chat
-        } else Chat(target, name, content)
+          Chat(target, name, content)
+        }
 
       println("ok chat msg! "+target+" my id "+id+" sender "+sender)
       if (target == id) chatBox ! ChatBoxMsgs.NewMsg(sender, content)
@@ -147,13 +147,13 @@ case class TreeManager(tv: ActorRef) extends Actor with JsonTreeHelpers {
         val down =
           children.find(c =>
             c.id == target ||
-            isSonOf(target, c.id)(status) 
+            isSonOf(target, c.id)(status)
           )
 
         if (down.isDefined) down.map(_.channel ! chat)
-        else parent.map(_.channel ! chat) 
+        else parent.map(_.channel ! chat)
       }
-      
+
     case any => println("UNMANAGED "+any)
   }
 

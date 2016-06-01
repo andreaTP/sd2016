@@ -1,18 +1,22 @@
-python -m SimpleHTTPServer&
-
 cd ..
 cd wetty
-./start.sh&
+node app.js -p 4000 > /dev/null 2> /dev/null&
 cd ../sd2016
 
+cd code1
+sbt clean
+cd ..
+
+cd code2
+sbt clean
+cd ..
+
 cd code3
-sbt "fastOptJS"&
-sbt "fullOptJS"&
+sbt fullOptJS
 cd ..
 
 cd code4
-sbt "fastOptJS"&
-sbt "fullOptJS"&
+sbt fullOptJS
 cd ..
 
 cd code5
@@ -21,14 +25,13 @@ sbt "demoJS/run"&
 cd ..
 
 cd code6
-sbt "fastOptJS"&
-sbt "fullOptJS"&
+sbt fullOptJS
 cd ..
+
+python -m SimpleHTTPServer
 
 ##to be tested...
 #cd ..
 #cd stunserver
 #./stunserver --mode basic --primaryinterface lo&
 #cd ../sd2016
-
-#browser-sync start --config bs-config.js
