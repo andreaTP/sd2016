@@ -1,9 +1,7 @@
 
 Presentazione effettiva
 
--> ridurre il codice nelle slide a una porzione leggibile lo slider è difficile da usare
-
--> chat distribuita
+-> verificare screen mirroring
 
 Tecnica
 

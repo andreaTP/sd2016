@@ -6,11 +6,13 @@ cd wetty
 cd ../sd2016
 
 cd code3
-sbt "~fastOptJS"&
+sbt "fastOptJS"&
+sbt "fullOptJS"&
 cd ..
 
 cd code4
-sbt "~fastOptJS"&
+sbt "fastOptJS"&
+sbt "fullOptJS"&
 cd ..
 
 cd code5
@@ -19,9 +21,11 @@ sbt "demoJS/run"&
 cd ..
 
 cd code6
-sbt "~fastOptJS"&
+sbt "fastOptJS"&
+sbt "fullOptJS"&
 cd ..
 
+##to be tested...
 #cd ..
 #cd stunserver
 #./stunserver --mode basic --primaryinterface lo&
