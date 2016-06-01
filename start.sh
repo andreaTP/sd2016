@@ -21,7 +21,7 @@ cd ..
 
 cd code5
 sbt demoJVM/run&
-#sbt "demoJS/run"&
+sbt demoJS/run&
 cd ..
 
 cd code6
