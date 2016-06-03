@@ -40,9 +40,10 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
   import context.dispatcher
 
   val stuns: js.Array[String] =
-    StunServers.servers
+    //StunServers.servers
     //debug mode
-    //js.Array("localhost")
+    //let always fallback until specification is clear
+    js.Array("localhost")
 
   val servers =
     stuns.map(url => RTCIceServer(urls = s"stun:$url"))
@@ -183,7 +184,7 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
 
   case object Timeout
   case object Heartbeat extends MessageToBus("heartbeat") { val text = "heartbeat" }
-  val timeoutMaxRetry = 30
+  val timeoutMaxRetry = 3
 
   def startHeartbeats = {
     import context.dispatcher
@@ -195,8 +196,8 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
   def operative(channel: RTCDataChannel, manager: ActorRef, maxRetry: Int = timeoutMaxRetry, first: Boolean = false): Receive = {
     import context.dispatcher
     val timeout = context.system.scheduler.scheduleOnce({
-      if (first) 150 seconds
-      else 50 seconds
+      if (first) 15 seconds
+      else 5 seconds
       })(
         self ! Timeout
       )
