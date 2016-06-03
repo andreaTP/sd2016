@@ -40,9 +40,9 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
   import context.dispatcher
 
   val stuns: js.Array[String] =
-    //StunServers.servers
+    StunServers.servers
     //debug mode
-    js.Array("localhost")
+    //js.Array("localhost")
 
   val servers =
     stuns.map(url => RTCIceServer(urls = s"stun:$url"))
@@ -103,7 +103,7 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
 
   def connect: Receive = {
 
-    val channel = 
+    val channel =
       connection.createDataChannel(randomUUID().toString, channelOptions)
 
     bindChannel(channel)
@@ -114,7 +114,7 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
       case Failure(err) =>
         println(s"Couldn't create offer $err")
     }
-    
+
     ;{
       case desc: RTCSessionDescription =>
         ui ! OfferToken(write[RTCSessionDescription](desc))
@@ -245,7 +245,7 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
 
         channel.send(text)
       }
-  }
+    }
   }
 
   override def postStop() = {

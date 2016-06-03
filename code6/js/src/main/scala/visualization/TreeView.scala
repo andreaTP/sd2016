@@ -118,8 +118,7 @@ case class TreeView() extends DomActorWithParams[(Node, Boolean)] {
   override def operative = domManagement orElse {
     case TreeViewMsgs.SetId(id) =>
       myid = id
-      //self ! UpdateValue((Node(id), false))
-      self ! UpdateValue(Node("a", List(Node("b"), Node("c"))), true)
+      self ! UpdateValue((Node(id), false))
     case TreeViewMsgs.NewStatus(tree) =>
       self ! UpdateValue((fromJsonToNode(tree, tree.root.toString), false))
   }

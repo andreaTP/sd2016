@@ -3,6 +3,7 @@ package eu.unicredit
 import akka.actor._
 import AkkaConfig.config
 
+import org.scalajs.dom.{window, document}
 import org.scalajs.dom.document.{getElementById => getElem}
 
 import scalatags.JsDom._
@@ -17,8 +18,6 @@ object P2PChat {
 
   case class Page() extends DomActor {
     override val domElement = Some(getElem("root"))
-
-
 
     def template = div(/*cls := "pure-g"*/)()
 

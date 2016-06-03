@@ -12,11 +12,9 @@ object ChatServerNode {
   def run = {
     import ChatServer.system
 
-    ChatServer.manager
-
     val http = g.require("http")
     val WebSocketServer = g.require("websocket").server
-      
+
     val server = http.createServer((request: js.Dynamic, response: js.Dynamic) => {
         response.writeHead(404)
         response.end("not available")
@@ -37,7 +35,7 @@ object ChatServerNode {
         connection.on("message", (message: js.Dynamic) => {
           ChatServer.manager ! ChatMsgs.Message(s"Node.JS: ${message.utf8Data.toString}")
         })
-        
+
         connection.on("close", (reasonCode: js.Dynamic, description: js.Dynamic) => {
           self ! PoisonPill
         })
@@ -54,5 +52,7 @@ object ChatServerNode {
           connection.send(txt)
       }
     }
+
+    ChatServer.manager
   }
 }

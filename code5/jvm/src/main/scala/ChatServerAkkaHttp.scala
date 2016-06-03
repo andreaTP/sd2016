@@ -35,33 +35,32 @@ object ChatServerAkkaHttp {
 
     case class SinkWSHandler() extends ActorSubscriber {
       import ActorSubscriberMessage._
+
       override val requestStrategy = new MaxInFlightRequestStrategy(max = 1) {
         override def inFlightInternally: Int = 0
       }
 
       def receive = {
-        case OnNext(any: Any) =>
-          any match {
-            case TextMessage.Strict(text) =>
-              ChatServer.manager ! ChatMsgs.Message(s"Akka HTTP: $text")
-          }
+        case OnNext(TextMessage.Strict(text)) =>
+          ChatServer.manager ! ChatMsgs.Message(s"Akka HTTP: $text")
       }
     }
 
-    def actorSource = Source.actorPublisher[Message](Props(new SourceWSHandler()))
-    def actorSink = Sink.actorSubscriber(Props(new  SinkWSHandler()))
+    def actorSource =
+      Source.actorPublisher[Message](Props(new SourceWSHandler()))
+    def actorSink =
+      Sink.actorSubscriber(Props(new SinkWSHandler()))
 
     def msgFlow(): Flow[Message,Message,Any] =
       Flow.fromSinkAndSource(actorSink, actorSource)
 
     val route =
-      path("") {
+      pathSingleSlash {
         get {
             handleWebSocketMessages(msgFlow)
         }
       }
 
-    val bindingFuture = Http().bindAndHandle(route, "0.0.0.0", 9001)
-
+    Http().bindAndHandle(route, "0.0.0.0", 9001)
   }
 }

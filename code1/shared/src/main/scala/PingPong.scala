@@ -13,7 +13,7 @@ object PingPong {
             println(s"received $matcher sending answer $answer")
         }
       }
-    ) 
+    )
 
   def start = {
 
@@ -22,9 +22,15 @@ object PingPong {
 
     import system.dispatcher
     import scala.concurrent.duration._
-    system.scheduler.scheduleOnce(1 second)(pinger.!("pong")(ponger))
+    system.scheduler.scheduleOnce(1 second)(
+      pinger.!("pong")(ponger)
+    )
 
-    system.scheduler.scheduleOnce(2 seconds)(System.exit(0))
+    system.scheduler.scheduleOnce(2 seconds){
+      pinger ! PoisonPill
+      ponger ! PoisonPill
+      system.terminate()
+    }
   }
 
 }

@@ -1,7 +1,6 @@
 package eu.unicredit
 
 import akka.actor._
-import AkkaConfig.config
 
 object ChatMsgs {
   case class AddClient(ref: ActorRef)
@@ -12,7 +11,7 @@ object ChatMsgs {
 
 object ChatServer {
 
-  implicit lazy val system = ActorSystem("chat", config)
+  implicit lazy val system = ActorSystem("chat", AkkaConfig.config)
 
   lazy val manager =
     system.actorOf(Props(Manager()), "manager")
@@ -21,7 +20,7 @@ object ChatServer {
     import ChatMsgs._
 
     def receive = operative()
-    
+
     def operative(clients: List[ActorRef] = List()): Receive = {
       case AddClient(ref) =>
         context.become(operative(clients :+ ref))
