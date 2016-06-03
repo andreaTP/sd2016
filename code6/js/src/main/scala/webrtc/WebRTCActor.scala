@@ -183,7 +183,7 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
 
   case object Timeout
   case object Heartbeat extends MessageToBus("heartbeat") { val text = "heartbeat" }
-  val timeoutMaxRetry = 3
+  val timeoutMaxRetry = 30
 
   def startHeartbeats = {
     import context.dispatcher
@@ -195,8 +195,8 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
   def operative(channel: RTCDataChannel, manager: ActorRef, maxRetry: Int = timeoutMaxRetry, first: Boolean = false): Receive = {
     import context.dispatcher
     val timeout = context.system.scheduler.scheduleOnce({
-      if (first) 15 seconds
-      else 5 seconds
+      if (first) 150 seconds
+      else 50 seconds
       })(
         self ! Timeout
       )
