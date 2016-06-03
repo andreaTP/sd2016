@@ -125,6 +125,8 @@ RUN sbt fullOptJS
 
 WORKDIR /home/sd2016
 
+#RUN git pull
+
 EXPOSE 3000 8000 9001 9002
 
 RUN echo "root:root" | chpasswd
