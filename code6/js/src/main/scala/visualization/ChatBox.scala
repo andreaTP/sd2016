@@ -29,7 +29,7 @@ case class ChatBox(tm: ActorRef) extends DomActorWithParams[List[String]] {
   case class MsgToSend(targetName: String, msg: String)
 
   def template(txt: List[String]) = div(cls := "pure-form")(
-    div(cls := "pure-u-1-3")(
+    div(cls := "pure-u-3-3")(
     h3(s"Chat: "),
     toBox,
     msgBox,

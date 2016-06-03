@@ -1,7 +1,6 @@
 package eu.unicredit
 
 import akka.actor._
-import AkkaConfig.config
 
 import org.scalajs.dom.document.{getElementById => getElem}
 
@@ -10,7 +9,7 @@ import scalatags.JsDom.all._
 
 object ToDo {
 
-  implicit lazy val system = ActorSystem("todo", config)
+  implicit lazy val system = ActorSystem("todo", AkkaConfig.config)
 
   def start =
     system.actorOf(Props(ToDoList()), "page")

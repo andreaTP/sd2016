@@ -1,7 +1,6 @@
 package eu.unicredit
 
 import akka.actor._
-import AkkaConfig.config
 
 import org.scalajs.dom.document.{getElementById => getElem}
 
@@ -12,7 +11,7 @@ import org.scalajs.dom.raw._
 
 object ChatUI {
 
-  implicit lazy val system = ActorSystem("chat", config)
+  implicit lazy val system = ActorSystem("chat", AkkaConfig.config)
 
   def start =
     system.actorOf(Props(ChatUI()), "page")
