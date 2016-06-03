@@ -99,12 +99,10 @@ RUN npm install websocket
 WORKDIR /home/sd2016/code1
 
 RUN sbt compile
-RUN sbt clean
 
 WORKDIR /home/sd2016/code2
 
 RUN sbt compile
-RUN sbt clean
 
 WORKDIR /home/sd2016/code3
 
