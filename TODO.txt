@@ -1,9 +1,0 @@
-
-Presentazione effettiva
-
--> verificare screen mirroring
-
-Tecnica
-
--> verificare stato scala-pickling (WIP)
-
