@@ -23,7 +23,8 @@ RUN apt-get update && \
     openjdk-8-jdk \
     build-essential \
     libkrb5-dev \
-    screen
+    screen \
+    g++ libboost-dev libssl-dev
 
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk
 
@@ -55,6 +56,14 @@ RUN npm install
 RUN useradd -d /home/sd2016 -m -s /bin/bash term
 
 RUN echo 'term:term' | chpasswd
+
+WORKDIR /home
+
+RUN git clone https://github.com/jselbie/stunserver.git
+
+WORKDIR /home/stunserver
+
+RUN make
 
 WORKDIR /home
 

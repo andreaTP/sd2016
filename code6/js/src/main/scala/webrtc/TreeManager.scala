@@ -77,7 +77,12 @@ case class TreeManager(tv: ActorRef) extends Actor with JsonTreeHelpers {
       context.children.foreach(_ ! (idans, orSender))
     case AddParent(node) =>
       println("add parent")
-      node.channel ! UpdateRootAdd(node.id, js.JSON.stringify(status))
+      import context.dispatcher
+      import scala.concurrent.duration._
+      //to be sure tree exists before updating descendants
+      context.system.scheduler.scheduleOnce(500 millis)(
+        node.channel ! UpdateRootAdd(node.id, js.JSON.stringify(status))
+      )
       context.become(operative(name, Some(node), children, status))
     case AddChild(node) =>
       println("add child")
@@ -90,25 +95,16 @@ case class TreeManager(tv: ActorRef) extends Actor with JsonTreeHelpers {
       println("NEW STATUS!\n"+newStatus)
       val ns = js.JSON.parse(newStatus)
 
-      val ssize = ns.selectDynamic(id).sons.asInstanceOf[js.Array[String]].size
-      if (ssize == children.size) {
-        tv ! TreeViewMsgs.NewStatus(ns)
-        children.foreach(_.channel ! UpdateStatus(js.JSON.stringify(ns)))
-        context.become(operative(name, parent, children, ns))
-      } else self ! UpdateStatus(newStatus)
+      tv ! TreeViewMsgs.NewStatus(ns)
+      children.foreach(_.channel ! UpdateStatus(js.JSON.stringify(ns)))
+
+      context.become(operative(name, parent, children, ns))
     case ura @ UpdateRootAdd(nid, ntree) =>
       println("received update root add")
       if (parent.isEmpty) {
         merge(nid)(status, js.JSON.parse(ntree))
 
-        tv ! TreeViewMsgs.NewStatus(status)
-
-        //have to check if all the childrend are added...
-        val ssize = status.selectDynamic(id).sons.asInstanceOf[js.Array[String]].size
-        if (ssize == children.size) {
-          println("children are "+children.map(_.id).mkString("[",",","]"))
-          children.foreach(_.channel ! UpdateStatus(js.JSON.stringify(status)))
-        } else self ! UpdateStatus(js.JSON.stringify(status))
+        self ! UpdateStatus(js.JSON.stringify(status))
       } else parent.get.channel ! ura
     case urr @ UpdateRootRemove(oid) =>
       if (parent.isEmpty) {

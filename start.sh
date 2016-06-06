@@ -3,6 +3,11 @@ cd wetty
 node app.js -p 4000 > /dev/null 2> /dev/null&
 cd ../sd2016
 
+cd ..
+cd stunserver
+./stunserver --mode basic --primaryinterface lo&
+cd ../sd2016
+
 cd code1
 sbt clean
 cd ..
@@ -29,9 +34,3 @@ sbt fullOptJS
 cd ..
 
 python -m SimpleHTTPServer
-
-##to be tested...
-#cd ..
-#cd stunserver
-#./stunserver --mode basic --primaryinterface lo&
-#cd ../sd2016
