@@ -43,7 +43,7 @@ case class WebRTCConnection(ui: ActorRef) extends Actor {
     //StunServers.servers
     //debug mode
     //let always fallback until specification is clear
-    js.Array("localhost", "localhost:3478", "127.0.0.1", "127.0.0.1:3478")
+    js.Array("localhost", "localhost:3478", "127.0.0.1", "127.0.0.1:3478", "0.0.0.0", "0.0.0.0:3478")
 
   val servers =
     stuns.map(url => RTCIceServer(urls = s"stun:$url"))
