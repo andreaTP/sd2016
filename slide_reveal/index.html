@@ -170,7 +170,6 @@
 						- Java stdlib<!-- .element: class="fragment" data-fragment-index="1" -->
 						- Reflection<!-- .element: class="fragment" data-fragment-index="2" -->
 						- Serialization<!-- .element: class="fragment" data-fragment-index="3" -->
-						- Unlinkable methods<!-- .element: class="fragment" data-fragment-index="4" -->
 						- Typesafe Config<!-- .element: class="fragment" data-fragment-index="5" -->
 					</script>
 				</section>
@@ -224,16 +223,6 @@ trait Actor {
 					####Scala/Pickling<!-- .element: style="color:white" -->
 					####errrrr... WIP<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
 					####:-)<!-- .element: class="fragment" data-fragment-index="2" style="color:white"-->
-				</script>
-				</section>
-				<section data-markdown>
-				<script type="text/template">
-					##Unlinkable methods
-					<pre><code class="scala" data-trim>
-@throws(classOf[java.io.ObjectStreamException])
-protected def writeReplace(): AnyRef = SerializedActorRef(this)
-					</code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
-					####Deleted at compile time<!-- .element: class="fragment" data-fragment-index="2" style="color:white" -->
 				</script>
 				</section>
         <section data-markdown>
