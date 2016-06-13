@@ -57,7 +57,7 @@ object ChatServerAkkaHttp {
     val route =
       pathSingleSlash {
         get {
-            handleWebSocketMessages(msgFlow)
+          handleWebSocketMessages(msgFlow)
         }
       }
 
