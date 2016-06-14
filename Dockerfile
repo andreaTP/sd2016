@@ -71,7 +71,7 @@ RUN git clone https://github.com/scala-js/scala-js.git
 
 WORKDIR /home/scala-js
 
-RUN sbt ";++2.11.8;compiler/publishLocal;library/publishLocal;javalibEx/publishLocal;testInterface/publishLocal;stubs/publishLocal;jasmineTestFramework/publishLocal;jUnitRuntime/publishLocal;jUnitPlugin/publishLocal"
+RUN sbt ";++2.11.8;compiler/publishLocal;library/publishLocal;javalibEx/publishLocal;testInterface/publishLocal;stubs/publishLocal;jUnitRuntime/publishLocal;jUnitPlugin/publishLocal"
 
 RUN sbt ";++2.10.6;ir/publishLocal;tools/publishLocal;jsEnvs/publishLocal;jsEnvsTestKit/publishLocal;testAdapter/publishLocal;sbtPlugin/publishLocal"
 

@@ -27,9 +27,9 @@ object ToDo {
           button(
             cls := "pure-button pure-button-primary",
             onclick := {
-              () => context.actorOf(Props(ToDoElem(inputBox.value)))})(
-            " Add"
-          )
+              () => context.actorOf(Props(ToDoElem(inputBox.value)))
+            }
+          )("Add")
         )
       )
   }
@@ -42,9 +42,9 @@ object ToDo {
           button(
             cls := "pure-button pure-button-primary",
             onclick := {
-              () => self ! PoisonPill})(
-            "Remove"
-          )
+              () => self ! PoisonPill
+            }
+          )("Remove")
         )
       )
     )
