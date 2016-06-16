@@ -22,7 +22,7 @@ lazy val demo = crossProject.in(file(".")).
   jsSettings(
     resolvers += Resolver.sonatypeRepo("snapshots"),
     libraryDependencies ++= Seq(
-      "akka.js" %%% "akkaactor" % "0.1.1-SNAPSHOT"
+      "eu.unicredit" %%% "akkajsactor" % "0.1.1-SNAPSHOT"
     ),
     persistLauncher in Compile := true,
     scalaJSStage in Global := FastOptStage,
