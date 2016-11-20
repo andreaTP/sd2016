@@ -25,13 +25,13 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-markdown>
-					![alt text](./images/akkajs-grey.png "")
-					##Drop Your Actors Outside the JVM Boundaries
-					<img data-src="./images/akkajs-grey.png" />
+          <script type="text/template">
+          ##Don’t call me frontend framework!
+          ####A quick ride on
+
+          <img data-src="./images/akkajs-grey.png" />
+        </script>
 				</section>
-        <section>
-          <img data-src="./images/Slide2.png" />
-        </section>
 				<section data-markdown>
           <script type="text/template">
 				  ###Who am I?
@@ -46,6 +46,25 @@
           <section><img data-src="./images/one.png" /></section>
           <section><img data-src="./images/two.png" /></section>
           <section><img data-src="./images/three.png" /></section>
+        </section>
+        <section data-markdown>
+        <script type="text/template">
+          ##Scala.Js from scratch
+          <pre><code class="bash" data-trim>
+mkdir project &&\
+echo 'sbt.version=0.13.13' > project/build.properties &&\
+echo 'addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.13")' > project/sjs.sbt &&\
+echo 'lazy val root = project.in(file(".")).enablePlugins(ScalaJSPlugin)' > build.sbt &&\
+echo $'import scala.scalajs.js\n\nobject Main extends js.JSApp {\n def main() = println("Hello world!")\n}' > Main.scala
+          </code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
+        </script>
+        </section>
+        <script type="text/template">
+          ##Add Akka flavour
+        </script>
+        <script type="text/template">
+          ##Let's write a WebSocket Server
+        </script>
         </section>
 				<section data-markdown>
 					<script type="text/template">
@@ -64,20 +83,6 @@
 		        You choose this trak while there are other 3 :-P
 		        I should ask you why!
 					 </aside>
-				</section>
-				<section data-markdown>
-					<script type="text/template">
-						##My goal
-						###Be lazy<!-- .element: class="fragment" data-fragment-index="1" style="color:white;"-->
-						<img height="50%" style="max-height : 20%;" data-src="./images/akka_team.jpg" /><!-- .element: class="fragment" data-fragment-index="4" style="max-height:50%""-->
-						###Thanks guys!<!-- .element: class="fragment" data-fragment-index="4" style="color:white;"-->
-					</script>
-				</section>
-				<section data-markdown>
-					<script type="text/template">
-					##Does it work?
-					#YES!<!-- .element: class="fragment" data-fragment-index="1" style="color:white;"-->
-					</script>
 				</section>
 				<section>
 					<h3>Ping Pong</h3>
@@ -193,36 +198,6 @@
 					</script>
 					</section>
 				</section>
-				<section>
-					<section data-markdown>
-					<script type="text/template">
-						##Reflection
-						####Fields<!-- .element: style="color:white" -->
-						<pre><code style="max-height:265px" class="scala" data-code="./ActorContext.scala" data-trim></code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
-						<pre><code class="scala" style="max-height:180px" data-code="./ActorContextReflect.scala" data-trim></code></pre><!-- .element: class="fragment" data-fragment-index="2" -->
-						###ARGH!<!-- .element: class="fragment" data-fragment-index="3" style="color:white" -->
-					</script>
-					</section>
-					<section data-markdown>
-					<script type="text/template">
-						##Reflection
-						####Fields > Patch after compilation<!-- .element: style="color:white" -->
-						<pre><code class="scala" data-code="./ActorPatch.scala" data-trim></code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
-						<pre><code class="scala" data-code="./ActorPatchIR.scala" data-trim></code></pre><!-- .element: class="fragment" data-fragment-index="2" -->
-					</script>
-					</section>
-					<section data-markdown>
-					<script type="text/template">
-						##Reflection
-						####Runtime<!-- .element: style="color:white" -->
-						<pre><code class="scala" data-trim>
-@scala.scalajs.js.annotation.JSExportDescendentClasses
-trait Actor {
-						</code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
-						####Added at compile time<!-- .element: class="fragment" data-fragment-index="2" style="color:white" -->
-					</script>
-					</section>
-				</section>
 				<section data-markdown>
 				<script type="text/template">
 					##Serialization
@@ -242,6 +217,7 @@ trait Actor {
 				<section data-markdown>
 				<script type="text/template">
 					##LOC statistics
+          ##TO BE UPDATED
 					- Akka.Js total ~ 19807<!-- .element: class="fragment" data-fragment-index="1" -->
 					- Akka.Js shared ~ 17024 (> 85%)<!-- .element: class="fragment" data-fragment-index="2" -->
 					- Akka.Js JS ~ 2783<!-- .element: class="fragment" data-fragment-index="2" -->
@@ -252,7 +228,6 @@ trait Actor {
 					##What next?
 					- Increase shared code<!-- .element: class="fragment" data-fragment-index="1" -->
 					- Proper testing<!-- .element: class="fragment" data-fragment-index="2" -->
-					- Portable serialization<!-- .element: class="fragment" data-fragment-index="3" -->
 					- Akka-remote<!-- .element: class="fragment" data-fragment-index="4" -->
 					- JS interop<!-- .element: class="fragment" data-fragment-index="5" -->
 					- ... at some point ... performances<!-- .element: class="fragment" data-fragment-index="6" -->
