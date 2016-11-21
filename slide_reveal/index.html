@@ -12,6 +12,10 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+    <!-- Mermaid Diagrams -->
+    <!--<link rel="stylesheet" href="css/mermaid.dark.css">
+    <script src="lib/js/mermaid.min.js"></script>-->
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -22,262 +26,203 @@
 		</script>
 	</head>
 	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-markdown>
+    <div class="reveal">
+      <div class="slides">
+
+        <section data-markdown>
           <script type="text/template">
           ##Don’t call me frontend framework!
-          ####A quick ride on
-
+          a quick ride on
           <img data-src="./images/akkajs-grey.png" />
-        </script>
-				</section>
-				<section data-markdown>
-          <script type="text/template">
-				  ###Who am I?
-				  ![alt text](./images/io.png "")<!-- .element: style="max-height: 300px; margin: 0px 0px 0px 0px;"-->
-				  <br>
-				  ![alt text](./images/uni-official.png "")<!-- .element: style="max-height: 150px; margin: 0px 0px 0px 0px;"-->
-				  - GitHub [andreaTP]()
-				  - Twitter [@and_prf]()
           </script>
-				</section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ###Who am I?
+          ![alt text](./images/io.png "")<!-- .element: style="max-height: 300px; margin: 0px 0px 0px 0px;"-->
+
+          ![alt text](./images/uni-official.png "")<!-- .element: style="max-height: 150px; margin: 0px 0px 0px 0px;"-->
+          - GitHub [andreaTP]()
+          - Twitter [@and_prf]()
+          </script>
+        </section>
+
         <section>
           <section><img data-src="./images/one.png" /></section>
           <section><img data-src="./images/two.png" /></section>
           <section><img data-src="./images/three.png" /></section>
         </section>
+
         <section data-markdown>
-        <script type="text/template">
-          ##Scala.Js from scratch
-          <pre><code class="bash" data-trim>
-mkdir project &&\
-echo 'sbt.version=0.13.13' > project/build.properties &&\
-echo 'addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.13")' > project/sjs.sbt &&\
-echo 'lazy val root = project.in(file(".")).enablePlugins(ScalaJSPlugin)' > build.sbt &&\
-echo $'import scala.scalajs.js\n\nobject Main extends js.JSApp {\n def main() = println("Hello world!")\n}' > Main.scala
-          </code></pre><!-- .element: class="fragment" data-fragment-index="1" -->
-        </script>
+          <script type="text/template">
+          ##How does it work?
+            - compiler plugins<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - java std<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - reflection<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - IR patches<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - ...<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+          #Who cares?<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+          </script>
         </section>
-        <script type="text/template">
-          ##Add Akka flavour
-        </script>
-        <script type="text/template">
-          ##Let's write a WebSocket Server
-        </script>
-        </section>
-				<section data-markdown>
-					<script type="text/template">
-					##Why should I care?
-					- Code reuse<!-- .element: class="fragment" data-fragment-index="1" -->
-					- Code portability<!-- .element: class="fragment" data-fragment-index="2" -->
-					- High modularization<!-- .element: class="fragment" data-fragment-index="3" -->
-					- Same programming model<!-- .element: class="fragment" data-fragment-index="4" -->
-					- Transparent communication<!-- .element: class="fragment" data-fragment-index="5" -->
-					- Concurrency management<!-- .element: class="fragment" data-fragment-index="6" -->
-					- Parallelism management<!-- .element: class="fragment" data-fragment-index="7" -->
-					</script>
 
-					Note:
-		        "s" on keyboard.
-		        You choose this trak while there are other 3 :-P
-		        I should ask you why!
-					 </aside>
-				</section>
-				<section>
-					<h3>Ping Pong</h3>
-					<pre>
-						<code class="scala" style="max-height: 350px;" data-code="../code1/shared/src/main/scala/PingPong.scala" data-trim></code>
-					</pre>
-					<iframe class="term" width="90%" src="http://localhost:4000"></iframe>
-
-					<aside class="notes">
-						cd workspace/akka.js_talk/code1/
-					</aside>
-				</section>
-				<section>
-					<h3>Raft</h3>
-          <p>
-					  <a href="#">https://github.com/archie/raft</a>
-          </p>
-					<pre>
-						<code class="scala" style="max-height: 250px;" data-code="../code2/shared/src/main/scala/raft/Raft.scala" data-trim></code>
-					</pre>
-					<iframe class="term" width="90%" src="http://localhost:4000/"></iframe>
-          <br><br><br><br><br>
-					<aside class="notes">
-						cd workspace/akka.js_talk/code2/
-					</aside>
-				</section>
-				<section>
-					<section>
-						<h3>ToDo</h3>
-						<pre>
-							<code class="scala" data-code="../code3/js/src/main/scala/visualization/ToDo.scala" data-trim></code>
-						</pre>
-					</section>
-					<section>
-						<iframe width="90%" height="500px" src="../code3/ui/index.html"></iframe>
-					</section>
-
-					<aside class="notes">
-						cd workspace/akka.js_talk/code3/
-					</aside>
-				</section>
-				<section>
-					<section>
-						<h3>Chat</h3>
-						<pre>
-							<code class="scala" data-code="../code4/js/src/main/scala/visualization/ChatUI.scala" data-trim></code>
-						</pre>
-					</section>
-					<section>
-						<iframe width="90%" height="500px" src="../code4/ui/index.html"></iframe>
-					</section>
-					<section>
-						<h3>Shared</h3>
-						<pre>
-							<code class="scala" class="scala" data-code="../code5/shared/src/main/scala/chat/ChatServer.scala" data-trim></code>
-						</pre>
-            <br><br><br><br>
-					</section>
-					<section>
-						<h3>Jvm</h3>
-						<pre>
-							<code class="scala" data-code="../code5/jvm/src/main/scala/ChatServerAkkaHttp.scala" data-trim></code>
-						</pre>
-            <br><br><br>
-					</section>
-					<section>
-						<h3>Js</h3>
-						<pre>
-							<code class="scala" data-code="../code5/js/src/main/scala/ChatServerNode.scala" data-trim></code>
-						</pre>
-            <br>
-					</section>
-
-					<aside class="notes">
-						cd workspace/akka.js_talk/code4/
-						cd workspace/akka.js_talk/code5/
-					</aside>
-				</section>
-				<section>
-					<h3>P2P WebRTC Chat</h3>
-					<iframe width="30%" height="500px" src="../code6/ui/index.html"></iframe>
-					<iframe width="30%" height="500px" src="../code6/ui/index.html"></iframe>
-          <iframe width="30%" height="500px" src="../code6/ui/index.html"></iframe>
-				</section>
-				<section data-markdown>
-					<script type="text/template">
-						##Challenges
-						- JVM<!-- .element: class="fragment" data-fragment-index="1" -->
-						- JVM<!-- .element: class="fragment" data-fragment-index="2" -->
-						- JVM<!-- .element: class="fragment" data-fragment-index="3" -->
-					</script>
-				</section>
-				<section data-markdown>
-					<script type="text/template">
-						##Challenges
-						- Java stdlib<!-- .element: class="fragment" data-fragment-index="1" -->
-						- Reflection<!-- .element: class="fragment" data-fragment-index="2" -->
-						- Serialization<!-- .element: class="fragment" data-fragment-index="3" -->
-						- Typesafe Config<!-- .element: class="fragment" data-fragment-index="5" -->
-					</script>
-				</section>
-				<section>
-					<section data-markdown>
-					<script type="text/template">
-						##Java stdlib
-						<img class="fragment" data-fragment-index="1" data-src="./images/git_before.jpg" />
-					</script>
-					</section>
-					<section data-markdown>
-					<script type="text/template">
-						##Java stdlib
-						<img data-src="./images/git3_after.png" />
-					</script>
-					</section>
-				</section>
-				<section data-markdown>
-				<script type="text/template">
-					##Serialization
-					####Scala/Pickling<!-- .element: style="color:white" -->
-					####errrrr... WIP<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
-					####:-)<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
-				</script>
-				</section>
         <section data-markdown>
-        <script type="text/template">
-          ##Typesafe Config
-          ###Shocon<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
-          [https://github.com/unicredit/shocon](Shocon)<!-- .element: class="fragment" data-fragment-index="1"-->
-          <p class="fragment" data-fragment-index="1" style="color:white">@evacchi on fastparse</p>
-        </script>
-      </section>
-				<section data-markdown>
-				<script type="text/template">
-					##LOC statistics
-          ##TO BE UPDATED
-					- Akka.Js total ~ 19807<!-- .element: class="fragment" data-fragment-index="1" -->
-					- Akka.Js shared ~ 17024 (> 85%)<!-- .element: class="fragment" data-fragment-index="2" -->
-					- Akka.Js JS ~ 2783<!-- .element: class="fragment" data-fragment-index="2" -->
-				</script>
-				</section>
-				<section data-markdown>
-				<script type="text/template">
-					##What next?
-					- Increase shared code<!-- .element: class="fragment" data-fragment-index="1" -->
-					- Proper testing<!-- .element: class="fragment" data-fragment-index="2" -->
-					- Akka-remote<!-- .element: class="fragment" data-fragment-index="4" -->
-					- JS interop<!-- .element: class="fragment" data-fragment-index="5" -->
-					- ... at some point ... performances<!-- .element: class="fragment" data-fragment-index="6" -->
-				</script>
-				</section>
-				<section data-markdown>
-				<script type="text/template">
-					#BOP
-					###Bothering<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
-					###Oriented<!-- .element: class="fragment" data-fragment-index="1" style="color:white" -->
-					###Programming<!-- .element: class="fragment" data-fragment-index="1" style="color:white"-->
-					####Thanks to everyone involved in this!<!-- .element: class="fragment" data-fragment-index="2" -->
-				</script>
-				</section>
-				<section data-markdown>
-					##Thank you!
+          <script type="text/template">
+          ##Why should I care?
+          #Why not?<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+          ###be serious<!-- .element: class="fragment" data-fragment-index="2" -->
+          ##keep ride actors on JS!!!<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+          </script>
+        </section>
 
-					[https://github.com/unicredit/akka.js](Akka.js)
-				</section>
+        <section data-markdown>
+          <script type="text/template">
+          ##Exercise:
+          Develop a fullstack POC for a Twitter streaming service.<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+          </script>
+        </section>
+
         <section>
-          <img data-src="./images/Slide3.png" />
+          <section data-markdown>
+            <script type="text/template">
+            ##Backend Architecture
+            project configuration
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Backend Architecture
+              - WebSocketServer -> Actor<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+              - WebSocketChannel -> Actor<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+              - TwitterService -> Actor<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Backend Architecture
+              - WebSocketServer -> Actor -> <!-- .element: style="color: white;" class="fragment" data-fragment-index="1" --><a href="https://www.npmjs.com/package/websocket">Node Websocket</a>
+              - WebSocketChannel -> Actor<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+              - TwitterService -> Actor -> <!-- .element: style="color: white;" class="fragment" data-fragment-index="2" --><a href="https://www.npmjs.com/package/node-tweet-stream">Node Tweet Stream</a>
+            </script>
+          </section>
         </section>
-			</div>
-		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <section data-markdown>
+          <script type="text/template">
+          ##Lessons learned
+            - Concepts separation<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - Callback hell<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+            - Free concurrency isolation<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+          in ~150 LOC :-)<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+          </script>
+        </section>
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: './plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } }
-				]
-			});
-		</script>
-		<script>
-			/* OsX docker container compatibility .... */
-			var hostname = window.location.hostname
-			var iframes = document.getElementsByClassName("term")
-			for (var i = 0; i < iframes.length; i++) {
-				iframes[i].src = "http://"+hostname+":4000/"
-			}
-		</script>
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Frontend
+            project configuration
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Frontend
+              - UI -> Dom -> Actors<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+              - WebSocketChannel -> Actor -> Stream<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Frontend
+            ###UI<!-- .element: style="color: white;"-->
+              - UIActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+                - NavBarActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+                - TrackerActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+                - CarouselActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Frontend
+            ###WebSocketChannel<!-- .element: style="color: white;"-->
+            ~> WebSocket<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+
+            ~> Stream<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+
+            ~> UIActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+            </script>
+          </section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ##Lessons learned
+            - Same programming model<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - Reusability<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+            - Free framework features<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+
+          in < 300 LOC :-)<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+          </script>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ##On Akka.JS
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ##It's Akka!
+              ####LOC statistics<!-- .element: style="color: white;" -->
+              - Akka shared ~ 24382<!-- .element: class="fragment" data-fragment-index="2" -->
+              - Akka JS ~ 3399<!-- .element: class="fragment" data-fragment-index="3" -->
+              - Akka Stream shared ~ 30772<!-- .element: class="fragment" data-fragment-index="4" -->
+              - Akka Stream JS ~ 493<!-- .element: class="fragment" data-fragment-index="5" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ##What next?
+              - Testing<!-- .element: class="fragment" data-fragment-index="1" -->
+              - Remote<!-- .element: class="fragment" data-fragment-index="2" -->
+              - Typed<!-- .element: class="fragment" data-fragment-index="3" -->
+              - JS interop<!-- .element: class="fragment" data-fragment-index="4" -->
+              - Performances<!-- .element: class="fragment" data-fragment-index="5" -->
+              - ...
+            </script>
+          </section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ##Thank you!
+            and remember, you can help! :-)
+
+            [https://github.com/unicredit/akka.js](Akka.js)
+          </script>
+        </section>
+
+      </div>
+    </div>
+     <script src="lib/js/head.min.js"></script>
+     <script src="js/reveal.js"></script>
+     <script>
+       //mermaid.initialize({startOnLoad:true});
+       // More info https://github.com/hakimel/reveal.js#configuration
+       Reveal.initialize({
+         history: true,
+
+         // More info https://github.com/hakimel/reveal.js#dependencies
+         dependencies: [
+           { src: 'plugin/markdown/marked.js' },
+           { src: 'plugin/markdown/markdown.js' },
+           { src: 'plugin/notes/notes.js', async: true },
+           { src: './plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } }
+         ]
+       });
+       //Reveal.configure({ slideNumber: 'c/t' });
+     </script>
 	</body>
 </html>

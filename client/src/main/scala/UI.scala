@@ -48,6 +48,30 @@ class NavBar() extends DomActor {
   )
 }
 
+class Tracker extends DomActor {
+
+  val inputBox = input(`type` := "text",
+                       cls := "form-control",
+                       attr("placeholder") := "what to track ...").render
+
+  def template = div(cls := "container")(
+    div(cls := "col-lg-12")(
+      div(cls := "input-group")(
+        inputBox,
+        span(cls := "input-group-btn")(
+          button(cls := "btn btn-default", `type` := "button", onclick := {
+            () =>
+              val topic = inputBox.value.toString
+              context.parent ! Track(topic)
+          })(
+            "TRACK!"
+          )
+        )
+      )
+    )
+  )
+}
+
 class Carousel extends DomActorWithParams[Tweet] {
 
   val initValue = Tweet("... waiting first tweet :-) ...", "finger crossed")
@@ -72,30 +96,5 @@ class Carousel extends DomActorWithParams[Tweet] {
     case t: Tweet =>
       self ! UpdateValue(t)
   }
-
-}
-
-class Tracker extends DomActor {
-
-  val inputBox = input(`type` := "text",
-                       cls := "form-control",
-                       attr("placeholder") := "what to track ...").render
-
-  def template = div(cls := "container")(
-    div(cls := "col-lg-12")(
-      div(cls := "input-group")(
-        inputBox,
-        span(cls := "input-group-btn")(
-          button(cls := "btn btn-default", `type` := "button", onclick := {
-            () =>
-              val topic = inputBox.value.toString
-              context.parent ! Track(topic)
-          })(
-            "TRACK!"
-          )
-        )
-      )
-    )
-  )
 
 }
