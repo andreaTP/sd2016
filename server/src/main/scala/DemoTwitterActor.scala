@@ -8,7 +8,7 @@ import akka.actor._
 object DemoTwitterActor extends js.JSApp {
   def main() = {
 
-    val system = ActorSystem("node-server")
+    val system = ActorSystem("node-twitter-demo")
 
     system.actorOf(Props(new Actor {
       import TwitterMsgs._

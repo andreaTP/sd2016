@@ -17,9 +17,9 @@ class UIActor() extends DomActor {
 
   def template = div()
 
-  val navBar = context.actorOf(Props(new NavBar()))
-  val carousel = context.actorOf(Props(new Carousel()))
-  val tracker = context.actorOf(Props(new Tracker()))
+  val navBar = context.actorOf(Props(new NavBarActor()))
+  val carousel = context.actorOf(Props(new CarouselActor()))
+  val tracker = context.actorOf(Props(new TrackerActor()))
 
   val twitterSource = context.actorOf(Props(new TweetSourceActor()))
 
@@ -31,7 +31,7 @@ class UIActor() extends DomActor {
   }
 }
 
-class NavBar() extends DomActor {
+class NavBarActor() extends DomActor {
 
   def template = div(cls := "navbar-wrapper")(
     div(cls := "container")(
@@ -48,7 +48,7 @@ class NavBar() extends DomActor {
   )
 }
 
-class Tracker extends DomActor {
+class TrackerActor() extends DomActor {
 
   val inputBox = input(`type` := "text",
                        cls := "form-control",
@@ -72,7 +72,7 @@ class Tracker extends DomActor {
   )
 }
 
-class Carousel extends DomActorWithParams[Tweet] {
+class CarouselActor() extends DomActorWithParams[Tweet] {
 
   val initValue = Tweet("... waiting first tweet :-) ...", "finger crossed")
 
