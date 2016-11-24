@@ -2,7 +2,6 @@ lazy val root =
   project
     .in(file("."))
     .enablePlugins(ScalaJSPlugin)
-    .settings(reformatOnCompileSettings)
     .settings(
       scalaVersion := "2.12.0",
       libraryDependencies +=
