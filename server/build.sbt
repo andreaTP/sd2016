@@ -6,7 +6,7 @@ lazy val root =
     .settings(
       scalaVersion := "2.12.0",
       libraryDependencies +=
-        "eu.unicredit" %%% "akkajsactor" % "0.2.4.12",
+        "eu.unicredit" %%% "akkajsactor" % "0.2.4.14",
       fork in run := true,
       cancelable in Global := true
     )

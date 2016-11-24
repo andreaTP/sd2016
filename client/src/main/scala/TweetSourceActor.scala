@@ -21,6 +21,8 @@ class TweetSourceActor() extends Actor {
   import TwitterMsgs._
   import context.dispatcher
 
+  val ws = new dom.WebSocket(s"ws://localhost:9002")
+
   implicit val materializer = ActorMaterializer()
 
   val wsQueue =
@@ -39,8 +41,6 @@ class TweetSourceActor() extends Actor {
       .throttle(1, 750 millis, 1, ThrottleMode.shaping)
       .to(Sink.actorRef(self, PoisonPill))
       .run()
-
-  val ws = new dom.WebSocket(s"ws://localhost:9002")
 
   ws.onmessage = { (event: dom.MessageEvent) =>
     wsQueue.offer(event.data.toString)
